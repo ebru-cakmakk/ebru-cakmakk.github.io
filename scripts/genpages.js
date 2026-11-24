@@ -2,7 +2,6 @@ const fs = require('fs');
 const dir = process.argv[2];            // site klasörü
 
 const text = JSON.parse(fs.readFileSync(dir + '/data/text.json', 'utf8'));
-const cats = JSON.parse(fs.readFileSync(dir + '/data/categories.json', 'utf8'));
 
 const GROUP = {
   nav:'Menü', hero:'Açılış ekranı', home:'Ana sayfa', photos:'Fotoğraflar sayfası',
@@ -72,75 +71,48 @@ Object.keys(text).forEach(g => {
   });
 });
 
-/* ---- kategori secenekleri ---- */
-const catOpts = cats.map(c =>
-  `              - { name: ${c.id}, label: ${q(c.tr)} }`).join('\n');
-
 const yml = `# Pages CMS ayarları — https://pagescms.org
 # Panelde görünen form alanlarını bu dosya belirler.
-# Yeni bir KATEGORİ eklediğinde aşağıdaki "Kategori" seçeneklerine de eklemen gerekir.
 
 media:
   input: images
   output: images
 
 content:
-  - name: photos
-    label: "Fotoğraflar"
+  - name: series
+    label: "Fotoğraf serileri"
     type: file
-    path: data/photos.json
+    path: data/series.json
     format: json
     list: true
     fields:
-      - name: src
-        label: "Fotoğraf"
-        type: image
-        required: true
-        options:
-          path: images
-          extensions: [jpg, jpeg, png, webp]
-          categories: [image]
-      - name: cat
-        label: "Kategori"
-        type: select
-        required: true
-        options:
-          values:
-${catOpts}
-          placeholder: "Kategori seç"
-      - name: feat
-        label: "Ana sayfadaki seçkide göster"
-        type: boolean
-      - name: w
-        label: "Ana sayfadaki genişlik"
-        type: select
-        options:
-          values:
-            - { name: "4",  label: "Küçük (4)" }
-            - { name: "6",  label: "Orta (6)" }
-            - { name: "8",  label: "Geniş (8)" }
-            - { name: "12", label: "Tam sayfa (12)" }
-      - name: ratio
-        label: "Ana sayfadaki kutu oranı"
-        type: select
-        options:
-          values:
-            - { name: "3/2",  label: "Yatay (3/2)" }
-            - { name: "3/4",  label: "Dikey (3/4)" }
-            - { name: "1/1",  label: "Kare (1/1)" }
-            - { name: "21/9", label: "Sinema bandı (21/9)" }
-
-  - name: categories
-    label: "Fotoğraf kategorileri"
-    type: file
-    path: data/categories.json
-    format: json
-    list: true
-    fields:
-      - { name: id, label: "Kısa ad (Türkçe karakter kullanma)", type: string, required: true }
-      - { name: tr, label: "Adı — Türkçe", type: string, required: true }
-      - { name: en, label: "Adı — İngilizce", type: string, required: true }
-      - { name: hue, label: "Renk tonu (boş bırak: fotoğraflardan hesaplanır)", type: number }
+      - { name: tr, label: "Serinin adı — Türkçe", type: string, required: true }
+      - { name: en, label: "Serinin adı — İngilizce", type: string }
+      - name: photos
+        label: "Bu serinin fotoğrafları"
+        type: object
+        list: true
+        fields:
+          - name: src
+            label: "Fotoğraf"
+            type: image
+            required: true
+            options:
+              path: images
+              extensions: [jpg, jpeg, png, webp]
+              categories: [image]
+          - name: feat
+            label: "Ana sayfadaki seçkide de göster"
+            type: boolean
+          - name: size
+            label: "Ana sayfadaki boyutu (sadece seçkideyse)"
+            type: select
+            options:
+              values:
+                - { name: "kucuk", label: "Küçük, dikey" }
+                - { name: "orta", label: "Orta, yatay" }
+                - { name: "buyuk", label: "Büyük, yatay" }
+                - { name: "tam", label: "Tam genişlik, sinema bandı" }
 
   - name: pages
     label: "Menü ve sayfalar"
@@ -189,17 +161,9 @@ ${catOpts}
     format: json
     list: true
     fields:
-      - { name: url, label: "Vimeo veya YouTube adresi", type: string, required: true }
-      - name: poster
-        label: "Kapak görseli"
-        type: image
-        options:
-          path: images
-          extensions: [jpg, jpeg, png, webp]
-          categories: [image]
-      - { name: meta, label: "Süre ya da kısa not", type: string }
-      - { name: tr, label: "Başlık — Türkçe", type: string }
-      - { name: en, label: "Başlık — İngilizce", type: string }
+      - { name: url, label: "YouTube veya Vimeo adresi (tarayıcıdaki adresi yapıştır)", type: string, required: true }
+      - { name: tr, label: "Başlık — Türkçe (isteğe bağlı)", type: string }
+      - { name: en, label: "Başlık — İngilizce (isteğe bağlı)", type: string }
 
   - name: site
     label: "Site ayarları"

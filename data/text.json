@@ -77,10 +77,6 @@
     "h": {
       "tr": "Showreel hazırlanıyor",
       "en": "Showreel in progress"
-    },
-    "p": {
-      "tr": "Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli.",
-      "en": "I’m cutting footage shot on the same morning as the photo series. It will appear here first once it’s ready — in the meantime, write to me if you’d like to talk about a project."
     }
   },
   "models": {
@@ -178,25 +174,9 @@
       "tr": "Şehir",
       "en": "City"
     },
-    "exp": {
-      "tr": "Deneyim",
-      "en": "Experience"
-    },
-    "exp1": {
-      "tr": "İlk kez olacak",
-      "en": "This would be my first time"
-    },
-    "exp2": {
-      "tr": "Birkaç çekim yaptım",
-      "en": "I’ve done a few shoots"
-    },
-    "exp3": {
-      "tr": "Deneyimliyim",
-      "en": "I’m experienced"
-    },
     "idea": {
-      "tr": "Aklındaki bir fikir var mı?",
-      "en": "Any idea in mind?"
+      "tr": "Eklemek istediğin bir şey ya da aklındaki bir fikir",
+      "en": "Anything to add, or an idea you have in mind"
     },
     "submit": {
       "tr": "Mesajı Hazırla",
@@ -207,8 +187,200 @@
       "en": "Your message is ready"
     },
     "outP": {
-      "tr": "Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum.",
-      "en": "This form does not send anything by itself. Copy the text below and send it to me by email — I reply as soon as I can."
+      "tr": "Bu form kendi başına bir şey göndermiyor. \"E-postada Aç\" ile taslak e-posta uygulamanda hazır açılır; açılmazsa metni kopyalayıp bana gönder.",
+      "en": "This form doesn't send anything by itself. \"Open in Email\" opens a ready draft in your email app; if it doesn't open, copy the text and send it to me."
+    },
+    "pick": {
+      "tr": "Seç",
+      "en": "Choose"
+    },
+    "role": {
+      "tr": "Kendini nasıl tanımlarsın?",
+      "en": "How would you describe yourself?"
+    },
+    "role1": {
+      "tr": "Amatör model",
+      "en": "Amateur model"
+    },
+    "role2": {
+      "tr": "Oyuncu / oyunculuk öğrencisi",
+      "en": "Actor / acting student"
+    },
+    "role3": {
+      "tr": "Dansçı / performans sanatçısı",
+      "en": "Dancer / performer"
+    },
+    "role4": {
+      "tr": "Profesyonel model",
+      "en": "Professional model"
+    },
+    "role5": {
+      "tr": "Sadece denemek istiyorum",
+      "en": "I'd just like to try"
+    },
+    "exp": {
+      "tr": "Kamera önü deneyimin",
+      "en": "Experience in front of the camera"
+    },
+    "exp1": {
+      "tr": "İlk kez olacak",
+      "en": "This would be my first time"
+    },
+    "exp2": {
+      "tr": "Birkaç çekim yaptım",
+      "en": "I've done a few shoots"
+    },
+    "exp3": {
+      "tr": "Düzenli çekimlere katılıyorum",
+      "en": "I shoot regularly"
+    },
+    "exp4": {
+      "tr": "Sahne / set deneyimim var",
+      "en": "I have stage or set experience"
+    },
+    "style": {
+      "tr": "Sana en yakın stil dili",
+      "en": "Style closest to you"
+    },
+    "style1": {
+      "tr": "Doğal ve sade",
+      "en": "Natural and minimal"
+    },
+    "style2": {
+      "tr": "Sinematik, hikâyesi olan",
+      "en": "Cinematic, story-led"
+    },
+    "style3": {
+      "tr": "Editoryal / moda",
+      "en": "Editorial / fashion"
+    },
+    "style4": {
+      "tr": "Sanatsal, deneysel",
+      "en": "Artistic, experimental"
+    },
+    "style5": {
+      "tr": "Henüz bilmiyorum, birlikte bulalım",
+      "en": "Not sure yet, let's find it together"
+    },
+    "format": {
+      "tr": "Ne tür bir çekim?",
+      "en": "What kind of shoot?"
+    },
+    "format1": {
+      "tr": "Fotoğraf",
+      "en": "Photography"
+    },
+    "format2": {
+      "tr": "Video / kısa film",
+      "en": "Video / short film"
+    },
+    "format3": {
+      "tr": "İkisi de",
+      "en": "Both"
+    },
+    "direct": {
+      "tr": "Çekimde nasıl rahat edersin?",
+      "en": "How are you most comfortable on set?"
+    },
+    "direct1": {
+      "tr": "Yönlendirilmeyi severim",
+      "en": "I like being directed"
+    },
+    "direct2": {
+      "tr": "Serbest hareket etmeyi severim",
+      "en": "I like to move freely"
+    },
+    "direct3": {
+      "tr": "İkisinin karışımı",
+      "en": "A mix of both"
+    },
+    "wardrobe": {
+      "tr": "Kıyafet ve stil",
+      "en": "Wardrobe and styling"
+    },
+    "wardrobe1": {
+      "tr": "Kendi kıyafetlerimle gelirim",
+      "en": "I'll bring my own clothes"
+    },
+    "wardrobe2": {
+      "tr": "Birlikte planlayalım",
+      "en": "Let's plan it together"
+    },
+    "wardrobe3": {
+      "tr": "Önerilere açığım",
+      "en": "I'm open to suggestions"
+    },
+    "time": {
+      "tr": "Ne zaman uygunsun?",
+      "en": "When are you available?"
+    },
+    "time1": {
+      "tr": "Hafta içi",
+      "en": "Weekdays"
+    },
+    "time2": {
+      "tr": "Hafta sonu",
+      "en": "Weekends"
+    },
+    "time3": {
+      "tr": "Esnek",
+      "en": "Flexible"
+    },
+    "age": {
+      "tr": "Yaş",
+      "en": "Age"
+    },
+    "age1": {
+      "tr": "18 yaş ve üstü",
+      "en": "18 or over"
+    },
+    "age2": {
+      "tr": "18 yaş altı (velimle birlikte)",
+      "en": "Under 18 (with a guardian)"
+    },
+    "interests": {
+      "tr": "İlgi alanların (birden fazla seçebilirsin)",
+      "en": "Your interests (pick as many as you like)"
+    },
+    "interests1": {
+      "tr": "Portre",
+      "en": "Portrait"
+    },
+    "interests2": {
+      "tr": "Doğa içinde",
+      "en": "Out in nature"
+    },
+    "interests3": {
+      "tr": "Hareket ve dans",
+      "en": "Movement and dance"
+    },
+    "interests4": {
+      "tr": "Karakter / rol",
+      "en": "Character / role"
+    },
+    "interests5": {
+      "tr": "Kısa film",
+      "en": "Short film"
+    },
+    "interests6": {
+      "tr": "Moda ve stil",
+      "en": "Fashion and styling"
+    },
+    "interests7": {
+      "tr": "Duygu ve ifade",
+      "en": "Emotion and expression"
+    },
+    "link": {
+      "tr": "Portfolyo veya Instagram bağlantın (varsa)",
+      "en": "Portfolio or Instagram link (if any)"
+    },
+    "mail": {
+      "tr": "E-postada Aç",
+      "en": "Open in Email"
+    },
+    "subject": {
+      "tr": "Model başvurusu",
+      "en": "Model application"
     }
   },
   "journal": {

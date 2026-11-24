@@ -1,0 +1,80 @@
+[
+  {
+    "tr": "Etheral Space",
+    "en": "Etheral Space",
+    "photos": [
+      {
+        "src": "images/01.jpg",
+        "feat": true,
+        "size": "buyuk"
+      },
+      {
+        "src": "images/02.jpg",
+        "feat": true,
+        "size": "kucuk"
+      },
+      {
+        "src": "images/05.jpg",
+        "feat": true,
+        "size": "tam"
+      },
+      {
+        "src": "images/06.jpg",
+        "feat": false
+      }
+    ]
+  },
+  {
+    "tr": "Yan Yana",
+    "en": "Side by Side",
+    "photos": [
+      {
+        "src": "images/13.jpg",
+        "feat": true,
+        "size": "buyuk"
+      },
+      {
+        "src": "images/09.jpg",
+        "feat": true,
+        "size": "kucuk"
+      },
+      {
+        "src": "images/10.jpg",
+        "feat": false
+      },
+      {
+        "src": "images/11.jpg",
+        "feat": false
+      },
+      {
+        "src": "images/12.jpg",
+        "feat": false
+      }
+    ]
+  },
+  {
+    "tr": "Doğa",
+    "en": "Nature",
+    "photos": [
+      {
+        "src": "images/03.jpg",
+        "feat": true,
+        "size": "orta"
+      },
+      {
+        "src": "images/04.jpg",
+        "feat": true,
+        "size": "orta"
+      },
+      {
+        "src": "images/07.jpg",
+        "feat": false
+      },
+      {
+        "src": "images/08.jpg",
+        "feat": true,
+        "size": "tam"
+      }
+    ]
+  }
+]

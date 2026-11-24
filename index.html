@@ -77,7 +77,7 @@
   .hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(40px,7vh,86px);position:relative;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
   .hero-bg img{opacity:.9;transform:scale(1.02);transition:opacity 1.8s ease}
-  .hero-bg.vid img{opacity:0}
+  .hero-bg.playing img{opacity:0}
   .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 35%;opacity:0;transition:opacity 1.8s ease}
   .hero-bg video.on{opacity:.9}
   .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),linear-gradient(to right,rgba(18,26,11,.8),transparent 62%)}
@@ -148,6 +148,8 @@
   .vid .play{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:1px solid rgba(241,238,227,.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:.35s}
   .vid:hover .play{background:var(--emerald);border-color:var(--emerald)}
   .vid .play svg{width:18px;fill:var(--cream)}
+  .vid-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vid-item figcaption{margin-top:12px;font-family:var(--display);font-size:18px;color:var(--cream)}
   .vid .cap{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(to top,rgba(18,35,15,.9),transparent);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
   .vid .cap h4{font-family:var(--display);font-weight:400;font-size:18px}
   .vid .cap span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
@@ -182,6 +184,13 @@
   .btn.ghost:hover{border-color:var(--emerald);color:var(--cream)}
   .out{display:none;margin-top:26px;border:1px solid var(--emerald);background:rgba(31,125,83,.12);padding:clamp(20px,3vw,28px)}
   .out.on{display:block}
+  .out-btns{display:flex;flex-wrap:wrap;gap:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{display:inline-block;padding:9px 15px;border:1px solid var(--line);border-radius:30px;font-size:14px;color:var(--sand);cursor:pointer;transition:.25s;user-select:none}
+  .chip span:hover{border-color:var(--emerald);color:var(--cream)}
+  .chip input:checked + span{background:var(--emerald);border-color:var(--emerald);color:var(--cream)}
+  .chip input:focus-visible + span{outline:2px solid var(--cream);outline-offset:2px}
   .out h4{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:8px}
   .out p{font-size:14.5px;color:var(--sand);margin-bottom:16px}
   .out pre{white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:14px;background:rgba(18,26,11,.6);border:1px solid var(--line-2);padding:18px;color:var(--cream);line-height:1.65;margin-bottom:16px}
@@ -407,17 +416,8 @@
           <div class="field"><label data-k="form.name"></label><input name="ad" required></div>
           <div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div>
         </div>
-        <div class="two">
-          <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
-          <div class="field">
-            <label data-k="form.exp"></label>
-            <select name="deneyim">
-              <option data-k="form.exp1"></option>
-              <option data-k="form.exp2"></option>
-              <option data-k="form.exp3"></option>
-            </select>
-          </div>
-        </div>
+        <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
+        <div class="two"><div class="field"><label data-k="form.role"></label><select name="role"><option value="" data-k="form.pick"></option><option value="1" data-k="form.role1"></option><option value="2" data-k="form.role2"></option><option value="3" data-k="form.role3"></option><option value="4" data-k="form.role4"></option><option value="5" data-k="form.role5"></option></select></div><div class="field"><label data-k="form.exp"></label><select name="exp"><option value="" data-k="form.pick"></option><option value="1" data-k="form.exp1"></option><option value="2" data-k="form.exp2"></option><option value="3" data-k="form.exp3"></option><option value="4" data-k="form.exp4"></option></select></div></div><div class="two"><div class="field"><label data-k="form.style"></label><select name="style"><option value="" data-k="form.pick"></option><option value="1" data-k="form.style1"></option><option value="2" data-k="form.style2"></option><option value="3" data-k="form.style3"></option><option value="4" data-k="form.style4"></option><option value="5" data-k="form.style5"></option></select></div><div class="field"><label data-k="form.format"></label><select name="format"><option value="" data-k="form.pick"></option><option value="1" data-k="form.format1"></option><option value="2" data-k="form.format2"></option><option value="3" data-k="form.format3"></option></select></div></div><div class="field"><label data-k="form.interests"></label><div class="chips"><label class="chip"><input type="checkbox" name="interests" value="1"><span data-k="form.interests1"></span></label><label class="chip"><input type="checkbox" name="interests" value="2"><span data-k="form.interests2"></span></label><label class="chip"><input type="checkbox" name="interests" value="3"><span data-k="form.interests3"></span></label><label class="chip"><input type="checkbox" name="interests" value="4"><span data-k="form.interests4"></span></label><label class="chip"><input type="checkbox" name="interests" value="5"><span data-k="form.interests5"></span></label><label class="chip"><input type="checkbox" name="interests" value="6"><span data-k="form.interests6"></span></label><label class="chip"><input type="checkbox" name="interests" value="7"><span data-k="form.interests7"></span></label></div></div><div class="two"><div class="field"><label data-k="form.direct"></label><select name="direct"><option value="" data-k="form.pick"></option><option value="1" data-k="form.direct1"></option><option value="2" data-k="form.direct2"></option><option value="3" data-k="form.direct3"></option></select></div><div class="field"><label data-k="form.wardrobe"></label><select name="wardrobe"><option value="" data-k="form.pick"></option><option value="1" data-k="form.wardrobe1"></option><option value="2" data-k="form.wardrobe2"></option><option value="3" data-k="form.wardrobe3"></option></select></div></div><div class="two"><div class="field"><label data-k="form.time"></label><select name="time"><option value="" data-k="form.pick"></option><option value="1" data-k="form.time1"></option><option value="2" data-k="form.time2"></option><option value="3" data-k="form.time3"></option></select></div><div class="field"><label data-k="form.age"></label><select name="age"><option value="" data-k="form.pick"></option><option value="1" data-k="form.age1"></option><option value="2" data-k="form.age2"></option></select></div></div><div class="field"><label data-k="form.link"></label><input name="link"></div>
         <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
         <button type="submit" class="btn" data-k="form.submit"></button>
       </form>
@@ -426,7 +426,7 @@
         <h4 data-k="form.outH"></h4>
         <p data-k="form.outP"></p>
         <pre id="msg"></pre>
-        <button class="btn" onclick="copyMsg()" id="copyBtn"></button>
+        <div class="out-btns"><a class="btn" id="mailBtn" href="#" data-k="form.mail"></a><button class="btn ghost" onclick="copyMsg()" id="copyBtn"></button></div>
       </div>
     </div>
   </section>
@@ -609,10 +609,12 @@ function postRow(p, i){
 function render(){
   /* --- ana sayfa seçkisi --- */
   SETS.feat = PHOTOS.filter(p => p.feat);
-  featGrid.innerHTML = SETS.feat.map((p,i)=>
-    '<div class="tile w'+(p.w||6)+'" style="aspect-ratio:'+(p.ratio||'3/2')+'" onclick="openLb(\'feat\','+i+')">'
-    + '<img src="'+p.src+'" alt="" loading="lazy"></div>'
-  ).join('');
+  const SIZE = {kucuk:['4','3/4'], orta:['6','3/2'], buyuk:['8','3/2'], tam:['12','21/9']};
+  featGrid.innerHTML = SETS.feat.map((p,i)=>{
+    const z = SIZE[p.size] || [p.w || '6', p.ratio || '3/2'];
+    return '<div class="tile w'+z[0]+'" style="aspect-ratio:'+z[1]+'" onclick="openLb(\'feat\','+i+')">'
+    + '<img src="'+p.src+'" alt="" loading="lazy"></div>';
+  }).join('');
 
   /* --- fotoğraflar sayfası: kategorilere ayrılmış --- */
   SETS.photos = [];
@@ -642,16 +644,18 @@ function render(){
   catWrap.innerHTML = html;
 
   /* --- video --- */
-  if(typeof VIDEOS !== 'undefined' && VIDEOS.length){
-    vidWrap.innerHTML = '<div class="vids reveal">' + VIDEOS.map(v=>
-      '<a class="vid" href="'+v.url+'" target="_blank" rel="noopener">'
-      + (v.poster ? '<img src="'+v.poster+'" alt="" loading="lazy">' : '')
-      + '<span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'
-      + '<span class="cap"><h4>'+(lang==='tr'?v.tr:v.en)+'</h4><span>'+(v.meta||'')+'</span></span></a>'
-    ).join('') + '</div>';
+  const vids = (VIDEOS || []).filter(v => v && v.url);
+  if(vids.length){
+    vidWrap.innerHTML = '<div class="vids reveal">' + vids.map(v=>{
+      const e = embedUrl(v.url), title = (lang==='en' && v.en) ? v.en : (v.tr || v.title || '');
+      return '<figure class="vid-item">'
+        + (e ? '<div class="vid vid-embed"><iframe src="'+esc(e)+'" title="'+esc(title)+'" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+             : '<a class="vid" href="'+esc(v.url)+'" target="_blank" rel="noopener"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></a>')
+        + (title ? '<figcaption>'+esc(title)+'</figcaption>' : '')
+        + '</figure>';
+    }).join('') + '</div>';
   }else{
-    vidWrap.innerHTML = '<div class="reel-panel reveal"><div class="dash"></div>'
-      + '<h3>'+t('film.h')+'</h3><p>'+t('film.p')+'</p></div>';
+    vidWrap.innerHTML = '<div class="reel-panel reveal"><div class="dash"></div><h3>'+t('film.h')+'</h3></div>';
   }
 
   /* --- günlük --- */
@@ -662,6 +666,16 @@ function render(){
 
   copyBtn.textContent = t('ui.copy');
   observe();
+}
+
+/* YouTube / Vimeo adresini sayfaya gömülebilir adrese çevirir */
+function embedUrl(u){
+  u = String(u || '').trim();
+  let m = u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/);
+  if(m) return 'https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0';
+  m = u.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/(\w+))?/);
+  if(m) return 'https://player.vimeo.com/video/' + m[1] + (m[2] ? '?h=' + m[2] : '') + (m[2] ? '&' : '?') + 'dnt=1';
+  return '';
 }
 
 /* ---------------- yönlendirme ---------------- */
@@ -736,16 +750,28 @@ function closeReader(){ reader.classList.remove('on'); document.body.style.overf
 /* ---------------- form ---------------- */
 function buildMsg(e){
   e.preventDefault();
-  const f = new FormData(e.target);
-  const L = lang==='tr'
-    ? {h:'Model başvurusu',a:'Ad',i:'İletişim',s:'Şehir',d:'Deneyim',m:'Fikir'}
-    : {h:'Model application',a:'Name',i:'Contact',s:'City',d:'Experience',m:'Idea'};
-  msg.textContent = L.h+'\n\n'
-    + L.a+': '+(f.get('ad')||'—')+'\n'
-    + L.i+': '+(f.get('iletisim')||'—')+'\n'
-    + L.s+': '+(f.get('sehir')||'—')+'\n'
-    + L.d+': '+(f.get('deneyim')||'—')+'\n'
-    + L.m+': '+(f.get('mesaj')||'—');
+  const f = e.target, en = lang === 'en';
+  const lab = k => (f.querySelector('[data-k="form.'+k+'"]') || {}).textContent || k;
+  const pick = n => { const el = f.elements[n]; return el && el.value ? el.options[el.selectedIndex].textContent : ''; };
+  const val = n => (f.elements[n] && f.elements[n].value || '').trim();
+  const ints = [...f.querySelectorAll('input[name=interests]:checked')].map(x => x.nextElementSibling.textContent);
+  const rows = [
+    [lab('name'), val('ad')], [lab('contact'), val('iletisim')], [lab('city'), val('sehir')],
+    ['', ''],
+    [lab('role'), pick('role')], [lab('exp'), pick('exp')], [lab('style'), pick('style')],
+    [lab('format'), pick('format')], [lab('interests').replace(/\s*\(.*\)$/, ''), ints.join(', ')],
+    [lab('direct'), pick('direct')], [lab('wardrobe'), pick('wardrobe')], [lab('time'), pick('time')],
+    [lab('age'), pick('age')], [lab('link').replace(/\s*\(.*\)$/, ''), val('link')]
+  ];
+  const greet = en ? 'Hi Ebru,\n\nI saw your site and I would like to work with you. Here are my details:\n'
+                   : 'Merhaba Ebru,\n\nSitene baktım ve seninle çalışmak istiyorum. Bilgilerim şöyle:\n';
+  let body = greet + '\n' + rows.map(r => r[0] ? r[0] + ': ' + (r[1] || '—') : '').join('\n');
+  const idea = val('mesaj');
+  if(idea) body += '\n\n' + idea;
+  body += '\n\n' + (en ? 'Best,\n' : 'Sevgiler,\n') + (val('ad') || '');
+  msg.textContent = body;
+  const subj = t('form.subject') + (val('ad') ? ' — ' + val('ad') : '');
+  mailBtn.href = 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
   out.classList.add('on');
   out.scrollIntoView({behavior:'smooth',block:'center'});
 }
@@ -895,7 +921,8 @@ function themeForPage(h){
   if(catIO) catIO.disconnect();
   if(!theme().auto){ paintTheme(null); return; }
   if(h === 'home')            themeFor([{src:'images/hero.jpg'}]);
-  else if(h === 'fotograflar'){ themeFor(PHOTOS.filter(p => p.cat === CATS[0].id)); watchCats(); }
+  else if(h === 'fotograflar'){ themeFor(CATS.length ? PHOTOS.filter(p => p.cat === CATS[0].id) : PHOTOS); watchCats(); }
+  else if(h === 'hakkimda' && SITE.aboutPhoto) themeFor([{src: SITE.aboutPhoto}]);
   else                        themeFor(PHOTOS);
 }
 
@@ -915,10 +942,10 @@ function heroVideo(){
   const show = () => {
     if(!visible) return;
     leaving = false; v.currentTime = 0;
-    v.play().then(() => { v.classList.add('on'); v.parentNode.classList.add('vid'); }).catch(() => {});
+    v.play().then(() => { v.classList.add('on'); v.parentNode.classList.add('playing'); }).catch(() => {});
   };
   const hide = () => {
-    leaving = true; v.classList.remove('on'); v.parentNode.classList.remove('vid');
+    leaving = true; v.classList.remove('on'); v.parentNode.classList.remove('playing');
     setTimeout(() => v.pause(), FADE);
     clearTimeout(timer); timer = setTimeout(show, REST);
   };
@@ -930,7 +957,7 @@ function heroVideo(){
   new IntersectionObserver(es => {
     visible = es[0].isIntersecting;
     clearTimeout(timer);
-    if(!visible){ v.pause(); v.classList.remove('on'); v.parentNode.classList.remove('vid'); leaving = true; }
+    if(!visible){ v.pause(); v.classList.remove('on'); v.parentNode.classList.remove('playing'); leaving = true; }
     else timer = setTimeout(show, HOLD);
   }).observe(v.parentNode);
 }
@@ -961,14 +988,20 @@ function loadJSON(p){
 
 Promise.all([
   loadJSON('data/site.json'),
-  loadJSON('data/categories.json'),
-  loadJSON('data/photos.json'),
+  loadJSON('data/series.json'),
   loadJSON('data/videos.json'),
   loadJSON('data/posts.json'),
   loadJSON('data/text.json'),
   loadJSON('data/pages.json')
 ]).then(function(d){
-  SITE = d[0]; CATS = d[1]; PHOTOS = d[2]; VIDEOS = d[3]; POSTS = d[4]; TEXT = d[5]; PAGES = d[6];
+  SITE = d[0]; VIDEOS = d[2]; POSTS = d[3]; TEXT = d[4]; PAGES = d[5];
+  /* seriler: her başlığın altında kendi fotoğrafları */
+  CATS = []; PHOTOS = [];
+  d[1].forEach((sr, i) => {
+    const id = 's' + i;
+    CATS.push({id: id, tr: sr.tr || '', en: sr.en || sr.tr || '', hue: sr.hue});
+    (sr.photos || []).forEach(ph => { if(ph && ph.src) PHOTOS.push(Object.assign({}, ph, {cat: id})); });
+  });
   fill();
   setLang(lang);
   route();
