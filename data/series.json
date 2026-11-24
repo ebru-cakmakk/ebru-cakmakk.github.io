@@ -32,7 +32,7 @@
       {
         "src": "images/13.jpg",
         "feat": true,
-        "size": "orta"
+        "size": "kucuk"
       },
       {
         "src": "images/10.jpg",
@@ -53,20 +53,36 @@
       {
         "src": "images/03.jpg",
         "feat": true,
-        "size": "orta"
+        "size": "kucuk"
       },
       {
         "src": "images/04.jpg",
         "feat": true,
-        "size": "orta"
+        "size": "kucuk"
       },
       {
         "src": "images/07.jpg",
-        "feat": false
+        "feat": true,
+        "size": "kucuk"
       },
       {
         "src": "images/08.jpg",
-        "feat": true,
+        "feat": false,
+        "size": "kucuk"
+      },
+      {
+        "src": "images/_dsc4318.jpg",
+        "feat": false,
+        "size": "kucuk"
+      },
+      {
+        "src": "images/_dsc4395.jpg",
+        "feat": false,
+        "size": "tam"
+      },
+      {
+        "src": "images/_dsc4399.jpg",
+        "feat": false,
         "size": "kucuk"
       }
     ]
