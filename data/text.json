@@ -31,16 +31,12 @@
       "en": "Photography &amp; Videography"
     },
     "tagline": {
-      "tr": "Işık, doku ve insan üzerine çalışan bir göz.",
-      "en": "An eye working on light, texture and the human form."
-    },
-    "ongoing": {
-      "tr": "Devam eden proje",
-      "en": "Ongoing project"
+      "tr": "İnsanla doğanın birbirine karıştığı yerleri arıyorum.",
+      "en": "I look for the places where people and nature blur into each other."
     },
     "location": {
-      "tr": "Türkiye",
-      "en": "Türkiye"
+      "tr": "Türkiye, Ankara",
+      "en": "Türkiye, Ankara"
     },
     "scroll": {
       "tr": "Kaydır",
@@ -65,8 +61,8 @@
       "en": "In short"
     },
     "aboutP": {
-      "tr": "Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekiyorum.",
-      "en": "I’m a student working in photography and videography. I shoot with natural light, in quiet places, with as little gear as possible."
+      "tr": "Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekiyorum.\nDoğayla çalışmak beni besliyor, ama kendimi bir türe kapatmıyorum. Moda, müzik, belgesel ya da bir arkadaşın fikri: iyi bir hikâye varsa oradayım.",
+      "en": "I’m a student working in photography and videography. I shoot with natural light, in quiet places, with as little gear as possible.\nWorking with nature feeds me, but I don't confine myself to one genre. Fashion, music, documentary, or a friend's idea: if there's a good story, I'm in."
     },
     "aboutLink": {
       "tr": "Hakkımda",
