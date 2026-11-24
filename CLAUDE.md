@@ -30,7 +30,7 @@ isimle çalışır, ama kamuya açık yüzünde (Instagram, TikTok) mahlas makul
 | Depo | `github.com/ebru-cakmakk/ebru-cakmakk.github.io` |
 | Yayındaki site | `https://ebru-cakmakk.github.io` |
 | Barındırma | GitHub Pages — ücretsiz, kendiliğinden yayınlanıyor |
-| E-posta | `zekiyeebru02@proton.me` |
+| E-posta | `giauzar.arrakis@gmail.com` |
 
 | Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
 
@@ -48,9 +48,10 @@ doldurulduğunda düğmeler kendiliğinden görünür.
 index.html        Tasarım + çalışma mantığı. Ebru buna dokunmuyor.
 data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
   site.json         Ad, e-posta, sosyal medya, aboutPhoto, heroVideo, theme{auto,base,strength}
-  categories.json   [{id, tr, en, hue}]
-  photos.json       [{src, cat, feat, w, ratio}] — w ve ratio sadece ana sayfa seçkisi için
-  videos.json       [{url, poster, meta, tr, en}] — boşsa Video sayfasında "hazırlanıyor"
+  series.json       [{tr, en, hue?, photos:[{src, feat, size}]}] — fotoğraflar serinin altında.
+                    size: kucuk|orta|buyuk|tam (sadece ana sayfa seçkisi). Kodda CATS/PHOTOS
+                    buradan türetilir (id = s0, s1…). photos.json/categories.json kaldırıldı.
+  videos.json       [{url, tr, en}] — YouTube/Vimeo adresi, sayfaya gömülü; boşsa "Showreel hazırlanıyor"
   posts.json        [{date, cover, tr, en, exTr, exEn, bodyTr, bodyEn}] — gövde düz
                     metin, boş satır = yeni paragraf. Tek başına duran
                     "images/09.jpg" satırı oraya fotoğraf koyar, "| alt yazı"
@@ -89,7 +90,11 @@ Tek `index.html` dosyası, hash yönlendirmesiyle ayrı sayfalar gibi çalışı
 #iletisim      E-posta ve sosyal medya
 ```
 
-**Kategoriler:** Portre · Yan Yana · Doğa · Peyzaj
+**Seriler:** Etheral Space · Yan Yana · Doğa (eski Peyzaj kareleri Doğa'da)
+
+**Model formu** e-posta taslağı üretir (mailto + kopyala). Seçenekler text.json → form grubunda; yeni seçenek eklenirse HTML'e de eklenmeli. Çıplaklık/beden ölçüsü gibi seçenekler bilinçli olarak yok.
+
+**Dikkat:** `.vid` sınıfı Video sayfası kartlarına ait; giriş videosu `.playing` kullanır.
 
 ---
 
@@ -159,10 +164,6 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       `data/videos.json` doldurulacak.
 - [ ] **Sosyal medya** — Instagram ve TikTok hesapları aynı kullanıcı adıyla
       açılacak, bağlantıları `data/site.json`'a eklenecek.
-- [ ] **Kategori → panel seçeneği** — `.pages.yml` içindeki kategori seçenekleri
-      elle tutuluyor (Pages CMS'in `reference` alanı yalnızca koleksiyonlara bakıyor,
-      dosya listelerine değil). Yeni kategori eklenince `.pages.yml`'ye de eklenmeli.
-      `scripts/genpages.js` dosyayı `data/`'dan yeniden üretir.
 - [ ] **Alan adı** — opsiyonel. Alınırsa Settings → Pages → Custom domain.
 
 ---

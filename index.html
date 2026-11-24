@@ -187,7 +187,8 @@
   .out-btns{display:flex;flex-wrap:wrap;gap:12px}
   .chips{display:flex;flex-wrap:wrap;gap:9px}
   .chip input{position:absolute;opacity:0;pointer-events:none}
-  .chip span{display:inline-block;padding:9px 15px;border:1px solid var(--line);border-radius:30px;font-size:14px;color:var(--sand);cursor:pointer;transition:.25s;user-select:none}
+  .field label.chip{display:inline-block;margin:0;text-transform:none;letter-spacing:0}
+  .chip span{display:inline-block;text-transform:none;letter-spacing:.01em;padding:9px 15px;border:1px solid var(--line);border-radius:30px;font-size:14px;color:var(--sand);cursor:pointer;transition:.25s;user-select:none}
   .chip span:hover{border-color:var(--emerald);color:var(--cream)}
   .chip input:checked + span{background:var(--emerald);border-color:var(--emerald);color:var(--cream)}
   .chip input:focus-visible + span{outline:2px solid var(--cream);outline-offset:2px}

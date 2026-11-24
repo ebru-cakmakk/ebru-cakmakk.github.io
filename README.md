@@ -185,3 +185,13 @@ Panelde **Menü ve sayfalar** bölümü sitenin üstündeki menüyü yönetir.
 ## Hakkımda fotoğrafı
 
 **Site ayarları → Hakkımda fotoğrafı** alanından değiştirebilirsin.
+
+## Fotoğraf serileri (yeni yöntem)
+
+Panelde **Fotoğraf serileri** bölümünde her seri bir başlık. Başlığı aç, **Bu serinin fotoğrafları** listesine fotoğraf ekle. Yeni seri için listeye yeni bir öğe ekle ve adını yaz. Fotoğraflar artık başka seriye karışmaz.
+
+Bir fotoğrafın ana sayfada da görünmesini istersen "Ana sayfadaki seçkide de göster" kutusunu işaretle ve boyutunu seç.
+
+## Videolar
+
+Panelde **Videolar** bölümüne YouTube ya da Vimeo'daki videonun adresini yapıştırman yeterli. Başlık isteğe bağlı. Video sitede kendi içinde oynar.
