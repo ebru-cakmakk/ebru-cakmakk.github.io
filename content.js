@@ -112,7 +112,7 @@ const POSTS = [
 const TEXT = {
 
   /* --- menü --- */
-  'nav.work':    {tr:'İşler',          en:'Work'},
+  'nav.work':    {tr:'Fotoğraflar',    en:'Photographs'},
   'nav.film':    {tr:'Video',          en:'Film'},
   'nav.models':  {tr:'Modeller İçin',  en:'For Models'},
   'nav.journal': {tr:'Günlük',         en:'Journal'},
@@ -128,7 +128,7 @@ const TEXT = {
   'hero.scroll':   {tr:'Kaydır',           en:'Scroll'},
 
   /* --- 01 İşler --- */
-  'work.label': {tr:'Seçilmiş İşler', en:'Selected Work'},
+  'work.label': {tr:'Seçilmiş Fotoğraflar', en:'Selected Photographs'},
   'work.lede':  {tr:'Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum.',
                  en:'Shot across a single spring morning under the same low sun. Every frame chases one thing: when light falls on a leaf, a stone or a face, what does it make visible, and what does it leave in the dark? The series is ongoing.'},
   'work.all':   {tr:'Hepsi', en:'All'},
