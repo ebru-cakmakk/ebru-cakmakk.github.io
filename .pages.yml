@@ -1,0 +1,639 @@
+# Pages CMS ayarları — https://pagescms.org
+# Panelde görünen form alanlarını bu dosya belirler.
+# Yeni bir KATEGORİ eklediğinde aşağıdaki "Kategori" seçeneklerine de eklemen gerekir.
+
+media:
+  input: images
+  output: images
+
+content:
+  - name: photos
+    label: "Fotoğraflar"
+    type: file
+    path: data/photos.json
+    format: json
+    list: true
+    fields:
+      - name: src
+        label: "Fotoğraf"
+        type: image
+        required: true
+        options:
+          path: images
+          extensions: [jpg, jpeg, png, webp]
+          categories: [image]
+      - name: cat
+        label: "Kategori"
+        type: select
+        required: true
+        options:
+          values:
+              - { name: portre, label: "Portre" }
+              - { name: yanyana, label: "Yan Yana" }
+              - { name: doga, label: "Doğa" }
+              - { name: peyzaj, label: "Peyzaj" }
+          placeholder: "Kategori seç"
+      - name: feat
+        label: "Ana sayfadaki seçkide göster"
+        type: boolean
+      - name: w
+        label: "Ana sayfadaki genişlik"
+        type: select
+        options:
+          values:
+            - { name: "4",  label: "Küçük (4)" }
+            - { name: "6",  label: "Orta (6)" }
+            - { name: "8",  label: "Geniş (8)" }
+            - { name: "12", label: "Tam sayfa (12)" }
+      - name: ratio
+        label: "Ana sayfadaki kutu oranı"
+        type: select
+        options:
+          values:
+            - { name: "3/2",  label: "Yatay (3/2)" }
+            - { name: "3/4",  label: "Dikey (3/4)" }
+            - { name: "1/1",  label: "Kare (1/1)" }
+            - { name: "21/9", label: "Sinema bandı (21/9)" }
+
+  - name: categories
+    label: "Kategoriler"
+    type: file
+    path: data/categories.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: "Kısa ad (Türkçe karakter kullanma)", type: string, required: true }
+      - { name: tr, label: "Adı — Türkçe", type: string, required: true }
+      - { name: en, label: "Adı — İngilizce", type: string, required: true }
+      - { name: hue, label: "Renk tonu (boş bırak: fotoğraflardan hesaplanır)", type: number }
+
+  - name: posts
+    label: "Günlük yazıları"
+    type: file
+    path: data/posts.json
+    format: json
+    list: true
+    fields:
+      - { name: date, label: "Tarih (2026-11 gibi)", type: string, required: true }
+      - { name: tr, label: "Başlık — Türkçe", type: string, required: true }
+      - { name: en, label: "Başlık — İngilizce", type: string }
+      - { name: exTr, label: "Özet — Türkçe", type: text }
+      - { name: exEn, label: "Özet — İngilizce", type: text }
+      - { name: bodyTr, label: "Yazı — Türkçe (paragrafları boş satırla ayır)", type: text }
+      - { name: bodyEn, label: "Yazı — İngilizce (paragrafları boş satırla ayır)", type: text }
+
+  - name: videos
+    label: "Videolar"
+    type: file
+    path: data/videos.json
+    format: json
+    list: true
+    fields:
+      - { name: url, label: "Vimeo veya YouTube adresi", type: string, required: true }
+      - name: poster
+        label: "Kapak görseli"
+        type: image
+        options:
+          path: images
+          extensions: [jpg, jpeg, png, webp]
+          categories: [image]
+      - { name: meta, label: "Süre ya da kısa not", type: string }
+      - { name: tr, label: "Başlık — Türkçe", type: string }
+      - { name: en, label: "Başlık — İngilizce", type: string }
+
+  - name: site
+    label: "Site ayarları"
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - { name: name, label: "Adın (menüde ve açılışta görünür)", type: string, required: true }
+      - { name: project, label: "Devam eden serinin adı", type: string }
+      - { name: email, label: "E-posta", type: string, required: true }
+      - { name: instagram, label: "Instagram adresi (boşsa düğme görünmez)", type: string }
+      - { name: tiktok, label: "TikTok adresi (boşsa düğme görünmez)", type: string }
+      - { name: vimeo, label: "Vimeo adresi (boşsa düğme görünmez)", type: string }
+      - name: theme
+        label: "Renk uyumu"
+        type: object
+        fields:
+          - { name: auto, label: "Fotoğraflara göre renk uyumu açık", type: boolean }
+          - { name: base, label: "Ana ton (0 kırmızı · 30 turuncu · 60 sarı · 140 yeşil · 240 mavi)", type: number }
+          - { name: strength, label: "Şiddet (0 hiç · 0.6 önerilen · 1 tamamen)", type: number }
+
+  - name: text
+    label: "Site yazıları"
+    type: file
+    path: data/text.json
+    format: json
+    fields:
+      - name: nav
+        label: "Menü"
+        type: object
+        fields:
+          - name: photos
+            label: "Fotoğraflar"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: film
+            label: "Video"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: journal
+            label: "Günlük"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: models
+            label: "Modeller İçin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: about
+            label: "Hakkımda"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: contact
+            label: "İletişim"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: hero
+        label: "Açılış ekranı"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Üst satır"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: tagline
+            label: "Tanıtım cümlesi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: ongoing
+            label: "“Devam eden proje” etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: location
+            label: "Konum"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: scroll
+            label: "Kaydırma yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: home
+        label: "Ana sayfa"
+        type: object
+        fields:
+          - name: selLabel
+            label: "Seçki üst etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: selTitle
+            label: "Seçki başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: seeAll
+            label: "“Tüm fotoğrafları gör” bağlantısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: aboutLabel
+            label: "Tanıtım üst etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: aboutP
+            label: "Kısa tanıtım metni"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: aboutLink
+            label: "Hakkımda bağlantısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: journalLabel
+            label: "Günlük üst etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: journalLink
+            label: "“Tüm yazılar” bağlantısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: photos
+        label: "Fotoğraflar sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: lede
+            label: "Giriş yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: film
+        label: "Video sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: h
+            label: "Video yokken başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: p
+            label: "Video yokken açıklama"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+      - name: models
+        label: "Modeller İçin sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: lede
+            label: "Giriş yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: c1h
+            label: "Kart 1 — başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: c1p
+            label: "Kart 1 — metin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: c2h
+            label: "Kart 2 — başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: c2p
+            label: "Kart 2 — metin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: c3h
+            label: "Kart 3 — başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: c3p
+            label: "Kart 3 — metin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: l1
+            label: "Güven listesi 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l2
+            label: "Güven listesi 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l3
+            label: "Güven listesi 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l4
+            label: "Güven listesi 4"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l5
+            label: "Güven listesi 5"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l6
+            label: "Güven listesi 6"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l7
+            label: "Güven listesi 7"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: l8
+            label: "Güven listesi 8"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: noteH
+            label: "Dürüstlük notu — başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: noteP
+            label: "Dürüstlük notu — metin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+      - name: form
+        label: "Başvuru formu"
+        type: object
+        fields:
+          - name: label
+            label: "Bölüm etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: name
+            label: "“Adın” etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: contact
+            label: "İletişim etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: city
+            label: "Şehir etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: exp
+            label: "Deneyim etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: exp1
+            label: "Deneyim seçeneği 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: exp2
+            label: "Deneyim seçeneği 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: exp3
+            label: "Deneyim seçeneği 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: idea
+            label: "Fikir alanı etiketi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: submit
+            label: "Gönder düğmesi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: outH
+            label: "Sonuç başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: outP
+            label: "Sonuç açıklaması"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+      - name: journal
+        label: "Günlük sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: lede
+            label: "Giriş yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+      - name: about
+        label: "Hakkımda sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: p1
+            label: "Birinci paragraf"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: p2
+            label: "İkinci paragraf"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: k1
+            label: "Bilgi 1 — etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: v1
+            label: "Bilgi 1 — değer"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: k2
+            label: "Bilgi 2 — etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: v2
+            label: "Bilgi 2 — değer"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: k3
+            label: "Bilgi 3 — etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: v3
+            label: "Bilgi 3 — değer"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: contact
+        label: "İletişim sayfası"
+        type: object
+        fields:
+          - name: label
+            label: "Üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: title
+            label: "Sayfa başlığı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: lede
+            label: "Giriş yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: footer
+        label: "Alt bilgi"
+        type: object
+        fields:
+          - name: rights
+            label: "Alt bilgi yazısı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+      - name: ui
+        label: "Düğme yazıları"
+        type: object
+        fields:
+          - name: close
+            label: "Kapat"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: copy
+            label: "Kopyala"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: copied
+            label: "Kopyalandı"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }

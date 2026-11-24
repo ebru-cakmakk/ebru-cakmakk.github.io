@@ -1,0 +1,26 @@
+[
+  {
+    "id": "portre",
+    "tr": "Portre",
+    "en": "Portrait",
+    "hue": null
+  },
+  {
+    "id": "yanyana",
+    "tr": "Yan Yana",
+    "en": "Side by Side",
+    "hue": null
+  },
+  {
+    "id": "doga",
+    "tr": "Doğa",
+    "en": "Nature",
+    "hue": null
+  },
+  {
+    "id": "peyzaj",
+    "tr": "Peyzaj",
+    "en": "Landscape",
+    "hue": null
+  }
+]

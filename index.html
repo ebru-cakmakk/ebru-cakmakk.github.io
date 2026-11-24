@@ -493,8 +493,11 @@
   </div>
 </div>
 
-<script src="content.js"></script>
 <script>
+/* İçerik data/ klasöründeki JSON dosyalarından okunur.
+   Bu dosyaları Pages CMS paneli düzenler; elle de düzenlenebilirler. */
+let SITE, CATS, PHOTOS, VIDEOS, POSTS, TEXT;
+
 const ROUTES = ['home','fotograflar','video','gunluk','modeller','hakkimda','iletisim'];
 let lang = 'tr';
 try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
@@ -502,7 +505,16 @@ try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }c
 let SETS = {feat:[], photos:[]};   // lightbox dizileri
 let lbSet = [], idx = 0;
 
-function t(k){ const e = TEXT[k]; return e ? (e[lang] !== undefined ? e[lang] : (e.tr||'')) : ''; }
+function t(k){
+  if(!TEXT) return '';
+  const p = k.split('.');
+  const e = TEXT[p[0]] && TEXT[p[0]][p[1]];
+  return e ? (e[lang] !== undefined ? e[lang] : (e.tr || '')) : '';
+}
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 function catName(c){ return lang==='tr' ? c.tr : c.en; }
 
 /* ---------------- dil ---------------- */
@@ -642,7 +654,10 @@ function openReader(i){
   const p = POSTS[i];
   rDate.textContent  = p.date;
   rTitle.textContent = lang==='tr'?p.tr:p.en;
-  rBody.innerHTML    = (lang==='tr'?p.bodyTr:p.bodyEn).map(x=>'<p>'+x+'</p>').join('');
+  const body = lang==='tr' ? p.bodyTr : p.bodyEn;
+  rBody.innerHTML = String(body || '').split(/\n\s*\n/)
+    .map(x=>x.trim()).filter(Boolean)
+    .map(x=>'<p>'+esc(x)+'</p>').join('');
   reader.classList.add('on');
   reader.scrollTop = 0;
   document.body.style.overflow = 'hidden';
@@ -701,7 +716,7 @@ function observe(){
    Böylece palet fotoğrafa uyar ama yazılar her zaman okunur kalır.
    ============================================================= */
 const THEME_DEF = {auto:true, base:140, strength:0.6};
-function theme(){ return (typeof THEME !== 'undefined' && THEME) ? THEME : THEME_DEF; }
+function theme(){ return (SITE && SITE.theme) ? SITE.theme : THEME_DEF; }
 const hueCache = {};
 
 function readHue(src){
@@ -798,7 +813,9 @@ function watchCats(){
       if(!en.isIntersecting) return;
       const id = en.target.dataset.cat;
       const c = CATS.filter(x => x.id === id)[0];
-      if(c && c.hue !== undefined){ pageTone = {h:c.hue, s:0.6}; paintTheme(pageTone); }
+      if(c && c.hue !== undefined && c.hue !== null && c.hue !== ''){
+        pageTone = {h:Number(c.hue), s:0.6}; paintTheme(pageTone);
+      }
       else themeFor(PHOTOS.filter(p => p.cat === id));
     });
   },{rootMargin:'-35% 0px -35% 0px', threshold:0});
@@ -819,23 +836,37 @@ function oops(err){
   d.className = 'oops';
   d.innerHTML =
     '<div class="oops-in"><div class="dash"></div>'
-    + '<h1>İçerik dosyasında bir hata var</h1>'
-    + '<p><code>content.js</code> dosyasında eksik bir virgül, tırnak ya da parantez olabilir. '
-    + 'Tasarımda bir sorun yok — sadece içerik okunamadı.</p>'
-    + '<p><strong>Nasıl düzeltilir:</strong> GitHub’da deponu aç, <code>content.js</code> dosyasının '
-    + '<em>History</em> (geçmiş) bölümünden son değişikliği geri al. Site hemen eski hâline döner.</p>'
+    + '<h1>İçerik yüklenemedi</h1>'
+    + '<p><code>data</code> klasöründeki içerik dosyalarından biri okunamadı. '
+    + 'Tasarımda bir sorun yok — sadece içerik gelmedi.</p>'
+    + '<p><strong>Nasıl düzeltilir:</strong> GitHub’da deponu aç, <code>data</code> klasöründeki '
+    + 'ilgili dosyanın <em>History</em> (geçmiş) bölümünden son değişikliği geri al. '
+    + 'Site hemen eski hâline döner.</p>'
     + '<p style="color:#8E8B7B;font-size:13.5px">Teknik not: ' + (err && err.message ? err.message : err) + '</p>'
     + '</div>';
   document.body.appendChild(d);
 }
-try{
-  if(typeof SITE==='undefined' || typeof PHOTOS==='undefined' || typeof POSTS==='undefined'
-     || typeof TEXT==='undefined' || typeof CATS==='undefined')
-    throw new Error('content.js okunamadı');
+/* ---------------- içeriği yükle ---------------- */
+function loadJSON(p){
+  return fetch(p, {cache:'no-cache'}).then(r=>{
+    if(!r.ok) throw new Error(p + ' okunamadı (' + r.status + ')');
+    return r.json();
+  });
+}
+
+Promise.all([
+  loadJSON('data/site.json'),
+  loadJSON('data/categories.json'),
+  loadJSON('data/photos.json'),
+  loadJSON('data/videos.json'),
+  loadJSON('data/posts.json'),
+  loadJSON('data/text.json')
+]).then(function(d){
+  SITE = d[0]; CATS = d[1]; PHOTOS = d[2]; VIDEOS = d[3]; POSTS = d[4]; TEXT = d[5];
   fill();
   setLang(lang);
   route();
-}catch(err){ oops(err); }
+}).catch(oops);
 </script>
 </body>
 </html>

@@ -1,0 +1,334 @@
+{
+  "nav": {
+    "photos": {
+      "tr": "Fotoğraflar",
+      "en": "Photographs"
+    },
+    "film": {
+      "tr": "Video",
+      "en": "Film"
+    },
+    "journal": {
+      "tr": "Günlük",
+      "en": "Journal"
+    },
+    "models": {
+      "tr": "Modeller İçin",
+      "en": "For Models"
+    },
+    "about": {
+      "tr": "Hakkımda",
+      "en": "About"
+    },
+    "contact": {
+      "tr": "İletişim",
+      "en": "Contact"
+    }
+  },
+  "hero": {
+    "eyebrow": {
+      "tr": "Fotoğraf &amp; Videografi",
+      "en": "Photography &amp; Videography"
+    },
+    "tagline": {
+      "tr": "Işık, doku ve insan üzerine çalışan bir göz.",
+      "en": "An eye working on light, texture and the human form."
+    },
+    "ongoing": {
+      "tr": "Devam eden proje",
+      "en": "Ongoing project"
+    },
+    "location": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "scroll": {
+      "tr": "Kaydır",
+      "en": "Scroll"
+    }
+  },
+  "home": {
+    "selLabel": {
+      "tr": "Seçki",
+      "en": "Selected"
+    },
+    "selTitle": {
+      "tr": "Birkaç kare",
+      "en": "A few frames"
+    },
+    "seeAll": {
+      "tr": "Tüm fotoğrafları gör",
+      "en": "See all photographs"
+    },
+    "aboutLabel": {
+      "tr": "Kısaca",
+      "en": "In short"
+    },
+    "aboutP": {
+      "tr": "Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekiyorum.",
+      "en": "I’m a student working in photography and videography. I shoot with natural light, in quiet places, with as little gear as possible."
+    },
+    "aboutLink": {
+      "tr": "Hakkımda",
+      "en": "About me"
+    },
+    "journalLabel": {
+      "tr": "Günlükten",
+      "en": "From the journal"
+    },
+    "journalLink": {
+      "tr": "Tüm yazılar",
+      "en": "All posts"
+    }
+  },
+  "photos": {
+    "label": {
+      "tr": "Arşiv",
+      "en": "Archive"
+    },
+    "title": {
+      "tr": "Fotoğraflar",
+      "en": "Photographs"
+    },
+    "lede": {
+      "tr": "Kategorilere ayrılmış tüm kareler. Büyütmek için bir fotoğrafa dokun.",
+      "en": "All frames, grouped by category. Tap any photograph to enlarge."
+    }
+  },
+  "film": {
+    "label": {
+      "tr": "Hareketli Görüntü",
+      "en": "Moving Image"
+    },
+    "title": {
+      "tr": "Video",
+      "en": "Film"
+    },
+    "h": {
+      "tr": "Showreel hazırlanıyor",
+      "en": "Showreel in progress"
+    },
+    "p": {
+      "tr": "Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli.",
+      "en": "I’m cutting footage shot on the same morning as the photo series. It will appear here first once it’s ready — in the meantime, write to me if you’d like to talk about a project."
+    }
+  },
+  "models": {
+    "label": {
+      "tr": "Modeller İçin",
+      "en": "For Models"
+    },
+    "title": {
+      "tr": "Birlikte çalışalım",
+      "en": "Let’s work together"
+    },
+    "lede": {
+      "tr": "Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım.",
+      "en": "You don’t need experience. I like working with people facing a camera for the first time — the most honest frames often come from there. Below is exactly how I work."
+    },
+    "c1h": {
+      "tr": "Ne çekiyoruz",
+      "en": "What we shoot"
+    },
+    "c1p": {
+      "tr": "Portre, doğal ışıkta dış mekân ve konsept çekimler. Her çekim öncesi referans görsellerle birlikte net bir fikir paylaşıyorum — sürpriz olmuyor.",
+      "en": "Portraits, natural-light outdoor work and concept shoots. Before every shoot I share a clear idea with reference images — no surprises."
+    },
+    "c2h": {
+      "tr": "Nasıl ilerliyor",
+      "en": "How it works"
+    },
+    "c2p": {
+      "tr": "Kısa bir tanışma görüşmesi, sonra tarih ve mekân. Çekim 1–2 saat sürüyor. 7–10 gün içinde seçilmiş ve renklenmiş kareleri yüksek çözünürlükte gönderiyorum.",
+      "en": "A short intro call, then date and location. Shoots run 1–2 hours. Within 7–10 days you get the selected, colour-graded frames in high resolution."
+    },
+    "c3h": {
+      "tr": "Karşılığı",
+      "en": "The exchange"
+    },
+    "c3p": {
+      "tr": "Şu aşamada çoğu çekim karşılıklı portfolyo çalışması (TFP): sen kareleri kendi portfolyonda kullanıyorsun, ben de kendi arşivimde. Ticari işler için ayrı konuşuyoruz.",
+      "en": "At this stage most shoots are portfolio exchanges (TFP): you use the images for your own book, I use them in mine. Commercial work is discussed separately."
+    },
+    "l1": {
+      "tr": "Yanında istediğin bir kişiyi getirebilirsin.",
+      "en": "You’re welcome to bring someone with you."
+    },
+    "l2": {
+      "tr": "Ne çekilip ne çekilmeyeceğine önceden birlikte karar veriyoruz.",
+      "en": "We agree in advance on what will and won’t be shot."
+    },
+    "l3": {
+      "tr": "Her çekimde yazılı bir izin formu (model release) imzalıyoruz.",
+      "en": "We sign a written model release for every shoot."
+    },
+    "l4": {
+      "tr": "Hangi karelerin yayınlanacağını onaylama hakkın var.",
+      "en": "You have the right to approve which frames get published."
+    },
+    "l5": {
+      "tr": "İstediğin an bir kareyi geri çekebilirsin.",
+      "en": "You can withdraw any image at any time."
+    },
+    "l6": {
+      "tr": "Çekim planı, saat ve mekân yazılı olarak paylaşılır.",
+      "en": "The shoot plan, time and location are shared in writing."
+    },
+    "l7": {
+      "tr": "18 yaş altı için veli onayı ve katılımı zorunlu.",
+      "en": "Under 18 requires guardian consent and presence."
+    },
+    "l8": {
+      "tr": "Ham dosyalar kimseyle paylaşılmaz.",
+      "en": "Raw files are never shared with anyone."
+    },
+    "noteH": {
+      "tr": "Dürüst olmak gerekirse",
+      "en": "To be straight with you"
+    },
+    "noteP": {
+      "tr": "Hâlâ öğrenciyim ve bu seriyi kurarken öğrenmeye devam ediyorum. Yani beraber çalışırsak, deneyen ve soran biriyle çalışıyor olacaksın. Karşılığında sana zamanımı, sabrımı ve işin her adımında şeffaflığı veriyorum.",
+      "en": "I’m still a student, and I’m still learning while building this series. So if we work together, you’re working with someone who experiments and asks questions. In return you get my time, my patience and transparency at every step."
+    }
+  },
+  "form": {
+    "label": {
+      "tr": "Başvuru",
+      "en": "Apply"
+    },
+    "name": {
+      "tr": "Adın",
+      "en": "Your name"
+    },
+    "contact": {
+      "tr": "İletişim (e-posta veya Instagram)",
+      "en": "Contact (email or Instagram)"
+    },
+    "city": {
+      "tr": "Şehir",
+      "en": "City"
+    },
+    "exp": {
+      "tr": "Deneyim",
+      "en": "Experience"
+    },
+    "exp1": {
+      "tr": "İlk kez olacak",
+      "en": "This would be my first time"
+    },
+    "exp2": {
+      "tr": "Birkaç çekim yaptım",
+      "en": "I’ve done a few shoots"
+    },
+    "exp3": {
+      "tr": "Deneyimliyim",
+      "en": "I’m experienced"
+    },
+    "idea": {
+      "tr": "Aklındaki bir fikir var mı?",
+      "en": "Any idea in mind?"
+    },
+    "submit": {
+      "tr": "Mesajı Hazırla",
+      "en": "Prepare Message"
+    },
+    "outH": {
+      "tr": "Mesajın hazır",
+      "en": "Your message is ready"
+    },
+    "outP": {
+      "tr": "Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum.",
+      "en": "This form does not send anything by itself. Copy the text below and send it to me by email — I reply as soon as I can."
+    }
+  },
+  "journal": {
+    "label": {
+      "tr": "Günlük",
+      "en": "Journal"
+    },
+    "title": {
+      "tr": "Süreç notları",
+      "en": "Process notes"
+    },
+    "lede": {
+      "tr": "Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili.",
+      "en": "I keep what I learn, what I get wrong and my behind-the-scenes notes here. Less about finished work, more about how one gets there."
+    }
+  },
+  "about": {
+    "label": {
+      "tr": "Hakkımda",
+      "en": "About"
+    },
+    "title": {
+      "tr": "Kısaca",
+      "en": "In short"
+    },
+    "p1": {
+      "tr": "Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum.",
+      "en": "I’m a student working in photography and videography. I like shooting with natural light, in quiet places, with as little gear as possible."
+    },
+    "p2": {
+      "tr": "Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum.",
+      "en": "I’m currently building my first serious series, and this site is its logbook. If you’d like to model, collaborate on a project, or simply talk, write to me — I answer every message."
+    },
+    "k1": {
+      "tr": "Alan",
+      "en": "Focus"
+    },
+    "v1": {
+      "tr": "Portre, doğa, kısa film",
+      "en": "Portrait, nature, short film"
+    },
+    "k2": {
+      "tr": "Durum",
+      "en": "Status"
+    },
+    "v2": {
+      "tr": "Öğrenci — yeni projelere açık",
+      "en": "Student — open to new projects"
+    },
+    "k3": {
+      "tr": "Konum",
+      "en": "Based in"
+    },
+    "v3": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    }
+  },
+  "contact": {
+    "label": {
+      "tr": "İletişim",
+      "en": "Contact"
+    },
+    "title": {
+      "tr": "Konuşalım",
+      "en": "Let’s talk"
+    },
+    "lede": {
+      "tr": "Bir çekim, bir iş birliği ya da sadece bir soru — hepsine açığım.",
+      "en": "A shoot, a collaboration, or just a question — all welcome."
+    }
+  },
+  "footer": {
+    "rights": {
+      "tr": "Tüm görseller sahibine aittir.",
+      "en": "All images belong to their author."
+    }
+  },
+  "ui": {
+    "close": {
+      "tr": "Kapat",
+      "en": "Close"
+    },
+    "copy": {
+      "tr": "Metni Kopyala",
+      "en": "Copy Text"
+    },
+    "copied": {
+      "tr": "Kopyalandı",
+      "en": "Copied"
+    }
+  }
+}
