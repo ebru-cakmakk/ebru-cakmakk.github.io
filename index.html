@@ -594,6 +594,30 @@ function fill(){
 /* ---------------- içerik ---------------- */
 function anyCover(){ return POSTS.some(p => p.cover); }
 
+/* Tarih: "2025-01-17" ya da "2025-11" → okunur biçim. Başka bir şey yazılmışsa olduğu gibi kalır. */
+function fmtDate(d){
+  const m = String(d || '').trim().match(/^(\d{4})-(\d{2})(?:-(\d{2}))?$/);
+  if(!m) return esc(d);
+  const AY = lang === 'tr'
+    ? ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık']
+    : ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const ay = AY[Number(m[2]) - 1] || '';
+  if(!m[3]) return ay + ' ' + m[1];
+  return lang === 'tr' ? Number(m[3]) + ' ' + ay + ' ' + m[1] : ay + ' ' + Number(m[3]) + ', ' + m[1];
+}
+/* Yeniden eskiye sıralar — panelde hangi sırada durduklarından bağımsız. */
+function sortPosts(){
+  const key = p => {
+    const s = String(p.date || '').trim();
+    let m = s.match(/^(\d{4})-(\d{2})(?:-(\d{2}))?$/);
+    if(m) return m[1] + m[2] + (m[3] || '99');
+    m = s.match(/^(\d{2})[.\/-](\d{2})[.\/-](\d{4})$/);
+    if(m) return m[3] + m[2] + m[1];
+    return '00000000';
+  };
+  POSTS.sort((a, b) => key(b).localeCompare(key(a)));
+}
+
 function postRow(p, i){
   const ti = lang==='tr'?p.tr:p.en;
   const ex = lang==='tr'?p.exTr:p.exEn;
@@ -601,7 +625,7 @@ function postRow(p, i){
     ? '<span class="thumb">' + (p.cover ? '<img src="'+esc(p.cover)+'" alt="" loading="lazy">' : '') + '</span>'
     : '';
   return '<button class="post" onclick="openReader('+i+')">'
-    + '<time>'+p.date+'</time>' + thumb
+    + '<time>'+fmtDate(p.date)+'</time>' + thumb
     + '<div><h3>'+ti+'</h3><p class="ex">'+ex+'</p></div>'
     + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
     + '</button>';
@@ -737,7 +761,7 @@ function postBody(txt){
 
 function openReader(i){
   const p = POSTS[i];
-  rDate.textContent  = p.date;
+  rDate.textContent  = fmtDate(p.date);
   rTitle.textContent = lang==='tr'?p.tr:p.en;
   rCover.innerHTML = p.cover ? '<img src="'+esc(p.cover)+'" alt="">' : '';
   rCover.hidden = !p.cover;
@@ -996,6 +1020,7 @@ Promise.all([
 ]).then(function(d){
   SITE = d[0]; VIDEOS = d[2]; POSTS = d[3]; TEXT = d[4]; PAGES = d[5];
   /* seriler: her başlığın altında kendi fotoğrafları */
+  sortPosts();
   CATS = []; PHOTOS = [];
   d[1].forEach((sr, i) => {
     const id = 's' + i;
