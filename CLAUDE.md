@@ -118,8 +118,8 @@ hiç bozulmaz. `site.json` içindeki `theme.strength` (0–1) etkinin şiddetini
 vardı, Ebru rahatsız edici buldu ve kaldırıldı. Şimdi nötr koyu zemin, sadece
 fotoğraf. Bunu geri getirme.
 
-**Girişte portreden videoya geçiş.** Ana sayfa açılışında hero.jpg ~3,5 sn
-görünür, sonra video (site.json → heroVideo / heroVideoSmall) yavaşça belirir,
+**Girişte portreden videoya geçiş.** Ana sayfa açılışında hero.jpg 2 sn
+görünür (HOLD; Ebru geçişin fark edilmesini istedi), sonra video (site.json → heroVideo / heroVideoSmall) yavaşça belirir,
 bitmeden fotoğrafa döner, ~7 sn sonra tekrar. Ekran dışındayken durur; hareket
 azaltma veya veri tasarrufu açıksa sadece fotoğraf. Yeni video: sessiz, H.264,
 30 fps, CRF 27, +faststart; 1920 ve 1280 genişlikte iki sürüm. Kaynak 100 fps
