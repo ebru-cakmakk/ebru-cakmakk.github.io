@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebru Çakmak — Fotoğraf & Videografi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#18230F;
+    --ink-2:#27391C;
+    --moss:#255F38;
+    --emerald:#1F7D53;
+    --cream:#F1EEE3;
+    --sand:#BFBAA6;
+    --sand-dim:#8E8B7B;
+    --line:rgba(241,238,227,.13);
+    --line-2:rgba(241,238,227,.07);
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --pad:clamp(20px,5vw,80px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--body);
+    font-weight:300;
+    font-size:16px;
+    line-height:1.7;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.42;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--emerald);font-weight:400}
+  .h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.05;letter-spacing:-.02em;margin:.5rem 0 0}
+  .lede{max-width:54ch;color:var(--sand);margin-top:1.4rem;font-size:clamp(15px,1.3vw,17.5px)}
+  section{padding:clamp(72px,10vw,150px) 0;position:relative}
+  .sec-head{margin-bottom:clamp(40px,6vw,74px)}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--pad);
+    transition:background .45s ease,backdrop-filter .45s ease,border-color .45s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{
+    background:rgba(24,35,15,.84);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom-color:var(--line-2);
+  }
+  nav{max-width:1360px;margin:0 auto;height:74px;display:flex;align-items:center;gap:28px}
+  .brand{font-family:var(--display);font-size:19px;letter-spacing:.01em;font-weight:400;white-space:nowrap;margin-right:auto}
+  .brand span.dot{color:var(--emerald)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links button{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);padding:6px 0;position:relative;transition:color .3s}
+  .nav-links button::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--emerald);transition:right .35s cubic-bezier(.2,.7,.3,1)}
+  .nav-links button:hover{color:var(--cream)}
+  .nav-links button:hover::after{right:0}
+  .lang{display:flex;align-items:center;border:1px solid var(--line);border-radius:100px;padding:3px;gap:2px;flex-shrink:0}
+  .lang button{font-size:11px;letter-spacing:.1em;padding:5px 11px;border-radius:100px;color:var(--sand-dim);transition:.3s}
+  .lang button.on{background:var(--moss);color:var(--cream)}
+  .burger{display:none;width:30px;height:30px;position:relative;flex-shrink:0}
+  .burger i{position:absolute;left:4px;right:4px;height:1.5px;background:var(--cream);transition:.35s cubic-bezier(.2,.7,.3,1)}
+  .burger i:nth-child(1){top:10px}
+  .burger i:nth-child(2){bottom:10px}
+  body.menu .burger i:nth-child(1){top:14px;transform:rotate(45deg)}
+  body.menu .burger i:nth-child(2){bottom:14px;transform:rotate(-45deg)}
+  @media(max-width:900px){
+    .burger{display:block}
+    .nav-links{
+      position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;
+      background:rgba(24,35,15,.97);backdrop-filter:blur(20px);
+      padding:14px var(--pad) 30px;align-items:stretch;
+      transform:translateY(-130%);transition:transform .5s cubic-bezier(.2,.7,.3,1);
+      border-bottom:1px solid var(--line-2);
+    }
+    body.menu .nav-links{transform:translateY(0)}
+    .nav-links button{font-size:15px;letter-spacing:.08em;padding:15px 0;text-align:left;border-bottom:1px solid var(--line-2)}
+    .nav-links button::after{display:none}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(40px,7vh,86px);position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+  .hero-bg img{opacity:.9;transform:scale(1.02)}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),
+      linear-gradient(to right,rgba(18,26,11,.8),transparent 62%);
+  }
+  .hero-inner{width:100%;position:relative}
+  .hero h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,10.5vw,152px);line-height:.9;letter-spacing:-.035em;margin:.26em 0 0}
+  .hero h1 .dot{font-style:italic;color:var(--emerald)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 34px;align-items:baseline;margin-top:clamp(26px,4vw,44px);padding-top:26px;border-top:1px solid var(--line)}
+  .hero-meta p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+  .hero-meta p strong{color:var(--cream);font-weight:400}
+  .scroll-cue{position:absolute;right:var(--pad);bottom:clamp(40px,7vh,86px);writing-mode:vertical-rl;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);display:flex;align-items:center;gap:14px}
+  .scroll-cue::after{content:'';width:1px;height:56px;background:linear-gradient(var(--emerald),transparent)}
+  @media(max-width:900px){.scroll-cue{display:none}}
+
+  /* ---------- gallery ---------- */
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px);align-items:start}
+  .tile{position:relative;overflow:hidden;background:var(--ink-2);cursor:zoom-in;grid-column:span 4}
+  .tile.w6{grid-column:span 6}
+  .tile.w8{grid-column:span 8}
+  .tile.w12{grid-column:span 12}
+  .tile figure{position:absolute;inset:0;margin:0;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+  .tile:hover figure{transform:scale(1.04)}
+  .tile figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2;
+    background:linear-gradient(to top,rgba(18,35,15,.88),transparent);
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
+    opacity:0;transform:translateY(8px);transition:.45s ease;
+  }
+  .tile:hover figcaption{opacity:1;transform:none}
+  @media(max-width:760px){
+    .tile,.tile.w6,.tile.w8{grid-column:span 6}
+    .tile.w12{grid-column:span 12}
+    .tile figcaption{opacity:1;transform:none;padding:14px;font-size:10.5px}
+  }
+
+  /* ---------- lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:500;background:rgba(14,20,8,.97);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:clamp(16px,5vw,70px)}
+  .lb.on{display:flex}
+  .lb-stage{position:relative;max-width:1150px;width:100%;display:flex;flex-direction:column;gap:16px}
+  .lb-frame{background:var(--ink-2);max-height:76vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .lb-frame img{width:auto;height:auto;max-width:100%;max-height:76vh;object-fit:contain}
+  .lb-cap{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);text-align:center}
+  .lb-x,.lb-prev,.lb-next{position:absolute;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s;background:rgba(24,35,15,.65)}
+  .lb-x:hover,.lb-prev:hover,.lb-next:hover{background:var(--moss);border-color:var(--moss)}
+  .lb-x{top:-58px;right:0}
+  .lb-prev{left:-62px;top:50%;margin-top:-23px}
+  .lb-next{right:-62px;top:50%;margin-top:-23px}
+  @media(max-width:1100px){
+    .lb-stage{padding-bottom:70px}
+    .lb-x{top:-54px}
+    .lb-prev{left:8px;top:auto;bottom:-58px;margin:0}
+    .lb-next{right:8px;top:auto;bottom:-58px;margin:0}
+  }
+
+  /* ---------- video ---------- */
+  .reel-panel{
+    border:1px solid var(--line);background:linear-gradient(150deg,rgba(37,95,56,.17),rgba(24,35,15,.4));
+    padding:clamp(40px,7vw,86px) clamp(24px,5vw,60px);text-align:center;
+  }
+  .reel-panel h3{font-family:var(--display);font-weight:300;font-size:clamp(24px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em}
+  .reel-panel p{color:var(--sand);max-width:50ch;margin:16px auto 0;font-size:15.5px}
+  .reel-panel .dash{width:46px;height:1px;background:var(--emerald);margin:0 auto 26px}
+
+  /* ---------- models ---------- */
+  .models{background:linear-gradient(180deg,#1b2712,#18230F)}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(22px,3vw,46px)}
+  .card{border-top:1px solid var(--line);padding-top:24px}
+  .card .num{font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--emerald)}
+  .card h3{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.2vw,25px);margin:12px 0 10px;line-height:1.2}
+  .card p{color:var(--sand);font-size:15px}
+  .checklist{margin-top:clamp(46px,6vw,76px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 40px}
+  .checklist li{list-style:none;display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line-2);font-size:15px}
+  .checklist li::before{content:'';flex-shrink:0;width:7px;height:7px;margin-top:9px;border-radius:50%;background:var(--emerald)}
+  .note{margin-top:clamp(40px,5vw,60px);padding:clamp(22px,3vw,34px);border:1px solid var(--line);background:rgba(37,95,56,.14)}
+  .note h4{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:10px}
+  .note p{color:var(--sand);font-size:15px;max-width:68ch}
+
+  /* ---------- form ---------- */
+  .form{margin-top:clamp(40px,5vw,64px);max-width:720px}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim);margin-bottom:9px}
+  .field input,.field textarea,.field select{width:100%;background:rgba(241,238,227,.045);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:15.5px;font-weight:300;padding:13px 15px;transition:.3s;border-radius:2px}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--emerald);background:rgba(31,125,83,.1)}
+  .field textarea{min-height:120px;resize:vertical}
+  .field select option{background:var(--ink-2);color:var(--cream)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:15px 30px;border:1px solid var(--emerald);background:var(--emerald);font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-radius:2px;transition:.35s cubic-bezier(.2,.7,.3,1)}
+  .btn:hover{background:transparent;color:var(--cream);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--sand)}
+  .btn.ghost:hover{border-color:var(--emerald);color:var(--cream)}
+  .out{display:none;margin-top:26px;border:1px solid var(--emerald);background:rgba(31,125,83,.12);padding:clamp(20px,3vw,28px)}
+  .out.on{display:block}
+  .out h4{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:8px}
+  .out p{font-size:14.5px;color:var(--sand);margin-bottom:16px}
+  .out pre{white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:14px;background:rgba(18,26,11,.6);border:1px solid var(--line-2);padding:18px;color:var(--cream);line-height:1.65;margin-bottom:16px}
+
+  /* ---------- journal ---------- */
+  .posts{display:grid;gap:0}
+  .post{display:grid;grid-template-columns:120px 1fr auto;gap:clamp(16px,3vw,40px);align-items:center;padding:clamp(22px,3vw,32px) 0;border-top:1px solid var(--line);cursor:pointer;transition:.4s;text-align:left;width:100%}
+  .post:last-child{border-bottom:1px solid var(--line)}
+  .post:hover{padding-left:12px;padding-right:12px;background:rgba(31,125,83,.07)}
+  .post time{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--emerald)}
+  .post h3{font-family:var(--display);font-weight:400;font-size:clamp(19px,2.4vw,27px);line-height:1.25;letter-spacing:-.01em}
+  .post .ex{color:var(--sand-dim);font-size:14.5px;margin-top:7px;max-width:62ch}
+  .post .arrow{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.35s}
+  .post:hover .arrow{background:var(--emerald);border-color:var(--emerald);transform:rotate(-45deg)}
+  .post .arrow svg{width:14px;stroke:var(--cream);fill:none;stroke-width:1.5}
+  @media(max-width:760px){.post{grid-template-columns:1fr;gap:9px}.post .arrow{display:none}}
+  .reader{position:fixed;inset:0;z-index:600;background:var(--ink);overflow-y:auto;display:none;padding:clamp(70px,10vh,120px) var(--pad) clamp(60px,8vh,100px)}
+  .reader.on{display:block}
+  .reader-in{max-width:700px;margin:0 auto}
+  .reader time{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--emerald)}
+  .reader h2{font-family:var(--display);font-weight:300;font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.02em;margin:14px 0 30px}
+  .reader-body p{margin-bottom:1.3em;color:var(--sand);font-size:16.5px;line-height:1.8}
+  .reader-x{position:fixed;top:24px;right:var(--pad);z-index:2}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+  .portrait{aspect-ratio:4/5;background:var(--ink-2);position:relative;overflow:hidden}
+  .about-txt p{color:var(--sand);margin-bottom:1.2em;font-size:16.5px}
+  .facts{margin-top:34px;border-top:1px solid var(--line)}
+  .facts div{display:flex;gap:20px;padding:13px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
+  .facts dt{width:120px;flex-shrink:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand-dim);padding-top:3px}
+  .facts dd{color:var(--cream)}
+
+  /* ---------- contact ---------- */
+  .contact{background:linear-gradient(180deg,#18230F,#121a0b);text-align:center}
+  .contact h2{font-family:var(--display);font-weight:300;font-size:clamp(34px,7vw,92px);line-height:1;letter-spacing:-.03em}
+  .mail{display:inline-block;margin-top:clamp(26px,4vw,40px);font-family:var(--display);font-size:clamp(17px,2.6vw,30px);border-bottom:1px solid var(--line);padding-bottom:6px;transition:.35s;word-break:break-word}
+  .mail:hover{border-color:var(--emerald);color:var(--emerald)}
+  .socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:clamp(30px,4vw,44px)}
+  .socials a{padding:11px 22px;border:1px solid var(--line);border-radius:100px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;transition:.35s}
+  .socials a:hover{border-color:var(--emerald);background:rgba(31,125,83,.15);transform:translateY(-2px)}
+  footer{padding:30px 0;border-top:1px solid var(--line-2)}
+  .foot{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center}
+  .foot p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-dim)}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <nav>
+    <a class="brand" href="#" onclick="go('top');return false"><span id="brandName">Ebru Çakmak</span><span class="dot">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <button onclick="go('isler')" data-tr="İşler" data-en="Work">İşler</button>
+      <button onclick="go('video')" data-tr="Video" data-en="Film">Video</button>
+      <button onclick="go('modeller')" data-tr="Modeller İçin" data-en="For Models">Modeller İçin</button>
+      <button onclick="go('gunluk')" data-tr="Günlük" data-en="Journal">Günlük</button>
+      <button onclick="go('hakkimda')" data-tr="Hakkımda" data-en="About">Hakkımda</button>
+      <button onclick="go('iletisim')" data-tr="İletişim" data-en="Contact">İletişim</button>
+    </div>
+    <div class="lang">
+      <button id="btnTr" class="on" onclick="setLang('tr')">TR</button>
+      <button id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" onclick="document.body.classList.toggle('menu')" aria-label="Menu"><i></i><i></i></button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero" id="top">
+  <div class="hero-bg"><img src="images/hero.jpg" alt=""></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow" data-tr="Fotoğraf &amp; Videografi" data-en="Photography &amp; Videography">Fotoğraf &amp; Videografi</p>
+    <h1><span id="heroName">Ebru Çakmak</span><span class="dot">.</span></h1>
+    <div class="hero-meta">
+      <p data-tr="Işık, doku ve insan üzerine çalışan bir göz." data-en="An eye working on light, texture and the human form.">Işık, doku ve insan üzerine çalışan bir göz.</p>
+      <p><strong data-tr="Devam eden proje" data-en="Ongoing project">Devam eden proje</strong> — <span id="projName">Işık Düştüğünde</span></p>
+      <p>Türkiye</p>
+    </div>
+  </div>
+  <div class="scroll-cue"><span data-tr="Kaydır" data-en="Scroll">Kaydır</span></div>
+</div>
+
+<!-- ============ WORK ============ -->
+<section id="isler">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">01 — <span data-tr="Seçilmiş İşler" data-en="Selected Work">Seçilmiş İşler</span></p>
+      <h2 class="h2" id="projTitle">Işık Düştüğünde</h2>
+      <p class="lede" data-tr="Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum." data-en="Shot across a single spring morning under the same low sun. Every frame chases one thing: when light falls on a leaf, a stone or a face, what does it make visible, and what does it leave in the dark? The series is ongoing.">Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum.</p>
+    </div>
+    <div class="grid reveal" id="gal"></div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">02 — <span data-tr="Hareketli Görüntü" data-en="Moving Image">Hareketli Görüntü</span></p>
+      <h2 class="h2" data-tr="Video" data-en="Film">Video</h2>
+    </div>
+    <div class="reel-panel reveal">
+      <div class="dash"></div>
+      <h3 data-tr="Showreel hazırlanıyor" data-en="Showreel in progress">Showreel hazırlanıyor</h3>
+      <p data-tr="Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli." data-en="I'm cutting footage shot on the same morning as the photo series. It will appear here first once it's ready — in the meantime, write to me if you'd like to talk about a project.">Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR MODELS ============ -->
+<section id="modeller" class="models">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">03 — <span data-tr="Modeller İçin" data-en="For Models">Modeller İçin</span></p>
+      <h2 class="h2" data-tr="Birlikte çalışalım" data-en="Let's work together">Birlikte çalışalım</h2>
+      <p class="lede" data-tr="Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım." data-en="You don't need experience. I like working with people facing a camera for the first time — the most honest frames often come from there. Below is exactly how I work.">Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım.</p>
+    </div>
+
+    <div class="cols reveal">
+      <div class="card">
+        <p class="num">01</p>
+        <h3 data-tr="Ne çekiyoruz" data-en="What we shoot">Ne çekiyoruz</h3>
+        <p data-tr="Portre, doğal ışıkta dış mekân ve konsept çekimler. Her çekim öncesi referans görsellerle birlikte net bir fikir paylaşıyorum — sürpriz olmuyor." data-en="Portraits, natural-light outdoor work and concept shoots. Before every shoot I share a clear idea with reference images — no surprises.">Portre, doğal ışıkta dış mekân ve konsept çekimler. Her çekim öncesi referans görsellerle birlikte net bir fikir paylaşıyorum — sürpriz olmuyor.</p>
+      </div>
+      <div class="card">
+        <p class="num">02</p>
+        <h3 data-tr="Nasıl ilerliyor" data-en="How it works">Nasıl ilerliyor</h3>
+        <p data-tr="Kısa bir tanışma görüşmesi, sonra tarih ve mekân. Çekim 1–2 saat sürüyor. 7–10 gün içinde seçilmiş ve renklenmiş kareleri yüksek çözünürlükte gönderiyorum." data-en="A short intro call, then date and location. Shoots run 1–2 hours. Within 7–10 days you get the selected, colour-graded frames in high resolution.">Kısa bir tanışma görüşmesi, sonra tarih ve mekân. Çekim 1–2 saat sürüyor. 7–10 gün içinde seçilmiş ve renklenmiş kareleri yüksek çözünürlükte gönderiyorum.</p>
+      </div>
+      <div class="card">
+        <p class="num">03</p>
+        <h3 data-tr="Karşılığı" data-en="The exchange">Karşılığı</h3>
+        <p data-tr="Şu aşamada çoğu çekim karşılıklı portfolyo çalışması (TFP): sen kareleri kendi portfolyonda kullanıyorsun, ben de kendi arşivimde. Ticari işler için ayrı konuşuyoruz." data-en="At this stage most shoots are portfolio exchanges (TFP): you use the images for your own book, I use them in mine. Commercial work is discussed separately.">Şu aşamada çoğu çekim karşılıklı portfolyo çalışması (TFP): sen kareleri kendi portfolyonda kullanıyorsun, ben de kendi arşivimde. Ticari işler için ayrı konuşuyoruz.</p>
+      </div>
+    </div>
+
+    <ul class="checklist reveal">
+      <li data-tr="Yanında istediğin bir kişiyi getirebilirsin." data-en="You're welcome to bring someone with you."></li>
+      <li data-tr="Ne çekilip ne çekilmeyeceğine önceden birlikte karar veriyoruz." data-en="We agree in advance on what will and won't be shot."></li>
+      <li data-tr="Her çekimde yazılı bir izin formu (model release) imzalıyoruz." data-en="We sign a written model release for every shoot."></li>
+      <li data-tr="Hangi karelerin yayınlanacağını onaylama hakkın var." data-en="You have the right to approve which frames get published."></li>
+      <li data-tr="İstediğin an bir kareyi geri çekebilirsin." data-en="You can withdraw any image at any time."></li>
+      <li data-tr="Çekim planı, saat ve mekân yazılı olarak paylaşılır." data-en="The shoot plan, time and location are shared in writing."></li>
+      <li data-tr="18 yaş altı için veli onayı ve katılımı zorunlu." data-en="Under 18 requires guardian consent and presence."></li>
+      <li data-tr="Ham dosyalar kimseyle paylaşılmaz." data-en="Raw files are never shared with anyone."></li>
+    </ul>
+
+    <div class="note reveal">
+      <h4 data-tr="Dürüst olmak gerekirse" data-en="To be straight with you">Dürüst olmak gerekirse</h4>
+      <p data-tr="Hâlâ öğrenciyim ve bu seriyi kurarken öğrenmeye devam ediyorum. Yani beraber çalışırsak, deneyen ve soran biriyle çalışıyor olacaksın. Karşılığında sana zamanımı, sabrımı ve işin her adımında şeffaflığı veriyorum." data-en="I'm still a student, and I'm still learning while building this series. So if we work together, you're working with someone who experiments and asks questions. In return you get my time, my patience and transparency at every step.">Hâlâ öğrenciyim ve bu seriyi kurarken öğrenmeye devam ediyorum. Yani beraber çalışırsak, deneyen ve soran biriyle çalışıyor olacaksın. Karşılığında sana zamanımı, sabrımı ve işin her adımında şeffaflığı veriyorum.</p>
+    </div>
+
+    <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
+      <p class="eyebrow" style="margin-bottom:18px" data-tr="Başvuru" data-en="Apply">Başvuru</p>
+      <div class="two">
+        <div class="field">
+          <label data-tr="Adın" data-en="Your name">Adın</label>
+          <input name="ad" required>
+        </div>
+        <div class="field">
+          <label data-tr="İletişim (e-posta veya Instagram)" data-en="Contact (email or Instagram)">İletişim (e-posta veya Instagram)</label>
+          <input name="iletisim" required>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label data-tr="Şehir" data-en="City">Şehir</label>
+          <input name="sehir">
+        </div>
+        <div class="field">
+          <label data-tr="Deneyim" data-en="Experience">Deneyim</label>
+          <select name="deneyim">
+            <option data-tr="İlk kez olacak" data-en="This would be my first time">İlk kez olacak</option>
+            <option data-tr="Birkaç çekim yaptım" data-en="I've done a few shoots">Birkaç çekim yaptım</option>
+            <option data-tr="Deneyimliyim" data-en="I'm experienced">Deneyimliyim</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label data-tr="Aklındaki bir fikir var mı?" data-en="Any idea in mind?">Aklındaki bir fikir var mı?</label>
+        <textarea name="mesaj"></textarea>
+      </div>
+      <button type="submit" class="btn" data-tr="Mesajı Hazırla" data-en="Prepare Message">Mesajı Hazırla</button>
+    </form>
+
+    <div class="out" id="out">
+      <h4 data-tr="Mesajın hazır" data-en="Your message is ready">Mesajın hazır</h4>
+      <p data-tr="Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum." data-en="This form does not send anything by itself. Copy the text below and send it to me by email — I reply as soon as I can.">Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum.</p>
+      <pre id="msg"></pre>
+      <button class="btn" onclick="copyMsg()" id="copyBtn">Metni Kopyala</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNAL ============ -->
+<section id="gunluk">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">04 — <span data-tr="Günlük" data-en="Journal">Günlük</span></p>
+      <h2 class="h2" data-tr="Süreç notları" data-en="Process notes">Süreç notları</h2>
+      <p class="lede" data-tr="Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili." data-en="I keep what I learn, what I get wrong and my behind-the-scenes notes here. Less about finished work, more about how one gets there.">Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili.</p>
+    </div>
+    <div class="posts reveal" id="posts"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="hakkimda">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait reveal"><img src="images/about.jpg" alt=""></div>
+      <div class="about-txt reveal">
+        <p class="eyebrow">05 — <span data-tr="Hakkımda" data-en="About">Hakkımda</span></p>
+        <h2 class="h2" style="margin-bottom:1.6rem" data-tr="Kısaca" data-en="In short">Kısaca</h2>
+        <p data-tr="Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum." data-en="I'm a student working in photography and videography. I like shooting with natural light, in quiet places, with as little gear as possible.">Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum.</p>
+        <p data-tr="Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum." data-en="I'm currently building my first serious series, and this site is its logbook. If you'd like to model, collaborate on a project, or simply talk, write to me — I answer every message.">Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum.</p>
+        <dl class="facts">
+          <div><dt data-tr="Alan" data-en="Focus">Alan</dt><dd data-tr="Portre, doğa, kısa film" data-en="Portrait, nature, short film">Portre, doğa, kısa film</dd></div>
+          <div><dt data-tr="Durum" data-en="Status">Durum</dt><dd data-tr="Öğrenci — yeni projelere açık" data-en="Student — open to new projects">Öğrenci — yeni projelere açık</dd></div>
+          <div><dt data-tr="Konum" data-en="Based in">Konum</dt><dd>Türkiye</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="iletisim" class="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal">06 — <span data-tr="İletişim" data-en="Contact">İletişim</span></p>
+    <h2 class="reveal" data-tr="Konuşalım" data-en="Let's talk">Konuşalım</h2>
+    <div class="reveal">
+      <a class="mail" href="mailto:zekiyeebru02@proton.me" id="mailLink">zekiyeebru02@proton.me</a>
+      <div class="socials" id="socials"></div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap foot">
+      <p>© <span id="yr"></span> <span class="footName">Ebru Çakmak</span></p>
+      <p data-tr="Tüm görseller sahibine aittir." data-en="All images belong to their author.">Tüm görseller sahibine aittir.</p>
+    </div>
+  </footer>
+</section>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <div class="lb-stage">
+    <button class="lb-x" onclick="closeLb()" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+    <button class="lb-prev" onclick="step(-1)" aria-label="Previous">
+      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lb-next" onclick="step(1)" aria-label="Next">
+      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="lb-frame" id="lbFrame"></div>
+    <p class="lb-cap" id="lbCap"></p>
+  </div>
+</div>
+
+<!-- ============ READER ============ -->
+<div class="reader" id="reader">
+  <button class="btn ghost reader-x" onclick="closeReader()" data-tr="Kapat" data-en="Close">Kapat</button>
+  <div class="reader-in">
+    <time id="rDate"></time>
+    <h2 id="rTitle"></h2>
+    <div class="reader-body" id="rBody"></div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script>
+
+
+let lang = 'tr';
+try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
+
+const T = {
+  title:{tr:SITE.name+' — Fotoğraf & Videografi', en:SITE.name+' — Photography & Videography'},
+  copied:{tr:'Kopyalandı', en:'Copied'},
+  copy:{tr:'Metni Kopyala', en:'Copy Text'}
+};
+
+function setLang(l){
+  lang = l;
+  try{ localStorage.setItem('lang', l); }catch(e){}
+  document.documentElement.lang = l;
+  document.title = T.title[l];
+  document.querySelectorAll('[data-tr]').forEach(el=>{
+    const v = el.getAttribute('data-'+l);
+    if(v!==null) el.innerHTML = v;
+  });
+  btnTr.classList.toggle('on', l==='tr');
+  btnEn.classList.toggle('on', l==='en');
+  render();
+}
+
+function fill(){
+  brandName.textContent = SITE.name;
+  heroName.textContent  = SITE.name;
+  projName.textContent  = SITE.project;
+  projTitle.textContent = SITE.project;
+  mailLink.textContent  = SITE.email;
+  mailLink.href = 'mailto:'+SITE.email;
+  document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
+  yr.textContent = new Date().getFullYear();
+
+  const links = [['Instagram',SITE.instagram],['TikTok',SITE.tiktok],['Vimeo',SITE.vimeo]]
+    .filter(x => x[1] && x[1] !== '#');
+  socials.innerHTML = links.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>').join('');
+}
+
+function render(){
+  gal.innerHTML = PHOTOS.map((p,i)=>{
+    const cap = lang==='tr'?p.tr:p.en;
+    return '<div class="tile w'+p.w+'" style="aspect-ratio:'+p.ratio+'" onclick="openLb('+i+')">'
+      + '<figure><img src="'+p.src+'" alt="'+cap+'" loading="lazy"></figure>'
+      + '<figcaption>'+cap+'</figcaption></div>';
+  }).join('');
+
+  posts.innerHTML = POSTS.map((p,i)=>{
+    const t  = lang==='tr'?p.tr:p.en;
+    const ex = lang==='tr'?p.exTr:p.exEn;
+    return '<button class="post" onclick="openReader('+i+')">'
+      + '<time>'+p.date+'</time>'
+      + '<div><h3>'+t+'</h3><p class="ex">'+ex+'</p></div>'
+      + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
+      + '</button>';
+  }).join('');
+
+  if(copyBtn) copyBtn.textContent = T.copy[lang];
+  observe();
+}
+
+/* ---------- lightbox ---------- */
+let idx = 0;
+function openLb(i){ idx = i; paint(); lb.classList.add('on'); document.body.style.overflow='hidden'; }
+function paint(){
+  const p = PHOTOS[idx];
+  const cap = lang==='tr'?p.tr:p.en;
+  lbFrame.innerHTML = '<img src="'+p.src+'" alt="'+cap+'">';
+  lbCap.textContent = cap + '  ·  ' + (idx+1) + ' / ' + PHOTOS.length;
+}
+function step(d){ idx = (idx + d + PHOTOS.length) % PHOTOS.length; paint(); }
+function closeLb(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+
+/* ---------- reader ---------- */
+function openReader(i){
+  const p = POSTS[i];
+  rDate.textContent  = p.date;
+  rTitle.textContent = lang==='tr'?p.tr:p.en;
+  rBody.innerHTML    = (lang==='tr'?p.bodyTr:p.bodyEn).map(x=>'<p>'+x+'</p>').join('');
+  reader.classList.add('on');
+  reader.scrollTop = 0;
+  document.body.style.overflow='hidden';
+}
+function closeReader(){ reader.classList.remove('on'); document.body.style.overflow=''; }
+
+/* ---------- form ---------- */
+function buildMsg(e){
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const L = lang==='tr'
+    ? {h:'Model başvurusu',a:'Ad',i:'İletişim',s:'Şehir',d:'Deneyim',m:'Fikir'}
+    : {h:'Model application',a:'Name',i:'Contact',s:'City',d:'Experience',m:'Idea'};
+  msg.textContent =
+    L.h+'\n\n'+
+    L.a+': '+(f.get('ad')||'—')+'\n'+
+    L.i+': '+(f.get('iletisim')||'—')+'\n'+
+    L.s+': '+(f.get('sehir')||'—')+'\n'+
+    L.d+': '+(f.get('deneyim')||'—')+'\n'+
+    L.m+': '+(f.get('mesaj')||'—');
+  out.classList.add('on');
+  out.scrollIntoView({behavior:'smooth',block:'center'});
+}
+async function copyMsg(){
+  try{
+    await navigator.clipboard.writeText(msg.textContent);
+    copyBtn.textContent = T.copied[lang];
+    setTimeout(()=>copyBtn.textContent = T.copy[lang], 1800);
+  }catch(err){
+    const r = document.createRange(); r.selectNodeContents(msg);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+}
+
+/* ---------- nav & misc ---------- */
+function go(id){
+  document.body.classList.remove('menu');
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+addEventListener('scroll',()=>{ hdr.classList.toggle('solid', scrollY > 60); },{passive:true});
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ closeLb(); closeReader(); }
+  if(lb.classList.contains('on')){
+    if(e.key==='ArrowLeft') step(-1);
+    if(e.key==='ArrowRight') step(1);
+  }
+});
+
+let io;
+function observe(){
+  if(io) io.disconnect();
+  io = new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
+  },{threshold:.08,rootMargin:'0px 0px -40px'});
+  document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+}
+
+fill();
+setLang(lang);
+</script>
+</body>
+</html>
