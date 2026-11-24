@@ -1,47 +1,121 @@
 # Ebru Çakmak — Portfolyo Sitesi
 
-Tek sayfalık, tamamen statik bir site. Çalışması için sunucuya, veritabanına ya da
-ücretli bir hizmete ihtiyacı yok. GitHub Pages üzerinde **ücretsiz** yayınlanır.
+Tamamen statik bir site. Sunucuya, veritabanına ya da ücretli bir hizmete ihtiyacı yok.
+GitHub Pages üzerinde **ücretsiz** yayınlanıyor.
+
+**Yayındaki adres:** https://ebru-cakmakk.github.io
+
+---
 
 ## Dosyalar
 
 ```
-index.html     ← sitenin kendisi (tasarım ve çalışma mantığı — buna dokunmana gerek yok)
-content.js     ← İÇERİK. İsim, fotoğraf listesi, günlük yazıları. Değiştireceğin tek dosya.
-images/        ← fotoğraflar
-.nojekyll      ← GitHub Pages için teknik bir dosya, silme
+index.html        Tasarım ve çalışma mantığı. Buna dokunman gerekmiyor.
+data/             TÜM İÇERİK burada, altı dosya hâlinde:
+  site.json         Adın, e-posta, sosyal medya, renk ayarı
+  categories.json   Fotoğraf kategorileri
+  photos.json       Fotoğraf listesi
+  videos.json       Video listesi
+  posts.json        Günlük yazıları
+  text.json         Sitedeki her yazı
+images/           Fotoğraflar
+.pages.yml        Düzenleme panelinin ayarları
+README.md         Bu dosya
+CLAUDE.md         Proje bağlamı (Claude için)
+.nojekyll         GitHub Pages için teknik dosya, silme
 ```
 
 ---
 
-## 1. Siteyi ücretsiz yayına almak (GitHub Pages)
+## 1. Düzenleme paneli (önerilen yol)
 
-1. [github.com](https://github.com) üzerinden ücretsiz bir hesap aç.
-   Kullanıcı adını siteye yansıyacağı için özenle seç (örn. `ebrucakmak`).
-2. Sağ üstteki **+** → **New repository**.
-   - **Repository name:** `kullaniciadin.github.io` (kendi kullanıcı adınla)
-   - **Public** seçili olsun
-   - **Create repository**
-3. Açılan sayfada **uploading an existing file** bağlantısına tıkla.
-4. Bu klasördeki her şeyi (`index.html`, `content.js`, `.nojekyll` ve `images` klasörü)
-   sürükleyip bırak → **Commit changes**.
-5. **Settings** → sol menüden **Pages** → *Branch* kısmında `main` ve `/ (root)` seçili
-   olsun → **Save**.
-6. Bir iki dakika sonra siten şu adreste yayında olur:
-   **https://kullaniciadin.github.io**
+İçeriği görsel bir panelden düzenleyebilirsin — kod görmeden, sürükle bırakla.
 
-Ücret yok, süre sınırı yok, reklam yok.
+### İlk giriş
 
-### İleride kendi alan adını bağlamak istersen
-Alan adını (örn. `ebrucakmak.com`) bir kayıt firmasından al, sonra
-**Settings → Pages → Custom domain** kısmına yaz. Sadece alan adının yıllık ücreti olur,
-barındırma yine ücretsiz kalır.
+1. **[app.pagescms.org](https://app.pagescms.org)** adresine git
+2. **Sign in with GitHub** → GitHub hesabınla giriş yap
+3. İzin ekranında `ebru-cakmakk.github.io` deposuna erişimi onayla
+4. Listeden depoyu seç
+
+Panel açılır. Ücretsiz, kurulum gerektirmiyor.
+
+### Panelde ne var
+
+| Bölüm | Ne yapar |
+|---|---|
+| **Fotoğraflar** | Fotoğraf ekle, sil, sırala, kategorisini değiştir |
+| **Kategoriler** | Yeni seri aç, adını değiştir |
+| **Günlük yazıları** | Yazı yaz, düzenle |
+| **Videolar** | Vimeo/YouTube bağlantısı ekle |
+| **Site ayarları** | Ad, e-posta, sosyal medya, renk uyumu |
+| **Site yazıları** | Menüden form etiketlerine kadar her cümle |
+
+Her değişiklikte **Save** diyorsun; site birkaç dakika içinde kendiliğinden güncelleniyor.
+
+### Fotoğraf eklemek
+
+**Fotoğraflar** → **Add an entry** → **Fotoğraf** alanına tıkla → bilgisayarından sürükle
+bırak → kategorisini seç → **Save**.
+
+Ana sayfadaki seçkiye de girsin istiyorsan *"Ana sayfadaki seçkide göster"* kutusunu
+işaretle ve genişlik/oran seç.
+
+> **Yüklemeden önce küçült:** uzun kenar 2200 piksel, JPEG, 400 KB altı.
+> Ücretsiz araç: [squoosh.app](https://squoosh.app). Büyük dosyalar siteyi yavaşlatır.
+
+> **Düzen ipucu:** ana sayfada *Geniş (8)* ile *Küçük (4)* yan yana tam oturur,
+> *Orta (6)* + *Orta (6)* de öyle. *Tam sayfa (12)* tek başına bütün satırı kaplar.
+
+### Yeni kategori açmak
+
+**Kategoriler** → **Add an entry** → kısa ad (Türkçe karakter ve boşluk olmadan,
+örn. `sokak`), Türkçe adı, İngilizce adı → **Save**.
+
+Sonra fotoğraflara bu kategoriyi atayabilmen için panelin seçenek listesine de
+eklenmesi gerekir — bunu Claude'a söylemen yeterli, tek satırlık bir iş.
+
+### Günlük yazısı yazmak
+
+**Günlük yazıları** → **Add an entry**. Paragrafları **boş satırla** ayır.
+Yeni yazı en üstte görünsün istiyorsan listede en üste taşı.
 
 ---
 
-## 2. Sitenin yapısı
+## 2. Elle düzenlemek (panel olmadan)
 
-Site tek bir `index.html` dosyasından oluşur ama **ayrı sayfalar gibi çalışır**:
+Panel çalışmazsa ya da hızlıca bir şey değiştirmek istersen, `data/` klasöründeki
+JSON dosyalarını GitHub üzerinden de düzenleyebilirsin: dosyaya tıkla → kalem
+simgesi → değiştir → **Commit changes**.
+
+Daha rahat bir editör için: depo sayfasındayken klavyeden **nokta (.)** tuşuna bas.
+
+---
+
+## 3. Renk uyumu
+
+Site, gösterdiği fotoğraflardan rengin **tonunu** alıp kendine uyarlar. Koyuluk ve
+doygunluk sabit kalır, yani yazılar her zaman okunur ve tasarım bozulmaz.
+
+- **Ana sayfa** açılış fotoğrafının tonunu alır
+- **Fotoğraflar sayfasında** kategoriler arasında kaydırdıkça palet yumuşakça değişir
+
+Bir fotoğrafı büyüttüğünde renk uyumu devreye girmez: orada sadece fotoğraf görünür,
+nötr koyu bir zeminde.
+
+Ayarı panelde **Site ayarları → Renk uyumu** altında:
+
+| Şiddet | sonuç |
+|---|---|
+| `0` | hiç değişmez, site hep ana tonunda kalır |
+| `0.6` | belirgin değişir ama kendi renk ailenden çıkmaz |
+| `1` | tamamen fotoğrafın tonuna geçer |
+
+---
+
+## 4. Sitenin yapısı
+
+Tek `index.html` dosyası ama **ayrı sayfalar gibi** çalışır:
 
 ```
 #home          Ana sayfa — seçki, kısa tanıtım, son yazılar
@@ -53,121 +127,22 @@ Site tek bir `index.html` dosyasından oluşur ama **ayrı sayfalar gibi çalı�
 #iletisim      İletişim
 ```
 
-Adres çubuğunda `ebru-cakmakk.github.io/#fotograflar` gibi görünür ve bu bağlantılar
-paylaşılabilir — birine doğrudan fotoğraf sayfasını gönderebilirsin.
+Bu adresler paylaşılabilir — birine doğrudan `ebru-cakmakk.github.io/#fotograflar`
+gönderebilirsin.
 
 ---
 
-## 3. İçeriği güncellemek
+## 5. Bir şeyi bozarsan
 
-Bilgisayara program kurmana gerek yok. Her şey tarayıcıdan, `content.js` dosyasından.
-
-### Dosyayı açmak
-GitHub'da deponu aç → `content.js` → sağ üstteki **kalem** simgesi → düzenle →
-altta **Commit changes**. Site bir dakika içinde güncellenir.
-
-Daha rahat bir editör istersen: depo sayfasındayken klavyeden **nokta (.)** tuşuna bas,
-tarayıcıda tam bir kod editörü açılır.
-
-### Yeni fotoğraf eklemek
-1. Fotoğrafı küçült: uzun kenar **2200 piksel**, JPEG, **400 KB altı**.
-   Ücretsiz araç: [squoosh.app](https://squoosh.app)
-2. Dosya adında Türkçe karakter ve boşluk olmasın: `09.jpg` gibi.
-3. GitHub'da `images` klasörünü aç → **Add file** → **Upload files** → sürükle bırak.
-4. `content.js` içindeki `PHOTOS` listesine tek satır ekle:
-
-```js
-{src:'images/09.jpg', cat:'portre'},
-```
-
-Hepsi bu. İsim yazmana gerek yok, boyut belirtmene de — Fotoğraflar sayfasında
-kendi doğal oranıyla görünür.
-
-**Ana sayfadaki seçkiye koymak istersen** üç alan daha ekle:
-
-```js
-{src:'images/09.jpg', cat:'portre', feat:true, w:8, ratio:'3/2'},
-```
-
-`w` genişlik: **4** küçük · **6** orta · **8** geniş · **12** tam sayfa
-`ratio` oran: **3/2** yatay · **3/4** dikey · **1/1** kare · **21/9** sinema bandı
-
-> Düzen ipucu: `w:8` ile `w:4` yan yana tam oturur, `w:6` + `w:6` de öyle.
-> `w:12` tek başına tam genişlik kaplar.
-
-### Yeni kategori eklemek
-`CATS` listesine bir satır ekle:
-
-```js
-{id:'sokak', tr:'Sokak', en:'Street'},
-```
-
-Sonra o kategoriye girecek fotoğrafların `cat` değerine `'sokak'` yaz. Fotoğraflar
-sayfasında kendi başlığıyla görünür. Fotoğrafı olmayan kategori hiç görünmez.
-
-### Video eklemek
-Videoyu Vimeo veya YouTube'a yükle, sonra `VIDEOS` listesindeki örnek satırın
-başındaki `//` işaretlerini kaldırıp doldur. Liste boş kaldığı sürece Video
-sayfasında "hazırlanıyor" yazısı görünür.
-
-### Yeni günlük yazısı eklemek
-`POSTS` listesinin **en üstüne** yeni bir blok ekle. Mevcut bloklardan birini
-kopyalayıp içini değiştirmek en kolayı.
-
-### Sitedeki herhangi bir yazıyı değiştirmek
-`content.js` dosyasının **7. bölümünde** sitedeki bütün yazılar var — menü, açılış,
-sayfa başlıkları, modeller için yazılan her cümle, form etiketleri. Soldaki ad
-(örn. `'hero.tagline'`) yerini gösterir, onu değiştirme; sadece `tr:` ve `en:`
-karşılıklarını düzenle. `index.html` dosyasına hiç dokunman gerekmez.
-
-### Bir şeyi bozarsan
-Site bembeyaz kalmaz; "içerik dosyasında bir hata var" diyen bir sayfa çıkar.
-GitHub'da `content.js` dosyasının **History** (geçmiş) bölümünden son değişikliği
-geri al, site anında eski hâline döner. Hiçbir şey kaybolmaz.
+Site bembeyaz kalmaz; "içerik yüklenemedi" diyen açıklayıcı bir sayfa çıkar.
+GitHub'da ilgili dosyanın **History** (geçmiş) bölümünden son değişikliği geri al,
+site anında eski hâline döner. Hiçbir şey kaybolmaz.
 
 ---
 
-## 4. Renk uyumu
+## 6. İleride
 
-Site, gösterdiği fotoğraflardan rengin **tonunu** alıp kendine uyarlar. Koyuluk ve
-doygunluk sabit kalır, yani yazılar her zaman okunur ve tasarım bozulmaz.
-
-Nerede çalışır:
-
-- **Ana sayfa** açılış fotoğrafının tonunu alır
-- **Fotoğraflar sayfasında** kategoriler arasında kaydırdıkça palet yumuşakça değişir
-
-Bir fotoğrafı büyüttüğünde renk uyumu devreye girmez: orada sadece fotoğraf görünür,
-nötr koyu bir zeminde.
-
-Ayarı `content.js` dosyasının 2. bölümünde:
-
-```js
-const THEME = {
-  auto: true,
-  base: 140,
-  strength: 0.6
-};
-```
-
-`base` senin ana tonun (140 = koyu yeşil). `strength` fotoğrafın paleti ne kadar
-çekeceğini belirler:
-
-| strength | sonuç |
-|---|---|
-| `0` | hiç değişmez, site hep `base` tonunda kalır |
-| `0.6` | belirgin değişir ama kendi renk ailenden çıkmaz |
-| `1` | tamamen fotoğrafın tonuna geçer |
-
-`auto: false` yazarsan özellik tamamen kapanır.
-
-Yeni bir çekim eklediğinde hiçbir şey yapman gerekmez — renk kendiliğinden
-hesaplanır. Bir kategorinin rengini kendin belirlemek istersen `CATS` listesindeki
-satırına `hue:30` gibi bir değer ekle.
-
----
-
-## 5. Yardım
-
-Takıldığın her noktada Claude'a bu klasörü ve ne yapmak istediğini söylemen yeterli;
-dosyaları güncelleyip sana hazır hâlde verir.
+- **Kendi alan adın:** Al, sonra Settings → Pages → Custom domain. Barındırma
+  yine ücretsiz kalır.
+- **Video:** Vimeo veya YouTube'a yükle, bağlantısını panele gir. Video dosyasını
+  siteye koyma, siteyi çok yavaşlatır.

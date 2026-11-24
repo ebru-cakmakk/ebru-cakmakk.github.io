@@ -32,8 +32,10 @@ isimle çalışır, ama kamuya açık yüzünde (Instagram, TikTok) mahlas makul
 | Barındırma | GitHub Pages — ücretsiz, kendiliğinden yayınlanıyor |
 | E-posta | `zekiyeebru02@proton.me` |
 
+| Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
+
 Alan adı satın alınmadı. Sosyal medya hesapları henüz açılmadı (eskisi kişiseldi,
-kapatıldı). `content.js` içindeki `instagram`, `tiktok`, `vimeo` alanları boş;
+kapatıldı). `data/site.json` içindeki `instagram`, `tiktok`, `vimeo` alanları boş;
 doldurulduğunda düğmeler kendiliğinden görünür.
 
 **Önemli:** `main` dalına push edilen her şey birkaç dakika içinde yayına girer.
@@ -43,18 +45,27 @@ doldurulduğunda düğmeler kendiliğinden görünür.
 ## Dosyalar
 
 ```
-index.html     Tasarım + çalışma mantığı. Ebru buna dokunmuyor.
-content.js     TÜM içerik: ayarlar, kategoriler, fotoğraflar, videolar,
-               günlük yazıları ve sitedeki her yazı. Ebru sadece burayı düzenler.
-images/        Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
-README.md      Ebru için kullanım kılavuzu (Türkçe, adım adım)
-CLAUDE.md      Bu dosya
-.nojekyll      GitHub Pages için teknik dosya
+index.html        Tasarım + çalışma mantığı. Ebru buna dokunmuyor.
+data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
+  site.json         Ad, e-posta, sosyal medya, theme{auto,base,strength}
+  categories.json   [{id, tr, en, hue}]
+  photos.json       [{src, cat, feat, w, ratio}] — w ve ratio sadece ana sayfa seçkisi için
+  videos.json       [{url, poster, meta, tr, en}] — boşsa Video sayfasında "hazırlanıyor"
+  posts.json        [{date, tr, en, exTr, exEn, bodyTr, bodyEn}] — gövde düz metin,
+                    boş satır = yeni paragraf
+  text.json         Sitedeki her yazı: {grup: {anahtar: {tr, en}}}
+images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
+.pages.yml        Pages CMS panel ayarları (üretilmiş — scripts/genpages.js)
+README.md         Ebru için kullanım kılavuzu (Türkçe, adım adım)
+CLAUDE.md         Bu dosya
+.nojekyll         GitHub Pages için teknik dosya
 ```
 
-`content.js` yedi bölüme ayrılmış ve her bölümün başında Türkçe açıklama var.
-Yeni bir şey eklerken bu düzeni koru — dosyanın okunabilirliği özellikle önemli,
-çünkü Ebru'nun kendi başına düzenleyebilmesi için tasarlandı.
+`index.html` içinde `data-k="grup.anahtar"` taşıyan her öğe `text.json`'dan doldurulur.
+Yeni bir metin alanı eklerken hem HTML'e `data-k` hem `text.json`'a karşılığını ekle,
+yoksa alan boş görünür.
+
+**content.js artık yok** — Pages CMS kurulurken `data/*.json` dosyalarına ayrıldı.
 
 ---
 
@@ -83,7 +94,7 @@ paletinden: `#18230F` `#27391C` `#255F38` `#1F7D53`. Krem metin (`#F1EEE3`).
 
 **Fotoğrafa göre renk uyumu.** Site, gösterdiği fotoğraflardan rengin *tonunu*
 alıp kendine uyarlar; koyuluk ve doygunluk sabit tutulur, böylece okunabilirlik
-hiç bozulmaz. `THEME.strength` (0–1) etkinin şiddetini ayarlar, şu an `0.6`.
+hiç bozulmaz. `site.json` içindeki `theme.strength` (0–1) etkinin şiddetini ayarlar, şu an `0.6`.
 
 > Not: Ebru'nun fotoğraflarının hâkim tonu aslında **sarı-yeşil** (otlar), sevdiği
 > koyu orman yeşili değil. `strength: 1` yapılırsa site zeytin yeşiline kayar.
@@ -99,19 +110,23 @@ sadece kategori başlıkları var.
 **Fotoğraf eklemek iki alana indirildi:** `{src, cat}`. Ana sayfadaki seçkiye
 girecekse ayrıca `feat:true` ve `w`/`ratio`. Bu sadeleştirme bilinçli.
 
-**Hata güvenlik ağı.** `content.js` bozulursa sayfa bembeyaz kalmaz; açıklayıcı
-bir uyarı çıkar ve GitHub geçmişinden nasıl geri alınacağını anlatır.
+**Pages CMS paneli.** `app.pagescms.org` üzerinden, ücretsiz ve barındırmasız.
+`.pages.yml` form alanlarını Türkçe etiketlerle tanımlar. WordPress değerlendirildi
+ve elendi (ücretli, siteyi yeniden yapmayı gerektirirdi).
+
+**Hata güvenlik ağı.** `data/` dosyalarından biri okunamazsa sayfa bembeyaz kalmaz;
+açıklayıcı bir uyarı çıkar ve GitHub geçmişinden nasıl geri alınacağını anlatır.
 
 ---
 
 ## Çalışma biçimi
 
-Ebru kod yazmıyor ama `content.js`'i kendi düzenleyebiliyor (GitHub web editörü
-ya da `.` tuşuyla açılan github.dev). Yeni fotoğraf gönderdiğinde iş akışı:
+Ebru kod yazmıyor. Birincil yolu **Pages CMS paneli** (app.pagescms.org);
+yedek yol `data/*.json` dosyalarını GitHub web editöründen düzenlemek. Yeni fotoğraf gönderdiğinde iş akışı:
 
 1. Uzun kenarı 2200px'e düşür, JPEG kalite 80 (`scripts/prep.py` benzeri bir adım)
 2. `images/` klasörüne koy
-3. `content.js` içindeki `PHOTOS` listesine satır ekle
+3. `data/photos.json` listesine `{src, cat}` ekle
 4. Commit + push → birkaç dakikada yayında
 
 **Ton:** Açıklamaları Türkçe ve sade tut. Teknik ayrıntıyı ancak gerektiği kadar
@@ -124,15 +139,17 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 - [ ] **İsim kararı** — gerçek ad mı, mahlas mı. Önerilenler: Karşı Işık,
       Gölgelik, Düşen Işık, Pus, Yosun, Rakım. Karar verilince site başlığı,
       menü ve footer tek satırda güncellenir (`SITE.name`).
-- [ ] **Pages CMS kurulumu** — görsel düzenleme paneli. Ebru onay verdi ama
-      henüz kurulmadı. Gerekli: `content.js` → JSON/YAML dönüşümü + `.pages.yml`
-      ayar dosyası. WordPress değerlendirildi ve elendi (ücretli, yeniden yapım gerektirir).
+- [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
 - [ ] **Günlük yazıları** — üç başlık var ama içerikleri yer tutucu. Gerçek
       metinler yazılmalı. Küratörler için en değerli bölüm burası.
 - [ ] **Showreel** — video bölümü boş. Vimeo veya YouTube bağlantısı gelince
-      `VIDEOS` listesi doldurulacak.
+      `data/videos.json` doldurulacak.
 - [ ] **Sosyal medya** — Instagram ve TikTok hesapları aynı kullanıcı adıyla
-      açılacak, bağlantıları `content.js`'e eklenecek.
+      açılacak, bağlantıları `data/site.json`'a eklenecek.
+- [ ] **Kategori → panel seçeneği** — `.pages.yml` içindeki kategori seçenekleri
+      elle tutuluyor (Pages CMS'in `reference` alanı yalnızca koleksiyonlara bakıyor,
+      dosya listelerine değil). Yeni kategori eklenince `.pages.yml`'ye de eklenmeli.
+      `scripts/genpages.js` dosyayı `data/`'dan yeniden üretir.
 - [ ] **Alan adı** — opsiyonel. Alınırsa Settings → Pages → Custom domain.
 
 ---
