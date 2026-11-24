@@ -265,14 +265,7 @@
 <header id="hdr">
   <nav>
     <a class="brand" href="#home"><span id="brandName"></span><span class="dot">.</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#fotograflar" data-route="fotograflar" data-k="nav.photos"></a>
-      <a href="#video"       data-route="video"       data-k="nav.film"></a>
-      <a href="#gunluk"      data-route="gunluk"      data-k="nav.journal"></a>
-      <a href="#modeller"    data-route="modeller"    data-k="nav.models"></a>
-      <a href="#hakkimda"    data-route="hakkimda"    data-k="nav.about"></a>
-      <a href="#iletisim"    data-route="iletisim"    data-k="nav.contact"></a>
-    </div>
+    <div class="nav-links" id="navLinks"></div>
     <div class="lang">
       <button id="btnTr" class="on" onclick="setLang('tr')">TR</button>
       <button id="btnEn" onclick="setLang('en')">EN</button>
@@ -443,7 +436,7 @@
 <div class="page" id="page-hakkimda">
   <section class="pg">
     <div class="wrap split">
-      <div class="portrait reveal"><img src="images/02.jpg" alt=""></div>
+      <div class="portrait reveal"><img id="aboutImg" src="images/02.jpg" alt=""></div>
       <div class="split-txt reveal">
         <p class="eyebrow" data-k="about.label"></p>
         <h2 class="h2" style="margin-bottom:1.6rem" data-k="about.title"></h2>
@@ -469,6 +462,22 @@
         <p class="lede" style="margin-left:auto;margin-right:auto" data-k="contact.lede"></p>
         <a class="mail" href="#" id="mailLink"></a>
         <div class="socials" id="socials"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ PANELDEN EKLENEN SAYFA ============================ -->
+<div class="page" id="page-ozel">
+  <section class="pg">
+    <div class="wrap">
+      <div class="reader-in">
+        <div class="sec-head reveal">
+          <p class="eyebrow" id="cpLabel"></p>
+          <h2 class="h2" id="cpTitle"></h2>
+          <p class="lede" id="cpIntro"></p>
+        </div>
+        <div class="reader-body reveal" id="cpBody"></div>
       </div>
     </div>
   </section>
@@ -507,9 +516,32 @@
 <script>
 /* İçerik data/ klasöründeki JSON dosyalarından okunur.
    Bu dosyaları Pages CMS paneli düzenler; elle de düzenlenebilirler. */
-let SITE, CATS, PHOTOS, VIDEOS, POSTS, TEXT;
+let SITE, CATS, PHOTOS, VIDEOS, POSTS, TEXT, PAGES;
 
-const ROUTES = ['home','fotograflar','video','gunluk','modeller','hakkimda','iletisim'];
+const BUILTIN = ['fotograflar','video','gunluk','modeller','hakkimda','iletisim'];
+let ROUTES = ['home'].concat(BUILTIN);
+
+/* Menü data/pages.json'dan gelir: sıra = menü sırası, show:false = gizli.
+   Listede yerleşik olmayan bir kısa ad yeni bir sayfa olur ve
+   başlık / giriş / metin alanlarından çizilir. */
+function pageName(p){ return (lang==='en' && p.en) ? p.en : p.tr; }
+function slug(id){ return String(id||'').toLowerCase().trim().replace(/[^a-z0-9-]/g,''); }
+function shownPages(){ return PAGES.filter(p => p.show !== false && slug(p.id)); }
+function buildNav(){
+  ROUTES = ['home'].concat(shownPages().map(p => slug(p.id)));
+  navLinks.innerHTML = shownPages().map(p =>
+    '<a href="#'+slug(p.id)+'" data-route="'+slug(p.id)+'">'+esc(pageName(p))+'</a>').join('');
+}
+function customPage(id){
+  const p = PAGES.find(x => slug(x.id) === id);
+  if(!p) return;
+  const en = lang === 'en';
+  cpLabel.textContent = pageName(p);
+  cpTitle.textContent = (en ? p.titleEn : p.titleTr) || p.titleTr || pageName(p);
+  cpIntro.textContent = (en ? p.introEn : p.introTr) || p.introTr || '';
+  cpIntro.hidden = !cpIntro.textContent;
+  cpBody.innerHTML = postBody((en ? p.bodyEn : p.bodyTr) || p.bodyTr || '');
+}
 let lang = 'tr';
 try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
 
@@ -537,7 +569,9 @@ function setLang(l){
   document.querySelectorAll('[data-k]').forEach(el=>{ el.innerHTML = t(el.dataset.k); });
   btnTr.classList.toggle('on', l==='tr');
   btnEn.classList.toggle('on', l==='en');
+  buildNav();
   render();
+  route(true);
 }
 
 function fill(){
@@ -549,6 +583,7 @@ function fill(){
   footMail.textContent  = SITE.email;
   document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
   yr.textContent = new Date().getFullYear();
+  if(SITE.aboutPhoto) aboutImg.src = SITE.aboutPhoto;
 
   const links = [['Instagram',SITE.instagram],['TikTok',SITE.tiktok],['Vimeo',SITE.vimeo]]
     .filter(x => x[1] && x[1] !== '#');
@@ -630,19 +665,21 @@ function render(){
 }
 
 /* ---------------- yönlendirme ---------------- */
-function route(){
+function route(keep){
+  if(!PAGES) return;
   let h = (location.hash || '').replace('#','');
   if(ROUTES.indexOf(h) === -1) h = 'home';
-  ROUTES.forEach(p=>{
-    const el = document.getElementById('page-'+p);
-    if(el) el.classList.toggle('on', p === h);
+  const custom = h !== 'home' && BUILTIN.indexOf(h) === -1;
+  document.querySelectorAll('.page').forEach(el=>{
+    el.classList.toggle('on', el.id === (custom ? 'page-ozel' : 'page-'+h));
   });
+  if(custom) customPage(h);
   document.querySelectorAll('.nav-links a[data-route]').forEach(a=>{
     a.classList.toggle('on', a.dataset.route === h);
   });
   document.body.classList.remove('menu');
   closeLb(); closeReader();
-  window.scrollTo(0,0);
+  if(keep !== true) window.scrollTo(0,0);
   themeForPage(h);
   observe();
 }
@@ -928,9 +965,10 @@ Promise.all([
   loadJSON('data/photos.json'),
   loadJSON('data/videos.json'),
   loadJSON('data/posts.json'),
-  loadJSON('data/text.json')
+  loadJSON('data/text.json'),
+  loadJSON('data/pages.json')
 ]).then(function(d){
-  SITE = d[0]; CATS = d[1]; PHOTOS = d[2]; VIDEOS = d[3]; POSTS = d[4]; TEXT = d[5];
+  SITE = d[0]; CATS = d[1]; PHOTOS = d[2]; VIDEOS = d[3]; POSTS = d[4]; TEXT = d[5]; PAGES = d[6];
   fill();
   setLang(lang);
   route();

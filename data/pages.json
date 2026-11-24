@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fotograflar",
+    "tr": "Fotoğraflar",
+    "en": "Photographs",
+    "show": true
+  },
+  {
+    "id": "video",
+    "tr": "Video",
+    "en": "Film",
+    "show": true
+  },
+  {
+    "id": "gunluk",
+    "tr": "Günlük",
+    "en": "Journal",
+    "show": true
+  },
+  {
+    "id": "modeller",
+    "tr": "Modeller İçin",
+    "en": "For Models",
+    "show": true
+  },
+  {
+    "id": "hakkimda",
+    "tr": "Hakkımda",
+    "en": "About",
+    "show": true
+  },
+  {
+    "id": "iletisim",
+    "tr": "İletişim",
+    "en": "Contact",
+    "show": true
+  }
+]

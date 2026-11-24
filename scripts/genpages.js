@@ -131,7 +131,7 @@ ${catOpts}
             - { name: "21/9", label: "Sinema bandı (21/9)" }
 
   - name: categories
-    label: "Kategoriler"
+    label: "Fotoğraf kategorileri"
     type: file
     path: data/categories.json
     format: json
@@ -141,6 +141,24 @@ ${catOpts}
       - { name: tr, label: "Adı — Türkçe", type: string, required: true }
       - { name: en, label: "Adı — İngilizce", type: string, required: true }
       - { name: hue, label: "Renk tonu (boş bırak: fotoğraflardan hesaplanır)", type: number }
+
+  - name: pages
+    label: "Menü ve sayfalar"
+    type: file
+    path: data/pages.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: "Kısa ad — adres çubuğunda görünür (küçük harf, Türkçe karakter ve boşluk yok). Var olanları değiştirme.", type: string, required: true }
+      - { name: tr, label: "Menüdeki adı — Türkçe", type: string, required: true }
+      - { name: en, label: "Menüdeki adı — İngilizce", type: string }
+      - { name: show, label: "Menüde görünsün", type: boolean, default: true }
+      - { name: titleTr, label: "YENİ SAYFA İÇİN · Başlık — Türkçe", type: string }
+      - { name: titleEn, label: "YENİ SAYFA İÇİN · Başlık — İngilizce", type: string }
+      - { name: introTr, label: "YENİ SAYFA İÇİN · Giriş cümlesi — Türkçe", type: text }
+      - { name: introEn, label: "YENİ SAYFA İÇİN · Giriş cümlesi — İngilizce", type: text }
+      - { name: bodyTr, label: "YENİ SAYFA İÇİN · Metin — Türkçe · paragrafları boş satırla ayır · fotoğraf için satıra tek başına images/09.jpg yaz", type: text }
+      - { name: bodyEn, label: "YENİ SAYFA İÇİN · Metin — İngilizce", type: text }
 
   - name: posts
     label: "Günlük yazıları"
@@ -195,6 +213,13 @@ ${catOpts}
       - { name: instagram, label: "Instagram adresi (boşsa düğme görünmez)", type: string }
       - { name: tiktok, label: "TikTok adresi (boşsa düğme görünmez)", type: string }
       - { name: vimeo, label: "Vimeo adresi (boşsa düğme görünmez)", type: string }
+      - name: aboutPhoto
+        label: "Hakkımda fotoğrafı"
+        type: image
+        options:
+          path: images
+          extensions: [jpg, jpeg, png, webp]
+          categories: [image]
       - { name: heroVideo, label: "Giriş videosu (boşsa sadece fotoğraf)", type: string }
       - { name: heroVideoSmall, label: "Giriş videosu — telefon için küçük hâli", type: string }
       - name: theme
