@@ -801,12 +801,17 @@ function justify(){
     const ratio = f => RATIO[f.dataset.src] || 1.5;
 
     const rows = [];
-    let row = [], sum = 0;
-    figs.forEach(f=>{
-      row.push(f); sum += ratio(f);
-      if(sum * target + (row.length - 1) * gap >= W){ rows.push({row: row, sum: sum}); row = []; sum = 0; }
-    });
-    if(row.length) rows.push({row: row, sum: sum, last: true});
+    if(W < 560){
+      /* Telefonda her kare tam genişlik: yan yana gelince ikisi de küçülüyor */
+      figs.forEach(f => rows.push({row: [f], sum: ratio(f)}));
+    }else{
+      let row = [], sum = 0;
+      figs.forEach(f=>{
+        row.push(f); sum += ratio(f);
+        if(sum * target + (row.length - 1) * gap >= W){ rows.push({row: row, sum: sum}); row = []; sum = 0; }
+      });
+      if(row.length) rows.push({row: row, sum: sum, last: true});
+    }
 
     const frag = document.createDocumentFragment();
     let prevH = 0;
