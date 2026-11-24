@@ -751,21 +751,20 @@ function closeReader(){ reader.classList.remove('on'); document.body.style.overf
 function buildMsg(e){
   e.preventDefault();
   const f = e.target, en = lang === 'en';
-  const lab = k => (f.querySelector('[data-k="form.'+k+'"]') || {}).textContent || k;
   const pick = n => { const el = f.elements[n]; return el && el.value ? el.options[el.selectedIndex].textContent : ''; };
   const val = n => (f.elements[n] && f.elements[n].value || '').trim();
   const ints = [...f.querySelectorAll('input[name=interests]:checked')].map(x => x.nextElementSibling.textContent);
+  const L = en
+    ? {ad:'Name',il:'Contact',se:'City',ro:'I am',ex:'Experience',st:'Style',fo:'Shoot',in:'Interests',di:'On set',wa:'Wardrobe',ti:'Availability',ag:'Age',li:'Link'}
+    : {ad:'Ad',il:'İletişim',se:'Şehir',ro:'Ben',ex:'Deneyim',st:'Stil',fo:'Çekim',in:'İlgi alanları',di:'Çekimde',wa:'Kıyafet',ti:'Uygunluk',ag:'Yaş',li:'Bağlantı'};
   const rows = [
-    [lab('name'), val('ad')], [lab('contact'), val('iletisim')], [lab('city'), val('sehir')],
-    ['', ''],
-    [lab('role'), pick('role')], [lab('exp'), pick('exp')], [lab('style'), pick('style')],
-    [lab('format'), pick('format')], [lab('interests').replace(/\s*\(.*\)$/, ''), ints.join(', ')],
-    [lab('direct'), pick('direct')], [lab('wardrobe'), pick('wardrobe')], [lab('time'), pick('time')],
-    [lab('age'), pick('age')], [lab('link').replace(/\s*\(.*\)$/, ''), val('link')]
-  ];
+    [L.ad, val('ad')], [L.il, val('iletisim')], [L.se, val('sehir')], [L.ro, pick('role')],
+    [L.ex, pick('exp')], [L.st, pick('style')], [L.fo, pick('format')], [L.in, ints.join(', ')],
+    [L.di, pick('direct')], [L.wa, pick('wardrobe')], [L.ti, pick('time')], [L.ag, pick('age')], [L.li, val('link')]
+  ].filter(r => r[1]);
   const greet = en ? 'Hi Ebru,\n\nI saw your site and I would like to work with you. Here are my details:\n'
                    : 'Merhaba Ebru,\n\nSitene baktım ve seninle çalışmak istiyorum. Bilgilerim şöyle:\n';
-  let body = greet + '\n' + rows.map(r => r[0] ? r[0] + ': ' + (r[1] || '—') : '').join('\n');
+  let body = greet + '\n' + rows.map(r => r[0] + ': ' + r[1]).join('\n');
   const idea = val('mesaj');
   if(idea) body += '\n\n' + idea;
   body += '\n\n' + (en ? 'Best,\n' : 'Sevgiler,\n') + (val('ad') || '');
