@@ -317,7 +317,7 @@
 
   <section class="pg">
     <div class="wrap split">
-      <div class="portrait reveal"><img src="images/about.jpg" alt=""></div>
+      <div class="portrait reveal"><img id="homeAboutImg" src="images/about.jpg" alt=""></div>
       <div class="split-txt reveal">
         <p class="eyebrow" data-k="home.aboutLabel"></p>
         <h2 class="h2" style="margin-bottom:1.5rem" data-k="about.title"></h2>
@@ -584,7 +584,7 @@ function fill(){
   footMail.textContent  = SITE.email;
   document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
   yr.textContent = new Date().getFullYear();
-  if(SITE.aboutPhoto) aboutImg.src = SITE.aboutPhoto;
+  if(SITE.aboutPhoto){ aboutImg.src = SITE.aboutPhoto; homeAboutImg.src = SITE.aboutPhoto; }
 
   const links = [['Instagram',SITE.instagram],['TikTok',SITE.tiktok],['Vimeo',SITE.vimeo]]
     .filter(x => x[1] && x[1] !== '#');
