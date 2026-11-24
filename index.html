@@ -14,10 +14,10 @@
     --line:rgba(241,238,227,.13); --line-2:rgba(241,238,227,.07);
     --display:'Fraunces',Georgia,'Times New Roman',serif;
     --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --pad:clamp(20px,5vw,80px);
+    --pad:clamp(20px,5vw,80px); --gap:clamp(10px,1.4vw,18px);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%}
   body{background:var(--ink);color:var(--cream);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.7;letter-spacing:.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
   body::before{
     content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.42;
@@ -32,20 +32,29 @@
   .eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--emerald);font-weight:400}
   .h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.05;letter-spacing:-.02em;margin:.5rem 0 0}
   .lede{max-width:54ch;color:var(--sand);margin-top:1.4rem;font-size:clamp(15px,1.3vw,17.5px)}
-  section{padding:clamp(72px,10vw,150px) 0;position:relative}
   .sec-head{margin-bottom:clamp(32px,4.5vw,54px)}
+  .more{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);border-bottom:1px solid var(--line);padding-bottom:8px;transition:.35s cubic-bezier(.2,.7,.3,1)}
+  .more:hover{border-color:var(--emerald);color:var(--emerald);gap:20px}
+  .more svg{width:15px;stroke:currentColor;fill:none;stroke-width:1.4}
+
+  /* pages */
+  .page{display:none}
+  .page.on{display:block}
+  .pg{padding:clamp(116px,14vh,176px) 0 clamp(70px,9vw,130px)}
+  .pg + .pg{padding-top:0}
 
   /* nav */
   header{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--pad);transition:background .45s ease,backdrop-filter .45s ease,border-color .45s ease;border-bottom:1px solid transparent}
-  header.solid{background:rgba(24,35,15,.84);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line-2)}
-  nav{max-width:1360px;margin:0 auto;height:74px;display:flex;align-items:center;gap:28px}
+  header.solid{background:rgba(24,35,15,.86);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line-2)}
+  nav{max-width:1360px;margin:0 auto;height:74px;display:flex;align-items:center;gap:26px}
   .brand{font-family:var(--display);font-size:19px;letter-spacing:.01em;font-weight:400;white-space:nowrap;margin-right:auto}
   .brand .dot{color:var(--emerald)}
-  .nav-links{display:flex;gap:30px;align-items:center}
-  .nav-links button{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);padding:6px 0;position:relative;transition:color .3s}
-  .nav-links button::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--emerald);transition:right .35s cubic-bezier(.2,.7,.3,1)}
-  .nav-links button:hover{color:var(--cream)}
-  .nav-links button:hover::after{right:0}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);padding:6px 0;position:relative;transition:color .3s}
+  .nav-links a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--emerald);transition:right .35s cubic-bezier(.2,.7,.3,1)}
+  .nav-links a:hover{color:var(--cream)}
+  .nav-links a:hover::after,.nav-links a.on::after{right:0}
+  .nav-links a.on{color:var(--cream)}
   .lang{display:flex;align-items:center;border:1px solid var(--line);border-radius:100px;padding:3px;gap:2px;flex-shrink:0}
   .lang button{font-size:11px;letter-spacing:.1em;padding:5px 11px;border-radius:100px;color:var(--sand-dim);transition:.3s}
   .lang button.on{background:var(--moss);color:var(--cream)}
@@ -55,12 +64,12 @@
   .burger i:nth-child(2){bottom:10px}
   body.menu .burger i:nth-child(1){top:14px;transform:rotate(45deg)}
   body.menu .burger i:nth-child(2){bottom:14px;transform:rotate(-45deg)}
-  @media(max-width:900px){
+  @media(max-width:1000px){
     .burger{display:block}
-    .nav-links{position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;background:rgba(24,35,15,.97);backdrop-filter:blur(20px);padding:14px var(--pad) 30px;align-items:stretch;transform:translateY(-130%);transition:transform .5s cubic-bezier(.2,.7,.3,1);border-bottom:1px solid var(--line-2)}
+    .nav-links{position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;background:rgba(24,35,15,.98);backdrop-filter:blur(20px);padding:14px var(--pad) 30px;align-items:stretch;transform:translateY(-130%);transition:transform .5s cubic-bezier(.2,.7,.3,1);border-bottom:1px solid var(--line-2)}
     body.menu .nav-links{transform:translateY(0)}
-    .nav-links button{font-size:15px;letter-spacing:.08em;padding:15px 0;text-align:left;border-bottom:1px solid var(--line-2)}
-    .nav-links button::after{display:none}
+    .nav-links a{font-size:15px;letter-spacing:.08em;padding:15px 0;border-bottom:1px solid var(--line-2)}
+    .nav-links a::after{display:none}
   }
 
   /* hero */
@@ -76,37 +85,41 @@
   .hero-meta p strong{color:var(--cream);font-weight:400}
   .scroll-cue{position:absolute;right:var(--pad);bottom:clamp(40px,7vh,86px);writing-mode:vertical-rl;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);display:flex;align-items:center;gap:14px}
   .scroll-cue::after{content:'';width:1px;height:56px;background:linear-gradient(var(--emerald),transparent)}
-  @media(max-width:900px){.scroll-cue{display:none}}
+  @media(max-width:1000px){.scroll-cue{display:none}}
 
-  /* filters */
-  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(26px,3.5vw,40px)}
-  .filters button{padding:9px 21px;border:1px solid var(--line);border-radius:100px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);transition:.3s}
-  .filters button:hover{border-color:var(--emerald);color:var(--cream)}
-  .filters button.on{background:var(--emerald);border-color:var(--emerald);color:var(--cream)}
-
-  /* gallery */
-  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px);align-items:start}
+  /* home selection grid */
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
   .tile{position:relative;overflow:hidden;background:var(--ink-2);cursor:zoom-in;grid-column:span 4}
   .tile.w6{grid-column:span 6}
   .tile.w8{grid-column:span 8}
   .tile.w12{grid-column:span 12}
-  .tile figure{position:absolute;inset:0;margin:0;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
-  .tile:hover figure{transform:scale(1.04)}
-  .tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2;background:linear-gradient(to top,rgba(18,35,15,.88),transparent);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateY(8px);transition:.45s ease}
-  .tile:hover figcaption{opacity:1;transform:none}
+  .tile img{transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+  .tile:hover img{transform:scale(1.04)}
   @media(max-width:760px){
     .tile,.tile.w6,.tile.w8{grid-column:span 6}
     .tile.w12{grid-column:span 12}
-    .tile figcaption{opacity:1;transform:none;padding:14px;font-size:10.5px}
   }
+
+  /* masonry (photographs page) */
+  .mas{columns:3;column-gap:var(--gap)}
+  .mas > figure{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 var(--gap);position:relative;overflow:hidden;cursor:zoom-in;background:var(--ink-2)}
+  .mas img{height:auto;object-fit:fill;transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
+  .mas figure:hover img{transform:scale(1.04)}
+  @media(max-width:1000px){.mas{columns:2}}
+  @media(max-width:560px){.mas{columns:1}}
+  .cat-block{margin-bottom:clamp(50px,7vw,96px)}
+  .cat-block:last-child{margin-bottom:0}
+  .cat-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:clamp(20px,2.5vw,32px);padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .cat-head h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,36px);letter-spacing:-.02em}
+  .cat-head span{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim)}
 
   /* lightbox */
   .lb{position:fixed;inset:0;z-index:500;background:rgba(14,20,8,.97);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:clamp(16px,5vw,70px)}
   .lb.on{display:flex}
   .lb-stage{position:relative;max-width:1150px;width:100%;display:flex;flex-direction:column;gap:16px}
-  .lb-frame{background:var(--ink-2);max-height:76vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .lb-frame img{width:auto;height:auto;max-width:100%;max-height:76vh;object-fit:contain}
-  .lb-cap{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);text-align:center}
+  .lb-frame{background:var(--ink-2);max-height:78vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .lb-frame img{width:auto;height:auto;max-width:100%;max-height:78vh;object-fit:contain}
+  .lb-cap{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim);text-align:center}
   .lb-x,.lb-prev,.lb-next{position:absolute;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s;background:rgba(24,35,15,.65)}
   .lb-x:hover,.lb-prev:hover,.lb-next:hover{background:var(--moss);border-color:var(--moss)}
   .lb-x{top:-58px;right:0}
@@ -124,9 +137,19 @@
   .reel-panel h3{font-family:var(--display);font-weight:300;font-size:clamp(24px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em}
   .reel-panel p{color:var(--sand);max-width:50ch;margin:16px auto 0;font-size:15.5px}
   .reel-panel .dash{width:46px;height:1px;background:var(--emerald);margin:0 auto 26px}
+  .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--gap)}
+  .vid{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink-2);display:block}
+  .vid img{opacity:.75;transition:.6s}
+  .vid:hover img{opacity:.95;transform:scale(1.03)}
+  .vid .play{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:1px solid rgba(241,238,227,.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:.35s}
+  .vid:hover .play{background:var(--emerald);border-color:var(--emerald)}
+  .vid .play svg{width:18px;fill:var(--cream)}
+  .vid .cap{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(to top,rgba(18,35,15,.9),transparent);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .vid .cap h4{font-family:var(--display);font-weight:400;font-size:18px}
+  .vid .cap span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
 
   /* models */
-  .models{background:linear-gradient(180deg,#1b2712,#18230F)}
+  .models-bg{background:linear-gradient(180deg,#1b2712,#18230F)}
   .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(22px,3vw,46px)}
   .card{border-top:1px solid var(--line);padding-top:24px}
   .card .num{font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--emerald)}
@@ -179,32 +202,34 @@
   .reader-body p{margin-bottom:1.3em;color:var(--sand);font-size:16.5px;line-height:1.8}
   .reader-x{position:fixed;top:24px;right:var(--pad);z-index:2}
 
-  /* about */
-  .about-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
-  @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+  /* split (home intro + about page) */
+  .split{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+  @media(max-width:900px){.split{grid-template-columns:1fr}}
   .portrait{aspect-ratio:4/5;background:var(--ink-2);position:relative;overflow:hidden}
-  .about-txt p{color:var(--sand);margin-bottom:1.2em;font-size:16.5px}
+  .split-txt p{color:var(--sand);margin-bottom:1.2em;font-size:16.5px}
   .facts{margin-top:34px;border-top:1px solid var(--line)}
   .facts div{display:flex;gap:20px;padding:13px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
   .facts dt{width:120px;flex-shrink:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand-dim);padding-top:3px}
   .facts dd{color:var(--cream)}
 
   /* contact */
-  .contact{background:linear-gradient(180deg,#18230F,#121a0b);text-align:center}
-  .contact h2{font-family:var(--display);font-weight:300;font-size:clamp(34px,7vw,92px);line-height:1;letter-spacing:-.03em}
-  .mail{display:inline-block;margin-top:clamp(26px,4vw,40px);font-family:var(--display);font-size:clamp(17px,2.6vw,30px);border-bottom:1px solid var(--line);padding-bottom:6px;transition:.35s;word-break:break-word}
+  .contact-wrap{text-align:center}
+  .contact-wrap h2{font-family:var(--display);font-weight:300;font-size:clamp(34px,7vw,92px);line-height:1;letter-spacing:-.03em}
+  .mail{display:inline-block;margin-top:clamp(24px,3.5vw,36px);font-family:var(--display);font-size:clamp(17px,2.6vw,30px);border-bottom:1px solid var(--line);padding-bottom:6px;transition:.35s;word-break:break-word}
   .mail:hover{border-color:var(--emerald);color:var(--emerald)}
-  .socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:clamp(30px,4vw,44px)}
+  .socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:clamp(28px,4vw,42px)}
   .socials a{padding:11px 22px;border:1px solid var(--line);border-radius:100px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;transition:.35s}
   .socials a:hover{border-color:var(--emerald);background:rgba(31,125,83,.15);transform:translateY(-2px)}
-  footer{padding:30px 0;border-top:1px solid var(--line-2)}
+
+  footer{padding:30px 0;border-top:1px solid var(--line-2);background:#121a0b}
   .foot{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center}
   .foot p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-dim)}
+  .foot a{color:var(--sand-dim);transition:.3s}
+  .foot a:hover{color:var(--emerald)}
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* içerik hatası paneli */
   .oops{position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:var(--pad)}
   .oops-in{max-width:560px}
   .oops h1{font-family:var(--display);font-weight:300;font-size:clamp(26px,4vw,40px);line-height:1.15;margin-bottom:18px}
@@ -213,7 +238,6 @@
   .oops .dash{width:46px;height:1px;background:var(--emerald);margin-bottom:26px}
 
   @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
     *{transition-duration:.01ms!important;animation-duration:.01ms!important}
   }
@@ -223,14 +247,14 @@
 
 <header id="hdr">
   <nav>
-    <a class="brand" href="#" onclick="go('top');return false"><span id="brandName"></span><span class="dot">.</span></a>
+    <a class="brand" href="#home"><span id="brandName"></span><span class="dot">.</span></a>
     <div class="nav-links" id="navLinks">
-      <button onclick="go('isler')"    data-k="nav.work"></button>
-      <button onclick="go('video')"    data-k="nav.film"></button>
-      <button onclick="go('modeller')" data-k="nav.models"></button>
-      <button onclick="go('gunluk')"   data-k="nav.journal"></button>
-      <button onclick="go('hakkimda')" data-k="nav.about"></button>
-      <button onclick="go('iletisim')" data-k="nav.contact"></button>
+      <a href="#fotograflar" data-route="fotograflar" data-k="nav.photos"></a>
+      <a href="#video"       data-route="video"       data-k="nav.film"></a>
+      <a href="#gunluk"      data-route="gunluk"      data-k="nav.journal"></a>
+      <a href="#modeller"    data-route="modeller"    data-k="nav.models"></a>
+      <a href="#hakkimda"    data-route="hakkimda"    data-k="nav.about"></a>
+      <a href="#iletisim"    data-route="iletisim"    data-k="nav.contact"></a>
     </div>
     <div class="lang">
       <button id="btnTr" class="on" onclick="setLang('tr')">TR</button>
@@ -240,129 +264,171 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<div class="hero" id="top">
-  <div class="hero-bg"><img src="images/hero.jpg" alt=""></div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow" data-k="hero.eyebrow"></p>
-    <h1><span id="heroName"></span><span class="dot">.</span></h1>
-    <div class="hero-meta">
-      <p data-k="hero.tagline"></p>
-      <p><strong data-k="hero.ongoing"></strong> — <span id="projName"></span></p>
-      <p data-k="hero.location"></p>
+<!-- ============================ ANA SAYFA ============================ -->
+<div class="page" id="page-home">
+
+  <div class="hero">
+    <div class="hero-bg"><img src="images/hero.jpg" alt=""></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow" data-k="hero.eyebrow"></p>
+      <h1><span id="heroName"></span><span class="dot">.</span></h1>
+      <div class="hero-meta">
+        <p data-k="hero.tagline"></p>
+        <p><strong data-k="hero.ongoing"></strong> — <span id="projName"></span></p>
+        <p data-k="hero.location"></p>
+      </div>
     </div>
+    <div class="scroll-cue"><span data-k="hero.scroll"></span></div>
   </div>
-  <div class="scroll-cue"><span data-k="hero.scroll"></span></div>
+
+  <section class="pg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="home.selLabel"></p>
+        <h2 class="h2" data-k="home.selTitle"></h2>
+      </div>
+      <div class="grid" id="featGrid"></div>
+      <p style="margin-top:clamp(30px,4vw,48px)">
+        <a class="more" href="#fotograflar"><span data-k="home.seeAll"></span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </p>
+    </div>
+  </section>
+
+  <section class="pg">
+    <div class="wrap split">
+      <div class="portrait reveal"><img src="images/about.jpg" alt=""></div>
+      <div class="split-txt reveal">
+        <p class="eyebrow" data-k="home.aboutLabel"></p>
+        <h2 class="h2" style="margin-bottom:1.5rem" data-k="about.title"></h2>
+        <p data-k="home.aboutP"></p>
+        <a class="more" href="#hakkimda"><span data-k="home.aboutLink"></span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="home.journalLabel"></p>
+      </div>
+      <div class="posts reveal" id="homePosts"></div>
+      <p style="margin-top:clamp(30px,4vw,44px)">
+        <a class="more" href="#gunluk"><span data-k="home.journalLink"></span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </p>
+    </div>
+  </section>
 </div>
 
-<!-- WORK -->
-<section id="isler">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">01 — <span data-k="work.label"></span></p>
-      <h2 class="h2" id="projTitle"></h2>
-      <p class="lede" data-k="work.lede"></p>
-    </div>
-    <div class="filters reveal" id="filters"></div>
-    <div class="grid" id="gal"></div>
-  </div>
-</section>
-
-<!-- VIDEO -->
-<section id="video">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">02 — <span data-k="film.label"></span></p>
-      <h2 class="h2" data-k="film.title"></h2>
-    </div>
-    <div class="reel-panel reveal">
-      <div class="dash"></div>
-      <h3 data-k="film.h"></h3>
-      <p data-k="film.p"></p>
-    </div>
-  </div>
-</section>
-
-<!-- FOR MODELS -->
-<section id="modeller" class="models">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">03 — <span data-k="models.label"></span></p>
-      <h2 class="h2" data-k="models.title"></h2>
-      <p class="lede" data-k="models.lede"></p>
-    </div>
-
-    <div class="cols reveal">
-      <div class="card"><p class="num">01</p><h3 data-k="models.c1h"></h3><p data-k="models.c1p"></p></div>
-      <div class="card"><p class="num">02</p><h3 data-k="models.c2h"></h3><p data-k="models.c2p"></p></div>
-      <div class="card"><p class="num">03</p><h3 data-k="models.c3h"></h3><p data-k="models.c3p"></p></div>
-    </div>
-
-    <ul class="checklist reveal">
-      <li data-k="models.l1"></li>
-      <li data-k="models.l2"></li>
-      <li data-k="models.l3"></li>
-      <li data-k="models.l4"></li>
-      <li data-k="models.l5"></li>
-      <li data-k="models.l6"></li>
-      <li data-k="models.l7"></li>
-      <li data-k="models.l8"></li>
-    </ul>
-
-    <div class="note reveal">
-      <h4 data-k="models.noteH"></h4>
-      <p data-k="models.noteP"></p>
-    </div>
-
-    <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
-      <p class="eyebrow" style="margin-bottom:18px" data-k="form.label"></p>
-      <div class="two">
-        <div class="field"><label data-k="form.name"></label><input name="ad" required></div>
-        <div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div>
+<!-- ============================ FOTOĞRAFLAR ============================ -->
+<div class="page" id="page-fotograflar">
+  <section class="pg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="photos.label"></p>
+        <h2 class="h2" data-k="photos.title"></h2>
+        <p class="lede" data-k="photos.lede"></p>
       </div>
-      <div class="two">
-        <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
-        <div class="field">
-          <label data-k="form.exp"></label>
-          <select name="deneyim">
-            <option data-k="form.exp1"></option>
-            <option data-k="form.exp2"></option>
-            <option data-k="form.exp3"></option>
-          </select>
+      <div id="catWrap"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ VİDEO ============================ -->
+<div class="page" id="page-video">
+  <section class="pg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="film.label"></p>
+        <h2 class="h2" data-k="film.title"></h2>
+      </div>
+      <div id="vidWrap"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ GÜNLÜK ============================ -->
+<div class="page" id="page-gunluk">
+  <section class="pg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="journal.label"></p>
+        <h2 class="h2" data-k="journal.title"></h2>
+        <p class="lede" data-k="journal.lede"></p>
+      </div>
+      <div class="posts reveal" id="posts"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ MODELLER İÇİN ============================ -->
+<div class="page" id="page-modeller">
+  <section class="pg models-bg">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-k="models.label"></p>
+        <h2 class="h2" data-k="models.title"></h2>
+        <p class="lede" data-k="models.lede"></p>
+      </div>
+
+      <div class="cols reveal">
+        <div class="card"><p class="num">01</p><h3 data-k="models.c1h"></h3><p data-k="models.c1p"></p></div>
+        <div class="card"><p class="num">02</p><h3 data-k="models.c2h"></h3><p data-k="models.c2p"></p></div>
+        <div class="card"><p class="num">03</p><h3 data-k="models.c3h"></h3><p data-k="models.c3p"></p></div>
+      </div>
+
+      <ul class="checklist reveal">
+        <li data-k="models.l1"></li><li data-k="models.l2"></li>
+        <li data-k="models.l3"></li><li data-k="models.l4"></li>
+        <li data-k="models.l5"></li><li data-k="models.l6"></li>
+        <li data-k="models.l7"></li><li data-k="models.l8"></li>
+      </ul>
+
+      <div class="note reveal">
+        <h4 data-k="models.noteH"></h4>
+        <p data-k="models.noteP"></p>
+      </div>
+
+      <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
+        <p class="eyebrow" style="margin-bottom:18px" data-k="form.label"></p>
+        <div class="two">
+          <div class="field"><label data-k="form.name"></label><input name="ad" required></div>
+          <div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div>
         </div>
+        <div class="two">
+          <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
+          <div class="field">
+            <label data-k="form.exp"></label>
+            <select name="deneyim">
+              <option data-k="form.exp1"></option>
+              <option data-k="form.exp2"></option>
+              <option data-k="form.exp3"></option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
+        <button type="submit" class="btn" data-k="form.submit"></button>
+      </form>
+
+      <div class="out" id="out">
+        <h4 data-k="form.outH"></h4>
+        <p data-k="form.outP"></p>
+        <pre id="msg"></pre>
+        <button class="btn" onclick="copyMsg()" id="copyBtn"></button>
       </div>
-      <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
-      <button type="submit" class="btn" data-k="form.submit"></button>
-    </form>
-
-    <div class="out" id="out">
-      <h4 data-k="form.outH"></h4>
-      <p data-k="form.outP"></p>
-      <pre id="msg"></pre>
-      <button class="btn" onclick="copyMsg()" id="copyBtn"></button>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- JOURNAL -->
-<section id="gunluk">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">04 — <span data-k="journal.label"></span></p>
-      <h2 class="h2" data-k="journal.title"></h2>
-      <p class="lede" data-k="journal.lede"></p>
-    </div>
-    <div class="posts reveal" id="posts"></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="hakkimda">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="portrait reveal"><img src="images/about.jpg" alt=""></div>
-      <div class="about-txt reveal">
-        <p class="eyebrow">05 — <span data-k="about.label"></span></p>
+<!-- ============================ HAKKIMDA ============================ -->
+<div class="page" id="page-hakkimda">
+  <section class="pg">
+    <div class="wrap split">
+      <div class="portrait reveal"><img src="images/02.jpg" alt=""></div>
+      <div class="split-txt reveal">
+        <p class="eyebrow" data-k="about.label"></p>
         <h2 class="h2" style="margin-bottom:1.6rem" data-k="about.title"></h2>
         <p data-k="about.p1"></p>
         <p data-k="about.p2"></p>
@@ -373,26 +439,31 @@
         </dl>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- CONTACT -->
-<section id="iletisim" class="contact">
-  <div class="wrap">
-    <p class="eyebrow reveal">06 — <span data-k="contact.label"></span></p>
-    <h2 class="reveal" data-k="contact.title"></h2>
-    <div class="reveal">
-      <a class="mail" href="#" id="mailLink"></a>
-      <div class="socials" id="socials"></div>
+<!-- ============================ İLETİŞİM ============================ -->
+<div class="page" id="page-iletisim">
+  <section class="pg">
+    <div class="wrap contact-wrap">
+      <p class="eyebrow reveal" data-k="contact.label"></p>
+      <h2 class="reveal" data-k="contact.title"></h2>
+      <div class="reveal">
+        <p class="lede" style="margin-left:auto;margin-right:auto" data-k="contact.lede"></p>
+        <a class="mail" href="#" id="mailLink"></a>
+        <div class="socials" id="socials"></div>
+      </div>
     </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <p>© <span id="yr"></span> <span class="footName"></span></p>
+    <p><a href="#iletisim" id="footMail"></a></p>
+    <p data-k="footer.rights"></p>
   </div>
-  <footer>
-    <div class="wrap foot">
-      <p>© <span id="yr"></span> <span class="footName"></span></p>
-      <p data-k="footer.rights"></p>
-    </div>
-  </footer>
-</section>
+</footer>
 
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
@@ -417,18 +488,17 @@
 
 <script src="content.js"></script>
 <script>
+const ROUTES = ['home','fotograflar','video','gunluk','modeller','hakkimda','iletisim'];
 let lang = 'tr';
 try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
 
-let cat = 'all';   // seçili kategori
-let view = [];     // ekranda görünen fotoğraflar
+let SETS = {feat:[], photos:[]};   // lightbox dizileri
+let lbSet = [], idx = 0;
 
-function t(key){
-  const e = TEXT[key];
-  if(!e) return '';
-  return e[lang] !== undefined ? e[lang] : (e.tr || '');
-}
+function t(k){ const e = TEXT[k]; return e ? (e[lang] !== undefined ? e[lang] : (e.tr||'')) : ''; }
+function catName(c){ return lang==='tr' ? c.tr : c.en; }
 
+/* ---------------- dil ---------------- */
 function setLang(l){
   lang = l;
   try{ localStorage.setItem('lang', l); }catch(e){}
@@ -444,9 +514,9 @@ function fill(){
   brandName.textContent = SITE.name;
   heroName.textContent  = SITE.name;
   projName.textContent  = SITE.project;
-  projTitle.textContent = SITE.project;
   mailLink.textContent  = SITE.email;
   mailLink.href = 'mailto:' + SITE.email;
+  footMail.textContent  = SITE.email;
   document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
   yr.textContent = new Date().getFullYear();
 
@@ -455,53 +525,108 @@ function fill(){
   socials.innerHTML = links.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>').join('');
 }
 
-function setCat(c){ cat = c; render(); }
+/* ---------------- içerik ---------------- */
+function postRow(p, i){
+  const ti = lang==='tr'?p.tr:p.en;
+  const ex = lang==='tr'?p.exTr:p.exEn;
+  return '<button class="post" onclick="openReader('+i+')">'
+    + '<time>'+p.date+'</time>'
+    + '<div><h3>'+ti+'</h3><p class="ex">'+ex+'</p></div>'
+    + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
+    + '</button>';
+}
 
 function render(){
-  /* kategori düğmeleri — sadece fotoğrafı olan kategoriler görünür */
-  const used = (typeof CATS !== 'undefined' ? CATS : []).filter(c => PHOTOS.some(p => p.cat === c.id));
-  filters.innerHTML = used.length < 2 ? '' :
-    ['<button class="'+(cat==='all'?'on':'')+'" onclick="setCat(\'all\')">'+t('work.all')+'</button>']
-      .concat(used.map(c =>
-        '<button class="'+(cat===c.id?'on':'')+'" onclick="setCat(\''+c.id+'\')">'+(lang==='tr'?c.tr:c.en)+'</button>'
-      )).join('');
+  /* --- ana sayfa seçkisi --- */
+  SETS.feat = PHOTOS.filter(p => p.feat);
+  featGrid.innerHTML = SETS.feat.map((p,i)=>
+    '<div class="tile w'+(p.w||6)+'" style="aspect-ratio:'+(p.ratio||'3/2')+'" onclick="openLb(\'feat\','+i+')">'
+    + '<img src="'+p.src+'" alt="" loading="lazy"></div>'
+  ).join('');
 
-  view = cat==='all' ? PHOTOS.slice() : PHOTOS.filter(p => p.cat === cat);
+  /* --- fotoğraflar sayfası: kategorilere ayrılmış --- */
+  SETS.photos = [];
+  let html = '';
+  CATS.forEach(c=>{
+    const list = PHOTOS.filter(p => p.cat === c.id);
+    if(!list.length) return;
+    const start = SETS.photos.length;
+    SETS.photos = SETS.photos.concat(list);
+    html += '<div class="cat-block reveal"><div class="cat-head"><h3>'+catName(c)+'</h3>'
+          + '<span>'+list.length+'</span></div><div class="mas">'
+          + list.map((p,j)=>
+              '<figure onclick="openLb(\'photos\','+(start+j)+')">'
+              + '<img src="'+p.src+'" alt="'+catName(c)+'" loading="lazy"></figure>'
+            ).join('')
+          + '</div></div>';
+  });
+  /* kategorisi tanımsız kalanlar */
+  const rest = PHOTOS.filter(p => !CATS.some(c => c.id === p.cat));
+  if(rest.length){
+    const start = SETS.photos.length;
+    SETS.photos = SETS.photos.concat(rest);
+    html += '<div class="cat-block reveal"><div class="mas">'
+          + rest.map((p,j)=>'<figure onclick="openLb(\'photos\','+(start+j)+')"><img src="'+p.src+'" alt="" loading="lazy"></figure>').join('')
+          + '</div></div>';
+  }
+  catWrap.innerHTML = html;
 
-  gal.innerHTML = view.map((p,i)=>{
-    const cap = lang==='tr' ? p.tr : p.en;
-    return '<div class="tile w'+p.w+'" style="aspect-ratio:'+p.ratio+'" onclick="openLb('+i+')">'
-      + '<figure><img src="'+p.src+'" alt="'+cap+'" loading="lazy"></figure>'
-      + '<figcaption>'+cap+'</figcaption></div>';
-  }).join('');
+  /* --- video --- */
+  if(typeof VIDEOS !== 'undefined' && VIDEOS.length){
+    vidWrap.innerHTML = '<div class="vids reveal">' + VIDEOS.map(v=>
+      '<a class="vid" href="'+v.url+'" target="_blank" rel="noopener">'
+      + (v.poster ? '<img src="'+v.poster+'" alt="" loading="lazy">' : '')
+      + '<span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'
+      + '<span class="cap"><h4>'+(lang==='tr'?v.tr:v.en)+'</h4><span>'+(v.meta||'')+'</span></span></a>'
+    ).join('') + '</div>';
+  }else{
+    vidWrap.innerHTML = '<div class="reel-panel reveal"><div class="dash"></div>'
+      + '<h3>'+t('film.h')+'</h3><p>'+t('film.p')+'</p></div>';
+  }
 
-  posts.innerHTML = POSTS.map((p,i)=>{
-    const ti = lang==='tr'?p.tr:p.en;
-    const ex = lang==='tr'?p.exTr:p.exEn;
-    return '<button class="post" onclick="openReader('+i+')">'
-      + '<time>'+p.date+'</time>'
-      + '<div><h3>'+ti+'</h3><p class="ex">'+ex+'</p></div>'
-      + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
-      + '</button>';
-  }).join('');
+  /* --- günlük --- */
+  posts.innerHTML     = POSTS.map(postRow).join('');
+  homePosts.innerHTML = POSTS.slice(0,2).map(postRow).join('');
 
   copyBtn.textContent = t('ui.copy');
   observe();
 }
 
-/* lightbox */
-let idx = 0;
-function openLb(i){ idx = i; paint(); lb.classList.add('on'); document.body.style.overflow='hidden'; }
-function paint(){
-  const p = view[idx];
-  const cap = lang==='tr'?p.tr:p.en;
-  lbFrame.innerHTML = '<img src="'+p.src+'" alt="'+cap+'">';
-  lbCap.textContent = cap + '  ·  ' + (idx+1) + ' / ' + view.length;
+/* ---------------- yönlendirme ---------------- */
+function route(){
+  let h = (location.hash || '').replace('#','');
+  if(ROUTES.indexOf(h) === -1) h = 'home';
+  ROUTES.forEach(p=>{
+    const el = document.getElementById('page-'+p);
+    if(el) el.classList.toggle('on', p === h);
+  });
+  document.querySelectorAll('.nav-links a[data-route]').forEach(a=>{
+    a.classList.toggle('on', a.dataset.route === h);
+  });
+  document.body.classList.remove('menu');
+  closeLb(); closeReader();
+  window.scrollTo(0,0);
+  observe();
 }
-function step(d){ idx = (idx + d + view.length) % view.length; paint(); }
-function closeLb(){ lb.classList.remove('on'); document.body.style.overflow=''; }
 
-/* reader */
+/* ---------------- lightbox ---------------- */
+function openLb(setName, i){
+  lbSet = SETS[setName] || [];
+  if(!lbSet.length) return;
+  idx = i; paint();
+  lb.classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function paint(){
+  const p = lbSet[idx];
+  if(!p) return;
+  lbFrame.innerHTML = '<img src="'+p.src+'" alt="">';
+  lbCap.textContent = (idx+1) + ' / ' + lbSet.length;
+}
+function step(d){ if(lbSet.length){ idx = (idx + d + lbSet.length) % lbSet.length; paint(); } }
+function closeLb(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
+
+/* ---------------- günlük okuyucu ---------------- */
 function openReader(i){
   const p = POSTS[i];
   rDate.textContent  = p.date;
@@ -509,11 +634,11 @@ function openReader(i){
   rBody.innerHTML    = (lang==='tr'?p.bodyTr:p.bodyEn).map(x=>'<p>'+x+'</p>').join('');
   reader.classList.add('on');
   reader.scrollTop = 0;
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeReader(){ reader.classList.remove('on'); document.body.style.overflow=''; }
+function closeReader(){ reader.classList.remove('on'); document.body.style.overflow = ''; }
 
-/* form */
+/* ---------------- form ---------------- */
 function buildMsg(e){
   e.preventDefault();
   const f = new FormData(e.target);
@@ -540,13 +665,9 @@ async function copyMsg(){
   }
 }
 
-/* nav */
-function go(id){
-  document.body.classList.remove('menu');
-  const el = document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
+/* ---------------- genel ---------------- */
 addEventListener('scroll',()=>{ hdr.classList.toggle('solid', scrollY > 60); },{passive:true});
+addEventListener('hashchange', route);
 addEventListener('keydown',e=>{
   if(e.key==='Escape'){ closeLb(); closeReader(); }
   if(lb.classList.contains('on')){
@@ -560,11 +681,11 @@ function observe(){
   if(io) io.disconnect();
   io = new IntersectionObserver(es=>{
     es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
-  },{threshold:.08,rootMargin:'0px 0px -40px'});
-  document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+  },{threshold:.06,rootMargin:'0px 0px -30px'});
+  document.querySelectorAll('.page.on .reveal').forEach(e=>io.observe(e));
 }
 
-/* ---- güvenlik ağı: content.js bozuksa sayfa bembeyaz kalmasın ---- */
+/* ---------------- güvenlik ağı ---------------- */
 function oops(err){
   const d = document.createElement('div');
   d.className = 'oops';
@@ -580,10 +701,12 @@ function oops(err){
   document.body.appendChild(d);
 }
 try{
-  if(typeof SITE==='undefined' || typeof PHOTOS==='undefined' || typeof POSTS==='undefined' || typeof TEXT==='undefined')
+  if(typeof SITE==='undefined' || typeof PHOTOS==='undefined' || typeof POSTS==='undefined'
+     || typeof TEXT==='undefined' || typeof CATS==='undefined')
     throw new Error('content.js okunamadı');
   fill();
   setLang(lang);
+  route();
 }catch(err){ oops(err); }
 </script>
 </body>

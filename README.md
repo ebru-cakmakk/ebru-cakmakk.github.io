@@ -39,58 +39,91 @@ barındırma yine ücretsiz kalır.
 
 ---
 
-## 2. İçeriği güncellemek
+## 2. Sitenin yapısı
 
-Bilgisayara program kurmana gerek yok. Her şey tarayıcıdan:
+Site tek bir `index.html` dosyasından oluşur ama **ayrı sayfalar gibi çalışır**:
 
-### Yazıları, isimleri, sosyal medya bağlantılarını değiştirmek
-1. GitHub'da deponu aç → `content.js` dosyasına tıkla.
-2. Sağ üstteki **kalem** simgesine bas.
-3. Tırnak içindeki yazıları değiştir.
-4. Aşağıda **Commit changes** → bir dakika içinde site güncellenir.
+```
+#home          Ana sayfa — seçki, kısa tanıtım, son yazılar
+#fotograflar   Tüm fotoğraflar, kategorilere ayrılmış
+#video         Showreel ve videolar
+#gunluk        Günlük yazıları
+#modeller      Modeller için bilgilendirme ve başvuru
+#hakkimda      Hakkımda
+#iletisim      İletişim
+```
+
+Adres çubuğunda `ebru-cakmakk.github.io/#fotograflar` gibi görünür ve bu bağlantılar
+paylaşılabilir — birine doğrudan fotoğraf sayfasını gönderebilirsin.
+
+---
+
+## 3. İçeriği güncellemek
+
+Bilgisayara program kurmana gerek yok. Her şey tarayıcıdan, `content.js` dosyasından.
+
+### Dosyayı açmak
+GitHub'da deponu aç → `content.js` → sağ üstteki **kalem** simgesi → düzenle →
+altta **Commit changes**. Site bir dakika içinde güncellenir.
+
+Daha rahat bir editör istersen: depo sayfasındayken klavyeden **nokta (.)** tuşuna bas,
+tarayıcıda tam bir kod editörü açılır.
 
 ### Yeni fotoğraf eklemek
-1. Fotoğrafı önce küçült: uzun kenarı **2200 piksel**, JPEG, **400 KB altı**.
+1. Fotoğrafı küçült: uzun kenar **2200 piksel**, JPEG, **400 KB altı**.
    Ücretsiz araç: [squoosh.app](https://squoosh.app)
 2. Dosya adında Türkçe karakter ve boşluk olmasın: `09.jpg` gibi.
 3. GitHub'da `images` klasörünü aç → **Add file** → **Upload files** → sürükle bırak.
-4. `content.js` içindeki `PHOTOS` listesine yeni bir satır ekle:
+4. `content.js` içindeki `PHOTOS` listesine tek satır ekle:
 
 ```js
-{src:'images/09.jpg', cat:'portre', w:6, ratio:'3/2', tr:'Fotoğrafın adı', en:'Photo title'},
+{src:'images/09.jpg', cat:'portre'},
 ```
 
-`cat` kategori: `portre` · `doga` · `peyzaj` (listeyi `CATS` bölümünden değiştirebilirsin)
+Hepsi bu. İsim yazmana gerek yok, boyut belirtmene de — Fotoğraflar sayfasında
+kendi doğal oranıyla görünür.
+
+**Ana sayfadaki seçkiye koymak istersen** üç alan daha ekle:
+
+```js
+{src:'images/09.jpg', cat:'portre', feat:true, w:8, ratio:'3/2'},
+```
+
 `w` genişlik: **4** küçük · **6** orta · **8** geniş · **12** tam sayfa
 `ratio` oran: **3/2** yatay · **3/4** dikey · **1/1** kare · **21/9** sinema bandı
 
+> Düzen ipucu: `w:8` ile `w:4` yan yana tam oturur, `w:6` + `w:6` de öyle.
+> `w:12` tek başına tam genişlik kaplar.
+
 ### Yeni kategori eklemek
-`content.js` içindeki `CATS` listesine bir satır ekle:
+`CATS` listesine bir satır ekle:
 
 ```js
 {id:'sokak', tr:'Sokak', en:'Street'},
 ```
 
-Sonra o kategoriye girecek fotoğrafların `cat` değerine `'sokak'` yaz. Galerinin
-üstündeki filtre düğmeleri kendiliğinden güncellenir; fotoğrafı olmayan kategori
-görünmez.
+Sonra o kategoriye girecek fotoğrafların `cat` değerine `'sokak'` yaz. Fotoğraflar
+sayfasında kendi başlığıyla görünür. Fotoğrafı olmayan kategori hiç görünmez.
+
+### Video eklemek
+Videoyu Vimeo veya YouTube'a yükle, sonra `VIDEOS` listesindeki örnek satırın
+başındaki `//` işaretlerini kaldırıp doldur. Liste boş kaldığı sürece Video
+sayfasında "hazırlanıyor" yazısı görünür.
+
+### Yeni günlük yazısı eklemek
+`POSTS` listesinin **en üstüne** yeni bir blok ekle. Mevcut bloklardan birini
+kopyalayıp içini değiştirmek en kolayı.
 
 ### Sitedeki herhangi bir yazıyı değiştirmek
-`content.js` dosyasının **5. bölümünde** sitedeki bütün yazılar var — menü, açılış,
-bölüm başlıkları, modeller için yazılan her cümle, form etiketleri. Soldaki ad
+`content.js` dosyasının **6. bölümünde** sitedeki bütün yazılar var — menü, açılış,
+sayfa başlıkları, modeller için yazılan her cümle, form etiketleri. Soldaki ad
 (örn. `'hero.tagline'`) yerini gösterir, onu değiştirme; sadece `tr:` ve `en:`
 karşılıklarını düzenle. `index.html` dosyasına hiç dokunman gerekmez.
 
-> Düzen ipucu: `w:8` ile `w:4` yan yana gelince yükseklikleri tam oturur.
-> `w:6` + `w:6` de aynı şekilde. `w:12` tek başına tam genişlik kaplar.
-
-### Yeni günlük yazısı eklemek
-`content.js` içindeki `POSTS` listesinin **en üstüne** yeni bir blok ekle.
-Mevcut bloklardan birini kopyalayıp içini değiştirmek en kolayı.
-
-### Video eklemek
-Videoyu Vimeo veya YouTube'a yükle. Bağlantısını bana ver, video bölümünü
-gerçek bir oynatıcıya çeviririm.
+### Bir şeyi bozarsan
+Site bembeyaz kalmaz; "içerik dosyasında bir hata var" diyen bir sayfa çıkar.
+GitHub'da `content.js` dosyasının **History** (geçmiş) bölümünden son değişikliği
+geri al, site anında eski hâline döner. Hiçbir şey kaybolmaz.
 
 ---
 

@@ -3,10 +3,10 @@
    Sitedeki her yazı, her fotoğraf ve her kategori burada.
    index.html dosyasına hiç dokunmana gerek yok.
 
-   KURALLAR (üçü de basit):
+   KURALLAR:
    1. Sadece tırnak içindeki yazıları değiştir.
    2. Virgülleri, süslü parantezleri ve köşeli parantezleri silme.
-   3. Bir yazının içinde tırnak kullanman gerekirse eğik tırnak kullan: ’
+   3. Bir yazının içinde tırnak gerekirse eğik tırnak kullan: ’
    ============================================================= */
 
 
@@ -24,45 +24,67 @@ const SITE = {
 
 
 /* ---------------------------------------------------------------
-   2) GALERİ KATEGORİLERİ
+   2) FOTOĞRAF KATEGORİLERİ
+   Her kategori, Fotoğraflar sayfasında kendi başlığı altında görünür.
    id : fotoğraf listesinde kullanacağın kısa ad (Türkçe karakter kullanma)
-   Yeni kategori eklemek için aşağıya aynı biçimde bir satır ekle,
-   sonra fotoğrafların cat değerine o id'yi yaz.
+   Sıralamayı değiştirmek istersen satırların yerini değiştir.
    --------------------------------------------------------------- */
 const CATS = [
-  {id:'portre', tr:'Portre',  en:'Portrait'},
-  {id:'doga',   tr:'Doğa',    en:'Nature'},
-  {id:'peyzaj', tr:'Peyzaj',  en:'Landscape'}
+  {id:'portre', tr:'Portre', en:'Portrait'},
+  {id:'doga',   tr:'Doğa',   en:'Nature'},
+  {id:'peyzaj', tr:'Peyzaj', en:'Landscape'}
 ];
 
 
 /* ---------------------------------------------------------------
    3) FOTOĞRAFLAR
-   src   : images klasöründeki dosya adı
-   cat   : yukarıdaki kategorilerden birinin id'si
-   w     : genişlik — 4 küçük · 6 orta · 8 geniş · 12 tam sayfa
-   ratio : oran — '3/2' yatay · '3/4' dikey · '1/1' kare · '21/9' sinema bandı
-   tr/en : fotoğrafın adı
 
-   DÜZEN İPUCU: w:8 ile w:4 yan yana tam oturur. w:6 + w:6 de öyle.
+   YENİ FOTOĞRAF EKLEMEK İÇİN SADECE ŞU İKİSİ YETER:
+       {src:'images/09.jpg', cat:'portre'},
+
+   src  : images klasöründeki dosya adı
+   cat  : yukarıdaki kategorilerden birinin id'si
+
+   İSTEĞE BAĞLI — sadece ANA SAYFADA göstermek istediğin fotoğraflar için:
+   feat  : true   → ana sayfadaki seçkiye girer
+   w     : ana sayfadaki genişliği — 4 küçük · 6 orta · 8 geniş · 12 tam sayfa
+   ratio : ana sayfadaki kutu oranı — '3/2' yatay · '3/4' dikey · '21/9' bant
+
+   (Fotoğraflar sayfasında tüm kareler kendi doğal oranıyla görünür,
+    w ve ratio orada hiçbir şeyi etkilemez. İsim yazmana da gerek yok.)
+
+   ANA SAYFA DÜZEN İPUCU: w:8 ile w:4 yan yana tam oturur. w:6 + w:6 de öyle.
    w:12 tek başına tam genişlik kaplar.
-
-   YENİ FOTOĞRAF: dosyayı images klasörüne yükle, aşağıya bir satır ekle.
    --------------------------------------------------------------- */
 const PHOTOS = [
-  {src:'images/01.jpg', cat:'portre', w:8,  ratio:'3/2',  tr:'Otların arasında', en:'Among the grasses'},
-  {src:'images/02.jpg', cat:'portre', w:4,  ratio:'3/4',  tr:'Ayakta, gölgede',  en:'Standing, in shadow'},
-  {src:'images/03.jpg', cat:'doga',   w:6,  ratio:'3/2',  tr:'Yaprak ve güneş',  en:'Leaf and sun'},
-  {src:'images/04.jpg', cat:'doga',   w:6,  ratio:'3/2',  tr:'Kütük, yosun',     en:'Stump, moss'},
-  {src:'images/05.jpg', cat:'portre', w:12, ratio:'21/9', tr:'Gölgeye yatmak',   en:'Lying into shadow'},
-  {src:'images/06.jpg', cat:'portre', w:8,  ratio:'3/2',  tr:'Başını kaldırmak', en:'Head tilted up'},
-  {src:'images/07.jpg', cat:'peyzaj', w:4,  ratio:'3/4',  tr:'Tek çam',          en:'A single pine'},
-  {src:'images/08.jpg', cat:'peyzaj', w:12, ratio:'21/9', tr:'Tepedeki ev',      en:'House on the hill'}
+  {src:'images/01.jpg', cat:'portre', feat:true,  w:8,  ratio:'3/2'},
+  {src:'images/02.jpg', cat:'portre', feat:true,  w:4,  ratio:'3/4'},
+  {src:'images/05.jpg', cat:'portre', feat:true,  w:12, ratio:'21/9'},
+  {src:'images/06.jpg', cat:'portre'},
+  {src:'images/03.jpg', cat:'doga',   feat:true,  w:6,  ratio:'3/2'},
+  {src:'images/04.jpg', cat:'doga',   feat:true,  w:6,  ratio:'3/2'},
+  {src:'images/07.jpg', cat:'peyzaj'},
+  {src:'images/08.jpg', cat:'peyzaj', feat:true,  w:12, ratio:'21/9'}
 ];
 
 
 /* ---------------------------------------------------------------
-   4) GÜNLÜK YAZILARI — en yeni en üstte
+   4) VİDEOLAR
+   Liste boşken Video sayfasında "hazırlanıyor" yazısı görünür.
+   Video eklemek için örnekteki // işaretlerini kaldırıp doldur:
+
+   url    : Vimeo veya YouTube adresi
+   poster : kapak görseli (images klasöründen)
+   meta   : süre ya da kısa not
+   --------------------------------------------------------------- */
+const VIDEOS = [
+  // {url:'https://vimeo.com/123456', poster:'images/05.jpg', meta:'01:30',
+  //  tr:'Showreel 2026', en:'Showreel 2026'},
+];
+
+
+/* ---------------------------------------------------------------
+   5) GÜNLÜK YAZILARI — en yeni en üstte
    bodyTr / bodyEn : her tırnak bir paragraf
    --------------------------------------------------------------- */
 const POSTS = [
@@ -105,19 +127,19 @@ const POSTS = [
 
 
 /* ---------------------------------------------------------------
-   5) SİTEDEKİ TÜM YAZILAR
+   6) SİTEDEKİ TÜM YAZILAR
    Soldaki ad (örn. 'hero.tagline') sitedeki yeri gösterir, onu değiştirme.
    Sadece tr ve en karşılıklarını düzenle.
    --------------------------------------------------------------- */
 const TEXT = {
 
   /* --- menü --- */
-  'nav.work':    {tr:'Fotoğraflar',    en:'Photographs'},
-  'nav.film':    {tr:'Video',          en:'Film'},
-  'nav.models':  {tr:'Modeller İçin',  en:'For Models'},
-  'nav.journal': {tr:'Günlük',         en:'Journal'},
-  'nav.about':   {tr:'Hakkımda',       en:'About'},
-  'nav.contact': {tr:'İletişim',       en:'Contact'},
+  'nav.photos':  {tr:'Fotoğraflar',   en:'Photographs'},
+  'nav.film':    {tr:'Video',         en:'Film'},
+  'nav.journal': {tr:'Günlük',        en:'Journal'},
+  'nav.models':  {tr:'Modeller İçin', en:'For Models'},
+  'nav.about':   {tr:'Hakkımda',      en:'About'},
+  'nav.contact': {tr:'İletişim',      en:'Contact'},
 
   /* --- açılış ekranı --- */
   'hero.eyebrow':  {tr:'Fotoğraf &amp; Videografi', en:'Photography &amp; Videography'},
@@ -127,20 +149,33 @@ const TEXT = {
   'hero.location': {tr:'Türkiye',          en:'Türkiye'},
   'hero.scroll':   {tr:'Kaydır',           en:'Scroll'},
 
-  /* --- 01 İşler --- */
-  'work.label': {tr:'Seçilmiş Fotoğraflar', en:'Selected Photographs'},
-  'work.lede':  {tr:'Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum.',
-                 en:'Shot across a single spring morning under the same low sun. Every frame chases one thing: when light falls on a leaf, a stone or a face, what does it make visible, and what does it leave in the dark? The series is ongoing.'},
-  'work.all':   {tr:'Hepsi', en:'All'},
+  /* --- ana sayfa --- */
+  'home.selLabel': {tr:'Seçki',       en:'Selected'},
+  'home.selTitle': {tr:'Birkaç kare', en:'A few frames'},
+  'home.seeAll':   {tr:'Tüm fotoğrafları gör', en:'See all photographs'},
 
-  /* --- 02 Video --- */
+  'home.aboutLabel': {tr:'Kısaca', en:'In short'},
+  'home.aboutP':     {tr:'Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekiyorum.',
+                      en:'I’m a student working in photography and videography. I shoot with natural light, in quiet places, with as little gear as possible.'},
+  'home.aboutLink':  {tr:'Hakkımda', en:'About me'},
+
+  'home.journalLabel': {tr:'Günlükten', en:'From the journal'},
+  'home.journalLink':  {tr:'Tüm yazılar', en:'All posts'},
+
+  /* --- Fotoğraflar sayfası --- */
+  'photos.label': {tr:'Arşiv',       en:'Archive'},
+  'photos.title': {tr:'Fotoğraflar', en:'Photographs'},
+  'photos.lede':  {tr:'Kategorilere ayrılmış tüm kareler. Büyütmek için bir fotoğrafa dokun.',
+                   en:'All frames, grouped by category. Tap any photograph to enlarge.'},
+
+  /* --- Video sayfası --- */
   'film.label': {tr:'Hareketli Görüntü', en:'Moving Image'},
   'film.title': {tr:'Video',             en:'Film'},
   'film.h':     {tr:'Showreel hazırlanıyor', en:'Showreel in progress'},
   'film.p':     {tr:'Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli.',
                  en:'I’m cutting footage shot on the same morning as the photo series. It will appear here first once it’s ready — in the meantime, write to me if you’d like to talk about a project.'},
 
-  /* --- 03 Modeller İçin --- */
+  /* --- Modeller İçin sayfası --- */
   'models.label': {tr:'Modeller İçin',      en:'For Models'},
   'models.title': {tr:'Birlikte çalışalım', en:'Let’s work together'},
   'models.lede':  {tr:'Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım.',
@@ -184,13 +219,13 @@ const TEXT = {
   'form.outP':    {tr:'Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum.',
                    en:'This form does not send anything by itself. Copy the text below and send it to me by email — I reply as soon as I can.'},
 
-  /* --- 04 Günlük --- */
+  /* --- Günlük sayfası --- */
   'journal.label': {tr:'Günlük',        en:'Journal'},
   'journal.title': {tr:'Süreç notları', en:'Process notes'},
   'journal.lede':  {tr:'Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili.',
                     en:'I keep what I learn, what I get wrong and my behind-the-scenes notes here. Less about finished work, more about how one gets there.'},
 
-  /* --- 05 Hakkımda --- */
+  /* --- Hakkımda sayfası --- */
   'about.label': {tr:'Hakkımda', en:'About'},
   'about.title': {tr:'Kısaca',   en:'In short'},
   'about.p1':    {tr:'Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum.',
@@ -204,9 +239,11 @@ const TEXT = {
   'about.k3':    {tr:'Konum',  en:'Based in'},
   'about.v3':    {tr:'Türkiye', en:'Türkiye'},
 
-  /* --- 06 İletişim --- */
+  /* --- İletişim sayfası --- */
   'contact.label': {tr:'İletişim',  en:'Contact'},
   'contact.title': {tr:'Konuşalım', en:'Let’s talk'},
+  'contact.lede':  {tr:'Bir çekim, bir iş birliği ya da sadece bir soru — hepsine açığım.',
+                    en:'A shoot, a collaboration, or just a question — all welcome.'},
   'footer.rights': {tr:'Tüm görseller sahibine aittir.', en:'All images belong to their author.'},
 
   /* --- küçük düğme yazıları --- */
