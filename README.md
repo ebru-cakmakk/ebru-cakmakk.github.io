@@ -136,7 +136,9 @@ Nerede çalışır:
 
 - **Ana sayfa** açılış fotoğrafının tonunu alır
 - **Fotoğraflar sayfasında** kategoriler arasında kaydırdıkça palet yumuşakça değişir
-- **Bir fotoğrafı büyüttüğünde** sayfa o karenin tonuna geçer, kapatınca geri döner
+
+Bir fotoğrafı büyüttüğünde renk uyumu devreye girmez: orada sadece fotoğraf görünür,
+nötr koyu bir zeminde.
 
 Ayarı `content.js` dosyasının 2. bölümünde:
 
