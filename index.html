@@ -809,10 +809,14 @@ function justify(){
     if(row.length) rows.push({row: row, sum: sum, last: true});
 
     const frag = document.createDocumentFragment();
+    let prevH = 0;
     rows.forEach(r=>{
       const space = W - (r.row.length - 1) * gap;
       let h = Math.round(space / r.sum);
-      if(r.last && h > target * 1.25) h = Math.round(target * 1.25);
+      /* Son satır sayfayı doldurmuyorsa bir üstteki satırın boyunu alsın,
+         yoksa tek kalan kare diğerlerinden iri görünüyor. */
+      if(r.last && h > (prevH || target)) h = prevH || target;
+      prevH = h;
       const div = document.createElement('div');
       div.className = 'mas-row';
       let used = 0;
