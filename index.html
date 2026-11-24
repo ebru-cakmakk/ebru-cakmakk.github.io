@@ -9,32 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#18230F;
-    --ink-2:#27391C;
-    --moss:#255F38;
-    --emerald:#1F7D53;
-    --cream:#F1EEE3;
-    --sand:#BFBAA6;
-    --sand-dim:#8E8B7B;
-    --line:rgba(241,238,227,.13);
-    --line-2:rgba(241,238,227,.07);
+    --ink:#18230F; --ink-2:#27391C; --moss:#255F38; --emerald:#1F7D53;
+    --cream:#F1EEE3; --sand:#BFBAA6; --sand-dim:#8E8B7B;
+    --line:rgba(241,238,227,.13); --line-2:rgba(241,238,227,.07);
     --display:'Fraunces',Georgia,'Times New Roman',serif;
     --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     --pad:clamp(20px,5vw,80px);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    background:var(--ink);
-    color:var(--cream);
-    font-family:var(--body);
-    font-weight:300;
-    font-size:16px;
-    line-height:1.7;
-    letter-spacing:.01em;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{background:var(--ink);color:var(--cream);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.7;letter-spacing:.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
   body::before{
     content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.42;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
@@ -49,23 +33,14 @@
   .h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.05;letter-spacing:-.02em;margin:.5rem 0 0}
   .lede{max-width:54ch;color:var(--sand);margin-top:1.4rem;font-size:clamp(15px,1.3vw,17.5px)}
   section{padding:clamp(72px,10vw,150px) 0;position:relative}
-  .sec-head{margin-bottom:clamp(40px,6vw,74px)}
+  .sec-head{margin-bottom:clamp(32px,4.5vw,54px)}
 
-  /* ---------- nav ---------- */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--pad);
-    transition:background .45s ease,backdrop-filter .45s ease,border-color .45s ease;
-    border-bottom:1px solid transparent;
-  }
-  header.solid{
-    background:rgba(24,35,15,.84);
-    backdrop-filter:blur(16px) saturate(140%);
-    -webkit-backdrop-filter:blur(16px) saturate(140%);
-    border-bottom-color:var(--line-2);
-  }
+  /* nav */
+  header{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--pad);transition:background .45s ease,backdrop-filter .45s ease,border-color .45s ease;border-bottom:1px solid transparent}
+  header.solid{background:rgba(24,35,15,.84);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line-2)}
   nav{max-width:1360px;margin:0 auto;height:74px;display:flex;align-items:center;gap:28px}
   .brand{font-family:var(--display);font-size:19px;letter-spacing:.01em;font-weight:400;white-space:nowrap;margin-right:auto}
-  .brand span.dot{color:var(--emerald)}
+  .brand .dot{color:var(--emerald)}
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links button{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);padding:6px 0;position:relative;transition:color .3s}
   .nav-links button::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--emerald);transition:right .35s cubic-bezier(.2,.7,.3,1)}
@@ -82,28 +57,17 @@
   body.menu .burger i:nth-child(2){bottom:14px;transform:rotate(-45deg)}
   @media(max-width:900px){
     .burger{display:block}
-    .nav-links{
-      position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;
-      background:rgba(24,35,15,.97);backdrop-filter:blur(20px);
-      padding:14px var(--pad) 30px;align-items:stretch;
-      transform:translateY(-130%);transition:transform .5s cubic-bezier(.2,.7,.3,1);
-      border-bottom:1px solid var(--line-2);
-    }
+    .nav-links{position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;background:rgba(24,35,15,.97);backdrop-filter:blur(20px);padding:14px var(--pad) 30px;align-items:stretch;transform:translateY(-130%);transition:transform .5s cubic-bezier(.2,.7,.3,1);border-bottom:1px solid var(--line-2)}
     body.menu .nav-links{transform:translateY(0)}
     .nav-links button{font-size:15px;letter-spacing:.08em;padding:15px 0;text-align:left;border-bottom:1px solid var(--line-2)}
     .nav-links button::after{display:none}
   }
 
-  /* ---------- hero ---------- */
+  /* hero */
   .hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(40px,7vh,86px);position:relative;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
   .hero-bg img{opacity:.9;transform:scale(1.02)}
-  .hero-bg::after{
-    content:'';position:absolute;inset:0;
-    background:
-      linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),
-      linear-gradient(to right,rgba(18,26,11,.8),transparent 62%);
-  }
+  .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),linear-gradient(to right,rgba(18,26,11,.8),transparent 62%)}
   .hero-inner{width:100%;position:relative}
   .hero h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,10.5vw,152px);line-height:.9;letter-spacing:-.035em;margin:.26em 0 0}
   .hero h1 .dot{font-style:italic;color:var(--emerald)}
@@ -114,7 +78,13 @@
   .scroll-cue::after{content:'';width:1px;height:56px;background:linear-gradient(var(--emerald),transparent)}
   @media(max-width:900px){.scroll-cue{display:none}}
 
-  /* ---------- gallery ---------- */
+  /* filters */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(26px,3.5vw,40px)}
+  .filters button{padding:9px 21px;border:1px solid var(--line);border-radius:100px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);transition:.3s}
+  .filters button:hover{border-color:var(--emerald);color:var(--cream)}
+  .filters button.on{background:var(--emerald);border-color:var(--emerald);color:var(--cream)}
+
+  /* gallery */
   .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px);align-items:start}
   .tile{position:relative;overflow:hidden;background:var(--ink-2);cursor:zoom-in;grid-column:span 4}
   .tile.w6{grid-column:span 6}
@@ -122,12 +92,7 @@
   .tile.w12{grid-column:span 12}
   .tile figure{position:absolute;inset:0;margin:0;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
   .tile:hover figure{transform:scale(1.04)}
-  .tile figcaption{
-    position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2;
-    background:linear-gradient(to top,rgba(18,35,15,.88),transparent);
-    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
-    opacity:0;transform:translateY(8px);transition:.45s ease;
-  }
+  .tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2;background:linear-gradient(to top,rgba(18,35,15,.88),transparent);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateY(8px);transition:.45s ease}
   .tile:hover figcaption{opacity:1;transform:none}
   @media(max-width:760px){
     .tile,.tile.w6,.tile.w8{grid-column:span 6}
@@ -135,7 +100,7 @@
     .tile figcaption{opacity:1;transform:none;padding:14px;font-size:10.5px}
   }
 
-  /* ---------- lightbox ---------- */
+  /* lightbox */
   .lb{position:fixed;inset:0;z-index:500;background:rgba(14,20,8,.97);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:clamp(16px,5vw,70px)}
   .lb.on{display:flex}
   .lb-stage{position:relative;max-width:1150px;width:100%;display:flex;flex-direction:column;gap:16px}
@@ -154,16 +119,13 @@
     .lb-next{right:8px;top:auto;bottom:-58px;margin:0}
   }
 
-  /* ---------- video ---------- */
-  .reel-panel{
-    border:1px solid var(--line);background:linear-gradient(150deg,rgba(37,95,56,.17),rgba(24,35,15,.4));
-    padding:clamp(40px,7vw,86px) clamp(24px,5vw,60px);text-align:center;
-  }
+  /* video */
+  .reel-panel{border:1px solid var(--line);background:linear-gradient(150deg,rgba(37,95,56,.17),rgba(24,35,15,.4));padding:clamp(40px,7vw,86px) clamp(24px,5vw,60px);text-align:center}
   .reel-panel h3{font-family:var(--display);font-weight:300;font-size:clamp(24px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em}
   .reel-panel p{color:var(--sand);max-width:50ch;margin:16px auto 0;font-size:15.5px}
   .reel-panel .dash{width:46px;height:1px;background:var(--emerald);margin:0 auto 26px}
 
-  /* ---------- models ---------- */
+  /* models */
   .models{background:linear-gradient(180deg,#1b2712,#18230F)}
   .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(22px,3vw,46px)}
   .card{border-top:1px solid var(--line);padding-top:24px}
@@ -177,7 +139,7 @@
   .note h4{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:10px}
   .note p{color:var(--sand);font-size:15px;max-width:68ch}
 
-  /* ---------- form ---------- */
+  /* form */
   .form{margin-top:clamp(40px,5vw,64px);max-width:720px}
   .field{margin-bottom:22px}
   .field label{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim);margin-bottom:9px}
@@ -197,7 +159,7 @@
   .out p{font-size:14.5px;color:var(--sand);margin-bottom:16px}
   .out pre{white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:14px;background:rgba(18,26,11,.6);border:1px solid var(--line-2);padding:18px;color:var(--cream);line-height:1.65;margin-bottom:16px}
 
-  /* ---------- journal ---------- */
+  /* journal */
   .posts{display:grid;gap:0}
   .post{display:grid;grid-template-columns:120px 1fr auto;gap:clamp(16px,3vw,40px);align-items:center;padding:clamp(22px,3vw,32px) 0;border-top:1px solid var(--line);cursor:pointer;transition:.4s;text-align:left;width:100%}
   .post:last-child{border-bottom:1px solid var(--line)}
@@ -217,7 +179,7 @@
   .reader-body p{margin-bottom:1.3em;color:var(--sand);font-size:16.5px;line-height:1.8}
   .reader-x{position:fixed;top:24px;right:var(--pad);z-index:2}
 
-  /* ---------- about ---------- */
+  /* about */
   .about-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
   @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
   .portrait{aspect-ratio:4/5;background:var(--ink-2);position:relative;overflow:hidden}
@@ -227,7 +189,7 @@
   .facts dt{width:120px;flex-shrink:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand-dim);padding-top:3px}
   .facts dd{color:var(--cream)}
 
-  /* ---------- contact ---------- */
+  /* contact */
   .contact{background:linear-gradient(180deg,#18230F,#121a0b);text-align:center}
   .contact h2{font-family:var(--display);font-weight:300;font-size:clamp(34px,7vw,92px);line-height:1;letter-spacing:-.03em}
   .mail{display:inline-block;margin-top:clamp(26px,4vw,40px);font-family:var(--display);font-size:clamp(17px,2.6vw,30px);border-bottom:1px solid var(--line);padding-bottom:6px;transition:.35s;word-break:break-word}
@@ -241,6 +203,15 @@
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* içerik hatası paneli */
+  .oops{position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:var(--pad)}
+  .oops-in{max-width:560px}
+  .oops h1{font-family:var(--display);font-weight:300;font-size:clamp(26px,4vw,40px);line-height:1.15;margin-bottom:18px}
+  .oops p{color:var(--sand);margin-bottom:1em;font-size:16px}
+  .oops code{background:rgba(31,125,83,.16);border:1px solid var(--line);padding:2px 7px;font-size:14px;border-radius:3px}
+  .oops .dash{width:46px;height:1px;background:var(--emerald);margin-bottom:26px}
+
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
@@ -252,14 +223,14 @@
 
 <header id="hdr">
   <nav>
-    <a class="brand" href="#" onclick="go('top');return false"><span id="brandName">Ebru Çakmak</span><span class="dot">.</span></a>
+    <a class="brand" href="#" onclick="go('top');return false"><span id="brandName"></span><span class="dot">.</span></a>
     <div class="nav-links" id="navLinks">
-      <button onclick="go('isler')" data-tr="İşler" data-en="Work">İşler</button>
-      <button onclick="go('video')" data-tr="Video" data-en="Film">Video</button>
-      <button onclick="go('modeller')" data-tr="Modeller İçin" data-en="For Models">Modeller İçin</button>
-      <button onclick="go('gunluk')" data-tr="Günlük" data-en="Journal">Günlük</button>
-      <button onclick="go('hakkimda')" data-tr="Hakkımda" data-en="About">Hakkımda</button>
-      <button onclick="go('iletisim')" data-tr="İletişim" data-en="Contact">İletişim</button>
+      <button onclick="go('isler')"    data-k="nav.work"></button>
+      <button onclick="go('video')"    data-k="nav.film"></button>
+      <button onclick="go('modeller')" data-k="nav.models"></button>
+      <button onclick="go('gunluk')"   data-k="nav.journal"></button>
+      <button onclick="go('hakkimda')" data-k="nav.about"></button>
+      <button onclick="go('iletisim')" data-k="nav.contact"></button>
     </div>
     <div class="lang">
       <button id="btnTr" class="on" onclick="setLang('tr')">TR</button>
@@ -269,203 +240,174 @@
   </nav>
 </header>
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <div class="hero" id="top">
   <div class="hero-bg"><img src="images/hero.jpg" alt=""></div>
   <div class="wrap hero-inner">
-    <p class="eyebrow" data-tr="Fotoğraf &amp; Videografi" data-en="Photography &amp; Videography">Fotoğraf &amp; Videografi</p>
-    <h1><span id="heroName">Ebru Çakmak</span><span class="dot">.</span></h1>
+    <p class="eyebrow" data-k="hero.eyebrow"></p>
+    <h1><span id="heroName"></span><span class="dot">.</span></h1>
     <div class="hero-meta">
-      <p data-tr="Işık, doku ve insan üzerine çalışan bir göz." data-en="An eye working on light, texture and the human form.">Işık, doku ve insan üzerine çalışan bir göz.</p>
-      <p><strong data-tr="Devam eden proje" data-en="Ongoing project">Devam eden proje</strong> — <span id="projName">Işık Düştüğünde</span></p>
-      <p>Türkiye</p>
+      <p data-k="hero.tagline"></p>
+      <p><strong data-k="hero.ongoing"></strong> — <span id="projName"></span></p>
+      <p data-k="hero.location"></p>
     </div>
   </div>
-  <div class="scroll-cue"><span data-tr="Kaydır" data-en="Scroll">Kaydır</span></div>
+  <div class="scroll-cue"><span data-k="hero.scroll"></span></div>
 </div>
 
-<!-- ============ WORK ============ -->
+<!-- WORK -->
 <section id="isler">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">01 — <span data-tr="Seçilmiş İşler" data-en="Selected Work">Seçilmiş İşler</span></p>
-      <h2 class="h2" id="projTitle">Işık Düştüğünde</h2>
-      <p class="lede" data-tr="Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum." data-en="Shot across a single spring morning under the same low sun. Every frame chases one thing: when light falls on a leaf, a stone or a face, what does it make visible, and what does it leave in the dark? The series is ongoing.">Bir bahar sabahı, aynı alçak güneşin altında çekildi. Hepsi tek bir şeyin peşinde: ışık bir yaprağa, bir taşa ya da bir yüze düştüğünde neyi görünür kılıyor, neyi karanlıkta bırakıyor? Seri üzerinde çalışmaya devam ediyorum.</p>
+      <p class="eyebrow">01 — <span data-k="work.label"></span></p>
+      <h2 class="h2" id="projTitle"></h2>
+      <p class="lede" data-k="work.lede"></p>
     </div>
-    <div class="grid reveal" id="gal"></div>
+    <div class="filters reveal" id="filters"></div>
+    <div class="grid" id="gal"></div>
   </div>
 </section>
 
-<!-- ============ VIDEO ============ -->
+<!-- VIDEO -->
 <section id="video">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">02 — <span data-tr="Hareketli Görüntü" data-en="Moving Image">Hareketli Görüntü</span></p>
-      <h2 class="h2" data-tr="Video" data-en="Film">Video</h2>
+      <p class="eyebrow">02 — <span data-k="film.label"></span></p>
+      <h2 class="h2" data-k="film.title"></h2>
     </div>
     <div class="reel-panel reveal">
       <div class="dash"></div>
-      <h3 data-tr="Showreel hazırlanıyor" data-en="Showreel in progress">Showreel hazırlanıyor</h3>
-      <p data-tr="Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli." data-en="I'm cutting footage shot on the same morning as the photo series. It will appear here first once it's ready — in the meantime, write to me if you'd like to talk about a project.">Fotoğraf serisiyle aynı sabahta çekilen görüntüleri kurguluyorum. Hazır olduğunda ilk olarak burada yayınlanacak — bu arada bir proje için konuşmak isterseniz yazmanız yeterli.</p>
+      <h3 data-k="film.h"></h3>
+      <p data-k="film.p"></p>
     </div>
   </div>
 </section>
 
-<!-- ============ FOR MODELS ============ -->
+<!-- FOR MODELS -->
 <section id="modeller" class="models">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">03 — <span data-tr="Modeller İçin" data-en="For Models">Modeller İçin</span></p>
-      <h2 class="h2" data-tr="Birlikte çalışalım" data-en="Let's work together">Birlikte çalışalım</h2>
-      <p class="lede" data-tr="Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım." data-en="You don't need experience. I like working with people facing a camera for the first time — the most honest frames often come from there. Below is exactly how I work.">Deneyimli olman gerekmiyor. İlk kez kamera karşısına geçecek olanlarla çalışmayı seviyorum — çoğu zaman en dürüst kareler oradan çıkıyor. Aşağıda nasıl çalıştığımı olduğu gibi anlattım.</p>
+      <p class="eyebrow">03 — <span data-k="models.label"></span></p>
+      <h2 class="h2" data-k="models.title"></h2>
+      <p class="lede" data-k="models.lede"></p>
     </div>
 
     <div class="cols reveal">
-      <div class="card">
-        <p class="num">01</p>
-        <h3 data-tr="Ne çekiyoruz" data-en="What we shoot">Ne çekiyoruz</h3>
-        <p data-tr="Portre, doğal ışıkta dış mekân ve konsept çekimler. Her çekim öncesi referans görsellerle birlikte net bir fikir paylaşıyorum — sürpriz olmuyor." data-en="Portraits, natural-light outdoor work and concept shoots. Before every shoot I share a clear idea with reference images — no surprises.">Portre, doğal ışıkta dış mekân ve konsept çekimler. Her çekim öncesi referans görsellerle birlikte net bir fikir paylaşıyorum — sürpriz olmuyor.</p>
-      </div>
-      <div class="card">
-        <p class="num">02</p>
-        <h3 data-tr="Nasıl ilerliyor" data-en="How it works">Nasıl ilerliyor</h3>
-        <p data-tr="Kısa bir tanışma görüşmesi, sonra tarih ve mekân. Çekim 1–2 saat sürüyor. 7–10 gün içinde seçilmiş ve renklenmiş kareleri yüksek çözünürlükte gönderiyorum." data-en="A short intro call, then date and location. Shoots run 1–2 hours. Within 7–10 days you get the selected, colour-graded frames in high resolution.">Kısa bir tanışma görüşmesi, sonra tarih ve mekân. Çekim 1–2 saat sürüyor. 7–10 gün içinde seçilmiş ve renklenmiş kareleri yüksek çözünürlükte gönderiyorum.</p>
-      </div>
-      <div class="card">
-        <p class="num">03</p>
-        <h3 data-tr="Karşılığı" data-en="The exchange">Karşılığı</h3>
-        <p data-tr="Şu aşamada çoğu çekim karşılıklı portfolyo çalışması (TFP): sen kareleri kendi portfolyonda kullanıyorsun, ben de kendi arşivimde. Ticari işler için ayrı konuşuyoruz." data-en="At this stage most shoots are portfolio exchanges (TFP): you use the images for your own book, I use them in mine. Commercial work is discussed separately.">Şu aşamada çoğu çekim karşılıklı portfolyo çalışması (TFP): sen kareleri kendi portfolyonda kullanıyorsun, ben de kendi arşivimde. Ticari işler için ayrı konuşuyoruz.</p>
-      </div>
+      <div class="card"><p class="num">01</p><h3 data-k="models.c1h"></h3><p data-k="models.c1p"></p></div>
+      <div class="card"><p class="num">02</p><h3 data-k="models.c2h"></h3><p data-k="models.c2p"></p></div>
+      <div class="card"><p class="num">03</p><h3 data-k="models.c3h"></h3><p data-k="models.c3p"></p></div>
     </div>
 
     <ul class="checklist reveal">
-      <li data-tr="Yanında istediğin bir kişiyi getirebilirsin." data-en="You're welcome to bring someone with you."></li>
-      <li data-tr="Ne çekilip ne çekilmeyeceğine önceden birlikte karar veriyoruz." data-en="We agree in advance on what will and won't be shot."></li>
-      <li data-tr="Her çekimde yazılı bir izin formu (model release) imzalıyoruz." data-en="We sign a written model release for every shoot."></li>
-      <li data-tr="Hangi karelerin yayınlanacağını onaylama hakkın var." data-en="You have the right to approve which frames get published."></li>
-      <li data-tr="İstediğin an bir kareyi geri çekebilirsin." data-en="You can withdraw any image at any time."></li>
-      <li data-tr="Çekim planı, saat ve mekân yazılı olarak paylaşılır." data-en="The shoot plan, time and location are shared in writing."></li>
-      <li data-tr="18 yaş altı için veli onayı ve katılımı zorunlu." data-en="Under 18 requires guardian consent and presence."></li>
-      <li data-tr="Ham dosyalar kimseyle paylaşılmaz." data-en="Raw files are never shared with anyone."></li>
+      <li data-k="models.l1"></li>
+      <li data-k="models.l2"></li>
+      <li data-k="models.l3"></li>
+      <li data-k="models.l4"></li>
+      <li data-k="models.l5"></li>
+      <li data-k="models.l6"></li>
+      <li data-k="models.l7"></li>
+      <li data-k="models.l8"></li>
     </ul>
 
     <div class="note reveal">
-      <h4 data-tr="Dürüst olmak gerekirse" data-en="To be straight with you">Dürüst olmak gerekirse</h4>
-      <p data-tr="Hâlâ öğrenciyim ve bu seriyi kurarken öğrenmeye devam ediyorum. Yani beraber çalışırsak, deneyen ve soran biriyle çalışıyor olacaksın. Karşılığında sana zamanımı, sabrımı ve işin her adımında şeffaflığı veriyorum." data-en="I'm still a student, and I'm still learning while building this series. So if we work together, you're working with someone who experiments and asks questions. In return you get my time, my patience and transparency at every step.">Hâlâ öğrenciyim ve bu seriyi kurarken öğrenmeye devam ediyorum. Yani beraber çalışırsak, deneyen ve soran biriyle çalışıyor olacaksın. Karşılığında sana zamanımı, sabrımı ve işin her adımında şeffaflığı veriyorum.</p>
+      <h4 data-k="models.noteH"></h4>
+      <p data-k="models.noteP"></p>
     </div>
 
     <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
-      <p class="eyebrow" style="margin-bottom:18px" data-tr="Başvuru" data-en="Apply">Başvuru</p>
+      <p class="eyebrow" style="margin-bottom:18px" data-k="form.label"></p>
       <div class="two">
-        <div class="field">
-          <label data-tr="Adın" data-en="Your name">Adın</label>
-          <input name="ad" required>
-        </div>
-        <div class="field">
-          <label data-tr="İletişim (e-posta veya Instagram)" data-en="Contact (email or Instagram)">İletişim (e-posta veya Instagram)</label>
-          <input name="iletisim" required>
-        </div>
+        <div class="field"><label data-k="form.name"></label><input name="ad" required></div>
+        <div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div>
       </div>
       <div class="two">
+        <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
         <div class="field">
-          <label data-tr="Şehir" data-en="City">Şehir</label>
-          <input name="sehir">
-        </div>
-        <div class="field">
-          <label data-tr="Deneyim" data-en="Experience">Deneyim</label>
+          <label data-k="form.exp"></label>
           <select name="deneyim">
-            <option data-tr="İlk kez olacak" data-en="This would be my first time">İlk kez olacak</option>
-            <option data-tr="Birkaç çekim yaptım" data-en="I've done a few shoots">Birkaç çekim yaptım</option>
-            <option data-tr="Deneyimliyim" data-en="I'm experienced">Deneyimliyim</option>
+            <option data-k="form.exp1"></option>
+            <option data-k="form.exp2"></option>
+            <option data-k="form.exp3"></option>
           </select>
         </div>
       </div>
-      <div class="field">
-        <label data-tr="Aklındaki bir fikir var mı?" data-en="Any idea in mind?">Aklındaki bir fikir var mı?</label>
-        <textarea name="mesaj"></textarea>
-      </div>
-      <button type="submit" class="btn" data-tr="Mesajı Hazırla" data-en="Prepare Message">Mesajı Hazırla</button>
+      <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
+      <button type="submit" class="btn" data-k="form.submit"></button>
     </form>
 
     <div class="out" id="out">
-      <h4 data-tr="Mesajın hazır" data-en="Your message is ready">Mesajın hazır</h4>
-      <p data-tr="Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum." data-en="This form does not send anything by itself. Copy the text below and send it to me by email — I reply as soon as I can.">Bu form doğrudan gönderim yapmıyor. Aşağıdaki metni kopyalayıp e-posta ile bana ilet — en kısa sürede dönüş yapıyorum.</p>
+      <h4 data-k="form.outH"></h4>
+      <p data-k="form.outP"></p>
       <pre id="msg"></pre>
-      <button class="btn" onclick="copyMsg()" id="copyBtn">Metni Kopyala</button>
+      <button class="btn" onclick="copyMsg()" id="copyBtn"></button>
     </div>
   </div>
 </section>
 
-<!-- ============ JOURNAL ============ -->
+<!-- JOURNAL -->
 <section id="gunluk">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">04 — <span data-tr="Günlük" data-en="Journal">Günlük</span></p>
-      <h2 class="h2" data-tr="Süreç notları" data-en="Process notes">Süreç notları</h2>
-      <p class="lede" data-tr="Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili." data-en="I keep what I learn, what I get wrong and my behind-the-scenes notes here. Less about finished work, more about how one gets there.">Öğrendiklerimi, hatalarımı ve çekim arkası notlarımı burada tutuyorum. Bitmiş işten çok, nasıl oraya gidildiğiyle ilgili.</p>
+      <p class="eyebrow">04 — <span data-k="journal.label"></span></p>
+      <h2 class="h2" data-k="journal.title"></h2>
+      <p class="lede" data-k="journal.lede"></p>
     </div>
     <div class="posts reveal" id="posts"></div>
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
+<!-- ABOUT -->
 <section id="hakkimda">
   <div class="wrap">
     <div class="about-grid">
       <div class="portrait reveal"><img src="images/about.jpg" alt=""></div>
       <div class="about-txt reveal">
-        <p class="eyebrow">05 — <span data-tr="Hakkımda" data-en="About">Hakkımda</span></p>
-        <h2 class="h2" style="margin-bottom:1.6rem" data-tr="Kısaca" data-en="In short">Kısaca</h2>
-        <p data-tr="Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum." data-en="I'm a student working in photography and videography. I like shooting with natural light, in quiet places, with as little gear as possible.">Fotoğraf ve videografi üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum.</p>
-        <p data-tr="Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum." data-en="I'm currently building my first serious series, and this site is its logbook. If you'd like to model, collaborate on a project, or simply talk, write to me — I answer every message.">Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum.</p>
+        <p class="eyebrow">05 — <span data-k="about.label"></span></p>
+        <h2 class="h2" style="margin-bottom:1.6rem" data-k="about.title"></h2>
+        <p data-k="about.p1"></p>
+        <p data-k="about.p2"></p>
         <dl class="facts">
-          <div><dt data-tr="Alan" data-en="Focus">Alan</dt><dd data-tr="Portre, doğa, kısa film" data-en="Portrait, nature, short film">Portre, doğa, kısa film</dd></div>
-          <div><dt data-tr="Durum" data-en="Status">Durum</dt><dd data-tr="Öğrenci — yeni projelere açık" data-en="Student — open to new projects">Öğrenci — yeni projelere açık</dd></div>
-          <div><dt data-tr="Konum" data-en="Based in">Konum</dt><dd>Türkiye</dd></div>
+          <div><dt data-k="about.k1"></dt><dd data-k="about.v1"></dd></div>
+          <div><dt data-k="about.k2"></dt><dd data-k="about.v2"></dd></div>
+          <div><dt data-k="about.k3"></dt><dd data-k="about.v3"></dd></div>
         </dl>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- CONTACT -->
 <section id="iletisim" class="contact">
   <div class="wrap">
-    <p class="eyebrow reveal">06 — <span data-tr="İletişim" data-en="Contact">İletişim</span></p>
-    <h2 class="reveal" data-tr="Konuşalım" data-en="Let's talk">Konuşalım</h2>
+    <p class="eyebrow reveal">06 — <span data-k="contact.label"></span></p>
+    <h2 class="reveal" data-k="contact.title"></h2>
     <div class="reveal">
-      <a class="mail" href="mailto:zekiyeebru02@proton.me" id="mailLink">zekiyeebru02@proton.me</a>
+      <a class="mail" href="#" id="mailLink"></a>
       <div class="socials" id="socials"></div>
     </div>
   </div>
   <footer>
     <div class="wrap foot">
-      <p>© <span id="yr"></span> <span class="footName">Ebru Çakmak</span></p>
-      <p data-tr="Tüm görseller sahibine aittir." data-en="All images belong to their author.">Tüm görseller sahibine aittir.</p>
+      <p>© <span id="yr"></span> <span class="footName"></span></p>
+      <p data-k="footer.rights"></p>
     </div>
   </footer>
 </section>
 
-<!-- ============ LIGHTBOX ============ -->
+<!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
   <div class="lb-stage">
-    <button class="lb-x" onclick="closeLb()" aria-label="Close">
-      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg>
-    </button>
-    <button class="lb-prev" onclick="step(-1)" aria-label="Previous">
-      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg>
-    </button>
-    <button class="lb-next" onclick="step(1)" aria-label="Next">
-      <svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
-    </button>
+    <button class="lb-x" onclick="closeLb()" aria-label="Close"><svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <button class="lb-prev" onclick="step(-1)" aria-label="Previous"><svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="lb-next" onclick="step(1)" aria-label="Next"><svg viewBox="0 0 24 24" width="16" stroke="#F1EEE3" fill="none" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button>
     <div class="lb-frame" id="lbFrame"></div>
     <p class="lb-cap" id="lbCap"></p>
   </div>
 </div>
 
-<!-- ============ READER ============ -->
+<!-- READER -->
 <div class="reader" id="reader">
-  <button class="btn ghost reader-x" onclick="closeReader()" data-tr="Kapat" data-en="Close">Kapat</button>
+  <button class="btn ghost reader-x" onclick="closeReader()" data-k="ui.close"></button>
   <div class="reader-in">
     <time id="rDate"></time>
     <h2 id="rTitle"></h2>
@@ -475,26 +417,24 @@
 
 <script src="content.js"></script>
 <script>
-
-
 let lang = 'tr';
 try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
 
-const T = {
-  title:{tr:SITE.name+' — Fotoğraf & Videografi', en:SITE.name+' — Photography & Videography'},
-  copied:{tr:'Kopyalandı', en:'Copied'},
-  copy:{tr:'Metni Kopyala', en:'Copy Text'}
-};
+let cat = 'all';   // seçili kategori
+let view = [];     // ekranda görünen fotoğraflar
+
+function t(key){
+  const e = TEXT[key];
+  if(!e) return '';
+  return e[lang] !== undefined ? e[lang] : (e.tr || '');
+}
 
 function setLang(l){
   lang = l;
   try{ localStorage.setItem('lang', l); }catch(e){}
   document.documentElement.lang = l;
-  document.title = T.title[l];
-  document.querySelectorAll('[data-tr]').forEach(el=>{
-    const v = el.getAttribute('data-'+l);
-    if(v!==null) el.innerHTML = v;
-  });
+  document.title = SITE.name + (l==='tr' ? ' — Fotoğraf & Videografi' : ' — Photography & Videography');
+  document.querySelectorAll('[data-k]').forEach(el=>{ el.innerHTML = t(el.dataset.k); });
   btnTr.classList.toggle('on', l==='tr');
   btnEn.classList.toggle('on', l==='en');
   render();
@@ -506,7 +446,7 @@ function fill(){
   projName.textContent  = SITE.project;
   projTitle.textContent = SITE.project;
   mailLink.textContent  = SITE.email;
-  mailLink.href = 'mailto:'+SITE.email;
+  mailLink.href = 'mailto:' + SITE.email;
   document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
   yr.textContent = new Date().getFullYear();
 
@@ -515,41 +455,53 @@ function fill(){
   socials.innerHTML = links.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>').join('');
 }
 
+function setCat(c){ cat = c; render(); }
+
 function render(){
-  gal.innerHTML = PHOTOS.map((p,i)=>{
-    const cap = lang==='tr'?p.tr:p.en;
+  /* kategori düğmeleri — sadece fotoğrafı olan kategoriler görünür */
+  const used = (typeof CATS !== 'undefined' ? CATS : []).filter(c => PHOTOS.some(p => p.cat === c.id));
+  filters.innerHTML = used.length < 2 ? '' :
+    ['<button class="'+(cat==='all'?'on':'')+'" onclick="setCat(\'all\')">'+t('work.all')+'</button>']
+      .concat(used.map(c =>
+        '<button class="'+(cat===c.id?'on':'')+'" onclick="setCat(\''+c.id+'\')">'+(lang==='tr'?c.tr:c.en)+'</button>'
+      )).join('');
+
+  view = cat==='all' ? PHOTOS.slice() : PHOTOS.filter(p => p.cat === cat);
+
+  gal.innerHTML = view.map((p,i)=>{
+    const cap = lang==='tr' ? p.tr : p.en;
     return '<div class="tile w'+p.w+'" style="aspect-ratio:'+p.ratio+'" onclick="openLb('+i+')">'
       + '<figure><img src="'+p.src+'" alt="'+cap+'" loading="lazy"></figure>'
       + '<figcaption>'+cap+'</figcaption></div>';
   }).join('');
 
   posts.innerHTML = POSTS.map((p,i)=>{
-    const t  = lang==='tr'?p.tr:p.en;
+    const ti = lang==='tr'?p.tr:p.en;
     const ex = lang==='tr'?p.exTr:p.exEn;
     return '<button class="post" onclick="openReader('+i+')">'
       + '<time>'+p.date+'</time>'
-      + '<div><h3>'+t+'</h3><p class="ex">'+ex+'</p></div>'
+      + '<div><h3>'+ti+'</h3><p class="ex">'+ex+'</p></div>'
       + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
       + '</button>';
   }).join('');
 
-  if(copyBtn) copyBtn.textContent = T.copy[lang];
+  copyBtn.textContent = t('ui.copy');
   observe();
 }
 
-/* ---------- lightbox ---------- */
+/* lightbox */
 let idx = 0;
 function openLb(i){ idx = i; paint(); lb.classList.add('on'); document.body.style.overflow='hidden'; }
 function paint(){
-  const p = PHOTOS[idx];
+  const p = view[idx];
   const cap = lang==='tr'?p.tr:p.en;
   lbFrame.innerHTML = '<img src="'+p.src+'" alt="'+cap+'">';
-  lbCap.textContent = cap + '  ·  ' + (idx+1) + ' / ' + PHOTOS.length;
+  lbCap.textContent = cap + '  ·  ' + (idx+1) + ' / ' + view.length;
 }
-function step(d){ idx = (idx + d + PHOTOS.length) % PHOTOS.length; paint(); }
+function step(d){ idx = (idx + d + view.length) % view.length; paint(); }
 function closeLb(){ lb.classList.remove('on'); document.body.style.overflow=''; }
 
-/* ---------- reader ---------- */
+/* reader */
 function openReader(i){
   const p = POSTS[i];
   rDate.textContent  = p.date;
@@ -561,35 +513,34 @@ function openReader(i){
 }
 function closeReader(){ reader.classList.remove('on'); document.body.style.overflow=''; }
 
-/* ---------- form ---------- */
+/* form */
 function buildMsg(e){
   e.preventDefault();
   const f = new FormData(e.target);
   const L = lang==='tr'
     ? {h:'Model başvurusu',a:'Ad',i:'İletişim',s:'Şehir',d:'Deneyim',m:'Fikir'}
     : {h:'Model application',a:'Name',i:'Contact',s:'City',d:'Experience',m:'Idea'};
-  msg.textContent =
-    L.h+'\n\n'+
-    L.a+': '+(f.get('ad')||'—')+'\n'+
-    L.i+': '+(f.get('iletisim')||'—')+'\n'+
-    L.s+': '+(f.get('sehir')||'—')+'\n'+
-    L.d+': '+(f.get('deneyim')||'—')+'\n'+
-    L.m+': '+(f.get('mesaj')||'—');
+  msg.textContent = L.h+'\n\n'
+    + L.a+': '+(f.get('ad')||'—')+'\n'
+    + L.i+': '+(f.get('iletisim')||'—')+'\n'
+    + L.s+': '+(f.get('sehir')||'—')+'\n'
+    + L.d+': '+(f.get('deneyim')||'—')+'\n'
+    + L.m+': '+(f.get('mesaj')||'—');
   out.classList.add('on');
   out.scrollIntoView({behavior:'smooth',block:'center'});
 }
 async function copyMsg(){
   try{
     await navigator.clipboard.writeText(msg.textContent);
-    copyBtn.textContent = T.copied[lang];
-    setTimeout(()=>copyBtn.textContent = T.copy[lang], 1800);
+    copyBtn.textContent = t('ui.copied');
+    setTimeout(()=>copyBtn.textContent = t('ui.copy'), 1800);
   }catch(err){
     const r = document.createRange(); r.selectNodeContents(msg);
     const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
   }
 }
 
-/* ---------- nav & misc ---------- */
+/* nav */
 function go(id){
   document.body.classList.remove('menu');
   const el = document.getElementById(id);
@@ -613,8 +564,27 @@ function observe(){
   document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
 }
 
-fill();
-setLang(lang);
+/* ---- güvenlik ağı: content.js bozuksa sayfa bembeyaz kalmasın ---- */
+function oops(err){
+  const d = document.createElement('div');
+  d.className = 'oops';
+  d.innerHTML =
+    '<div class="oops-in"><div class="dash"></div>'
+    + '<h1>İçerik dosyasında bir hata var</h1>'
+    + '<p><code>content.js</code> dosyasında eksik bir virgül, tırnak ya da parantez olabilir. '
+    + 'Tasarımda bir sorun yok — sadece içerik okunamadı.</p>'
+    + '<p><strong>Nasıl düzeltilir:</strong> GitHub’da deponu aç, <code>content.js</code> dosyasının '
+    + '<em>History</em> (geçmiş) bölümünden son değişikliği geri al. Site hemen eski hâline döner.</p>'
+    + '<p style="color:#8E8B7B;font-size:13.5px">Teknik not: ' + (err && err.message ? err.message : err) + '</p>'
+    + '</div>';
+  document.body.appendChild(d);
+}
+try{
+  if(typeof SITE==='undefined' || typeof PHOTOS==='undefined' || typeof POSTS==='undefined' || typeof TEXT==='undefined')
+    throw new Error('content.js okunamadı');
+  fill();
+  setLang(lang);
+}catch(err){ oops(err); }
 </script>
 </body>
 </html>

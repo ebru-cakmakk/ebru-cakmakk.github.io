@@ -57,11 +57,29 @@ Bilgisayara program kurmana gerek yok. Her şey tarayıcıdan:
 4. `content.js` içindeki `PHOTOS` listesine yeni bir satır ekle:
 
 ```js
-{src:'images/09.jpg', w:6, ratio:'3/2', tr:'Fotoğrafın adı', en:'Photo title'},
+{src:'images/09.jpg', cat:'portre', w:6, ratio:'3/2', tr:'Fotoğrafın adı', en:'Photo title'},
 ```
 
+`cat` kategori: `portre` · `doga` · `peyzaj` (listeyi `CATS` bölümünden değiştirebilirsin)
 `w` genişlik: **4** küçük · **6** orta · **8** geniş · **12** tam sayfa
 `ratio` oran: **3/2** yatay · **3/4** dikey · **1/1** kare · **21/9** sinema bandı
+
+### Yeni kategori eklemek
+`content.js` içindeki `CATS` listesine bir satır ekle:
+
+```js
+{id:'sokak', tr:'Sokak', en:'Street'},
+```
+
+Sonra o kategoriye girecek fotoğrafların `cat` değerine `'sokak'` yaz. Galerinin
+üstündeki filtre düğmeleri kendiliğinden güncellenir; fotoğrafı olmayan kategori
+görünmez.
+
+### Sitedeki herhangi bir yazıyı değiştirmek
+`content.js` dosyasının **5. bölümünde** sitedeki bütün yazılar var — menü, açılış,
+bölüm başlıkları, modeller için yazılan her cümle, form etiketleri. Soldaki ad
+(örn. `'hero.tagline'`) yerini gösterir, onu değiştirme; sadece `tr:` ve `en:`
+karşılıklarını düzenle. `index.html` dosyasına hiç dokunman gerekmez.
 
 > Düzen ipucu: `w:8` ile `w:4` yan yana gelince yükseklikleri tam oturur.
 > `w:6` + `w:6` de aynı şekilde. `w:12` tek başına tam genişlik kaplar.
