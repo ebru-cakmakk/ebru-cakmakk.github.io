@@ -31,6 +31,7 @@ isimle çalışır, ama kamuya açık yüzünde (Instagram, TikTok) mahlas makul
 | Yayındaki site | `https://ebru-cakmakk.github.io` |
 | Barındırma | GitHub Pages — ücretsiz, kendiliğinden yayınlanıyor |
 | E-posta | `giauzar.arrakis@gmail.com` |
+| Fotoğraf küçültücü | `https://ebru-cakmakk.github.io/kucult.html` |
 
 | Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
 
@@ -128,6 +129,19 @@ azaltma veya veri tasarrufu açıksa sadece fotoğraf. Yeni video: sessiz, H.264
 30 fps, CRF 27, +faststart; 1920 ve 1280 genişlikte iki sürüm. Kaynak 100 fps
 Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sınırı).
 
+**Galeri hizalı satırlarla çiziliyor** (`justify()`), CSS sütunlarıyla değil —
+Ebru tırtıklı sütun altlarını sevmedi. Kareler kendi oranlarını korur, satırlar
+sayfayı tam doldurur; 560px altında her kare tam genişlik. Oran JPEG/PNG
+başlığından Range isteğiyle okunur (`learnRatio`), fotoğraf yüklenince EXIF
+döndürmesine karşı düzeltilir (`onShotLoad`). Yeni fotoğraf için hiçbir yere
+oran yazmak gerekmiyor.
+
+**Sekme logosu** `favicon.svg` (+ 32px PNG ve apple-touch-icon): koyu zeminde
+krem Z monogramı. Ad "Z. Ebru Çakmak" olunca eklendi.
+
+**Addan sonraki süs noktası kaldırıldı** (eskiden `.dot` span'i vardı). Geri
+isterse marka ve açılış başlığına geri eklenir.
+
 **Fotoğraf isimleri yok.** Her kareye başlık yazmak istemedi. Galeri isimsiz;
 sadece kategori başlıkları var.
 
@@ -164,9 +178,9 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 
 ## Açık konular
 
-- [ ] **İsim kararı** — gerçek ad mı, mahlas mı. Önerilenler: Karşı Işık,
-      Gölgelik, Düşen Işık, Pus, Yosun, Rakım. Karar verilince site başlığı,
-      menü ve footer tek satırda güncellenir (`SITE.name`).
+- [x] ~~İsim kararı~~ — **Z. Ebru Çakmak**. Mahlas elendi; gerçek ad korunuyor
+      ama baştaki harf mesafe koyuyor. Sosyal medya kullanıcı adı ayrı karar
+      (z.ebrucakmak gibi; "zebrucakmak" yazımından kaçın).
 - [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
 - [x] ~~Günlük yazıları~~ — Ebru kendi deneme yazılarını panelden girdi. Dört yazı:
       Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
