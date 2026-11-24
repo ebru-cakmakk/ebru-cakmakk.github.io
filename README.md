@@ -195,3 +195,15 @@ Bir fotoğrafın ana sayfada da görünmesini istersen "Ana sayfadaki seçkide d
 ## Videolar
 
 Panelde **Videolar** bölümüne YouTube ya da Vimeo'daki videonun adresini yapıştırman yeterli. Başlık isteğe bağlı. Video sitede kendi içinde oynar.
+
+## Fotoğrafları küçültmek
+
+Siteye koymadan önce fotoğrafları küçültmen gerekiyor. Bunun için kendi sitende bir araç var:
+
+**https://ebru-cakmakk.github.io/kucult.html**
+
+Fotoğrafları sayfaya sürükle, küçültülmüş hâllerini indir, sonra panele yükle. Ayarlar hazır geliyor (uzun kenar 2200, kalite 80), değiştirmene gerek yok. İstersen "seri" gibi bir ad yazıp dosyaları seri-01.jpg, seri-02.jpg diye numaralandırabilirsin.
+
+Fotoğraflar internete yüklenmiyor, küçültme senin cihazında yapılıyor. Sayfayı yer imlerine ekle.
+
+iPhone'dan HEIC dosyası gelirse tarayıcı açamayabilir. Telefonda **Ayarlar → Kamera → Biçimler → En Uyumlu** seçersen yeni fotoğraflar JPEG çekilir.

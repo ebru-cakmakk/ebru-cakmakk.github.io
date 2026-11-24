@@ -66,6 +66,9 @@ data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
 video/            Giriş videosu: hero.mp4 (1080p) + hero-720.mp4 (telefon), sessiz, ~1-2 MB
 images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 .pages.yml        Pages CMS panel ayarları (üretilmiş — scripts/genpages.js)
+kucult.html       Ebru'nun kendi fotoğraf küçültücüsü (tarayıcıda çalışır, canvas ile;
+                  2200px/q80 varsayılan). Artifact olarak değil siteye konuldu çünkü
+                  artifact kumbarasında dosya indirme engelli.
 README.md         Ebru için kullanım kılavuzu (Türkçe, adım adım)
 CLAUDE.md         Bu dosya
 .nojekyll         GitHub Pages için teknik dosya
@@ -148,9 +151,10 @@ açıklayıcı bir uyarı çıkar ve GitHub geçmişinden nasıl geri alınacağ
 Ebru kod yazmıyor. Birincil yolu **Pages CMS paneli** (app.pagescms.org);
 yedek yol `data/*.json` dosyalarını GitHub web editöründen düzenlemek. Yeni fotoğraf gönderdiğinde iş akışı:
 
-1. Uzun kenarı 2200px'e düşür, JPEG kalite 80 (`scripts/prep.py` benzeri bir adım)
+1. Uzun kenarı 2200px'e düşür, JPEG kalite 80 (`scripts/prep.py`; Ebru kendisi
+   `kucult.html` sayfasını kullanıyor)
 2. `images/` klasörüne koy
-3. `data/photos.json` listesine `{src, cat}` ekle
+3. `data/series.json` içinde ilgili serinin `photos` listesine `{src}` ekle
 4. Commit + push → birkaç dakikada yayında
 
 **Ton:** Açıklamaları Türkçe ve sade tut. Teknik ayrıntıyı ancak gerektiği kadar

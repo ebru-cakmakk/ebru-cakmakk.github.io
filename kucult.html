@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fotoğraf Küçültücü</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --deep:#121A0B; --ink:#18230F; --ink-2:#27391C; --moss:#255F38;
+    --emerald:#1F7D53; --cream:#F1EEE3; --sand:#C9CDBE; --sand-dim:#8A9180;
+    --line:rgba(241,238,227,.14); --line-2:rgba(241,238,227,.07);
+  }
+  body{background:var(--deep);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;padding:clamp(22px,5vw,56px) clamp(18px,5vw,40px)}
+  .wrap{max-width:860px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald);margin-bottom:10px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(28px,6vw,42px);line-height:1.1;letter-spacing:-.02em}
+  .lede{color:var(--sand);margin-top:14px;max-width:56ch;font-size:15.5px}
+  .lede b{color:var(--cream);font-weight:400}
+
+  .drop{margin-top:30px;border:1px dashed var(--line);border-radius:4px;background:rgba(241,238,227,.03);
+    padding:clamp(30px,7vw,54px) 24px;text-align:center;cursor:pointer;transition:.25s}
+  .drop:hover,.drop.over{border-color:var(--emerald);background:rgba(31,125,83,.1)}
+  .drop h2{font-family:Georgia,serif;font-weight:400;font-size:20px;margin-bottom:6px}
+  .drop p{color:var(--sand-dim);font-size:13.5px}
+  input[type=file]{display:none}
+
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px 22px;margin-top:26px;
+    border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:22px 0}
+  label{display:block;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--sand-dim);margin-bottom:8px}
+  input[type=text],input[type=number]{width:100%;background:rgba(241,238,227,.045);border:1px solid var(--line);
+    color:var(--cream);font:inherit;font-size:15px;padding:11px 13px;border-radius:2px;transition:.25s}
+  input:focus{outline:0;border-color:var(--emerald);background:rgba(31,125,83,.1)}
+  .hint{font-size:12px;color:var(--sand-dim);margin-top:7px;line-height:1.45}
+
+  .bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px;min-height:44px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border:1px solid var(--emerald);
+    background:var(--emerald);color:var(--cream);font:inherit;font-size:11.5px;letter-spacing:.18em;
+    text-transform:uppercase;border-radius:2px;cursor:pointer;transition:.3s}
+  .btn:hover{background:var(--moss);border-color:var(--moss)}
+  .btn[disabled]{opacity:.4;cursor:default}
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--sand)}
+  .btn.ghost:hover{border-color:var(--emerald);color:var(--cream);background:transparent}
+  .tally{font-size:13.5px;color:var(--sand)}
+  .tally b{color:var(--cream);font-weight:400}
+
+  ul{list-style:none;margin-top:8px}
+  li{display:flex;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line-2)}
+  li .thumb{width:64px;height:64px;flex-shrink:0;background:var(--ink-2);border-radius:2px;overflow:hidden}
+  li .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  li .meta{flex:1;min-width:0}
+  li .nm{font-size:14.5px;color:var(--cream);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  li .sz{font-size:12.5px;color:var(--sand-dim);margin-top:3px}
+  li .sz .good{color:var(--emerald)}
+  li .sz .bad{color:#D8A05A}
+  li .act{flex-shrink:0}
+  li .act a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);
+    border:1px solid var(--line);padding:8px 14px;border-radius:2px;text-decoration:none;transition:.25s;white-space:nowrap}
+  li .act a:hover{border-color:var(--emerald);color:var(--cream)}
+
+  .note{margin-top:34px;border-left:2px solid var(--moss);background:rgba(37,95,56,.14);padding:16px 20px;
+    font-size:13.5px;color:var(--sand);border-radius:0 3px 3px 0}
+  .note b{color:var(--cream);font-weight:400}
+  .note + .note{margin-top:12px}
+  footer{margin-top:40px;font-size:12px;color:var(--sand-dim);border-top:1px solid var(--line-2);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Siteye yüklemeden önce</p>
+  <h1>Fotoğraf Küçültücü</h1>
+  <p class="lede">Fotoğrafları buraya bırak, küçültülmüş hâllerini indir. Her şey <b>kendi cihazında</b> yapılır — hiçbir fotoğraf internete yüklenmez, hiçbir yere gönderilmez.</p>
+
+  <div class="drop" id="drop">
+    <h2>Fotoğrafları buraya sürükle</h2>
+    <p>ya da tıklayıp seç · birden fazla seçebilirsin</p>
+  </div>
+  <input type="file" id="pick" accept="image/*" multiple>
+
+  <div class="opts">
+    <div>
+      <label for="edge">Uzun kenar (piksel)</label>
+      <input type="number" id="edge" value="2200" min="400" max="6000" step="100">
+      <p class="hint">Site için 2200 yeterli.</p>
+    </div>
+    <div>
+      <label for="qual">Kalite (0–100)</label>
+      <input type="number" id="qual" value="80" min="40" max="100" step="5">
+      <p class="hint">80 iyi denge. Düşürdükçe dosya küçülür.</p>
+    </div>
+    <div>
+      <label for="name">Dosya adı (isteğe bağlı)</label>
+      <input type="text" id="name" placeholder="örn. seri">
+      <p class="hint">Yazarsan seri-01.jpg, seri-02.jpg olur. Boşsa adlar korunur.</p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <button class="btn" id="dlAll" disabled>Hepsini İndir</button>
+    <button class="btn ghost" id="clear" disabled>Listeyi Temizle</button>
+    <span class="tally" id="tally"></span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div class="note" id="heicNote" style="display:none">
+    <b>Bazı dosyalar açılamadı.</b> iPhone'dan gelen HEIC dosyaları çoğu tarayıcıda okunamıyor. Telefonunda <b>Ayarlar → Kamera → Biçimler → En Uyumlu</b> seçersen yeni fotoğraflar JPEG olarak çekilir. Elindekiler için fotoğrafı önce paylaş/dışa aktar ile JPEG'e çevir.
+  </div>
+
+  <div class="note">
+    <b>Sonra ne yapacaksın:</b> İndirdiğin dosyaları Pages CMS panelinde <b>Fotoğraf serileri</b> bölümünde ilgili serinin altına yükle.
+  </div>
+
+  <footer>Bu sayfa çalışırken internete hiçbir şey göndermez. Çevrimdışıyken de çalışır — yer imlerine ekleyebilirsin.</footer>
+</div>
+
+<script>
+const drop = document.getElementById('drop');
+const pick = document.getElementById('pick');
+const list = document.getElementById('list');
+const tally = document.getElementById('tally');
+const dlAll = document.getElementById('dlAll');
+const clearBtn = document.getElementById('clear');
+const heicNote = document.getElementById('heicNote');
+
+let done = [];   // {name, url, bytes}
+
+const kb = b => b < 1024*1024 ? Math.round(b/1024) + ' KB' : (b/1048576).toFixed(1) + ' MB';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+drop.addEventListener('click', () => pick.click());
+pick.addEventListener('change', e => handle([...e.target.files]));
+['dragenter','dragover'].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.add('over');
+}));
+['dragleave','drop'].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.remove('over');
+}));
+drop.addEventListener('drop', e => handle([...(e.dataTransfer.files || [])]));
+document.addEventListener('dragover', e => e.preventDefault());
+document.addEventListener('drop', e => e.preventDefault());
+
+async function handle(files){
+  files = files.filter(f => f && (f.type.startsWith('image/') || /\.(jpe?g|png|webp|heic|heif|tiff?)$/i.test(f.name)));
+  if(!files.length) return;
+  let failed = false;
+  for(const f of files){
+    const row = addRow(f.name, f.size);
+    try{
+      const out = await shrink(f);
+      done.push(out);
+      fillRow(row, out, f.size);
+    }catch(err){
+      failed = true;
+      row.querySelector('.sz').innerHTML = '<span class="bad">açılamadı</span>';
+      row.querySelector('.act').innerHTML = '';
+    }
+    refresh();
+  }
+  if(failed) heicNote.style.display = '';
+  pick.value = '';
+}
+
+function addRow(name, bytes){
+  const li = document.createElement('li');
+  li.innerHTML = '<span class="thumb"></span><span class="meta"><span class="nm">' + esc(name) + '</span>'
+    + '<span class="sz">' + kb(bytes) + ' — küçültülüyor…</span></span><span class="act"></span>';
+  list.appendChild(li);
+  return li;
+}
+
+function fillRow(li, out, before){
+  li.querySelector('.thumb').innerHTML = '<img src="' + out.url + '" alt="">';
+  li.querySelector('.nm').textContent = out.name;
+  const pct = Math.max(0, Math.round((1 - out.bytes / before) * 100));
+  li.querySelector('.sz').innerHTML = kb(before) + ' → <span class="good">' + kb(out.bytes) + '</span>'
+    + ' · ' + out.w + '×' + out.h + (pct > 0 ? ' · %' + pct + ' küçüldü' : '');
+  const a = document.createElement('a');
+  a.href = out.url; a.download = out.name; a.textContent = 'İndir';
+  li.querySelector('.act').appendChild(a);
+}
+
+function refresh(){
+  const n = done.length;
+  dlAll.disabled = !n;
+  clearBtn.disabled = !list.children.length;
+  if(n){
+    const total = done.reduce((s, x) => s + x.bytes, 0);
+    tally.innerHTML = '<b>' + n + '</b> fotoğraf hazır · toplam <b>' + kb(total) + '</b>';
+  }else{
+    tally.textContent = '';
+  }
+}
+
+/* Uzun kenarı hedefe indirir, kademeli küçülterek (daha temiz sonuç) */
+async function shrink(file){
+  const edge = Math.max(200, Math.min(8000, +document.getElementById('edge').value || 2200));
+  const q = Math.max(0.3, Math.min(1, (+document.getElementById('qual').value || 80) / 100));
+  const bmp = await load(file);
+  let w = bmp.width, h = bmp.height;
+  const scale = Math.min(1, edge / Math.max(w, h));
+  const tw = Math.max(1, Math.round(w * scale)), th = Math.max(1, Math.round(h * scale));
+
+  let canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  let ctx = canvas.getContext('2d');
+  ctx.drawImage(bmp, 0, 0);
+  if(bmp.close) bmp.close();
+
+  while(w > tw * 2 && h > th * 2){
+    const nw = Math.max(tw, Math.round(w / 2)), nh = Math.max(th, Math.round(h / 2));
+    const c2 = document.createElement('canvas');
+    c2.width = nw; c2.height = nh;
+    const x2 = c2.getContext('2d');
+    x2.imageSmoothingQuality = 'high';
+    x2.drawImage(canvas, 0, 0, nw, nh);
+    canvas = c2; ctx = x2; w = nw; h = nh;
+  }
+  if(w !== tw || h !== th){
+    const c3 = document.createElement('canvas');
+    c3.width = tw; c3.height = th;
+    const x3 = c3.getContext('2d');
+    x3.imageSmoothingQuality = 'high';
+    x3.drawImage(canvas, 0, 0, tw, th);
+    canvas = c3;
+  }
+
+  const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', q));
+  if(!blob) throw new Error('toBlob');
+  return {name: outName(file.name), url: URL.createObjectURL(blob), bytes: blob.size, w: tw, h: th};
+}
+
+/* EXIF yönünü koruyarak açar */
+async function load(file){
+  if(window.createImageBitmap){
+    try{ return await createImageBitmap(file, {imageOrientation: 'from-image'}); }catch(e){}
+  }
+  return await new Promise((res, rej) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => { URL.revokeObjectURL(url); res(img); };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('decode')); };
+    img.src = url;
+  });
+}
+
+function outName(orig){
+  const base = document.getElementById('name').value.trim()
+    .toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '');
+  if(base) return base + '-' + String(done.length + 1).padStart(2, '0') + '.jpg';
+  return orig.replace(/\.[^.]+$/, '').replace(/[^\w.-]+/g, '-').toLowerCase() + '.jpg';
+}
+
+dlAll.addEventListener('click', async () => {
+  for(const f of done){
+    const a = document.createElement('a');
+    a.href = f.url; a.download = f.name;
+    document.body.appendChild(a); a.click(); a.remove();
+    await new Promise(r => setTimeout(r, 350));
+  }
+});
+
+clearBtn.addEventListener('click', () => {
+  done.forEach(f => URL.revokeObjectURL(f.url));
+  done = []; list.innerHTML = ''; heicNote.style.display = 'none'; refresh();
+});
+</script>
+</body>
+</html>
