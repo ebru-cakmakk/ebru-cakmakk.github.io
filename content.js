@@ -24,10 +24,37 @@ const SITE = {
 
 
 /* ---------------------------------------------------------------
-   2) FOTOĞRAF KATEGORİLERİ
+   2) RENK UYUMU
+   Site, gösterilen fotoğraflardan rengin TONUNU alıp kendine uyarlar.
+   Koyuluk ve doygunluk sabit kalır, yani tasarım hiç bozulmaz.
+
+   auto     : false yaparsan renk uyumu kapanır, site hep base tonunda kalır
+   base     : kendi ana tonun. 0 kırmızı · 30 turuncu · 60 sarı · 140 yeşil
+              · 200 camgöbeği · 240 mavi · 280 mor · 330 pembe
+   strength : fotoğrafın tonu paleti NE KADAR çeksin — 0 ile 1 arası
+              0    hiç çekmesin, site hep base tonunda kalsın
+              0.6  belirgin değişir ama kendi renk ailenden çıkmaz  ← önerilen
+              1    tamamen fotoğrafın tonuna geçsin
+
+   Not: elindeki fotoğrafların hâkim tonu sarı-yeşil (otlar). 1 yaparsan
+   site zeytin yeşiline kayar; 0.6'da koyu yeşil kimliğini korur.
+   --------------------------------------------------------------- */
+const THEME = {
+  auto: true,
+  base: 140,
+  strength: 0.6
+};
+
+
+/* ---------------------------------------------------------------
+   3) FOTOĞRAF KATEGORİLERİ
    Her kategori, Fotoğraflar sayfasında kendi başlığı altında görünür.
    id : fotoğraf listesinde kullanacağın kısa ad (Türkçe karakter kullanma)
    Sıralamayı değiştirmek istersen satırların yerini değiştir.
+
+   İsteğe bağlı: bir kategorinin rengini kendin belirlemek istersen
+   satırın sonuna hue ekle — örn. hue:30 (turuncu). Yazmazsan
+   o kategorinin fotoğraflarından kendiliğinden hesaplanır.
    --------------------------------------------------------------- */
 const CATS = [
   {id:'portre', tr:'Portre', en:'Portrait'},
@@ -37,7 +64,7 @@ const CATS = [
 
 
 /* ---------------------------------------------------------------
-   3) FOTOĞRAFLAR
+   4) FOTOĞRAFLAR
 
    YENİ FOTOĞRAF EKLEMEK İÇİN SADECE ŞU İKİSİ YETER:
        {src:'images/09.jpg', cat:'portre'},
@@ -69,7 +96,7 @@ const PHOTOS = [
 
 
 /* ---------------------------------------------------------------
-   4) VİDEOLAR
+   5) VİDEOLAR
    Liste boşken Video sayfasında "hazırlanıyor" yazısı görünür.
    Video eklemek için örnekteki // işaretlerini kaldırıp doldur:
 
@@ -84,7 +111,7 @@ const VIDEOS = [
 
 
 /* ---------------------------------------------------------------
-   5) GÜNLÜK YAZILARI — en yeni en üstte
+   6) GÜNLÜK YAZILARI — en yeni en üstte
    bodyTr / bodyEn : her tırnak bir paragraf
    --------------------------------------------------------------- */
 const POSTS = [
@@ -127,7 +154,7 @@ const POSTS = [
 
 
 /* ---------------------------------------------------------------
-   6) SİTEDEKİ TÜM YAZILAR
+   7) SİTEDEKİ TÜM YAZILAR
    Soldaki ad (örn. 'hero.tagline') sitedeki yeri gösterir, onu değiştirme.
    Sadece tr ve en karşılıklarını düzenle.
    --------------------------------------------------------------- */

@@ -10,6 +10,7 @@
 <style>
   :root{
     --ink:#18230F; --ink-2:#27391C; --moss:#255F38; --emerald:#1F7D53;
+    --deep:#121a0b;
     --cream:#F1EEE3; --sand:#BFBAA6; --sand-dim:#8E8B7B;
     --line:rgba(241,238,227,.13); --line-2:rgba(241,238,227,.07);
     --display:'Fraunces',Georgia,'Times New Roman',serif;
@@ -149,7 +150,7 @@
   .vid .cap span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
 
   /* models */
-  .models-bg{background:linear-gradient(180deg,#1b2712,#18230F)}
+  .models-bg{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(22px,3vw,46px)}
   .card{border-top:1px solid var(--line);padding-top:24px}
   .card .num{font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--emerald)}
@@ -221,7 +222,7 @@
   .socials a{padding:11px 22px;border:1px solid var(--line);border-radius:100px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;transition:.35s}
   .socials a:hover{border-color:var(--emerald);background:rgba(31,125,83,.15);transform:translateY(-2px)}
 
-  footer{padding:30px 0;border-top:1px solid var(--line-2);background:#121a0b}
+  footer{padding:30px 0;border-top:1px solid var(--line-2);background:var(--deep)}
   .foot{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center}
   .foot p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-dim)}
   .foot a{color:var(--sand-dim);transition:.3s}
@@ -229,6 +230,13 @@
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* --- fotoğrafa göre renk uyumu: yumuşak geçişler --- */
+  body,footer,.models-bg{transition:background-color 1.5s cubic-bezier(.4,0,.2,1),background 1.5s cubic-bezier(.4,0,.2,1)}
+  .tile,.mas>figure,.portrait,.lb-frame,.vid{transition:background-color 1.5s cubic-bezier(.4,0,.2,1)}
+  .eyebrow,.cat-head h3,.post time,.reader time,.card .num{transition:color 1.5s cubic-bezier(.4,0,.2,1)}
+  .filters button.on,.lang button.on,.btn,.socials a,.more,.cat-head,.post,.note{transition:background-color 1.5s cubic-bezier(.4,0,.2,1),border-color 1.5s cubic-bezier(.4,0,.2,1),color .35s}
+  .lb{transition:background-color 1s ease}
 
   .oops{position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:var(--pad)}
   .oops-in{max-width:560px}
@@ -552,7 +560,7 @@ function render(){
     if(!list.length) return;
     const start = SETS.photos.length;
     SETS.photos = SETS.photos.concat(list);
-    html += '<div class="cat-block reveal"><div class="cat-head"><h3>'+catName(c)+'</h3>'
+    html += '<div class="cat-block reveal" data-cat="'+c.id+'"><div class="cat-head"><h3>'+catName(c)+'</h3>'
           + '<span>'+list.length+'</span></div><div class="mas">'
           + list.map((p,j)=>
               '<figure onclick="openLb(\'photos\','+(start+j)+')">'
@@ -606,6 +614,7 @@ function route(){
   document.body.classList.remove('menu');
   closeLb(); closeReader();
   window.scrollTo(0,0);
+  themeForPage(h);
   observe();
 }
 
@@ -622,9 +631,16 @@ function paint(){
   if(!p) return;
   lbFrame.innerHTML = '<img src="'+p.src+'" alt="">';
   lbCap.textContent = (idx+1) + ' / ' + lbSet.length;
+  if(theme().auto) readHue(p.src).then(tone=>{
+    if(lb.classList.contains('on')) paintTheme(tone);
+  });
 }
 function step(d){ if(lbSet.length){ idx = (idx + d + lbSet.length) % lbSet.length; paint(); } }
-function closeLb(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
+function closeLb(){
+  lb.classList.remove('on');
+  document.body.style.overflow = '';
+  paintTheme(pageTone);          // sayfanın kendi rengine dön
+}
 
 /* ---------------- günlük okuyucu ---------------- */
 function openReader(i){
@@ -683,6 +699,123 @@ function observe(){
     es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
   },{threshold:.06,rootMargin:'0px 0px -30px'});
   document.querySelectorAll('.page.on .reveal').forEach(e=>io.observe(e));
+}
+
+/* ================= FOTOĞRAFA GÖRE RENK UYUMU =================
+   Fotoğraftan rengin TONU alınır; koyuluk ve doygunluk sabit tutulur.
+   Böylece palet fotoğrafa uyar ama yazılar her zaman okunur kalır.
+   ============================================================= */
+const THEME_DEF = {auto:true, base:140, strength:0.6};
+function theme(){ return (typeof THEME !== 'undefined' && THEME) ? THEME : THEME_DEF; }
+const hueCache = {};
+
+function readHue(src){
+  return new Promise(res=>{
+    if(src in hueCache) return res(hueCache[src]);
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = function(){
+      let out = null;
+      try{
+        const S = 44, c = document.createElement('canvas');
+        c.width = S; c.height = S;
+        const x = c.getContext('2d', {willReadFrequently:true});
+        x.drawImage(im, 0, 0, S, S);
+        const d = x.getImageData(0, 0, S, S).data;
+        let sx = 0, sy = 0, w = 0;
+        for(let i = 0; i < d.length; i += 4){
+          const r = d[i]/255, g = d[i+1]/255, b = d[i+2]/255;
+          const mx = Math.max(r,g,b), mn = Math.min(r,g,b), dl = mx - mn;
+          if(dl < 0.04) continue;                        // griyi atla
+          const l = (mx + mn) / 2;
+          const s = l > 0.5 ? dl/(2 - mx - mn) : dl/(mx + mn);
+          let h;
+          if(mx === r) h = ((g - b)/dl + 6) % 6;
+          else if(mx === g) h = (b - r)/dl + 2;
+          else h = (r - g)/dl + 4;
+          h *= 60;
+          const wt = s * (1 - Math.abs(l - 0.45) * 1.3); // çok koyu/çok açık pikseli zayıflat
+          if(wt <= 0) continue;
+          const a = h * Math.PI / 180;
+          sx += Math.cos(a) * wt; sy += Math.sin(a) * wt; w += wt;
+        }
+        if(w > 0) out = {
+          h: (Math.atan2(sy, sx) * 180 / Math.PI + 360) % 360,
+          s: Math.min(1, w / (S * S * 0.22))
+        };
+      }catch(e){ out = null; }
+      hueCache[src] = out; res(out);
+    };
+    im.onerror = function(){ hueCache[src] = null; res(null); };
+    im.src = src;
+  });
+}
+
+function blendHue(list){
+  return Promise.all(list.slice(0, 6).map(p => readHue(p.src))).then(parts=>{
+    let sx = 0, sy = 0, ss = 0, n = 0;
+    parts.forEach(p=>{
+      if(!p) return;
+      const a = p.h * Math.PI / 180;
+      sx += Math.cos(a); sy += Math.sin(a); ss += p.s; n++;
+    });
+    if(!n) return null;
+    return {h:(Math.atan2(sy, sx) * 180 / Math.PI + 360) % 360, s: ss / n};
+  });
+}
+
+let curHue = null, pageTone = null;
+function paintTheme(tone){
+  const T = theme();
+  const base = (T.base !== undefined ? T.base : 140);
+  const st   = Math.max(0, Math.min(1, T.strength !== undefined ? T.strength : 0.6));
+  const on   = T.auto && tone && st > 0;
+  /* temel tondan fotoğrafın tonuna, en kısa yoldan, strength kadar kay */
+  let h = base;
+  if(on){
+    const d = ((tone.h - base + 540) % 360) - 180;
+    h = (base + d * st + 360) % 360;
+  }
+  h = Math.round(h);
+  const sat = on ? Math.max(0.25, Math.min(1, tone.s)) : 0.5;
+  if(curHue === h) return;
+  curHue = h;
+  const S = Math.round(26 + sat * 20);
+  const r = document.documentElement.style;
+  r.setProperty('--deep',     'hsl(' + h + ' ' + Math.round(S*0.50) + '% 6.5%)');
+  r.setProperty('--ink',      'hsl(' + h + ' ' + Math.round(S*0.52) + '% 9.5%)');
+  r.setProperty('--ink-2',    'hsl(' + h + ' ' + Math.round(S*0.62) + '% 16.5%)');
+  r.setProperty('--moss',     'hsl(' + h + ' ' + S + '% 26%)');
+  r.setProperty('--emerald',  'hsl(' + h + ' ' + Math.min(S + 14, 60) + '% 40%)');
+}
+
+function themeFor(list){
+  if(!theme().auto){ pageTone = null; paintTheme(null); return; }
+  blendHue(list).then(tone=>{ pageTone = tone; paintTheme(tone); });
+}
+
+let catIO;
+function watchCats(){
+  if(catIO) catIO.disconnect();
+  if(!theme().auto) return;
+  catIO = new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(!en.isIntersecting) return;
+      const id = en.target.dataset.cat;
+      const c = CATS.filter(x => x.id === id)[0];
+      if(c && c.hue !== undefined){ pageTone = {h:c.hue, s:0.6}; paintTheme(pageTone); }
+      else themeFor(PHOTOS.filter(p => p.cat === id));
+    });
+  },{rootMargin:'-35% 0px -35% 0px', threshold:0});
+  document.querySelectorAll('#catWrap .cat-block[data-cat]').forEach(e=>catIO.observe(e));
+}
+
+function themeForPage(h){
+  if(catIO) catIO.disconnect();
+  if(!theme().auto){ paintTheme(null); return; }
+  if(h === 'home')            themeFor([{src:'images/hero.jpg'}]);
+  else if(h === 'fotograflar'){ themeFor(PHOTOS.filter(p => p.cat === CATS[0].id)); watchCats(); }
+  else                        themeFor(PHOTOS);
 }
 
 /* ---------------- güvenlik ağı ---------------- */

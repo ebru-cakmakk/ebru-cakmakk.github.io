@@ -115,7 +115,7 @@ sayfasında "hazırlanıyor" yazısı görünür.
 kopyalayıp içini değiştirmek en kolayı.
 
 ### Sitedeki herhangi bir yazıyı değiştirmek
-`content.js` dosyasının **6. bölümünde** sitedeki bütün yazılar var — menü, açılış,
+`content.js` dosyasının **7. bölümünde** sitedeki bütün yazılar var — menü, açılış,
 sayfa başlıkları, modeller için yazılan her cümle, form etiketleri. Soldaki ad
 (örn. `'hero.tagline'`) yerini gösterir, onu değiştirme; sadece `tr:` ve `en:`
 karşılıklarını düzenle. `index.html` dosyasına hiç dokunman gerekmez.
@@ -127,7 +127,45 @@ geri al, site anında eski hâline döner. Hiçbir şey kaybolmaz.
 
 ---
 
-## 3. Yardım
+## 4. Renk uyumu
+
+Site, gösterdiği fotoğraflardan rengin **tonunu** alıp kendine uyarlar. Koyuluk ve
+doygunluk sabit kalır, yani yazılar her zaman okunur ve tasarım bozulmaz.
+
+Nerede çalışır:
+
+- **Ana sayfa** açılış fotoğrafının tonunu alır
+- **Fotoğraflar sayfasında** kategoriler arasında kaydırdıkça palet yumuşakça değişir
+- **Bir fotoğrafı büyüttüğünde** sayfa o karenin tonuna geçer, kapatınca geri döner
+
+Ayarı `content.js` dosyasının 2. bölümünde:
+
+```js
+const THEME = {
+  auto: true,
+  base: 140,
+  strength: 0.6
+};
+```
+
+`base` senin ana tonun (140 = koyu yeşil). `strength` fotoğrafın paleti ne kadar
+çekeceğini belirler:
+
+| strength | sonuç |
+|---|---|
+| `0` | hiç değişmez, site hep `base` tonunda kalır |
+| `0.6` | belirgin değişir ama kendi renk ailenden çıkmaz |
+| `1` | tamamen fotoğrafın tonuna geçer |
+
+`auto: false` yazarsan özellik tamamen kapanır.
+
+Yeni bir çekim eklediğinde hiçbir şey yapman gerekmez — renk kendiliğinden
+hesaplanır. Bir kategorinin rengini kendin belirlemek istersen `CATS` listesindeki
+satırına `hue:30` gibi bir değer ekle.
+
+---
+
+## 5. Yardım
 
 Takıldığın her noktada Claude'a bu klasörü ve ne yapmak istediğini söylemen yeterli;
 dosyaları güncelleyip sana hazır hâlde verir.
