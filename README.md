@@ -169,3 +169,19 @@ site anında eski hâline döner. Hiçbir şey kaybolmaz.
   yine ücretsiz kalır.
 - **Video:** Vimeo veya YouTube'a yükle, bağlantısını panele gir. Video dosyasını
   siteye koyma, siteyi çok yavaşlatır.
+
+## Menü ve sayfalar
+
+Panelde **Menü ve sayfalar** bölümü sitenin üstündeki menüyü yönetir.
+
+- **Sırayı değiştirmek:** Öğeleri sürükleyerek yerlerini değiştir. Menü aynı sırayla görünür.
+- **Adını değiştirmek:** "Menüdeki adı" kutularını düzenle.
+- **Gizlemek:** "Menüde görünsün" kutusunun işaretini kaldır. Sayfa silinmez, sadece menüden kalkar.
+- **Yeni sayfa eklemek** (örneğin Denemeler): Listeye yeni bir öğe ekle. Kısa ada `denemeler` gibi küçük harfli, Türkçe karaktersiz bir ad yaz, sonra "YENİ SAYFA İÇİN" alanlarını doldur. Metin, Günlük yazılarındaki kurallarla yazılır.
+- Var olan sayfaların kısa adlarını (fotograflar, video, gunluk…) değiştirme, yoksa o sayfa açılmaz.
+
+**Fotoğraf kategorileri** bölümü ise yalnızca Fotoğraflar sayfasındaki grupları (Portre, Doğa…) yönetir.
+
+## Hakkımda fotoğrafı
+
+**Site ayarları → Hakkımda fotoğrafı** alanından değiştirebilirsin.

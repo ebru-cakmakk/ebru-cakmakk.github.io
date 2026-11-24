@@ -47,7 +47,7 @@ doldurulduğunda düğmeler kendiliğinden görünür.
 ```
 index.html        Tasarım + çalışma mantığı. Ebru buna dokunmuyor.
 data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
-  site.json         Ad, e-posta, sosyal medya, theme{auto,base,strength}
+  site.json         Ad, e-posta, sosyal medya, aboutPhoto, heroVideo, theme{auto,base,strength}
   categories.json   [{id, tr, en, hue}]
   photos.json       [{src, cat, feat, w, ratio}] — w ve ratio sadece ana sayfa seçkisi için
   videos.json       [{url, poster, meta, tr, en}] — boşsa Video sayfasında "hazırlanıyor"
@@ -56,7 +56,9 @@ data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
                     "images/09.jpg" satırı oraya fotoğraf koyar, "| alt yazı"
                     ekiyle alt yazılı. cover boşsa liste ve okuyucu küçülmez,
                     küçük resim sütunu hiç çizilmez.
-  text.json         Sitedeki her yazı: {grup: {anahtar: {tr, en}}}
+  pages.json        Menü: [{id, tr, en, show, titleTr/En, introTr/En, bodyTr/En}] — sıra =
+                    menü sırası; yerleşik olmayan id → #page-ozel şablonunda yeni sayfa
+  text.json         Sitedeki her yazı (menü adları artık burada değil): {grup: {anahtar: {tr, en}}}
 video/            Giriş videosu: hero.mp4 (1080p) + hero-720.mp4 (telefon), sessiz, ~1-2 MB
 images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 .pages.yml        Pages CMS panel ayarları (üretilmiş — scripts/genpages.js)
