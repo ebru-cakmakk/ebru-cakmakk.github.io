@@ -41,7 +41,7 @@
     "photos": [
       {
         "src": "images/13.jpg",
-        "feat": true,
+        "feat": false,
         "size": "kucuk"
       },
       {
