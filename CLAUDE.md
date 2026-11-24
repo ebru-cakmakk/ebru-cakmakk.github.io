@@ -52,7 +52,10 @@ data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
                     size: kucuk|orta|buyuk|tam (sadece ana sayfa seçkisi). Kodda CATS/PHOTOS
                     buradan türetilir (id = s0, s1…). photos.json/categories.json kaldırıldı.
   videos.json       [{url, tr, en}] — YouTube/Vimeo adresi, sayfaya gömülü; boşsa "Showreel hazırlanıyor"
-  posts.json        [{date, cover, tr, en, exTr, exEn, bodyTr, bodyEn}] — gövde düz
+  posts.json        [{date, cover, tr, en, exTr, exEn, bodyTr, bodyEn}] — tarih ISO
+                    ("2025-01-17" ya da "2025-11"); sayfada "17 Ocak 2025" / "January 17, 2025"
+                    olarak yazılır (fmtDate) ve yazılar yeniden eskiye sıralanır (sortPosts).
+                    Gövde düz
                     metin, boş satır = yeni paragraf. Tek başına duran
                     "images/09.jpg" satırı oraya fotoğraf koyar, "| alt yazı"
                     ekiyle alt yazılı. cover boşsa liste ve okuyucu küçülmez,
@@ -125,8 +128,11 @@ Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sı
 **Fotoğraf isimleri yok.** Her kareye başlık yazmak istemedi. Galeri isimsiz;
 sadece kategori başlıkları var.
 
-**Fotoğraf eklemek iki alana indirildi:** `{src, cat}`. Ana sayfadaki seçkiye
-girecekse ayrıca `feat:true` ve `w`/`ratio`. Bu sadeleştirme bilinçli.
+**Fotoğraf eklemek iki alana indirildi:** seri + `{src}`. Ana sayfadaki seçkiye
+girecekse ayrıca `feat:true` ve `size`. Bu sadeleştirme bilinçli.
+
+**Ebru'nun fotoğrafı** `images/ebru.jpg` — hem Hakkımda hem ana sayfadaki
+"Kısaca" bölümünde (`SITE.aboutPhoto`, panelden değiştirilebilir).
 
 **Pages CMS paneli.** `app.pagescms.org` üzerinden, ücretsiz ve barındırmasız.
 `.pages.yml` form alanlarını Türkçe etiketlerle tanımlar. WordPress değerlendirildi
@@ -158,8 +164,10 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       Gölgelik, Düşen Işık, Pus, Yosun, Rakım. Karar verilince site başlığı,
       menü ve footer tek satırda güncellenir (`SITE.name`).
 - [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
-- [ ] **Günlük yazıları** — üç başlık var ama içerikleri yer tutucu. Gerçek
-      metinler yazılmalı. Küratörler için en değerli bölüm burası.
+- [x] ~~Günlük yazıları~~ — Ebru kendi deneme yazılarını panelden girdi. Dört yazı:
+      Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
+      Son ikisi tek yazı olarak girilmişti, ayrıldı; tarihleri "2026-11", gerçek
+      tarihleri bilinmiyor.
 - [ ] **Showreel** — video bölümü boş. Vimeo veya YouTube bağlantısı gelince
       `data/videos.json` doldurulacak.
 - [ ] **Sosyal medya** — Instagram ve TikTok hesapları aynı kullanıcı adıyla
