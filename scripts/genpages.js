@@ -195,6 +195,8 @@ ${catOpts}
       - { name: instagram, label: "Instagram adresi (boşsa düğme görünmez)", type: string }
       - { name: tiktok, label: "TikTok adresi (boşsa düğme görünmez)", type: string }
       - { name: vimeo, label: "Vimeo adresi (boşsa düğme görünmez)", type: string }
+      - { name: heroVideo, label: "Giriş videosu (boşsa sadece fotoğraf)", type: string }
+      - { name: heroVideoSmall, label: "Giriş videosu — telefon için küçük hâli", type: string }
       - name: theme
         label: "Renk uyumu"
         type: object

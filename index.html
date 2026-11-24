@@ -77,6 +77,8 @@
   .hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(40px,7vh,86px);position:relative;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
   .hero-bg img{opacity:.9;transform:scale(1.02)}
+  .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 35%;opacity:0;transition:opacity 1.8s ease}
+  .hero-bg video.on{opacity:.9}
   .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),linear-gradient(to right,rgba(18,26,11,.8),transparent 62%)}
   .hero-inner{width:100%;position:relative}
   .hero h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,10.5vw,152px);line-height:.9;letter-spacing:-.035em;margin:.26em 0 0}
@@ -282,7 +284,7 @@
 <div class="page" id="page-home">
 
   <div class="hero">
-    <div class="hero-bg"><img src="images/hero.jpg" alt=""></div>
+    <div class="hero-bg"><img src="images/hero.jpg" alt=""><video id="heroVid" muted playsinline preload="none" aria-hidden="true"></video></div>
     <div class="wrap hero-inner">
       <p class="eyebrow" data-k="hero.eyebrow"></p>
       <h1><span id="heroName"></span><span class="dot">.</span></h1>
@@ -859,6 +861,42 @@ function themeForPage(h){
   else                        themeFor(PHOTOS);
 }
 
+/* ---------------- giriş videosu ----------------
+   Fotoğraf görünür → birkaç saniye sonra video yavaşça belirir →
+   bitmeden fotoğrafa geri döner → bir süre sonra tekrar.
+   Hareket azaltma tercihi veya veri tasarrufu açıksa sadece fotoğraf kalır. */
+function heroVideo(){
+  const v = document.getElementById('heroVid');
+  const src = (innerWidth < 900 && SITE.heroVideoSmall) || SITE.heroVideo;
+  if(!v || !src) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(navigator.connection && navigator.connection.saveData) return;
+  const HOLD = 3500, REST = 7000, FADE = 1800;
+  let timer = null, visible = true, leaving = false;
+  v.src = src; v.preload = 'auto';
+  const show = () => {
+    if(!visible) return;
+    leaving = false; v.currentTime = 0;
+    v.play().then(() => v.classList.add('on')).catch(() => {});
+  };
+  const hide = () => {
+    leaving = true; v.classList.remove('on');
+    setTimeout(() => v.pause(), FADE);
+    clearTimeout(timer); timer = setTimeout(show, REST);
+  };
+  v.addEventListener('timeupdate', () => {
+    if(!leaving && v.duration && v.currentTime > v.duration - FADE/1000 - .2) hide();
+  });
+  v.addEventListener('ended', () => { if(!leaving) hide(); });
+  // ekranda değilse (başka sayfa ya da aşağı kaydırılmış) durdur
+  new IntersectionObserver(es => {
+    visible = es[0].isIntersecting;
+    clearTimeout(timer);
+    if(!visible){ v.pause(); v.classList.remove('on'); leaving = true; }
+    else timer = setTimeout(show, HOLD);
+  }).observe(v.parentNode);
+}
+
 /* ---------------- güvenlik ağı ---------------- */
 function oops(err){
   const d = document.createElement('div');
@@ -895,6 +933,7 @@ Promise.all([
   fill();
   setLang(lang);
   route();
+  heroVideo();
 }).catch(oops);
 </script>
 </body>

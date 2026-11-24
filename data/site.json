@@ -5,6 +5,8 @@
   "instagram": "",
   "tiktok": "",
   "vimeo": "",
+  "heroVideo": "video/hero.mp4",
+  "heroVideoSmall": "video/hero-720.mp4",
   "theme": {
     "auto": true,
     "base": 140,
