@@ -175,8 +175,10 @@ function fillRow(li, out, before){
   li.querySelector('.thumb').innerHTML = '<img src="' + out.url + '" alt="">';
   li.querySelector('.nm').textContent = out.name;
   const pct = Math.max(0, Math.round((1 - out.bytes / before) * 100));
-  li.querySelector('.sz').innerHTML = kb(before) + ' → <span class="good">' + kb(out.bytes) + '</span>'
-    + ' · ' + out.w + '×' + out.h + (pct > 0 ? ' · %' + pct + ' küçüldü' : '');
+  li.querySelector('.sz').innerHTML = out.kept
+    ? kb(out.bytes) + ' · ' + out.w + '×' + out.h + ' · <span class="good">zaten uygun</span>'
+    : kb(before) + ' → <span class="good">' + kb(out.bytes) + '</span>'
+      + ' · ' + out.w + '×' + out.h + (pct > 0 ? ' · %' + pct + ' küçüldü' : '');
   const a = document.createElement('a');
   a.href = out.url; a.download = out.name; a.textContent = 'İndir';
   li.querySelector('.act').appendChild(a);
@@ -229,6 +231,10 @@ async function shrink(file){
 
   const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', q));
   if(!blob) throw new Error('toBlob');
+  /* Zaten küçükse ve yeniden sıkıştırmak kazanç getirmiyorsa aslını bırak */
+  if(scale === 1 && blob.size >= file.size && /jpe?g$/i.test(file.type.split('/')[1] || '')){
+    return {name: outName(file.name), url: URL.createObjectURL(file), bytes: file.size, w: tw, h: th, kept: true};
+  }
   return {name: outName(file.name), url: URL.createObjectURL(blob), bytes: blob.size, w: tw, h: th};
 }
 
