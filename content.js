@@ -57,9 +57,10 @@ const THEME = {
    o kategorinin fotoğraflarından kendiliğinden hesaplanır.
    --------------------------------------------------------------- */
 const CATS = [
-  {id:'portre', tr:'Portre', en:'Portrait'},
-  {id:'doga',   tr:'Doğa',   en:'Nature'},
-  {id:'peyzaj', tr:'Peyzaj', en:'Landscape'}
+  {id:'portre',  tr:'Portre',   en:'Portrait'},
+  {id:'yanyana', tr:'Yan Yana', en:'Side by Side'},
+  {id:'doga',    tr:'Doğa',     en:'Nature'},
+  {id:'peyzaj',  tr:'Peyzaj',   en:'Landscape'}
 ];
 
 
@@ -91,7 +92,14 @@ const PHOTOS = [
   {src:'images/03.jpg', cat:'doga',   feat:true,  w:6,  ratio:'3/2'},
   {src:'images/04.jpg', cat:'doga',   feat:true,  w:6,  ratio:'3/2'},
   {src:'images/07.jpg', cat:'peyzaj'},
-  {src:'images/08.jpg', cat:'peyzaj', feat:true,  w:12, ratio:'21/9'}
+  {src:'images/08.jpg', cat:'peyzaj', feat:true,  w:12, ratio:'21/9'},
+
+  /* Yan Yana — ikinci seri */
+  {src:'images/13.jpg', cat:'yanyana', feat:true, w:8, ratio:'3/2'},
+  {src:'images/09.jpg', cat:'yanyana', feat:true, w:4, ratio:'3/4'},
+  {src:'images/10.jpg', cat:'yanyana'},
+  {src:'images/11.jpg', cat:'yanyana'},
+  {src:'images/12.jpg', cat:'yanyana'}
 ];
 
 
