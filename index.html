@@ -201,6 +201,13 @@
   .reader time{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--emerald)}
   .reader h2{font-family:var(--display);font-weight:300;font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.02em;margin:14px 0 30px}
   .reader-body p{margin-bottom:1.3em;color:var(--sand);font-size:16.5px;line-height:1.8}
+  .reader-cover{margin:0 0 32px;background:var(--ink-2);overflow:hidden}
+  .reader-cover img,.reader-body .rimg img{height:auto;object-fit:fill}
+  .reader-body .rimg{margin:2.3em 0;background:var(--ink-2)}
+  .reader-body .rimg figcaption{margin-top:11px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-dim)}
+  .post .thumb{width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--ink-2)}
+  .posts.thumbs .post{grid-template-columns:106px 92px 1fr auto}
+  @media(max-width:760px){.posts.thumbs .post{grid-template-columns:1fr}.post .thumb{max-width:180px}}
   .reader-x{position:fixed;top:24px;right:var(--pad);z-index:2}
 
   /* split (home intro + about page) */
@@ -487,6 +494,7 @@
 <div class="reader" id="reader">
   <button class="btn ghost reader-x" onclick="closeReader()" data-k="ui.close"></button>
   <div class="reader-in">
+    <div class="reader-cover" id="rCover" hidden></div>
     <time id="rDate"></time>
     <h2 id="rTitle"></h2>
     <div class="reader-body" id="rBody"></div>
@@ -545,11 +553,16 @@ function fill(){
 }
 
 /* ---------------- içerik ---------------- */
+function anyCover(){ return POSTS.some(p => p.cover); }
+
 function postRow(p, i){
   const ti = lang==='tr'?p.tr:p.en;
   const ex = lang==='tr'?p.exTr:p.exEn;
+  const thumb = anyCover()
+    ? '<span class="thumb">' + (p.cover ? '<img src="'+esc(p.cover)+'" alt="" loading="lazy">' : '') + '</span>'
+    : '';
   return '<button class="post" onclick="openReader('+i+')">'
-    + '<time>'+p.date+'</time>'
+    + '<time>'+p.date+'</time>' + thumb
     + '<div><h3>'+ti+'</h3><p class="ex">'+ex+'</p></div>'
     + '<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
     + '</button>';
@@ -606,6 +619,8 @@ function render(){
   /* --- günlük --- */
   posts.innerHTML     = POSTS.map(postRow).join('');
   homePosts.innerHTML = POSTS.slice(0,2).map(postRow).join('');
+  posts.classList.toggle('thumbs', anyCover());
+  homePosts.classList.toggle('thumbs', anyCover());
 
   copyBtn.textContent = t('ui.copy');
   observe();
@@ -649,15 +664,29 @@ function closeLb(){
   document.body.style.overflow = '';
 }
 
-/* ---------------- günlük okuyucu ---------------- */
+/* ---------------- günlük okuyucu ----------------
+   Gövde: boş satır = yeni paragraf.
+   Tek başına duran "images/09.jpg" satırı oraya fotoğraf koyar;
+   "images/09.jpg | alt yazı" biçiminde alt yazı da eklenebilir. */
+function postBody(txt){
+  return String(txt || '').split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean).map(b=>{
+    const m = b.match(/^(images\/[^\s|]+\.(?:jpg|jpeg|png|webp|gif))\s*(?:\|\s*([\s\S]*))?$/i);
+    if(m){
+      const cap = (m[2] || '').trim();
+      return '<figure class="rimg"><img src="'+esc(m[1])+'" alt="'+esc(cap)+'" loading="lazy">'
+        + (cap ? '<figcaption>'+esc(cap)+'</figcaption>' : '') + '</figure>';
+    }
+    return '<p>'+esc(b)+'</p>';
+  }).join('');
+}
+
 function openReader(i){
   const p = POSTS[i];
   rDate.textContent  = p.date;
   rTitle.textContent = lang==='tr'?p.tr:p.en;
-  const body = lang==='tr' ? p.bodyTr : p.bodyEn;
-  rBody.innerHTML = String(body || '').split(/\n\s*\n/)
-    .map(x=>x.trim()).filter(Boolean)
-    .map(x=>'<p>'+esc(x)+'</p>').join('');
+  rCover.innerHTML = p.cover ? '<img src="'+esc(p.cover)+'" alt="">' : '';
+  rCover.hidden = !p.cover;
+  rBody.innerHTML = postBody(lang==='tr' ? p.bodyTr : p.bodyEn);
   reader.classList.add('on');
   reader.scrollTop = 0;
   document.body.style.overflow = 'hidden';

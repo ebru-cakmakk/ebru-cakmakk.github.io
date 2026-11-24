@@ -80,6 +80,29 @@ eklenmesi gerekir — bunu Claude'a söylemen yeterli, tek satırlık bir iş.
 **Günlük yazıları** → **Add an entry**. Paragrafları **boş satırla** ayır.
 Yeni yazı en üstte görünsün istiyorsan listede en üste taşı.
 
+**Kapak görseli:** *Kapak görseli* alanına bir fotoğraf seç. Yazı listesinde küçük
+bir önizleme, yazıyı açtığında da en üstte büyük hâli görünür. Boş bırakabilirsin.
+
+**Yazının içine fotoğraf koymak:** metnin içinde bir satıra **tek başına** dosya
+yolunu yaz, boş satırlarla ayır:
+
+```
+Sabah ışığı için erken kalkmak gerekiyordu.
+
+images/09.jpg
+
+Çekimin ikinci yarısında bulutlandı.
+```
+
+Alt yazı da ekleyebilirsin:
+
+```
+images/09.jpg | Kadıköy, sabah yedi
+```
+
+Fotoğrafı önce **Fotoğraflar** bölümünden ya da doğrudan `images` klasörüne
+yüklemen gerekir; buraya sadece yolunu yazıyorsun.
+
 ---
 
 ## 2. Elle düzenlemek (panel olmadan)

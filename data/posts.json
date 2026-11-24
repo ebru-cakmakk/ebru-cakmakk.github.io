@@ -1,6 +1,7 @@
 [
   {
     "date": "2026-11",
+    "cover": "",
     "tr": "İlk serimi kurarken öğrendiğim üç şey",
     "en": "Three things I learned building my first series",
     "exTr": "Dağınık bir arşivden tek bir fikre nasıl indim, hangi kareleri atmak zorunda kaldım.",
@@ -10,6 +11,7 @@
   },
   {
     "date": "2026-10",
+    "cover": "",
     "tr": "Doğal ışıkla çekerken saati beklemek",
     "en": "Waiting for the hour when you shoot natural light",
     "exTr": "Ekipman almak yerine sabretmeyi öğrenmek üzerine kısa bir not.",
@@ -19,6 +21,7 @@
   },
   {
     "date": "2026-09",
+    "cover": "",
     "tr": "Modelle ilk konuşma neden çekimden önemli",
     "en": "Why the first conversation matters more than the shoot",
     "exTr": "Güven kurulmadan iyi kare çıkmıyor. Nasıl bir ön görüşme yapıyorum.",

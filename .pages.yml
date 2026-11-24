@@ -75,12 +75,19 @@ content:
     list: true
     fields:
       - { name: date, label: "Tarih (2026-11 gibi)", type: string, required: true }
+      - name: cover
+        label: "Kapak görseli (isteğe bağlı)"
+        type: image
+        options:
+          path: images
+          extensions: [jpg, jpeg, png, webp]
+          categories: [image]
       - { name: tr, label: "Başlık — Türkçe", type: string, required: true }
       - { name: en, label: "Başlık — İngilizce", type: string }
       - { name: exTr, label: "Özet — Türkçe", type: text }
       - { name: exEn, label: "Özet — İngilizce", type: text }
-      - { name: bodyTr, label: "Yazı — Türkçe (paragrafları boş satırla ayır)", type: text }
-      - { name: bodyEn, label: "Yazı — İngilizce (paragrafları boş satırla ayır)", type: text }
+      - { name: bodyTr, label: "Yazı — Türkçe · paragrafları boş satırla ayır · araya fotoğraf koymak için satıra tek başına images/09.jpg yaz", type: text }
+      - { name: bodyEn, label: "Yazı — İngilizce · aynı kurallar", type: text }
 
   - name: videos
     label: "Videolar"

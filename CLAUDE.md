@@ -51,8 +51,11 @@ data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
   categories.json   [{id, tr, en, hue}]
   photos.json       [{src, cat, feat, w, ratio}] — w ve ratio sadece ana sayfa seçkisi için
   videos.json       [{url, poster, meta, tr, en}] — boşsa Video sayfasında "hazırlanıyor"
-  posts.json        [{date, tr, en, exTr, exEn, bodyTr, bodyEn}] — gövde düz metin,
-                    boş satır = yeni paragraf
+  posts.json        [{date, cover, tr, en, exTr, exEn, bodyTr, bodyEn}] — gövde düz
+                    metin, boş satır = yeni paragraf. Tek başına duran
+                    "images/09.jpg" satırı oraya fotoğraf koyar, "| alt yazı"
+                    ekiyle alt yazılı. cover boşsa liste ve okuyucu küçülmez,
+                    küçük resim sütunu hiç çizilmez.
   text.json         Sitedeki her yazı: {grup: {anahtar: {tr, en}}}
 images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 .pages.yml        Pages CMS panel ayarları (üretilmiş — scripts/genpages.js)
