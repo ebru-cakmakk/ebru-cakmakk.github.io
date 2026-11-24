@@ -57,6 +57,7 @@ data/             TÜM içerik, JSON olarak. index.html bunları fetch ile okur.
                     ekiyle alt yazılı. cover boşsa liste ve okuyucu küçülmez,
                     küçük resim sütunu hiç çizilmez.
   text.json         Sitedeki her yazı: {grup: {anahtar: {tr, en}}}
+video/            Giriş videosu: hero.mp4 (1080p) + hero-720.mp4 (telefon), sessiz, ~1-2 MB
 images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 .pages.yml        Pages CMS panel ayarları (üretilmiş — scripts/genpages.js)
 README.md         Ebru için kullanım kılavuzu (Türkçe, adım adım)
@@ -106,6 +107,13 @@ hiç bozulmaz. `site.json` içindeki `theme.strength` (0–1) etkinin şiddetini
 **Büyütme ekranında renk YOK.** Önce fotoğrafın etrafında renkli bir çerçeve
 vardı, Ebru rahatsız edici buldu ve kaldırıldı. Şimdi nötr koyu zemin, sadece
 fotoğraf. Bunu geri getirme.
+
+**Girişte portreden videoya geçiş.** Ana sayfa açılışında hero.jpg ~3,5 sn
+görünür, sonra video (site.json → heroVideo / heroVideoSmall) yavaşça belirir,
+bitmeden fotoğrafa döner, ~7 sn sonra tekrar. Ekran dışındayken durur; hareket
+azaltma veya veri tasarrufu açıksa sadece fotoğraf. Yeni video: sessiz, H.264,
+30 fps, CRF 27, +faststart; 1920 ve 1280 genişlikte iki sürüm. Kaynak 100 fps
+Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sınırı).
 
 **Fotoğraf isimleri yok.** Her kareye başlık yazmak istemedi. Galeri isimsiz;
 sadece kategori başlıkları var.
