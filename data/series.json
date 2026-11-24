@@ -20,7 +20,8 @@
       },
       {
         "src": "images/06.jpg",
-        "feat": false
+        "feat": false,
+        "size": "kucuk"
       }
     ]
   },
@@ -31,24 +32,17 @@
       {
         "src": "images/13.jpg",
         "feat": true,
-        "size": "buyuk"
-      },
-      {
-        "src": "images/09.jpg",
-        "feat": true,
-        "size": "kucuk"
+        "size": "orta"
       },
       {
         "src": "images/10.jpg",
-        "feat": false
-      },
-      {
-        "src": "images/11.jpg",
-        "feat": false
+        "feat": false,
+        "size": "kucuk"
       },
       {
         "src": "images/12.jpg",
-        "feat": false
+        "feat": false,
+        "size": "kucuk"
       }
     ]
   },
