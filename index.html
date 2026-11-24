@@ -76,7 +76,8 @@
   /* hero */
   .hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(40px,7vh,86px);position:relative;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
-  .hero-bg img{opacity:.9;transform:scale(1.02)}
+  .hero-bg img{opacity:.9;transform:scale(1.02);transition:opacity 1.8s ease}
+  .hero-bg.vid img{opacity:0}
   .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 35%;opacity:0;transition:opacity 1.8s ease}
   .hero-bg video.on{opacity:.9}
   .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,26,11,.96) 2%,rgba(18,26,11,.45) 42%,rgba(18,26,11,.3) 100%),linear-gradient(to right,rgba(18,26,11,.8),transparent 62%)}
@@ -877,10 +878,10 @@ function heroVideo(){
   const show = () => {
     if(!visible) return;
     leaving = false; v.currentTime = 0;
-    v.play().then(() => v.classList.add('on')).catch(() => {});
+    v.play().then(() => { v.classList.add('on'); v.parentNode.classList.add('vid'); }).catch(() => {});
   };
   const hide = () => {
-    leaving = true; v.classList.remove('on');
+    leaving = true; v.classList.remove('on'); v.parentNode.classList.remove('vid');
     setTimeout(() => v.pause(), FADE);
     clearTimeout(timer); timer = setTimeout(show, REST);
   };
@@ -892,7 +893,7 @@ function heroVideo(){
   new IntersectionObserver(es => {
     visible = es[0].isIntersecting;
     clearTimeout(timer);
-    if(!visible){ v.pause(); v.classList.remove('on'); leaving = true; }
+    if(!visible){ v.pause(); v.classList.remove('on'); v.parentNode.classList.remove('vid'); leaving = true; }
     else timer = setTimeout(show, HOLD);
   }).observe(v.parentNode);
 }
