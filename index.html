@@ -116,6 +116,7 @@
        box-shadow:0 20px 45px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.35);cursor:zoom-in;
        transform:translate3d(var(--dx),var(--dy),0) rotate(var(--drot)) scale(var(--sc,1));
        transition:transform 1.05s cubic-bezier(.22,.72,.25,1);will-change:transform}
+  .pol-a{position:absolute;width:1px;height:1px;pointer-events:none;opacity:0}
   .pol.on{transform:translate3d(var(--fx),var(--fy),0) rotate(var(--frot)) scale(var(--sc,1))}
   .pol:hover{--sc:1.035;z-index:60!important;box-shadow:0 26px 60px rgba(0,0,0,.6)}
   .pol .shot{display:block;overflow:hidden;background:#C9CBBE;position:relative}
@@ -848,6 +849,19 @@ function layoutPols(){
       el.style.setProperty('--dy', (i * 2) + 'px');
       el.style.setProperty('--drot', ((i % 5 - 2) * 1.6).toFixed(1) + 'deg');
 
+      /* görünürlük işareti: karenin varacağı yere konan 1px'lik nokta.
+         Kare henüz destede olduğu için kendisini izlemek işe yaramıyor. */
+      let a = el.anchor;
+      if(!a){
+        a = document.createElement('i');
+        a.className = 'pol-a';
+        a.pol = el; el.anchor = a;
+        mas.appendChild(a);
+      }
+      a.style.left = (x + cardW / 2) + 'px';
+      a.style.top  = (y + cardH * 0.35) + 'px';
+      polIO.observe(a);
+
       colY[c] = y + Math.round(cardH * 0.9);
       bottom = Math.max(bottom, y + cardH);
     });
@@ -856,7 +870,20 @@ function layoutPols(){
   spread();
 }
 
-/* kaydırdıkça aç */
+/* kaydırdıkça aç: işaret ekrana girince karesi desteden ayrılır */
+let dealt = 0;
+const polIO = new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(!en.isIntersecting) return;
+    const el = en.target.pol;
+    polIO.unobserve(en.target);
+    if(!el || el.classList.contains('on')) return;
+    el.style.transitionDelay = ((dealt % 5) * 0.09).toFixed(2) + 's';
+    dealt++;
+    el.classList.add('on');
+  });
+}, {rootMargin: '0px 0px -6% 0px', threshold: 0});
+
 let spreadQueued = false;
 function spread(){
   const all = document.body.classList.contains('nomotion');
