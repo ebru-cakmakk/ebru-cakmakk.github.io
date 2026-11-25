@@ -811,7 +811,6 @@ function jit(str, salt){
 }
 
 function layoutPols(){
-  layoutAt = performance.now();
   document.querySelectorAll('#catWrap .mas').forEach(mas=>{
     const pols = [...mas.querySelectorAll('.pol')];
     if(!pols.length) return;
