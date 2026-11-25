@@ -131,15 +131,19 @@ Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sı
 
 **Galeri polaroid destesi** (`layoutPols`). Önce CSS sütunları vardı (tırtıklı
 diye elendi), sonra hizalı satırlar; Ebru bir dergi sayfasından esinlenip
-polaroid kolajı istedi. Her seri kapalı bir deste olarak durur; karenin
-varacağı yere konan 1px'lik işaret (`.pol-a`) ekrana girince kare desteden
-ayrılıp yerine uçar ve fotoğraf develop olur gibi belirir (`.pol.on`).
+polaroid kolajı istedi. Her seri kapalı bir deste olarak durur; **imleç desteye gelince**
+(dokunmatikte desteye dokununca) kareler etrafa yayılır — `openDeck` /
+`closeDeck`, `.mas.open`. Önce kaydırmaya bağlıydı, Ebru imleçle olmasını
+istedi. Kapalıyken blok sadece deste kadar yer kaplar (`dataset.deckH`),
+açılınca yüksekliği `fullH`'ye büyür. Fotoğraf ilk açılışta develop olur ve
+`.dev` kalıcıdır. Kapalı desteye tıklamak kareyi büyütmez, desteyi açar
+(`polClick`).
 Konum/açı dosya adından türetilir (`jit`), yani her açılışta aynı. Sütun
 sayısı 1/2/3. Oran JPEG/PNG başlığından Range isteğiyle okunur (`learnRatio`),
 fotoğraf yüklenince EXIF döndürmesine karşı düzeltilir (`onShotLoad`);
 polaroid görünümü için 0.78–1.34 arasına sıkıştırılır, yani kutuda hafif
 kırpma olur — büyütme ekranında kare tam ve kırpılmamış açılır.
-Hareket azaltma açıksa `revealAll()` hepsini doğrudan yerine koyar.
+Hareket azaltma açıksa desteler baştan açık gelir.
 Sayfa gizliyken genişlik 0 olduğu için `route()` içinde `#fotograflar`'a
 geçişte `layoutPols` yeniden çağrılır — bu olmazsa düzen kurulmaz.
 
@@ -157,6 +161,10 @@ sadece kategori başlıkları var.
 
 **Fotoğraf eklemek iki alana indirildi:** seri + `{src}`. Ana sayfadaki seçkiye
 girecekse ayrıca `feat:true` ve `size`. Bu sadeleştirme bilinçli.
+
+**Ana sayfa seçkisi telefonda** iki eşit sütun ve kare kutu (760px altı);
+farklı oranlar satırları tırtıklı gösteriyordu. Satır içi `aspect-ratio`'yu
+ezmek için `!important` şart. Tek sayıda kare varsa sonuncusu tam genişlik.
 
 **Ebru'nun fotoğrafı** `images/ebru.jpg` — hem Hakkımda hem ana sayfadaki
 "Kısaca" bölümünde (`SITE.aboutPhoto`, panelden değiştirilebilir).
