@@ -105,9 +105,14 @@
   .tile.w12{grid-column:span 12}
   .tile img{transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
   .tile:hover img{transform:scale(1.04)}
+  /* Telefon: seçki düzensiz görünmesin diye iki eşit sütun, kare kutular.
+     Satır içi aspect-ratio'yu ezmek için !important gerekiyor.
+     Kare sayısı tekse sonuncusu tam genişlik olur, tek başına kalmaz. */
   @media(max-width:760px){
-    .tile,.tile.w6,.tile.w8{grid-column:span 6}
-    .tile.w12{grid-column:span 12}
+    .grid{grid-template-columns:repeat(2,1fr);gap:8px}
+    .tile,.tile.w6,.tile.w8,.tile.w12{grid-column:span 1}
+    .grid .tile{aspect-ratio:1/1!important}
+    .grid .tile:last-child:nth-child(odd){grid-column:span 2;aspect-ratio:16/9!important}
   }
 
   /* masonry (photographs page) */
