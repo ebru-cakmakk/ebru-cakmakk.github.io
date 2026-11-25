@@ -229,6 +229,18 @@ content:
             fields:
               - { name: tr, label: "Türkçe", type: text }
               - { name: en, label: "İngilizce", type: text }
+          - name: viewCollage
+            label: "Kolaj düğmesi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: viewGrid
+            label: "Izgara düğmesi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
       - name: film
         label: "Video sayfası"
         type: object

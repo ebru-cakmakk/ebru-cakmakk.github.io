@@ -146,6 +146,12 @@ fotoğraf yüklenince EXIF döndürmesine karşı düzeltilir (`onShotLoad`);
 polaroid görünümü için 0.78–1.34 arasına sıkıştırılır, yani kutuda hafif
 kırpma olur — büyütme ekranında kare tam ve kırpılmamış açılır.
 Hareket azaltma açıksa desteler baştan açık gelir.
+Büyütme ekranı **yalnız tıklanan serinin** karelerini gezer (`SETS['c:<seriId>']`;
+önce tüm seriler tek dizideydi, Ebru hata olarak bildirdi). Açılma aralığı
+sonradan kısaltıldı (blok başı ekranın %92'sine gelince başlar, kare başına 0,45 aralık).
+**Kolaj/Izgara düğmesi** (`.viewtog`, `setView`, seçim localStorage'da): Izgara
+kırpmasız, kare hücrelerde `object-fit:contain`; `#catWrap.flat` sınıfı CSS ile
+polaroid konumlarını ezer. Kolaja dönünce `layoutPols()` çağrılır.
 Fotoğraflar her zaman görünür: kareler desteden çıkarken solgundan netliğe
 geçen bir "develop" efekti vardı, Ebru deste topluyken boş sanılacağı için
 kaldırttı. Geri eklenecekse `scrub()` içinde img opacity/filter satırları.

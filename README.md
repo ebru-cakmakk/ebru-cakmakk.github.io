@@ -214,7 +214,12 @@ Her seri kapalı bir polaroid destesi olarak duruyor. Sayfayı kaydırdıkça ka
 desteden birer birer ayrılıp etrafa yayılıyor.
 Hareket kaydırmaya bağlı: ne kadar kaydırırsan o kadar açılıyorlar, geri
 kaydırınca geri toplanıyorlar. Bir polaroide dokununca fotoğraf tam ve
-kırpılmamış hâliyle açılıyor.
+kırpılmamış hâliyle açılıyor; büyütme ekranında yalnızca o serinin
+fotoğrafları arasında gezebilirsin.
+
+Sayfanın üstündeki **Kolaj / Izgara** düğmesiyle görünümü değiştirebilirsin.
+Izgara, tüm kareleri kırpmadan düz bir sıra hâlinde gösterir. Ziyaretçinin
+seçimi o tarayıcıda hatırlanır.
 
 Senin yapman gereken bir şey yok: panelden fotoğraf eklediğinde yerini, açısını
 ve boyutunu site kendi hesaplıyor. Açılar rastgele görünse de sabittir, sayfayı

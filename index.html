@@ -125,6 +125,16 @@
   .pol .shot img{width:100%;height:100%;object-fit:cover;display:block}
   .cat-block{margin-bottom:clamp(50px,7vw,96px)}
   .cat-block:last-child{margin-bottom:0}
+  /* kolaj / ızgara geçişi */
+  .viewtog{display:inline-flex;gap:4px;margin-top:22px;padding:3px;border:1px solid var(--line);border-radius:100px}
+  .viewtog button{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 15px;border-radius:100px;color:var(--sand-dim);transition:.3s}
+  .viewtog button.on{background:var(--moss);color:var(--cream)}
+  #catWrap.flat .mas{height:auto!important;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+  #catWrap.flat .pol{position:static;width:auto!important;padding:0!important;background:rgba(241,238,227,.05);border-radius:2px;box-shadow:none;transform:none!important;cursor:zoom-in}
+  #catWrap.flat .pol:hover{box-shadow:none;filter:brightness(1.1)}
+  #catWrap.flat .pol .shot{height:auto!important;aspect-ratio:1/1;background:none}
+  #catWrap.flat .pol .shot img{object-fit:contain}
+  @media(max-width:760px){#catWrap.flat .mas{grid-template-columns:repeat(2,1fr);gap:8px}}
   .cat-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:clamp(20px,2.5vw,32px);padding-bottom:16px;border-bottom:1px solid var(--line)}
   .cat-head h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,36px);letter-spacing:-.02em}
   .cat-head span{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim)}
@@ -362,6 +372,10 @@
         <p class="eyebrow" data-k="photos.label"></p>
         <h2 class="h2" data-k="photos.title"></h2>
         <p class="lede" data-k="photos.lede"></p>
+        <div class="viewtog" role="group">
+          <button type="button" data-view="collage" data-k="photos.viewCollage"></button>
+          <button type="button" data-view="grid" data-k="photos.viewGrid"></button>
+        </div>
       </div>
       <div id="catWrap"></div>
     </div>
@@ -558,7 +572,7 @@ function customPage(id){
 let lang = 'tr';
 try{ const s = localStorage.getItem('lang'); if(s==='tr'||s==='en') lang = s; }catch(e){}
 
-let SETS = {feat:[], photos:[]};   // lightbox dizileri
+let SETS = {feat:[]};   // lightbox dizileri: feat + her seri için 'c:<id>'
 let lbSet = [], idx = 0;
 
 function t(k){
@@ -654,17 +668,16 @@ function render(){
   }).join('');
 
   /* --- fotoğraflar sayfası: kategorilere ayrılmış --- */
-  SETS.photos = [];
+  Object.keys(SETS).forEach(k=>{ if(k !== 'feat') delete SETS[k]; });
   let html = '';
   CATS.forEach(c=>{
     const list = PHOTOS.filter(p => p.cat === c.id);
     if(!list.length) return;
-    const start = SETS.photos.length;
-    SETS.photos = SETS.photos.concat(list);
+    SETS['c:'+c.id] = list;      // büyütme ekranı yalnız bu serinin karelerini gezer
     html += '<div class="cat-block reveal" data-cat="'+c.id+'"><div class="cat-head"><h3>'+catName(c)+'</h3>'
           + '<span>'+list.length+'</span></div><div class="mas">'
           + list.map((p,j)=>
-              '<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'photos\','+(start+j)+')">'
+              '<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'c:'+c.id+'\','+j+')">'
               + '<span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="'+esc(catName(c))+'" loading="lazy" onload="onShotLoad(this)"></span></figure>'
             ).join('')
           + '</div></div>';
@@ -672,10 +685,9 @@ function render(){
   /* kategorisi tanımsız kalanlar */
   const rest = PHOTOS.filter(p => !CATS.some(c => c.id === p.cat));
   if(rest.length){
-    const start = SETS.photos.length;
-    SETS.photos = SETS.photos.concat(rest);
+    SETS['c:_rest'] = rest;
     html += '<div class="cat-block reveal"><div class="mas">'
-          + rest.map((p,j)=>'<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'photos\','+(start+j)+')"><span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="" loading="lazy" onload="onShotLoad(this)"></span></figure>').join('')
+          + rest.map((p,j)=>'<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'c:_rest\','+j+')"><span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="" loading="lazy" onload="onShotLoad(this)"></span></figure>').join('')
           + '</div></div>';
   }
   catWrap.innerHTML = html;
@@ -866,19 +878,20 @@ function layoutPols(){
    topluyken kareler boş sanıldığı için kaldırıldı. */
 function scrub(){
   const still = document.body.classList.contains('nomotion');
+  const flat = catWrap.classList.contains('flat');
   const vh = innerHeight;
   document.querySelectorAll('#catWrap .mas').forEach(mas=>{
     const pols = [...mas.querySelectorAll('.pol')];
     if(!pols.length) return;
     const r = mas.getBoundingClientRect();
     if(r.height < 50) return;
-    const raw = still ? 1 : (vh - r.top) / (vh * 0.5 + r.height * 0.6);
+    const raw = flat ? 1 : (still ? 1 : (vh * 0.92 - r.top) / (vh * 0.22 + r.height * 0.32));
     const n = pols.length;
     pols.forEach((el, i)=>{
       const p = el.p;
       if(!p) return;
-      const step = 0.5 / n;                       // kareler sırayla açılsın
-      let t = (raw - i * step) / 0.5;
+      const step = 0.55 / n;                      // kareler sırayla açılsın
+      let t = (raw - i * step) / 0.45;
       t = t < 0 ? 0 : (t > 1 ? 1 : t);
       const e = t * t * (3 - 2 * t);              // yumuşak giriş-çıkış
       if(el.e === e) return;
@@ -908,6 +921,17 @@ function onShotLoad(img){
     clearTimeout(polTimer); polTimer = setTimeout(layoutPols, 80);
   }
 }
+
+/* Kolaj / ızgara: seçim bu tarayıcıda hatırlanır */
+function setView(v){
+  v = v === 'grid' ? 'grid' : 'collage';
+  catWrap.classList.toggle('flat', v === 'grid');
+  document.querySelectorAll('.viewtog button').forEach(b=>b.classList.toggle('on', b.dataset.view === v));
+  try{ localStorage.setItem('view', v); }catch(e){}
+  if(v === 'collage') layoutPols();
+}
+document.querySelectorAll('.viewtog button').forEach(b=>b.addEventListener('click', ()=>setView(b.dataset.view)));
+try{ setView(localStorage.getItem('view')); }catch(e){ setView('collage'); }
 
 addEventListener('resize', ()=>{ clearTimeout(polTimer); polTimer = setTimeout(layoutPols, 120); });
 if(matchMedia('(prefers-reduced-motion: reduce)').matches) document.body.classList.add('nomotion');

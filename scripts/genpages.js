@@ -22,7 +22,7 @@ const L = {
   'home.aboutP':'Kısa tanıtım metni','home.aboutLink':'Hakkımda bağlantısı',
   'home.journalLabel':'Günlük üst etiketi','home.journalLink':'“Tüm yazılar” bağlantısı',
 
-  'photos.label':'Üst etiket','photos.title':'Sayfa başlığı','photos.lede':'Giriş yazısı',
+  'photos.label':'Üst etiket','photos.title':'Sayfa başlığı','photos.lede':'Giriş yazısı','photos.viewCollage':'Kolaj düğmesi','photos.viewGrid':'Izgara düğmesi',
 
   'film.label':'Üst etiket','film.title':'Sayfa başlığı',
   'film.h':'Video yokken başlık','film.p':'Video yokken açıklama',

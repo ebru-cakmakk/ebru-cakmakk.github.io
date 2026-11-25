@@ -61,8 +61,16 @@
       "en": "Photographs"
     },
     "lede": {
-      "tr": "Kategorilere ayrılmış tüm kareler. Kaydırdıkça desteler dağılır; büyütmek için bir fotoğrafa dokun.",
-      "en": "All frames, grouped by series. The stacks spread as you scroll; tap a photograph to enlarge."
+      "tr": "Kategorilere ayrılmış tüm kareler. Kaydırdıkça desteler dağılır; büyütmek için bir fotoğrafa dokun. Sakin bakmak istersen Izgara'ya geç.",
+      "en": "All frames, grouped by series. The stacks spread as you scroll; tap a photograph to enlarge. Prefer a calmer look? Switch to Grid."
+    },
+    "viewCollage": {
+      "tr": "Kolaj",
+      "en": "Collage"
+    },
+    "viewGrid": {
+      "tr": "Izgara",
+      "en": "Grid"
     }
   },
   "film": {
