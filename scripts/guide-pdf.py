@@ -55,7 +55,7 @@ td.t { width:22mm; font-weight:600; color:#18230F; white-space:nowrap; }
 
 TR = dict(
  lang='tr', title='Modelliğe Hazırlık',
- cover_k='Z. Ebru Çakmak · Fotoğraf & Videografi', cover_h='Modelliğe<br>Hazırlık',
+ cover_k='Z. Ebru Çakmak · Fotoğraf ve Video', cover_h='Modelliğe<br>Hazırlık',
  cover_sub='Kamera karşısına geçmeden önce bilmek isteyebileceğin her şey: nasıl çalışıyoruz, nasıl hazırlanırsın, sınırların ve izinlerin nerede durur.',
  cover_foot='<b>ebru-cakmakk.github.io</b><br>giauzar.arrakis@gmail.com',
  body='''
@@ -243,7 +243,7 @@ TR = dict(
 
 EN = dict(
  lang='en', title='Preparing to Model',
- cover_k='Z. Ebru Çakmak · Photography & Videography', cover_h='Preparing<br>to Model',
+ cover_k='Z. Ebru Çakmak · Photography & Video', cover_h='Preparing<br>to Model',
  cover_sub='Everything you might want to know before stepping in front of the camera: how we work, how to prepare, and where your boundaries and permissions stand.',
  cover_foot='<b>ebru-cakmakk.github.io</b><br>giauzar.arrakis@gmail.com',
  body='''

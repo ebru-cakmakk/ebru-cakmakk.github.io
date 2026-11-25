@@ -7,7 +7,7 @@ Yeni bir sohbete başlarken bu depoyu göster, gerisini buradan okur.
 
 ## Kim, ne yapıyor
 
-Ebru Çakmak — fotoğraf ve videografi üzerine çalışan bir öğrenci.
+Ebru Çakmak — fotoğraf ve video üzerine çalışan (bölümünün adı: Fotoğraf ve Video) bir öğrenci.
 Site iki işe hizmet ediyor:
 
 1. **Küratörlere ve kurumlara** işini göstermek
