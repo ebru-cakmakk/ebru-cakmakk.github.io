@@ -17,9 +17,10 @@ Henüz sergi, yayın ya da ödül yok. Site bunu saklamıyor; "öğrenciyim, ilk
 serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar —
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 
-**İsim:** Mahlas kullanmayı düşünüyor (bir ara "Ebby Lace" gündeme geldi).
-Şu an site gerçek adıyla. Karar verilmedi, açık konu. Gerekçe: küratörler gerçek
-isimle çalışır, ama kamuya açık yüzünde (Instagram, TikTok) mahlas makul.
+**İsim:** **Z. Ebru Çakmak** (karar verildi; mahlas elendi, ayrıntı en altta Açık konular'da).
+Sosyal medya kullanıcı adı ayrı bir karar.
+
+*Son güncelleme: 25 Kasım 2026.*
 
 ---
 
@@ -70,6 +71,10 @@ images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 kucult.html       Ebru'nun kendi fotoğraf küçültücüsü (tarayıcıda çalışır, canvas ile;
                   2200px/q80 varsayılan). Artifact olarak değil siteye konuldu çünkü
                   artifact kumbarasında dosya indirme engelli.
+files/            Modeller sayfasındaki PDF'ler: Modellige-Hazirlik.pdf (TR), Preparing-to-Model.pdf (EN)
+scripts/          genpages.js (.pages.yml üretir), prep.py (fotoğraf küçültme),
+                  guide-pdf.py (iki PDF'i yeniden üretir — weasyprint, Lora/Inter yazı tipleri)
+favicon-*.png, apple-touch-icon.png   Sekme logosu
 README.md         Ebru için kullanım kılavuzu (Türkçe, adım adım)
 CLAUDE.md         Bu dosya
 .nojekyll         GitHub Pages için teknik dosya
@@ -89,7 +94,7 @@ Tek `index.html` dosyası, hash yönlendirmesiyle ayrı sayfalar gibi çalışı
 
 ```
 #home          Seçki (feat:true olan kareler), kısa tanıtım, son iki yazı
-#fotograflar   Tüm kareler, kategori başlıkları altında, doğal oranlarıyla
+#fotograflar   Seri başlıkları altında polaroid kolaj (kaydırdıkça açılır) ya da Izgara (kare, sıkı)
 #video         Showreel (henüz boş — VIDEOS listesi dolunca kartlara dönüşür)
 #gunluk        Günlük yazıları
 #modeller      Nasıl çalışıyor + güven listesi + başvuru formu
@@ -107,6 +112,8 @@ başlıklarıyla mesaja döker; yeni soru eklenince koda dokunmak gerekmez. Meti
 grubunda (soru anahtarı + `1,2,3…` seçenekleri); yeni seçenek HTML'e de eklenmeli. **Bilerek sorulmayanlar:**
 çıplaklık, beden ölçüsü, sağlık bilgisi, kimlik/adres/IBAN — "dikkat etmemi istediğin bir şey" alanı
 isteğe bağlı ve sağlık bilgisi vermek zorunda olmadığını söyler.
+"Beni nereden buldun?" seçenekleri: Instagram · arkadaş · web sitesi · **kartvizit/kart** (Ebru QR kodlu
+kartvizit dağıtacak) · başka.
 
 **Modelliğe Hazırlık PDF'i** (`files/Modellige-Hazirlik.pdf`, `files/Preparing-to-Model.pdf`, 7 sayfa):
 Modeller sayfasında form üstünde indirme kartı. Bağlantı `site.json` → `guideTr` / `guideEn`
@@ -219,6 +226,13 @@ yedek yol `data/*.json` dosyalarını GitHub web editöründen düzenlemek. Yeni
 3. `data/series.json` içinde ilgili serinin `photos` listesine `{src}` ekle
 4. Commit + push → birkaç dakikada yayında
 
+**Push döngüsü (şart):** Ebru panelden de commit atıyor, bu yüzden her push öncesi
+`git fetch -q origin main && git rebase -q FETCH_HEAD`, sonra
+`git -c push.negotiate=true push -q origin HEAD:main`; reddedilirse tekrarla.
+**Panel alanı değişince:** `text.json`'a anahtar ya da `site.json`'a alan eklendiyse
+`node scripts/genpages.js .` çalıştır (sonundaki `.` şart), `.pages.yml` değişikliğini de commit'le.
+**PDF'ler:** içerik `scripts/guide-pdf.py` içinde; metni değiştirip çalıştır, çıkan PDF'leri `files/`'a koy.
+
 **Ton:** Açıklamaları Türkçe ve sade tut. Teknik ayrıntıyı ancak gerektiği kadar
 ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönetebilmek.
 
@@ -234,6 +248,14 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
       Son ikisi tek yazı olarak girilmişti, ayrıldı; tarihleri "2026-11", gerçek
       tarihleri bilinmiyor.
+- [ ] **QR kodlu kartvizit** — Ebru heyecanlı, sırada. QR doğrudan siteye ya da `#modeller`'e
+      gidebilir; yeni sohbette tasarlanacak. Baskı için vektör (PDF/SVG) hazırla.
+- [ ] **Sanatçı bildirimi** — tek cümlelik slogan yazıldı ve yayında ("İnsanla doğanın birbirine
+      karıştığı yerleri arıyorum." / EN eşi). Önerilen ama siteye **yazılmamış**: "çok yönlülük"
+      vurgulayan ikinci satır, Hakkımda cümlesi, deneme bölümü adı (öneri: Kenar Notları / Margin Notes;
+      `pages.json`'da menü adı olarak değişir). Ebru onayı bekliyor.
+- [ ] **Küçük ayarlar** — giriş videosunun belirme süresi (şu an 1,8 sn), polaroid açılma hızı
+      (Ebru "geç/erken" derse `scrub()` içindeki aralık), günlükteki iki yazının gerçek tarihleri.
 - [ ] **Showreel** — video bölümü boş. Vimeo veya YouTube bağlantısı gelince
       `data/videos.json` doldurulacak.
 - [ ] **Sosyal medya** — Instagram ve TikTok hesapları aynı kullanıcı adıyla
@@ -250,3 +272,7 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 - Push sırasında `push negotiation failed` uyarısı normaldir, başarısızlık değil.
 - Fotoğraf onayları: Ebru fotoğrafladığı herkesle yayın öncesi konuşuyor ve
   gönderdiği tüm fotoğrafların hakkına sahip. Bu konuyu tekrar açmaya gerek yok.
+- Bu ortamda siteye `curl`/WebFetch ile ulaşılamayabilir (proxy). Yerelde test için:
+  `python3 -m http.server` + Playwright (`/usr/bin/google-chrome`, `--no-sandbox`). Canlıyı
+  görmek için tarayıcı aracı gerekir; yoksa push sonrası Ebru'dan kontrol iste.
+- Gizli onay kutularını (`.chip input`) test ederken `input`'a değil yanındaki `span`'a tıkla.
