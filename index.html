@@ -809,6 +809,7 @@ function jit(str, salt){
 }
 
 function layoutPols(){
+  layoutAt = performance.now();
   document.querySelectorAll('#catWrap .mas').forEach(mas=>{
     const pols = [...mas.querySelectorAll('.pol')];
     if(!pols.length) return;
@@ -871,14 +872,16 @@ function layoutPols(){
 }
 
 /* kaydırdıkça aç: işaret ekrana girince karesi desteden ayrılır */
-let dealt = 0;
+let dealt = 0, layoutAt = 0;
 const polIO = new IntersectionObserver(es=>{
   es.forEach(en=>{
     if(!en.isIntersecting) return;
     const el = en.target.pol;
     polIO.unobserve(en.target);
     if(!el || el.classList.contains('on')) return;
-    el.style.transitionDelay = ((dealt % 5) * 0.09).toFixed(2) + 's';
+    /* sayfa yeni açıldıysa deste bir an kapalı görünsün, sonra dağılsın */
+    const base = (performance.now() - layoutAt < 900) ? 0.4 : 0;
+    el.style.transitionDelay = (base + (dealt % 5) * 0.1).toFixed(2) + 's';
     dealt++;
     el.classList.add('on');
   });
