@@ -8,5 +8,7 @@
     "base": 140,
     "strength": 0.6
   },
-  "aboutPhoto": "images/ebru.jpg"
+  "aboutPhoto": "images/ebru.jpg",
+  "guideTr": "files/Modellige-Hazirlik.pdf",
+  "guideEn": "files/Preparing-to-Model.pdf"
 }

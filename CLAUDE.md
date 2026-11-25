@@ -99,7 +99,20 @@ Tek `index.html` dosyası, hash yönlendirmesiyle ayrı sayfalar gibi çalışı
 
 **Seriler:** Etheral Space · Yan Yana · Doğa (eski Peyzaj kareleri Doğa'da)
 
-**Model formu** e-posta taslağı üretir (mailto + kopyala). Seçenekler text.json → form grubunda; yeni seçenek eklenirse HTML'e de eklenmeli. Çıplaklık/beden ölçüsü gibi seçenekler bilinçli olarak yok.
+**Model formu** e-posta taslağı üretir (mailto + kopyala). Beş bölüm (`fieldset.fs`): Seni tanıyalım ·
+Kamera önünde · Sınırlar ve rahatlık · Fotoğrafların kullanımı · Pratik detaylar (~39 soru; yalnızca ad ve
+iletişim zorunlu). Soruları internetteki fotoğrafçı/model başvuru formları, güvenlik rehberleri ve KVKK
+notlarından derleyip uyarladık. `buildMsg` **genel**: her `.field`'in etiketini ve değerini okuyup bölüm
+başlıklarıyla mesaja döker; yeni soru eklenince koda dokunmak gerekmez. Metinler text.json → form
+grubunda (soru anahtarı + `1,2,3…` seçenekleri); yeni seçenek HTML'e de eklenmeli. **Bilerek sorulmayanlar:**
+çıplaklık, beden ölçüsü, sağlık bilgisi, kimlik/adres/IBAN — "dikkat etmemi istediğin bir şey" alanı
+isteğe bağlı ve sağlık bilgisi vermek zorunda olmadığını söyler.
+
+**Modelliğe Hazırlık PDF'i** (`files/Modellige-Hazirlik.pdf`, `files/Preparing-to-Model.pdf`, 7 sayfa):
+Modeller sayfasında form üstünde indirme kartı. Bağlantı `site.json` → `guideTr` / `guideEn`
+(panelden PDF değiştirilebilir; alan boşsa kart gizlenir). İçerik Ebru'nun sitedeki taahhütleriyle
+(yanına biri gelebilir, yazılı izin formu, yayın onayı, TFP, 1–2 saat, 7–10 gün, 18 yaş altı veli)
+tutarlı yazıldı; bunlar değişirse PDF de güncellenmeli. weasyprint + Lora/Inter ile üretildi.
 
 **Dikkat:** `.vid` sınıfı Video sayfası kartlarına ait; giriş videosu `.playing` kullanır.
 
@@ -155,7 +168,8 @@ Büyütme ekranı **yalnız tıklanan serinin** karelerini gezer (`SETS['c:<seri
 önce tüm seriler tek dizideydi, Ebru hata olarak bildirdi). Açılma aralığı
 sonradan kısaltıldı (blok başı ekranın %92'sine gelince başlar, kare başına 0,45 aralık).
 **Kolaj/Izgara düğmesi** (`.viewtog`, `setView`, seçim localStorage'da): Izgara
-kırpmasız, kare hücrelerde `object-fit:contain`; `#catWrap.flat` sınıfı CSS ile
+ana sayfa seçkisi gibi sıkı **kare** kutular (`object-fit:cover`, 4/3/2 sütun, 5–6px aralık);
+önce kırpmasız + şeritli (contain) idi, Ebru şeritleri istemedi; `#catWrap.flat` sınıfı CSS ile
 polaroid konumlarını ezer. Kolaja dönünce `layoutPols()` çağrılır.
 Fotoğraflar her zaman görünür: kareler desteden çıkarken solgundan netliğe
 geçen bir "develop" efekti vardı, Ebru deste topluyken boş sanılacağı için

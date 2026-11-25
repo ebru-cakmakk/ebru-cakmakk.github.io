@@ -35,6 +35,7 @@ const L = {
   'models.l4':'Güven listesi 4','models.l5':'Güven listesi 5','models.l6':'Güven listesi 6',
   'models.l7':'Güven listesi 7','models.l8':'Güven listesi 8',
   'models.noteH':'Dürüstlük notu — başlık','models.noteP':'Dürüstlük notu — metin',
+  'models.guideLabel':'Rehber kartı — üst etiket','models.guideH':'Rehber kartı — başlık','models.guideP':'Rehber kartı — metin','models.guideBtn':'Rehber kartı — düğme',
 
   'form.label':'Bölüm etiketi','form.name':'“Adın” etiketi','form.contact':'İletişim etiketi',
   'form.city':'Şehir etiketi','form.exp':'Deneyim etiketi',
@@ -65,7 +66,15 @@ Object.keys(text).forEach(g => {
     const v = text[g][k];
     const long = (v.tr || '').length > 90 || (v.en || '').length > 90;
     const ty = long ? 'text' : 'string';
-    T += `          - name: ${k}\n            label: ${q(L[g + '.' + k] || k)}\n            type: object\n            fields:\n`;
+    let lab = L[g + '.' + k];
+    if(!lab && g === 'form'){                      // form sorularını kendi metinlerinden etiketle
+      const m = k.match(/^(.*?)(\d+)$/), base = m && text.form[m[1]];
+      const cut = x => (x.length > 48 ? x.slice(0, 46) + '…' : x);
+      lab = m && base ? cut(base.tr) + ' — seçenek ' + m[2] : cut(v.tr || k);
+      if(/^sec[A-Z]H$/.test(k)) lab = 'Bölüm açıklaması: ' + lab;
+      else if(/^sec[A-Z]$/.test(k)) lab = 'Bölüm başlığı: ' + lab;
+    }
+    T += `          - name: ${k}\n            label: ${q(lab || k)}\n            type: object\n            fields:\n`;
     T += `              - { name: tr, label: "Türkçe", type: ${ty} }\n`;
     T += `              - { name: en, label: "İngilizce", type: ${ty} }\n`;
   });
@@ -184,6 +193,18 @@ content:
           path: images
           extensions: [jpg, jpeg, png, webp]
           categories: [image]
+      - name: guideTr
+        label: "Modelliğe Hazırlık PDF'i — Türkçe (boşsa kart görünmez)"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
+      - name: guideEn
+        label: "Modelliğe Hazırlık PDF'i — İngilizce"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
       - { name: heroVideo, label: "Giriş videosu (boşsa sadece fotoğraf)", type: string }
       - { name: heroVideoSmall, label: "Giriş videosu — telefon için küçük hâli", type: string }
       - name: theme

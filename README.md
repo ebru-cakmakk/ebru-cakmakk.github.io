@@ -224,3 +224,14 @@ seçimi o tarayıcıda hatırlanır.
 Senin yapman gereken bir şey yok: panelden fotoğraf eklediğinde yerini, açısını
 ve boyutunu site kendi hesaplıyor. Açılar rastgele görünse de sabittir, sayfayı
 her açışta aynı durur.
+
+
+## Model başvuru formu ve Modelliğe Hazırlık rehberi
+
+Modeller sayfasındaki form beş bölümden oluşuyor ve hepsi isteğe bağlı (ad ve iletişim hariç).
+Sorular ve seçenekler panelde **Metinler → Başvuru formu** altında; yazıları oradan değiştirebilirsin.
+Yeni bir soru eklemek ya da bir soruyu kaldırmak istersen bana söyle, form yapısı kodda duruyor.
+
+Sayfadaki **Modelliğe Hazırlık** kartı bir PDF'e bağlanıyor. PDF'i değiştirmek için panelde
+**Site ayarları** → "Modelliğe Hazırlık PDF'i" alanından yeni dosyayı yükle (Türkçe ve İngilizce ayrı).
+Alanı boş bırakırsan kart sayfadan kaybolur.

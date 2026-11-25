@@ -129,12 +129,14 @@
   .viewtog{display:inline-flex;gap:4px;margin-top:22px;padding:3px;border:1px solid var(--line);border-radius:100px}
   .viewtog button{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 15px;border-radius:100px;color:var(--sand-dim);transition:.3s}
   .viewtog button.on{background:var(--moss);color:var(--cream)}
-  #catWrap.flat .mas{height:auto!important;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-  #catWrap.flat .pol{position:static;width:auto!important;padding:0!important;background:rgba(241,238,227,.05);border-radius:2px;box-shadow:none;transform:none!important;cursor:zoom-in}
-  #catWrap.flat .pol:hover{box-shadow:none;filter:brightness(1.1)}
+  #catWrap.flat .mas{height:auto!important;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  #catWrap.flat .pol{position:static;width:auto!important;padding:0!important;background:none;border-radius:0;box-shadow:none;transform:none!important;cursor:zoom-in;overflow:hidden}
+  #catWrap.flat .pol:hover{box-shadow:none}
   #catWrap.flat .pol .shot{height:auto!important;aspect-ratio:1/1;background:none}
-  #catWrap.flat .pol .shot img{object-fit:contain}
-  @media(max-width:760px){#catWrap.flat .mas{grid-template-columns:repeat(2,1fr);gap:8px}}
+  #catWrap.flat .pol .shot img{object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  #catWrap.flat .pol:hover .shot img{transform:scale(1.04)}
+  @media(max-width:1100px){#catWrap.flat .mas{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){#catWrap.flat .mas{grid-template-columns:repeat(2,1fr);gap:5px}}
   .cat-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:clamp(20px,2.5vw,32px);padding-bottom:16px;border-bottom:1px solid var(--line)}
   .cat-head h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,36px);letter-spacing:-.02em}
   .cat-head span{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dim)}
@@ -198,6 +200,15 @@
   .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--emerald);background:rgba(31,125,83,.1)}
   .field textarea{min-height:120px;resize:vertical}
   .field select option{background:var(--ink-2);color:var(--cream)}
+  .guide{margin-top:clamp(40px,5vw,60px);display:flex;gap:clamp(20px,4vw,48px);align-items:center;justify-content:space-between;flex-wrap:wrap;padding:clamp(24px,3.4vw,40px);border:1px solid var(--line);background:rgba(241,238,227,.035)}
+  .guide-txt{flex:1 1 340px;min-width:0}
+  .guide h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;margin:6px 0 10px}
+  .guide p:not(.eyebrow){color:var(--sand);font-size:15px;max-width:60ch}
+  .guide .btn{flex:0 0 auto}
+  .guide[hidden]{display:none}
+  .fs{border:0;padding:0;margin:0 0 clamp(34px,4.5vw,54px);min-width:0}
+  .fs legend{font-family:var(--display);font-weight:300;font-size:clamp(21px,2.6vw,28px);letter-spacing:-.01em;padding:0;margin-bottom:8px;width:100%;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .fs .hint{color:var(--sand-dim);font-size:14.5px;line-height:1.6;margin:14px 0 24px;max-width:62ch}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
   @media(max-width:640px){.two{grid-template-columns:1fr}}
   .btn{display:inline-flex;align-items:center;gap:12px;padding:15px 30px;border:1px solid var(--emerald);background:var(--emerald);font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-radius:2px;transition:.35s cubic-bezier(.2,.7,.3,1)}
@@ -437,15 +448,64 @@
         <p data-k="models.noteP"></p>
       </div>
 
+      <div class="guide reveal" id="guideCard">
+        <div class="guide-txt">
+          <p class="eyebrow" data-k="models.guideLabel"></p>
+          <h3 data-k="models.guideH"></h3>
+          <p data-k="models.guideP"></p>
+        </div>
+        <a class="btn" id="guideBtn" href="#" target="_blank" rel="noopener" download><span data-k="models.guideBtn"></span></a>
+      </div>
+
       <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
         <p class="eyebrow" style="margin-bottom:18px" data-k="form.label"></p>
-        <div class="two">
-          <div class="field"><label data-k="form.name"></label><input name="ad" required></div>
-          <div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div>
-        </div>
-        <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
-        <div class="two"><div class="field"><label data-k="form.role"></label><select name="role"><option value="" data-k="form.pick"></option><option value="1" data-k="form.role1"></option><option value="2" data-k="form.role2"></option><option value="3" data-k="form.role3"></option><option value="4" data-k="form.role4"></option><option value="5" data-k="form.role5"></option></select></div><div class="field"><label data-k="form.exp"></label><select name="exp"><option value="" data-k="form.pick"></option><option value="1" data-k="form.exp1"></option><option value="2" data-k="form.exp2"></option><option value="3" data-k="form.exp3"></option><option value="4" data-k="form.exp4"></option></select></div></div><div class="two"><div class="field"><label data-k="form.style"></label><select name="style"><option value="" data-k="form.pick"></option><option value="1" data-k="form.style1"></option><option value="2" data-k="form.style2"></option><option value="3" data-k="form.style3"></option><option value="4" data-k="form.style4"></option><option value="5" data-k="form.style5"></option></select></div><div class="field"><label data-k="form.format"></label><select name="format"><option value="" data-k="form.pick"></option><option value="1" data-k="form.format1"></option><option value="2" data-k="form.format2"></option><option value="3" data-k="form.format3"></option></select></div></div><div class="field"><label data-k="form.interests"></label><div class="chips"><label class="chip"><input type="checkbox" name="interests" value="1"><span data-k="form.interests1"></span></label><label class="chip"><input type="checkbox" name="interests" value="2"><span data-k="form.interests2"></span></label><label class="chip"><input type="checkbox" name="interests" value="3"><span data-k="form.interests3"></span></label><label class="chip"><input type="checkbox" name="interests" value="4"><span data-k="form.interests4"></span></label><label class="chip"><input type="checkbox" name="interests" value="5"><span data-k="form.interests5"></span></label><label class="chip"><input type="checkbox" name="interests" value="6"><span data-k="form.interests6"></span></label><label class="chip"><input type="checkbox" name="interests" value="7"><span data-k="form.interests7"></span></label></div></div><div class="two"><div class="field"><label data-k="form.direct"></label><select name="direct"><option value="" data-k="form.pick"></option><option value="1" data-k="form.direct1"></option><option value="2" data-k="form.direct2"></option><option value="3" data-k="form.direct3"></option></select></div><div class="field"><label data-k="form.wardrobe"></label><select name="wardrobe"><option value="" data-k="form.pick"></option><option value="1" data-k="form.wardrobe1"></option><option value="2" data-k="form.wardrobe2"></option><option value="3" data-k="form.wardrobe3"></option></select></div></div><div class="two"><div class="field"><label data-k="form.time"></label><select name="time"><option value="" data-k="form.pick"></option><option value="1" data-k="form.time1"></option><option value="2" data-k="form.time2"></option><option value="3" data-k="form.time3"></option></select></div><div class="field"><label data-k="form.age"></label><select name="age"><option value="" data-k="form.pick"></option><option value="1" data-k="form.age1"></option><option value="2" data-k="form.age2"></option></select></div></div><div class="field"><label data-k="form.link"></label><input name="link"></div>
-        <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
+        <fieldset class="fs">
+          <legend data-k="form.secA"></legend>
+          <p class="hint" data-k="form.secAH"></p>
+          <div class="two"><div class="field"><label data-k="form.name"></label><input name="ad" required></div><div class="field"><label data-k="form.contact"></label><input name="iletisim" required></div></div>
+          <div class="field"><label data-k="form.city"></label><input name="sehir"></div>
+          <div class="field"><label data-k="form.nick"></label><input name="lakap"></div>
+          <div class="two"><div class="field"><label data-k="form.age"></label><select name="age"><option value="" data-k="form.pick"></option><option value="1" data-k="form.age1"></option><option value="2" data-k="form.age2"></option></select></div><div class="field"><label data-k="form.role"></label><select name="role"><option value="" data-k="form.pick"></option><option value="1" data-k="form.role1"></option><option value="2" data-k="form.role2"></option><option value="3" data-k="form.role3"></option><option value="4" data-k="form.role4"></option><option value="5" data-k="form.role5"></option></select></div></div>
+          <div class="two"><div class="field"><label data-k="form.exp"></label><select name="exp"><option value="" data-k="form.pick"></option><option value="1" data-k="form.exp1"></option><option value="2" data-k="form.exp2"></option><option value="3" data-k="form.exp3"></option><option value="4" data-k="form.exp4"></option></select></div><div class="field"><label data-k="form.history"></label><select name="gecmis"><option value="" data-k="form.pick"></option><option value="1" data-k="form.history1"></option><option value="2" data-k="form.history2"></option><option value="3" data-k="form.history3"></option><option value="4" data-k="form.history4"></option></select></div></div>
+          <div class="field"><label data-k="form.why"></label><select name="neden"><option value="" data-k="form.pick"></option><option value="1" data-k="form.why1"></option><option value="2" data-k="form.why2"></option><option value="3" data-k="form.why3"></option><option value="4" data-k="form.why4"></option><option value="5" data-k="form.why5"></option></select></div>
+          <div class="field"><label data-k="form.link"></label><input name="link"></div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend data-k="form.secB"></legend>
+          <p class="hint" data-k="form.secBH"></p>
+          <div class="field"><label data-k="form.comfort"></label><select name="rahat"><option value="" data-k="form.pick"></option><option value="1" data-k="form.comfort1"></option><option value="2" data-k="form.comfort2"></option><option value="3" data-k="form.comfort3"></option><option value="4" data-k="form.comfort4"></option></select></div>
+          <div class="two"><div class="field"><label data-k="form.style"></label><select name="style"><option value="" data-k="form.pick"></option><option value="1" data-k="form.style1"></option><option value="2" data-k="form.style2"></option><option value="3" data-k="form.style3"></option><option value="4" data-k="form.style4"></option><option value="5" data-k="form.style5"></option></select></div><div class="field"><label data-k="form.format"></label><select name="format"><option value="" data-k="form.pick"></option><option value="1" data-k="form.format1"></option><option value="2" data-k="form.format2"></option><option value="3" data-k="form.format3"></option></select></div></div>
+          <div class="field"><label data-k="form.interests"></label><div class="chips"><label class="chip"><input type="checkbox" name="interests" value="1"><span data-k="form.interests1"></span></label><label class="chip"><input type="checkbox" name="interests" value="2"><span data-k="form.interests2"></span></label><label class="chip"><input type="checkbox" name="interests" value="3"><span data-k="form.interests3"></span></label><label class="chip"><input type="checkbox" name="interests" value="4"><span data-k="form.interests4"></span></label><label class="chip"><input type="checkbox" name="interests" value="5"><span data-k="form.interests5"></span></label><label class="chip"><input type="checkbox" name="interests" value="6"><span data-k="form.interests6"></span></label><label class="chip"><input type="checkbox" name="interests" value="7"><span data-k="form.interests7"></span></label></div></div>
+          <div class="field"><label data-k="form.mood"></label><div class="chips"><label class="chip"><input type="checkbox" name="atmosfer" value="1"><span data-k="form.mood1"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="2"><span data-k="form.mood2"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="3"><span data-k="form.mood3"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="4"><span data-k="form.mood4"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="5"><span data-k="form.mood5"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="6"><span data-k="form.mood6"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="7"><span data-k="form.mood7"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="8"><span data-k="form.mood8"></span></label><label class="chip"><input type="checkbox" name="atmosfer" value="9"><span data-k="form.mood9"></span></label></div></div>
+          <div class="field"><label data-k="form.eases"></label><div class="chips"><label class="chip"><input type="checkbox" name="rahatlatir" value="1"><span data-k="form.eases1"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="2"><span data-k="form.eases2"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="3"><span data-k="form.eases3"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="4"><span data-k="form.eases4"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="5"><span data-k="form.eases5"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="6"><span data-k="form.eases6"></span></label><label class="chip"><input type="checkbox" name="rahatlatir" value="7"><span data-k="form.eases7"></span></label></div></div>
+          <div class="field"><label data-k="form.hard"></label><div class="chips"><label class="chip"><input type="checkbox" name="zorlar" value="1"><span data-k="form.hard1"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="2"><span data-k="form.hard2"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="3"><span data-k="form.hard3"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="4"><span data-k="form.hard4"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="5"><span data-k="form.hard5"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="6"><span data-k="form.hard6"></span></label><label class="chip"><input type="checkbox" name="zorlar" value="7"><span data-k="form.hard7"></span></label></div></div>
+          <div class="two"><div class="field"><label data-k="form.direct"></label><select name="direct"><option value="" data-k="form.pick"></option><option value="1" data-k="form.direct1"></option><option value="2" data-k="form.direct2"></option><option value="3" data-k="form.direct3"></option></select></div><div class="field"><label data-k="form.guide"></label><select name="yonlendirme"><option value="" data-k="form.pick"></option><option value="1" data-k="form.guide1"></option><option value="2" data-k="form.guide2"></option><option value="3" data-k="form.guide3"></option></select></div></div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend data-k="form.secC"></legend>
+          <p class="hint" data-k="form.secCH"></p>
+          <div class="two"><div class="field"><label data-k="form.meet"></label><select name="tanisma"><option value="" data-k="form.pick"></option><option value="1" data-k="form.meet1"></option><option value="2" data-k="form.meet2"></option><option value="3" data-k="form.meet3"></option></select></div><div class="field"><label data-k="form.chaperone"></label><select name="refakat"><option value="" data-k="form.pick"></option><option value="1" data-k="form.chaperone1"></option><option value="2" data-k="form.chaperone2"></option><option value="3" data-k="form.chaperone3"></option></select></div></div>
+          <div class="two"><div class="field"><label data-k="form.wardrobe"></label><select name="wardrobe"><option value="" data-k="form.pick"></option><option value="1" data-k="form.wardrobe1"></option><option value="2" data-k="form.wardrobe2"></option><option value="3" data-k="form.wardrobe3"></option></select></div><div class="field"><label data-k="form.clothline"></label><select name="kiyafet_cizgi"><option value="" data-k="form.pick"></option><option value="1" data-k="form.clothline1"></option><option value="2" data-k="form.clothline2"></option><option value="3" data-k="form.clothline3"></option><option value="4" data-k="form.clothline4"></option></select></div></div>
+          <div class="field"><label data-k="form.talk"></label><div class="chips"><label class="chip"><input type="checkbox" name="konusmak" value="1"><span data-k="form.talk1"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="2"><span data-k="form.talk2"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="3"><span data-k="form.talk3"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="4"><span data-k="form.talk4"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="5"><span data-k="form.talk5"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="6"><span data-k="form.talk6"></span></label><label class="chip"><input type="checkbox" name="konusmak" value="7"><span data-k="form.talk7"></span></label></div></div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend data-k="form.secD"></legend>
+          <p class="hint" data-k="form.secDH"></p>
+          <div class="field"><label data-k="form.where"></label><div class="chips"><label class="chip"><input type="checkbox" name="yayin" value="1"><span data-k="form.where1"></span></label><label class="chip"><input type="checkbox" name="yayin" value="2"><span data-k="form.where2"></span></label><label class="chip"><input type="checkbox" name="yayin" value="3"><span data-k="form.where3"></span></label><label class="chip"><input type="checkbox" name="yayin" value="4"><span data-k="form.where4"></span></label></div></div>
+          <div class="two"><div class="field"><label data-k="form.face"></label><select name="yuz"><option value="" data-k="form.pick"></option><option value="1" data-k="form.face1"></option><option value="2" data-k="form.face2"></option><option value="3" data-k="form.face3"></option></select></div><div class="field"><label data-k="form.credit"></label><select name="kredi"><option value="" data-k="form.pick"></option><option value="1" data-k="form.credit1"></option><option value="2" data-k="form.credit2"></option><option value="3" data-k="form.credit3"></option></select></div></div>
+          <div class="two"><div class="field"><label data-k="form.approve"></label><select name="onay"><option value="" data-k="form.pick"></option><option value="1" data-k="form.approve1"></option><option value="2" data-k="form.approve2"></option><option value="3" data-k="form.approve3"></option></select></div><div class="field"><label data-k="form.deal"></label><select name="anlasma"><option value="" data-k="form.pick"></option><option value="1" data-k="form.deal1"></option><option value="2" data-k="form.deal2"></option><option value="3" data-k="form.deal3"></option></select></div></div>
+          <div class="field"><label data-k="form.delivery"></label><select name="teslim"><option value="" data-k="form.pick"></option><option value="1" data-k="form.delivery1"></option><option value="2" data-k="form.delivery2"></option><option value="3" data-k="form.delivery3"></option></select></div>
+        </fieldset>
+        <fieldset class="fs">
+          <legend data-k="form.secE"></legend>
+          <p class="hint" data-k="form.secEH"></p>
+          <div class="two"><div class="field"><label data-k="form.time"></label><select name="time"><option value="" data-k="form.pick"></option><option value="1" data-k="form.time1"></option><option value="2" data-k="form.time2"></option><option value="3" data-k="form.time3"></option></select></div><div class="field"><label data-k="form.hour"></label><select name="saat"><option value="" data-k="form.pick"></option><option value="1" data-k="form.hour1"></option><option value="2" data-k="form.hour2"></option><option value="3" data-k="form.hour3"></option><option value="4" data-k="form.hour4"></option></select></div></div>
+          <div class="two"><div class="field"><label data-k="form.length"></label><select name="sure"><option value="" data-k="form.pick"></option><option value="1" data-k="form.length1"></option><option value="2" data-k="form.length2"></option><option value="3" data-k="form.length3"></option><option value="4" data-k="form.length4"></option></select></div><div class="field"><label data-k="form.place"></label><select name="mekan"><option value="" data-k="form.pick"></option><option value="1" data-k="form.place1"></option><option value="2" data-k="form.place2"></option><option value="3" data-k="form.place3"></option></select></div></div>
+          <div class="two"><div class="field"><label data-k="form.weather"></label><select name="hava"><option value="" data-k="form.pick"></option><option value="1" data-k="form.weather1"></option><option value="2" data-k="form.weather2"></option><option value="3" data-k="form.weather3"></option></select></div><div class="field"><label data-k="form.travel"></label><select name="ulasim"><option value="" data-k="form.pick"></option><option value="1" data-k="form.travel1"></option><option value="2" data-k="form.travel2"></option></select></div></div>
+          <div class="field"><label data-k="form.heard"></label><select name="duydun"><option value="" data-k="form.pick"></option><option value="1" data-k="form.heard1"></option><option value="2" data-k="form.heard2"></option><option value="3" data-k="form.heard3"></option><option value="4" data-k="form.heard4"></option></select></div>
+          <div class="field"><label data-k="form.care"></label><textarea name="dikkat"></textarea></div>
+          <div class="field"><label data-k="form.idea"></label><textarea name="mesaj"></textarea></div>
+        </fieldset>
         <button type="submit" class="btn" data-k="form.submit"></button>
       </form>
 
@@ -594,6 +654,10 @@ function setLang(l){
   document.documentElement.lang = l;
   document.title = SITE.name + (l==='tr' ? ' — Fotoğraf & Videografi' : ' — Photography & Videography');
   document.querySelectorAll('[data-k]').forEach(el=>{ el.innerHTML = t(el.dataset.k); });
+  /* Modelliğe Hazırlık PDF'i: seçili dile göre; dosya yoksa kart gizli */
+  { const g = (SITE && (lang === 'en' ? (SITE.guideEn || SITE.guideTr) : (SITE.guideTr || SITE.guideEn))) || '';
+    const gc = document.getElementById('guideCard');
+    if(gc){ gc.hidden = !g; if(g) document.getElementById('guideBtn').href = g; } }
   btnTr.classList.toggle('on', l==='tr');
   btnEn.classList.toggle('on', l==='en');
   buildNav();
@@ -969,22 +1033,33 @@ function closeReader(){ reader.classList.remove('on'); document.body.style.overf
 function buildMsg(e){
   e.preventDefault();
   const f = e.target, en = lang === 'en';
-  const pick = n => { const el = f.elements[n]; return el && el.value ? el.options[el.selectedIndex].textContent : ''; };
   const val = n => (f.elements[n] && f.elements[n].value || '').trim();
-  const ints = [...f.querySelectorAll('input[name=interests]:checked')].map(x => x.nextElementSibling.textContent);
-  const L = en
-    ? {ad:'Name',il:'Contact',se:'City',ro:'I am',ex:'Experience',st:'Style',fo:'Shoot',in:'Interests',di:'On set',wa:'Wardrobe',ti:'Availability',ag:'Age',li:'Link'}
-    : {ad:'Ad',il:'İletişim',se:'Şehir',ro:'Ben',ex:'Deneyim',st:'Stil',fo:'Çekim',in:'İlgi alanları',di:'Çekimde',wa:'Kıyafet',ti:'Uygunluk',ag:'Yaş',li:'Bağlantı'};
-  const rows = [
-    [L.ad, val('ad')], [L.il, val('iletisim')], [L.se, val('sehir')], [L.ro, pick('role')],
-    [L.ex, pick('exp')], [L.st, pick('style')], [L.fo, pick('format')], [L.in, ints.join(', ')],
-    [L.di, pick('direct')], [L.wa, pick('wardrobe')], [L.ti, pick('time')], [L.ag, pick('age')], [L.li, val('link')]
-  ].filter(r => r[1]);
+  const clean = x => x.replace(/\s+/g, ' ').replace(/[?:]\s*$/, '').trim();
+  /* her bölüm: başlık + dolu alanlar. Yeni bir soru eklenince kendiliğinden mesaja girer. */
+  const blocks = [];
+  f.querySelectorAll('fieldset.fs').forEach(fs=>{
+    const rows = [];
+    fs.querySelectorAll('.field').forEach(fd=>{
+      const lab = fd.querySelector('label:not(.chip)');
+      if(!lab) return;
+      let v = '';
+      const sel = fd.querySelector('select'), txt = fd.querySelector('textarea'),
+            inp = fd.querySelector('input:not([type=checkbox])'), boxes = fd.querySelectorAll('input[type=checkbox]');
+      if(sel) v = sel.value ? sel.options[sel.selectedIndex].textContent : '';
+      else if(boxes.length) v = [...boxes].filter(x => x.checked).map(x => x.nextElementSibling.textContent).join(', ');
+      else if(txt) v = txt.value.trim();
+      else if(inp) v = inp.value.trim();
+      if(!v) return;
+      rows.push(txt ? clean(lab.textContent.split('(')[0]) + ':\n' + v : clean(lab.textContent) + ': ' + v);
+    });
+    if(rows.length){
+      const lg = fs.querySelector('legend');
+      blocks.push((lg ? lg.textContent.toUpperCase() + '\n' : '') + rows.join('\n'));
+    }
+  });
   const greet = en ? 'Hi Ebru,\n\nI saw your site and I would like to work with you. Here are my details:\n'
                    : 'Merhaba Ebru,\n\nSitene baktım ve seninle çalışmak istiyorum. Bilgilerim şöyle:\n';
-  let body = greet + '\n' + rows.map(r => r[0] + ': ' + r[1]).join('\n');
-  const idea = val('mesaj');
-  if(idea) body += '\n\n' + idea;
+  let body = greet + '\n' + blocks.join('\n\n');
   body += '\n\n' + (en ? 'Best,\n' : 'Sevgiler,\n') + (val('ad') || '');
   msg.textContent = body;
   const subj = t('form.subject') + (val('ad') ? ' — ' + val('ad') : '');
