@@ -254,10 +254,14 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
       Son ikisi tek yazı olarak girilmişti, ayrıldı; tarihleri "2026-11", gerçek
       tarihleri bilinmiyor.
-- [ ] **QR kodlu kartvizit** — Ebru heyecanlı, sırada. QR doğrudan siteye ya da `#modeller`'e
-      gidebilir; yeni sohbette tasarlanacak. Baskı için vektör (PDF/SVG) hazırla.
-- [ ] **Sanatçı bildirimi** — tek cümlelik slogan yazıldı ve yayında ("İnsanla doğanın birbirine
-      karıştığı yerleri arıyorum." / EN eşi). Önerilen ama siteye **yazılmamış**: "çok yönlülük"
+- [x] ~~QR kodlu kartvizit~~ — "Sis" seçildi: dikey 55×85 mm, ön yüz 07.jpg yeşil–krem çift ton + gren,
+      arka krem zemin: büyük Fraunces ad, slogan (Inter büyük harf, iki satır, ortada Z YOK — Ebru sevmedi),
+      QR → ana sayfa, altta FOTOĞRAF · VİDEO. 3 mm taşma, CMYK PDF + kesim işaretli PDF (Ghostscript).
+      Alan adı alınırsa QR yeni adrese güncellenmeli (github.io yine de yönlendirir).
+- [ ] **Sanatçı bildirimi** — slogan yayında: "Ten de taş da aynı ışıktan yapılmış." / "Skin and stone
+      are made of the same light." (25 Kasım 2026'da değişti. Eski cümle "İnsanla doğanın birbirine
+      karıştığı yerleri arıyorum" insan ile doğayı ayıran bir dil gibi geldiği için bırakıldı; Ebru her şeyin
+      bir olduğuna inanıyor, yeni metinlerde "insan/doğa" karşıtlığı kurma.) Önerilen ama siteye **yazılmamış**: "çok yönlülük"
       vurgulayan ikinci satır, Hakkımda cümlesi, deneme bölümü adı (öneri: Kenar Notları / Margin Notes;
       `pages.json`'da menü adı olarak değişir). Ebru onayı bekliyor.
 - [ ] **Küçük ayarlar** — giriş videosunun belirme süresi (şu an 1,8 sn), polaroid açılma hızı
