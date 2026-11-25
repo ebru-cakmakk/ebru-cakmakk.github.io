@@ -129,15 +129,25 @@ azaltma veya veri tasarrufu açıksa sadece fotoğraf. Yeni video: sessiz, H.264
 30 fps, CRF 27, +faststart; 1920 ve 1280 genişlikte iki sürüm. Kaynak 100 fps
 Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sınırı).
 
-**Galeri hizalı satırlarla çiziliyor** (`justify()`), CSS sütunlarıyla değil —
-Ebru tırtıklı sütun altlarını sevmedi. Kareler kendi oranlarını korur, satırlar
-sayfayı tam doldurur; 560px altında her kare tam genişlik. Oran JPEG/PNG
-başlığından Range isteğiyle okunur (`learnRatio`), fotoğraf yüklenince EXIF
-döndürmesine karşı düzeltilir (`onShotLoad`). Yeni fotoğraf için hiçbir yere
-oran yazmak gerekmiyor.
+**Galeri polaroid destesi** (`layoutPols`). Önce CSS sütunları vardı (tırtıklı
+diye elendi), sonra hizalı satırlar; Ebru bir dergi sayfasından esinlenip
+polaroid kolajı istedi. Her seri kapalı bir deste olarak durur; karenin
+varacağı yere konan 1px'lik işaret (`.pol-a`) ekrana girince kare desteden
+ayrılıp yerine uçar ve fotoğraf develop olur gibi belirir (`.pol.on`).
+Konum/açı dosya adından türetilir (`jit`), yani her açılışta aynı. Sütun
+sayısı 1/2/3. Oran JPEG/PNG başlığından Range isteğiyle okunur (`learnRatio`),
+fotoğraf yüklenince EXIF döndürmesine karşı düzeltilir (`onShotLoad`);
+polaroid görünümü için 0.78–1.34 arasına sıkıştırılır, yani kutuda hafif
+kırpma olur — büyütme ekranında kare tam ve kırpılmamış açılır.
+Hareket azaltma açıksa `revealAll()` hepsini doğrudan yerine koyar.
+Sayfa gizliyken genişlik 0 olduğu için `route()` içinde `#fotograflar`'a
+geçişte `layoutPols` yeniden çağrılır — bu olmazsa düzen kurulmaz.
 
-**Sekme logosu** `favicon.svg` (+ 32px PNG ve apple-touch-icon): koyu zeminde
-krem Z monogramı. Ad "Z. Ebru Çakmak" olunca eklendi.
+**Sekme logosu:** krem zeminde koyu Fraunces Z (16/32/48 px PNG +
+apple-touch-icon 180). Önce koyu zeminli, genel bir serifle çizilmiş hâli
+yapıldı, Ebru beğenmedi; altı seçenek sunuldu, bunu seçti. Harf sitenin kendi
+yazı tipiyle tarayıcıda çizildi — Fraunces bu ortamdan indirilemiyor
+(fonts.googleapis.com engelli), gerekirse yine tarayıcıda üretilmeli.
 
 **Addan sonraki süs noktası kaldırıldı** (eskiden `.dot` span'i vardı). Geri
 isterse marka ve açılış başlığına geri eklenir.

@@ -833,7 +833,7 @@ function layoutPols(){
 
       const c = colY.indexOf(Math.min(...colY));
       const slot = cols === 1 ? (W - cardW) / 2 : c * (W / cols) + ((W / cols) - cardW) / 2;
-      const x = Math.round(slot + (jit(src, 'x') - 0.5) * cardW * 0.14);
+      const x = Math.round(slot + (jit(src, 'x') - 0.5) * cardW * (cols === 1 ? 0.07 : 0.14));
       const y = Math.round(colY[c] + jit(src, 'y') * cardH * 0.07);
       const rot = ((jit(src, 'r') - 0.5) * 11).toFixed(2) + 'deg';
 
@@ -868,7 +868,7 @@ function layoutPols(){
     });
     mas.style.height = bottom + 'px';
   });
-  spread();
+  if(document.body.classList.contains('nomotion')) revealAll();
 }
 
 /* kaydırdıkça aç: işaret ekrana girince karesi desteden ayrılır */
@@ -887,36 +887,10 @@ const polIO = new IntersectionObserver(es=>{
   });
 }, {rootMargin: '0px 0px -6% 0px', threshold: 0});
 
-let spreadQueued = false;
-function spread(){
-  const all = document.body.classList.contains('nomotion');
-  const vh = innerHeight;
-  document.querySelectorAll('#catWrap .mas').forEach(mas=>{
-    const pols = [...mas.querySelectorAll('.pol')];
-    if(!pols.length) return;
-    let n = pols.length;
-    if(!all){
-      const r = mas.getBoundingClientRect();
-      /* düzen henüz kurulmadıysa (sayfa gizliyken) hiçbir şey açma */
-      if(r.height < 50) return;
-      const p = (vh - r.top - vh * 0.12) / (r.height * 0.72 + vh * 0.34);
-      n = Math.ceil(Math.max(0, Math.min(1, p)) * pols.length + 0.4);
-    }
-    let k = 0;
-    pols.forEach((el, i)=>{
-      if(i < n && !el.classList.contains('on')){
-        el.style.transitionDelay = (k * 0.09).toFixed(2) + 's';   // deste sırayla dağılsın
-        k++;
-        el.classList.add('on');
-      }
-    });
-  });
+/* hareket azaltma açıksa animasyon yok, hepsi doğrudan yerinde */
+function revealAll(){
+  document.querySelectorAll('#catWrap .pol').forEach(el=>{ el.style.transitionDelay = '0s'; el.classList.add('on'); });
 }
-addEventListener('scroll', ()=>{
-  if(spreadQueued) return;
-  spreadQueued = true;
-  requestAnimationFrame(()=>{ spreadQueued = false; spread(); });
-}, {passive: true});
 
 /* Fotoğraf yüklenince gerçek oranı öğren (EXIF döndürmesi başlığı yanıltabilir) */
 function onShotLoad(img){

@@ -207,3 +207,13 @@ Fotoğrafları sayfaya sürükle, küçültülmüş hâllerini indir, sonra pane
 Fotoğraflar internete yüklenmiyor, küçültme senin cihazında yapılıyor. Sayfayı yer imlerine ekle.
 
 iPhone'dan HEIC dosyası gelirse tarayıcı açamayabilir. Telefonda **Ayarlar → Kamera → Biçimler → En Uyumlu** seçersen yeni fotoğraflar JPEG çekilir.
+
+## Fotoğraflar sayfası nasıl çalışıyor
+
+Her seri kapalı bir polaroid destesi olarak duruyor. Sayfayı kaydırdıkça kareler
+desteden ayrılıp yerlerine yayılıyor ve fotoğraf develop olur gibi beliriyor.
+Bir polaroidin üstüne tıklayınca fotoğraf tam ve kırpılmamış hâliyle açılıyor.
+
+Senin yapman gereken bir şey yok: panelden fotoğraf eklediğinde yerini, açısını
+ve boyutunu site kendi hesaplıyor. Açılar rastgele görünse de sabittir, sayfayı
+her açışta aynı durur.
