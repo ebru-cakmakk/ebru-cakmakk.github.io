@@ -132,13 +132,14 @@ Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sı
 
 **Galeri polaroid destesi** (`layoutPols`). Önce CSS sütunları vardı (tırtıklı
 diye elendi), sonra hizalı satırlar; Ebru bir dergi sayfasından esinlenip
-polaroid kolajı istedi. Her seri kapalı bir deste olarak durur; **imleç desteye gelince**
-(dokunmatikte desteye dokununca) kareler etrafa yayılır — `openDeck` /
-`closeDeck`, `.mas.open`. Önce kaydırmaya bağlıydı, Ebru imleçle olmasını
-istedi. Kapalıyken blok sadece deste kadar yer kaplar (`dataset.deckH`),
-açılınca yüksekliği `fullH`'ye büyür. Fotoğraf ilk açılışta develop olur ve
-`.dev` kalıcıdır. Kapalı desteye tıklamak kareyi büyütmez, desteyi açar
-(`polClick`).
+polaroid kolajı istedi. Her seri kapalı bir deste olarak durur ve **kaydırmaya bağlı** olarak dağılır
+(`scrub`, rAF döngüsü). Tetiklenip biten bir CSS geçişi DEĞİL: her karenin
+blok ilerleyişi içinde kendi aralığı var, konum/açı/develop miktarı kaydırma
+oranından hesaplanıp inline transform olarak yazılıyor; geri kaydırınca geri
+toplanıyorlar. Önce kaydırmada tetiklenen geçiş, sonra imleçle açılan deste
+denendi — ikisini de beğenmedi, "kaydırma hareketiyle beraber" olmasını
+istedi. Değerler `el.p` içinde sayı olarak durur. Döngü yalnız
+`#fotograflar` etkinken çalışır (`startScrub`).
 Konum/açı dosya adından türetilir (`jit`), yani her açılışta aynı. Sütun
 sayısı 1/2/3. Oran JPEG/PNG başlığından Range isteğiyle okunur (`learnRatio`),
 fotoğraf yüklenince EXIF döndürmesine karşı düzeltilir (`onShotLoad`);
