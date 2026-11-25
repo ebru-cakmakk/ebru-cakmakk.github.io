@@ -118,6 +118,11 @@ hiç bozulmaz. `site.json` içindeki `theme.strength` (0–1) etkinin şiddetini
 > koyu orman yeşili değil. `strength: 1` yapılırsa site zeytin yeşiline kayar.
 > `0.6` değeri bu yüzden seçildi — kimliği korurken seriler arası fark hissettiriyor.
 
+**Modeller sayfasının rengi sabit petrol yeşili** (`themeForPage`, hue 168, `exact:true`
+→ fotoğraflardan karıştırılmaz). Önce tüm fotoğrafların ortalaması alınıyordu, hue 100'e
+(sarı-yeşil) kayıp fazla açık duruyordu; Ebru Hakkımda'daki daha soğuk tona yakın,
+"çok minik petrol" istedi. Daha mavi/yeşil için hue'yu oynat (160–180).
+
 **Büyütme ekranında renk YOK.** Önce fotoğrafın etrafında renkli bir çerçeve
 vardı, Ebru rahatsız edici buldu ve kaldırıldı. Şimdi nötr koyu zemin, sadece
 fotoğraf. Bunu geri getirme.

@@ -1094,7 +1094,9 @@ function paintTheme(tone){
   const on   = T.auto && tone && st > 0;
   /* temel tondan fotoğrafın tonuna, en kısa yoldan, strength kadar kay */
   let h = base;
-  if(on){
+  if(on && tone.exact){
+    h = tone.h;                                   // sayfaya özel sabit ton: karıştırma yok
+  }else if(on){
     const d = ((tone.h - base + 540) % 360) - 180;
     h = (base + d * st + 360) % 360;
   }
@@ -1140,6 +1142,8 @@ function themeForPage(h){
   if(h === 'home')            themeFor([{src:'images/hero.jpg'}]);
   else if(h === 'fotograflar'){ themeFor(CATS.length ? PHOTOS.filter(p => p.cat === CATS[0].id) : PHOTOS); watchCats(); }
   else if(h === 'hakkimda' && SITE.aboutPhoto) themeFor([{src: SITE.aboutPhoto}]);
+  /* Modeller: otların sarı-yeşili fazla açık kaçıyordu → sabit, hafif petrol yeşili */
+  else if(h === 'modeller'){ pageTone = {h:168, s:0.34, exact:true}; paintTheme(pageTone); }
   else                        themeFor(PHOTOS);
 }
 
