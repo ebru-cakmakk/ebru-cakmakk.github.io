@@ -857,6 +857,7 @@ function layoutPols(){
     });
 
     deckH += pols.length * 2 + 46;                 // destenin kalınlığı + ipucu yazısı
+    bottom = Math.max(bottom, deckH);              // açılınca blok kısalmasın
     mas.dataset.fullH = bottom;
     mas.dataset.deckH = deckH;
     mas.style.height = (mas.classList.contains('open') ? bottom : deckH) + 'px';
