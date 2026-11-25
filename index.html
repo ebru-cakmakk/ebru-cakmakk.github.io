@@ -867,10 +867,19 @@ function spread(){
     let n = pols.length;
     if(!all){
       const r = mas.getBoundingClientRect();
-      const p = (vh - r.top) / (r.height * 0.7 + vh * 0.45);
+      /* düzen henüz kurulmadıysa (sayfa gizliyken) hiçbir şey açma */
+      if(r.height < 50) return;
+      const p = (vh - r.top - vh * 0.12) / (r.height * 0.72 + vh * 0.34);
       n = Math.ceil(Math.max(0, Math.min(1, p)) * pols.length + 0.4);
     }
-    pols.forEach((el, i)=>{ if(i < n) el.classList.add('on'); });
+    let k = 0;
+    pols.forEach((el, i)=>{
+      if(i < n && !el.classList.contains('on')){
+        el.style.transitionDelay = (k * 0.09).toFixed(2) + 's';   // deste sırayla dağılsın
+        k++;
+        el.classList.add('on');
+      }
+    });
   });
 }
 addEventListener('scroll', ()=>{
