@@ -61,12 +61,8 @@
       "en": "Photographs"
     },
     "lede": {
-      "tr": "Kategorilere ayrılmış tüm kareler.",
-      "en": "All frames, grouped by series."
-    },
-    "deck": {
-      "tr": "Desteye dokun ya da üstüne gel",
-      "en": "Hover or tap the stack"
+      "tr": "Kategorilere ayrılmış tüm kareler. Kaydırdıkça desteler dağılır; büyütmek için bir fotoğrafa dokun.",
+      "en": "All frames, grouped by series. The stacks spread as you scroll; tap a photograph to enlarge."
     }
   },
   "film": {

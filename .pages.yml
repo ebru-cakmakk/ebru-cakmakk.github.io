@@ -227,14 +227,8 @@ content:
             label: "Giriş yazısı"
             type: object
             fields:
-              - { name: tr, label: "Türkçe", type: string }
-              - { name: en, label: "İngilizce", type: string }
-          - name: deck
-            label: "deck"
-            type: object
-            fields:
-              - { name: tr, label: "Türkçe", type: string }
-              - { name: en, label: "İngilizce", type: string }
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
       - name: film
         label: "Video sayfası"
         type: object
