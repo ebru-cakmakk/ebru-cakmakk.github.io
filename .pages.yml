@@ -1489,6 +1489,12 @@ content:
             fields:
               - { name: tr, label: "Türkçe", type: string }
               - { name: en, label: "İngilizce", type: string }
+          - name: heard5
+            label: "Beni nereden buldun? — seçenek 5"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
           - name: care
             label: "Çekimde dikkat etmemi istediğin bir şey var mı…"
             type: object
