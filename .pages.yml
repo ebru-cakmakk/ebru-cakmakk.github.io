@@ -229,6 +229,12 @@ content:
             fields:
               - { name: tr, label: "Türkçe", type: string }
               - { name: en, label: "İngilizce", type: string }
+          - name: deck
+            label: "deck"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
       - name: film
         label: "Video sayfası"
         type: object

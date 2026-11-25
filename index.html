@@ -111,19 +111,21 @@
   }
 
   /* masonry (photographs page) */
-  .mas{position:relative}
+  .mas{position:relative;transition:height .85s cubic-bezier(.22,.72,.25,1)}
   .pol{position:absolute;top:0;left:0;background:#EFEBDF;border-radius:2px;
        box-shadow:0 20px 45px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.35);cursor:zoom-in;
        transform:translate3d(var(--dx),var(--dy),0) rotate(var(--drot)) scale(var(--sc,1));
        transition:transform 1.05s cubic-bezier(.22,.72,.25,1);will-change:transform}
-  .pol-a{position:absolute;width:1px;height:1px;pointer-events:none;opacity:0}
-  .pol.on{transform:translate3d(var(--fx),var(--fy),0) rotate(var(--frot)) scale(var(--sc,1))}
+  .mas.open .pol{transform:translate3d(var(--fx),var(--fy),0) rotate(var(--frot)) scale(var(--sc,1))}
   .pol:hover{--sc:1.035;z-index:60!important;box-shadow:0 26px 60px rgba(0,0,0,.6)}
   .pol .shot{display:block;overflow:hidden;background:#C9CBBE;position:relative}
   .pol .shot img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;
        filter:brightness(1.8) contrast(.35) saturate(.4);
-       transition:opacity 1.5s ease .3s,filter 2.1s ease .3s}
-  .pol.on .shot img{opacity:1;filter:none}
+       transition:opacity 1.4s ease .2s,filter 2s ease .2s}
+  .pol.dev .shot img{opacity:1;filter:none}
+  .deck-hint{position:absolute;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.2em;
+       text-transform:uppercase;color:var(--sand-dim);pointer-events:none;transition:opacity .5s ease}
+  .mas.open .deck-hint{opacity:0}
   .cat-block{margin-bottom:clamp(50px,7vw,96px)}
   .cat-block:last-child{margin-bottom:0}
   .cat-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:clamp(20px,2.5vw,32px);padding-bottom:16px;border-bottom:1px solid var(--line)}
@@ -665,7 +667,7 @@ function render(){
     html += '<div class="cat-block reveal" data-cat="'+c.id+'"><div class="cat-head"><h3>'+catName(c)+'</h3>'
           + '<span>'+list.length+'</span></div><div class="mas">'
           + list.map((p,j)=>
-              '<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'photos\','+(start+j)+')">'
+              '<figure class="pol" data-src="'+esc(p.src)+'" onclick="polClick(event,this,'+(start+j)+')">'
               + '<span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="'+esc(catName(c))+'" loading="lazy" onload="onShotLoad(this)"></span></figure>'
             ).join('')
           + '</div></div>';
@@ -676,7 +678,7 @@ function render(){
     const start = SETS.photos.length;
     SETS.photos = SETS.photos.concat(rest);
     html += '<div class="cat-block reveal"><div class="mas">'
-          + rest.map((p,j)=>'<figure class="pol" data-src="'+esc(p.src)+'" onclick="openLb(\'photos\','+(start+j)+')"><span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="" loading="lazy" onload="onShotLoad(this)"></span></figure>').join('')
+          + rest.map((p,j)=>'<figure class="pol" data-src="'+esc(p.src)+'" onclick="polClick(event,this,'+(start+j)+')"><span class="shot"><img src="'+esc(p.src)+'" data-src="'+esc(p.src)+'" alt="" loading="lazy" onload="onShotLoad(this)"></span></figure>').join('')
           + '</div></div>';
   }
   catWrap.innerHTML = html;
@@ -822,7 +824,7 @@ function layoutPols(){
     const foot = Math.round(cardW * 0.17);
     const innerW = cardW - pad * 2;
     const colY = new Array(cols).fill(0);
-    let bottom = 0;
+    let bottom = 0, deckH = 0;
 
     pols.forEach((el, i)=>{
       const src = el.dataset.src;
@@ -850,66 +852,65 @@ function layoutPols(){
       el.style.setProperty('--dy', (i * 2) + 'px');
       el.style.setProperty('--drot', ((i % 5 - 2) * 1.6).toFixed(1) + 'deg');
 
-      /* görünürlük işareti: karenin varacağı yere konan 1px'lik nokta.
-         Kare henüz destede olduğu için kendisini izlemek işe yaramıyor. */
-      let a = el.anchor;
-      if(!a){
-        a = document.createElement('i');
-        a.className = 'pol-a';
-        a.pol = el; el.anchor = a;
-        mas.appendChild(a);
-      }
-      a.style.left = (x + cardW / 2) + 'px';
-      a.style.top  = (y + cardH * 0.35) + 'px';
-      polIO.observe(a);
-
+      deckH = Math.max(deckH, cardH);
       colY[c] = y + Math.round(cardH * 0.9);
       bottom = Math.max(bottom, y + cardH);
     });
-    mas.style.height = bottom + 'px';
-  });
-  if(document.body.classList.contains('nomotion')) revealAll();
-  else { clearTimeout(kickTimer); kickTimer = setTimeout(kick, 250); }
-}
 
-/* kaydırdıkça aç: işaret ekrana girince karesi desteden ayrılır */
-let dealt = 0, layoutAt = 0;
-const polIO = new IntersectionObserver(es=>{
-  es.forEach(en=>{
-    if(!en.isIntersecting) return;
-    const el = en.target.pol;
-    polIO.unobserve(en.target);
-    if(!el || el.classList.contains('on')) return;
-    /* sayfa yeni açıldıysa deste bir an kapalı görünsün, sonra dağılsın */
-    const base = (performance.now() - layoutAt < 900) ? 0.4 : 0;
-    el.style.transitionDelay = (base + (dealt % 5) * 0.1).toFixed(2) + 's';
-    dealt++;
-    el.classList.add('on');
-  });
-}, {rootMargin: '0px 0px -6% 0px', threshold: 0});
+    deckH += pols.length * 2 + 46;                 // destenin kalınlığı + ipucu yazısı
+    mas.dataset.fullH = bottom;
+    mas.dataset.deckH = deckH;
+    mas.style.height = (mas.classList.contains('open') ? bottom : deckH) + 'px';
 
-/* Güvence: izleyici bazı tarayıcılarda sayfa açılışında geç kalabiliyor.
-   Ekranda duran işaretlerin karelerini elle açar. */
-let kickTimer;
-function kick(){
-  const vh = innerHeight;
-  document.querySelectorAll('#catWrap .pol-a').forEach(a=>{
-    const el = a.pol;
-    if(!el || el.classList.contains('on')) return;
-    const r = a.getBoundingClientRect();
-    if(r.top < vh * 0.94 && r.bottom > 0){
-      polIO.unobserve(a);
-      const base = (performance.now() - layoutAt < 1500) ? 0.4 : 0;
-      el.style.transitionDelay = (base + (dealt % 5) * 0.1).toFixed(2) + 's';
-      dealt++;
-      el.classList.add('on');
+    let hint = mas.querySelector('.deck-hint');
+    if(!hint){
+      hint = document.createElement('p');
+      hint.className = 'deck-hint';
+      mas.appendChild(hint);
+    }
+    hint.textContent = t('photos.deck');
+    hint.style.top = (deckH - 26) + 'px';
+
+    if(!mas.bound){
+      mas.bound = true;
+      mas.addEventListener('mouseenter', ()=>{ clearTimeout(mas.shutTimer); openDeck(mas); });
+      mas.addEventListener('mouseleave', ()=>{
+        clearTimeout(mas.shutTimer);
+        mas.shutTimer = setTimeout(()=>closeDeck(mas), 420);
+      });
     }
   });
+  if(document.body.classList.contains('nomotion')) document.querySelectorAll('#catWrap .mas').forEach(openDeck);
 }
 
-/* hareket azaltma açıksa animasyon yok, hepsi doğrudan yerinde */
-function revealAll(){
-  document.querySelectorAll('#catWrap .pol').forEach(el=>{ el.style.transitionDelay = '0s'; el.classList.add('on'); });
+/* Deste: kapalıyken üst üste, imleç gelince etrafa yayılır. */
+function openDeck(mas){
+  if(mas.classList.contains('open')) return;
+  const pols = [...mas.querySelectorAll('.pol')];
+  pols.forEach((el, i)=> el.style.transitionDelay = (i % 7 * 0.055).toFixed(3) + 's');
+  mas.style.height = (mas.dataset.fullH || 0) + 'px';
+  mas.classList.add('open');
+  /* fotoğraflar ilk açılışta develop olur, sonra öyle kalır */
+  pols.forEach(el => el.classList.add('dev'));
+}
+function closeDeck(mas){
+  if(!mas.classList.contains('open')) return;
+  const pols = [...mas.querySelectorAll('.pol')];
+  pols.forEach((el, i)=> el.style.transitionDelay = ((pols.length - 1 - i) % 7 * 0.04).toFixed(3) + 's');
+  mas.classList.remove('open');
+  mas.style.height = (mas.dataset.deckH || 0) + 'px';
+}
+/* Kapalı desteye dokunmak onu açar (dokunmatikte imleç yok);
+   açıkken dokunmak kareyi büyütür. */
+function polClick(ev, el, i){
+  const mas = el.closest('.mas');
+  if(mas && !mas.classList.contains('open')){
+    ev.stopPropagation();
+    clearTimeout(mas.shutTimer);
+    openDeck(mas);
+    return;
+  }
+  openLb('photos', i);
 }
 
 /* Fotoğraf yüklenince gerçek oranı öğren (EXIF döndürmesi başlığı yanıltabilir) */
