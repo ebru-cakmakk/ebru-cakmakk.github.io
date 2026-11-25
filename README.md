@@ -228,7 +228,7 @@ her açışta aynı durur.
 
 ## Model başvuru formu ve Modelliğe Hazırlık rehberi
 
-Modeller sayfasındaki form beş bölümden oluşuyor ve hepsi isteğe bağlı (ad ve iletişim hariç).
+Modeller sayfasındaki form altı bölümden oluşuyor (okul projeleri için gönüllü olmak isteyenlere ayrı bir bölüm de var) ve hepsi isteğe bağlı (ad ve iletişim hariç).
 Sorular ve seçenekler panelde **Metinler → Başvuru formu** altında; yazıları oradan değiştirebilirsin.
 Yeni bir soru eklemek ya da bir soruyu kaldırmak istersen bana söyle, form yapısı kodda duruyor.
 

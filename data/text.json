@@ -173,8 +173,8 @@
       "en": "Preparing to Model"
     },
     "guideP": {
-      "tr": "Çekim nasıl ilerliyor, ne giymeli, çantana ne koymalı, sınırların ve fotoğraf izinlerin nerede duruyor. Yedi sayfalık, sade bir rehber; başvurmadan önce göz atabilirsin.",
-      "en": "How a shoot runs, what to wear, what to pack, and where your boundaries and photo permissions stand. A plain seven-page guide to look through before you apply."
+      "tr": "Çekim nasıl ilerliyor, ne giymeli, çantana ne koymalı, sınırların, fotoğraf izinlerin ve okul projelerinde gönüllü katılım nasıl işliyor. Sade bir rehber; başvurmadan önce göz atabilirsin.",
+      "en": "How a shoot runs, what to wear, what to pack, where your boundaries and photo permissions stand, and how volunteering for school projects works. A plain guide to look through before you apply."
     },
     "guideBtn": {
       "tr": "PDF’i indir",
@@ -765,6 +765,126 @@
     "delivery3": {
       "tr": "Fark etmez",
       "en": "No preference"
+    },
+    "secF": {
+      "tr": "Okul projeleri (gönüllü)",
+      "en": "School projects (volunteering)"
+    },
+    "secFH": {
+      "tr": "Hâlâ öğrenciyim ve okul projelerim için de kamera önünde ya da arkasında yardım edecek kişilere ihtiyacım var. Bu tamamen gönüllülüğe bağlı: “hayır” demek başvurunun hiçbir yerini etkilemez, fikrini sonradan da değiştirebilirsin.",
+      "en": "I’m still a student, and for my school projects I also need people to help in front of or behind the camera. This is entirely voluntary: saying “no” doesn’t affect any part of your application, and you can change your mind later."
+    },
+    "school": {
+      "tr": "Okul projelerimde gönüllü yer almak ister misin?",
+      "en": "Would you like to volunteer for my school projects?"
+    },
+    "school1": {
+      "tr": "Evet, isterim",
+      "en": "Yes, I would"
+    },
+    "school2": {
+      "tr": "Belki, projeye göre karar veririm",
+      "en": "Maybe, I’d decide per project"
+    },
+    "school3": {
+      "tr": "Şimdilik hayır, sadece model çekimleri",
+      "en": "Not for now, just model shoots"
+    },
+    "schoolType": {
+      "tr": "Hangi tür projelerde yer alabilirsin?",
+      "en": "What kinds of projects could you join?"
+    },
+    "schoolType1": {
+      "tr": "Fotoğraf projesi",
+      "en": "A photography project"
+    },
+    "schoolType2": {
+      "tr": "Kısa film ya da video",
+      "en": "A short film or video"
+    },
+    "schoolType3": {
+      "tr": "Röportaj ya da belgesel",
+      "en": "An interview or documentary"
+    },
+    "schoolType4": {
+      "tr": "Dans ya da performans",
+      "en": "Dance or performance"
+    },
+    "schoolType5": {
+      "tr": "Perde arkasında yardım (ışık, asistanlık)",
+      "en": "Behind-the-scenes help (lighting, assisting)"
+    },
+    "schoolRole": {
+      "tr": "Nasıl bir rolde?",
+      "en": "In what role?"
+    },
+    "schoolRole1": {
+      "tr": "Kamera önünde",
+      "en": "In front of the camera"
+    },
+    "schoolRole2": {
+      "tr": "Perde arkasında",
+      "en": "Behind the scenes"
+    },
+    "schoolRole3": {
+      "tr": "İkisi de olur",
+      "en": "Either works"
+    },
+    "schoolLen": {
+      "tr": "Ne kadar zaman ayırabilirsin?",
+      "en": "How much time could you give?"
+    },
+    "schoolLen1": {
+      "tr": "Birkaç saat",
+      "en": "A few hours"
+    },
+    "schoolLen2": {
+      "tr": "Bir gün",
+      "en": "A day"
+    },
+    "schoolLen3": {
+      "tr": "Birkaç gün ya da daha uzun",
+      "en": "Several days or longer"
+    },
+    "schoolLen4": {
+      "tr": "Projeye göre konuşalım",
+      "en": "Let’s talk per project"
+    },
+    "schoolDeal": {
+      "tr": "Karşılık beklentin (birden fazla seçebilirsin)",
+      "en": "What you’d expect in return (pick as many as you like)"
+    },
+    "schoolDeal1": {
+      "tr": "Gönüllüyüm, karşılık beklemiyorum",
+      "en": "I’m volunteering, no return expected"
+    },
+    "schoolDeal2": {
+      "tr": "Jenerikte ya da teşekkürlerde adım yer alsın",
+      "en": "Put my name in the credits or thanks"
+    },
+    "schoolDeal3": {
+      "tr": "Çalışmanın bir kopyasını isterim",
+      "en": "I’d like a copy of the work"
+    },
+    "schoolDeal4": {
+      "tr": "Önce konuşalım",
+      "en": "Let’s talk first"
+    },
+    "schoolShow": {
+      "tr": "Proje nerede gösterilebilir?",
+      "en": "Where may the project be shown?"
+    },
+    "schoolShow1": {
+      "tr": "Yalnızca okul içinde (ders, jüri)",
+      "en": "Only within school (class, jury)"
+    },
+    "schoolShow2": {
+      "tr": "Okul dışında da (festival, sergi, çevrimiçi)",
+      "en": "Outside school too (festival, exhibition, online)"
+    },
+    "schoolShow3": {
+      "tr": "Önce bana sorulsun",
+      "en": "Ask me first"
     },
     "secE": {
       "tr": "Pratik detaylar",

@@ -196,6 +196,31 @@ TR = dict(
 </section>
 
 <section class="pb">
+<p class="kick">Okul projeleri</p>
+<h2>Gönüllü katılım (isteğe bağlı)</h2>
+<p class="lead">Model olarak çalışmanın yanı sıra, bir öğrenci olarak okul projelerim için de kamera önünde ya da arkasında yardım edecek kişilere ihtiyaç duyuyorum. Bu tamamen gönüllülüğe bağlı ve katkın için gerçekten minnettar olurum.</p>
+<div class="box"><b>Hayır demek serbest.</b> Okul projesine katılmak istemezsen bu, model çekimlerini ya da başvurunu hiçbir şekilde etkilemez. Evet dedikten sonra da vazgeçebilirsin.</div>
+<h3>Model çekiminden farkı ne?</h3>
+<table>
+<tr><th></th><th>Model çekimi</th><th>Okul projesi</th></tr>
+<tr><td class="t" style="white-space:normal">Amaç</td><td>Portfolyo çalışması (TFP)</td><td>Ders kapsamında bir proje; öğretmen ya da jüri değerlendirir</td></tr>
+<tr><td class="t" style="white-space:normal">Karşılığı</td><td>Kareler, karşılıklı</td><td>Ücret yok; istersen jenerikte ya da teşekkürlerde adın ve çalışmanın bir kopyası</td></tr>
+<tr><td class="t" style="white-space:normal">Kimler görür</td><td>Seçtiğin yayın alanları</td><td>Okulda öğretmen ve jüri; gösterim kapsamını birlikte belirleriz</td></tr>
+<tr><td class="t" style="white-space:normal">Süre</td><td>1–2 saat</td><td>Projeye göre; baştan konuşulur</td></tr>
+</table>
+<h3>Katılmadan önce şunları netleştiririz</h3>
+<ul class="dot">
+<li><b>Proje ve beklenti.</b> Konusu ve senden ne beklendiği (rol, sahne, yardım edeceğin iş).</li>
+<li><b>Plan.</b> Süre, tarih ve mekân yazılı olarak.</li>
+<li><b>Gösterim.</b> Çalışmanın yalnızca okul içinde mi, yoksa festival, sergi ya da çevrimiçi de mi gösterilebileceği. Okul dışı gösterim için ayrıca izin sorulur.</li>
+<li><b>Jenerik.</b> Adınla mı, takma adınla mı yoksa isimsiz mi yer almak istediğin.</li>
+<li><b>Yazılı izin.</b> Görüntülerin kullanımı için izin formu burada da çekimden <u>önce</u> birlikte okunup imzalanır.</li>
+<li><b>Onay.</b> Hangi görüntülerin kullanılacağını görüp onaylama hakkın burada da geçerli; teslim tarihlerini birlikte planlarız.</li>
+</ul>
+<div class="box"><b>Güvenlik ve sınırlar aynen geçerli.</b> Yanında biri olabilir, ne yapılıp yapılmayacağı baştan konuşulur, istediğin an durdurabilirsin. 18 yaş altı için veli onayı ve velinin çekimde bulunması zorunlu.</div>
+</section>
+
+<section>
 <p class="kick">Sık sorulanlar</p>
 <h2>Aklına takılabilecekler</h2>
 <h3>Hiç deneyimim yok, sorun olur mu?</h3>
@@ -359,6 +384,31 @@ EN = dict(
 </section>
 
 <section class="pb">
+<p class="kick">School projects</p>
+<h2>Volunteering (optional)</h2>
+<p class="lead">Besides working as a model, as a student I also need people to help in front of or behind the camera for my school projects. This is entirely voluntary, and I would be truly grateful for your help.</p>
+<div class="box"><b>Saying no is fine.</b> If you do not want to join a school project, it does not affect your model shoots or your application in any way. And even after saying yes, you can step back.</div>
+<h3>How is it different from a model shoot?</h3>
+<table>
+<tr><th></th><th>Model shoot</th><th>School project</th></tr>
+<tr><td class="t" style="white-space:normal">Purpose</td><td>Portfolio work (TFP)</td><td>A project for a course; a teacher or jury assesses it</td></tr>
+<tr><td class="t" style="white-space:normal">In return</td><td>Frames, mutually</td><td>No fee; if you like, your name in the credits or thanks and a copy of the work</td></tr>
+<tr><td class="t" style="white-space:normal">Who sees it</td><td>The places you choose</td><td>Teacher and jury at school; we set the scope of screening together</td></tr>
+<tr><td class="t" style="white-space:normal">Length</td><td>1–2 hours</td><td>Depends on the project; agreed up front</td></tr>
+</table>
+<h3>What we settle before you join</h3>
+<ul class="dot">
+<li><b>Project and expectations.</b> The subject and what is asked of you (role, scene, the work you would help with).</li>
+<li><b>Plan.</b> Length, date and location in writing.</li>
+<li><b>Screening.</b> Whether the work is shown only within school, or also at festivals, exhibitions or online. Showing it outside school needs your separate permission.</li>
+<li><b>Credits.</b> Whether you would like to appear under your name, a nickname or anonymously.</li>
+<li><b>Written permission.</b> The release for how footage is used is read and signed together <u>before</u> the shoot here too.</li>
+<li><b>Approval.</b> Your right to see and approve which footage is used applies here as well; we plan delivery dates together.</li>
+</ul>
+<div class="box"><b>Safety and boundaries apply exactly the same.</b> Someone can be with you, what will and will not happen is discussed first, and you can stop at any moment. If you are under 18, a guardian’s consent and presence on set are required.</div>
+</section>
+
+<section>
 <p class="kick">Common questions</p>
 <h2>What might be on your mind</h2>
 <h3>I have no experience. Is that a problem?</h3>

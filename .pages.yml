@@ -1297,6 +1297,186 @@ content:
             fields:
               - { name: tr, label: "Türkçe", type: string }
               - { name: en, label: "İngilizce", type: string }
+          - name: secF
+            label: "Bölüm başlığı: Okul projeleri (gönüllü)"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: secFH
+            label: "Bölüm açıklaması: Hâlâ öğrenciyim ve okul projelerim için de kam…"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: school
+            label: "Okul projelerimde gönüllü yer almak ister misin?"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: school1
+            label: "Okul projelerimde gönüllü yer almak ister misin? — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: school2
+            label: "Okul projelerimde gönüllü yer almak ister misin? — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: school3
+            label: "Okul projelerimde gönüllü yer almak ister misin? — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType
+            label: "Hangi tür projelerde yer alabilirsin?"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType1
+            label: "Hangi tür projelerde yer alabilirsin? — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType2
+            label: "Hangi tür projelerde yer alabilirsin? — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType3
+            label: "Hangi tür projelerde yer alabilirsin? — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType4
+            label: "Hangi tür projelerde yer alabilirsin? — seçenek 4"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolType5
+            label: "Hangi tür projelerde yer alabilirsin? — seçenek 5"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolRole
+            label: "Nasıl bir rolde?"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolRole1
+            label: "Nasıl bir rolde? — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolRole2
+            label: "Nasıl bir rolde? — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolRole3
+            label: "Nasıl bir rolde? — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolLen
+            label: "Ne kadar zaman ayırabilirsin?"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolLen1
+            label: "Ne kadar zaman ayırabilirsin? — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolLen2
+            label: "Ne kadar zaman ayırabilirsin? — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolLen3
+            label: "Ne kadar zaman ayırabilirsin? — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolLen4
+            label: "Ne kadar zaman ayırabilirsin? — seçenek 4"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolDeal
+            label: "Karşılık beklentin (birden fazla seçebilirsin)"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolDeal1
+            label: "Karşılık beklentin (birden fazla seçebilirsin) — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolDeal2
+            label: "Karşılık beklentin (birden fazla seçebilirsin) — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolDeal3
+            label: "Karşılık beklentin (birden fazla seçebilirsin) — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolDeal4
+            label: "Karşılık beklentin (birden fazla seçebilirsin) — seçenek 4"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolShow
+            label: "Proje nerede gösterilebilir?"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolShow1
+            label: "Proje nerede gösterilebilir? — seçenek 1"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolShow2
+            label: "Proje nerede gösterilebilir? — seçenek 2"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: schoolShow3
+            label: "Proje nerede gösterilebilir? — seçenek 3"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
           - name: secE
             label: "Bölüm başlığı: Pratik detaylar"
             type: object
