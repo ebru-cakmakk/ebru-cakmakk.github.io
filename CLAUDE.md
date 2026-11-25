@@ -18,7 +18,7 @@ serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar �
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 
 **İsim:** **Z. Ebru Çakmak** (karar verildi; mahlas elendi, ayrıntı en altta Açık konular'da).
-Sosyal medya kullanıcı adı ayrı bir karar.
+Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 
 *Son güncelleme: 25 Kasım 2026.*
 
@@ -36,9 +36,9 @@ Sosyal medya kullanıcı adı ayrı bir karar.
 
 | Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
 
-Alan adı satın alınmadı. Sosyal medya hesapları henüz açılmadı (eskisi kişiseldi,
-kapatıldı). `data/site.json` içindeki `instagram`, `tiktok`, `vimeo` alanları boş;
-doldurulduğunda düğmeler kendiliğinden görünür.
+Alan adı satın alınmadı. Sosyal medya: **@ebbylumi** — `data/site.json` içinde
+`instagram` ve `tiktok` tam adres olarak dolu (eski kişisel hesap kapatıldı). `vimeo` boş;
+doldurulduğunda düğmesi kendiliğinden görünür.
 
 **Önemli:** `main` dalına push edilen her şey birkaç dakika içinde yayına girer.
 
@@ -247,8 +247,8 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 ## Açık konular
 
 - [x] ~~İsim kararı~~ — **Z. Ebru Çakmak**. Mahlas elendi; gerçek ad korunuyor
-      ama baştaki harf mesafe koyuyor. Sosyal medya kullanıcı adı ayrı karar
-      (z.ebrucakmak gibi; "zebrucakmak" yazımından kaçın).
+      ama baştaki harf mesafe koyuyor. Sosyal medya kullanıcı adı ayrıca
+      seçildi: **ebbylumi**.
 - [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
 - [x] ~~Günlük yazıları~~ — Ebru kendi deneme yazılarını panelden girdi. Dört yazı:
       Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
@@ -269,8 +269,10 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       (Ebru "geç/erken" derse `scrub()` içindeki aralık), günlükteki iki yazının gerçek tarihleri.
 - [ ] **Showreel** — video bölümü boş. Vimeo veya YouTube bağlantısı gelince
       `data/videos.json` doldurulacak.
-- [ ] **Sosyal medya** — Instagram ve TikTok hesapları aynı kullanıcı adıyla
-      açılacak, bağlantıları `data/site.json`'a eklenecek.
+- [x] ~~Sosyal medya~~ — **ebbylumi** (eb-bi-lu-mi: ebby + lumi "ışık"; içinde Japonca umi
+      "deniz"). Asyalı sanatçı adı kalıbı, kompakt, noktasız. Elenenler: sumi/akari gibi bilinen
+      kelimeler (dolu, saçma varyantlara açılıyor), "by"+e… (bitişikte "bye" okunuyor),
+      zestywoods (TikTok argosu), illuminebby/lumi.ebby (uzun). Bağlantılar `site.json`'da.
 - [ ] **Alan adı** — opsiyonel. Alınırsa Settings → Pages → Custom domain.
 
 ---
