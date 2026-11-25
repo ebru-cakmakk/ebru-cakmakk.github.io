@@ -1054,7 +1054,7 @@ function buildMsg(e){
     });
     if(rows.length){
       const lg = fs.querySelector('legend');
-      blocks.push((lg ? lg.textContent.toUpperCase() + '\n' : '') + rows.join('\n'));
+      blocks.push((lg ? lg.textContent.toLocaleUpperCase(en ? 'en' : 'tr') + '\n' : '') + rows.join('\n'));
     }
   });
   const greet = en ? 'Hi Ebru,\n\nI saw your site and I would like to work with you. Here are my details:\n'
