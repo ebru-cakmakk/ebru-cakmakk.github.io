@@ -1132,7 +1132,7 @@ function heroVideo(){
   if(!v || !src) return;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if(navigator.connection && navigator.connection.saveData) return;
-  const HOLD = 2000, REST = 7000, FADE = 1800;
+  const HOLD = 1000, REST = 7000, FADE = 1800;
   let timer = null, visible = true, leaving = false;
   v.src = src; v.preload = 'auto';
   const show = () => {
