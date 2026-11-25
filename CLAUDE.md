@@ -255,7 +255,8 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       Son ikisi tek yazı olarak girilmişti, ayrıldı; tarihleri "2026-11", gerçek
       tarihleri bilinmiyor.
 - [x] ~~QR kodlu kartvizit~~ — "Sis" seçildi: dikey 55×85 mm, ön yüz 07.jpg yeşil–krem çift ton + gren,
-      arka krem zemin: büyük Fraunces ad, slogan (Inter büyük harf, iki satır, ortada Z YOK — Ebru sevmedi),
+      arka krem zemin, yazılar Cormorant Garamond (Ebru Inter'i sıkıcı buldu; Fraunces/Instrument/daktilo
+      seçenekleri arasından bunu seçti): ince ad, italik slogan iki satır (ortada Z YOK — Ebru sevmedi),
       QR → ana sayfa, altta FOTOĞRAF · VİDEO. 3 mm taşma, CMYK PDF + kesim işaretli PDF (Ghostscript).
       Alan adı alınırsa QR yeni adrese güncellenmeli (github.io yine de yönlendirir).
 - [ ] **Sanatçı bildirimi** — slogan yayında: "Ten de taş da aynı ışıktan yapılmış." / "Skin and stone
