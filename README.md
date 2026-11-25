@@ -211,7 +211,7 @@ iPhone'dan HEIC dosyası gelirse tarayıcı açamayabilir. Telefonda **Ayarlar �
 ## Fotoğraflar sayfası nasıl çalışıyor
 
 Her seri kapalı bir polaroid destesi olarak duruyor. Sayfayı kaydırdıkça kareler
-desteden birer birer ayrılıp etrafa yayılıyor ve aynı anda develop oluyor.
+desteden birer birer ayrılıp etrafa yayılıyor.
 Hareket kaydırmaya bağlı: ne kadar kaydırırsan o kadar açılıyorlar, geri
 kaydırınca geri toplanıyorlar. Bir polaroide dokununca fotoğraf tam ve
 kırpılmamış hâliyle açılıyor.

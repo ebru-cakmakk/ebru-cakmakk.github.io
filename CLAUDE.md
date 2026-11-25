@@ -134,7 +134,7 @@ Sony klibi (C0017) 172 MB'tı — ham video asla depoya konmaz (100 MB dosya sı
 diye elendi), sonra hizalı satırlar; Ebru bir dergi sayfasından esinlenip
 polaroid kolajı istedi. Her seri kapalı bir deste olarak durur ve **kaydırmaya bağlı** olarak dağılır
 (`scrub`, rAF döngüsü). Tetiklenip biten bir CSS geçişi DEĞİL: her karenin
-blok ilerleyişi içinde kendi aralığı var, konum/açı/develop miktarı kaydırma
+blok ilerleyişi içinde kendi aralığı var, konum ve açı kaydırma
 oranından hesaplanıp inline transform olarak yazılıyor; geri kaydırınca geri
 toplanıyorlar. Önce kaydırmada tetiklenen geçiş, sonra imleçle açılan deste
 denendi — ikisini de beğenmedi, "kaydırma hareketiyle beraber" olmasını
@@ -146,6 +146,9 @@ fotoğraf yüklenince EXIF döndürmesine karşı düzeltilir (`onShotLoad`);
 polaroid görünümü için 0.78–1.34 arasına sıkıştırılır, yani kutuda hafif
 kırpma olur — büyütme ekranında kare tam ve kırpılmamış açılır.
 Hareket azaltma açıksa desteler baştan açık gelir.
+Fotoğraflar her zaman görünür: kareler desteden çıkarken solgundan netliğe
+geçen bir "develop" efekti vardı, Ebru deste topluyken boş sanılacağı için
+kaldırttı. Geri eklenecekse `scrub()` içinde img opacity/filter satırları.
 Sayfa gizliyken genişlik 0 olduğu için `route()` içinde `#fotograflar`'a
 geçişte `layoutPols` yeniden çağrılır — bu olmazsa düzen kurulmaz.
 

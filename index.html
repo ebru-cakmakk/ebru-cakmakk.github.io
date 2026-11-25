@@ -761,8 +761,8 @@ function closeLb(){
 
 /* ---------------- polaroid galerisi ----------------
    Her seri kapalı bir polaroid destesi olarak başlar; sayfa kaydırıldıkça
-   kareler desteden ayrılıp yerlerine yayılır ve fotoğraf develop olur gibi
-   belirir. Üstüne tıklayınca kare büyütme ekranında tam hâliyle açılır.
+   kareler desteden ayrılıp yerlerine yayılır. Üstüne tıklayınca kare
+   büyütme ekranında tam hâliyle açılır.
    Oran dosya başlığından okunur (tüm fotoğraf inmeden). */
 const RATIO = {};
 let polTimer;
@@ -861,7 +861,9 @@ function layoutPols(){
 /* Kaydırmayla birlikte dağılma.
    Her karenin kendi aralığı var: blok ekranda ilerledikçe sırayla
    desteden ayrılıp yerlerine kayarlar. Tetiklenip biten bir animasyon
-   değil, kaydırma miktarına bağlı; geri kaydırınca geri toplanırlar. */
+   değil, kaydırma miktarına bağlı; geri kaydırınca geri toplanırlar.
+   Fotoğraflar her zaman görünür — "develop olma" efekti vardı, deste
+   topluyken kareler boş sanıldığı için kaldırıldı. */
 function scrub(){
   const still = document.body.classList.contains('nomotion');
   const vh = innerHeight;
@@ -884,11 +886,6 @@ function scrub(){
       el.style.transform = 'translate3d(' + (p.dx + (p.fx - p.dx) * e).toFixed(1) + 'px,'
         + (p.dy + (p.fy - p.dy) * e).toFixed(1) + 'px,0) rotate('
         + (p.drot + (p.frot - p.drot) * e).toFixed(2) + 'deg)';
-      const img = el.firstChild.firstChild;       // fotoğraf da kaydırdıkça develop olur
-      img.style.opacity = e.toFixed(3);
-      img.style.filter = e > 0.99 ? 'none'
-        : 'brightness(' + (1 + 0.8 * (1 - e)).toFixed(2) + ') contrast(' + (0.35 + 0.65 * e).toFixed(2)
-          + ') saturate(' + (0.4 + 0.6 * e).toFixed(2) + ')';
     });
   });
 }
