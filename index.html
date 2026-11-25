@@ -869,6 +869,7 @@ function layoutPols(){
     mas.style.height = bottom + 'px';
   });
   if(document.body.classList.contains('nomotion')) revealAll();
+  else { clearTimeout(kickTimer); kickTimer = setTimeout(kick, 250); }
 }
 
 /* kaydırdıkça aç: işaret ekrana girince karesi desteden ayrılır */
@@ -886,6 +887,25 @@ const polIO = new IntersectionObserver(es=>{
     el.classList.add('on');
   });
 }, {rootMargin: '0px 0px -6% 0px', threshold: 0});
+
+/* Güvence: izleyici bazı tarayıcılarda sayfa açılışında geç kalabiliyor.
+   Ekranda duran işaretlerin karelerini elle açar. */
+let kickTimer;
+function kick(){
+  const vh = innerHeight;
+  document.querySelectorAll('#catWrap .pol-a').forEach(a=>{
+    const el = a.pol;
+    if(!el || el.classList.contains('on')) return;
+    const r = a.getBoundingClientRect();
+    if(r.top < vh * 0.94 && r.bottom > 0){
+      polIO.unobserve(a);
+      const base = (performance.now() - layoutAt < 1500) ? 0.4 : 0;
+      el.style.transitionDelay = (base + (dealt % 5) * 0.1).toFixed(2) + 's';
+      dealt++;
+      el.classList.add('on');
+    }
+  });
+}
 
 /* hareket azaltma açıksa animasyon yok, hepsi doğrudan yerinde */
 function revealAll(){
