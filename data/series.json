@@ -4,13 +4,8 @@
     "en": "Ebrar",
     "photos": [
       {
-        "src": "images/01.jpg",
-        "feat": true,
-        "size": "buyuk"
-      },
-      {
-        "src": "images/02.jpg",
-        "feat": true,
+        "src": "images/_dsc3761.jpg",
+        "feat": false,
         "size": "kucuk"
       },
       {
@@ -24,17 +19,34 @@
         "size": "kucuk"
       },
       {
-        "src": "images/_dsc3761.jpg",
-        "feat": false,
-        "size": "kucuk"
-      },
-      {
         "src": "images/_dsc3718-2.jpg",
         "feat": false,
         "size": "kucuk"
       },
       {
+        "src": "images/01.jpg",
+        "feat": true,
+        "size": "buyuk"
+      },
+      {
+        "src": "images/02.jpg",
+        "feat": true,
+        "size": "kucuk"
+      },
+      {
+        "src": "images/_dsc3843.jpg",
+        "feat": false
+      },
+      {
+        "src": "images/_dsc3840-1.jpg",
+        "feat": false
+      },
+      {
         "src": "images/_dsc3781.jpg",
+        "feat": false
+      },
+      {
+        "src": "images/_dsc3772-1.jpg",
         "feat": false
       },
       {
@@ -51,18 +63,6 @@
       },
       {
         "src": "images/_dsc3830.jpg",
-        "feat": false
-      },
-      {
-        "src": "images/_dsc3772-1.jpg",
-        "feat": false
-      },
-      {
-        "src": "images/_dsc3840-1.jpg",
-        "feat": false
-      },
-      {
-        "src": "images/_dsc3843.jpg",
         "feat": false
       }
     ]
