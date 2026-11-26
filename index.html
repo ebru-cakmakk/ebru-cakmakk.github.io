@@ -533,7 +533,7 @@
 <footer>
   <div class="wrap foot">
     <p>© <span id="yr"></span> <span class="footName"></span></p>
-    <p><a href="#iletisim" id="footMail"></a></p>
+    <p><a href="#iletisim" data-k="contact.label"></a></p>
     <p data-k="footer.rights"></p>
   </div>
 </footer>
@@ -631,7 +631,6 @@ function fill(){
   projName.textContent  = SITE.project;
   mailLink.textContent  = SITE.email;
   mailLink.href = 'mailto:' + SITE.email;
-  footMail.textContent  = SITE.email;
   document.querySelectorAll('.footName').forEach(e=>e.textContent = SITE.name);
   yr.textContent = new Date().getFullYear();
   if(SITE.aboutPhoto){ aboutImg.src = SITE.aboutPhoto; homeAboutImg.src = SITE.aboutPhoto; }
