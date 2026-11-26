@@ -777,7 +777,7 @@ function embedUrl(u){
   let m = u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/);
   if(m) return 'https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0';
   m = u.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/(\w+))?/);
-  if(m) return 'https://player.vimeo.com/video/' + m[1] + (m[2] ? '?h=' + m[2] : '') + (m[2] ? '&' : '?') + 'dnt=1';
+  if(m) return 'https://player.vimeo.com/video/' + m[1] + (m[2] ? '?h=' + m[2] : '') + (m[2] ? '&' : '?') + 'dnt=1&quality=1080p';
   return '';
 }
 
