@@ -17,7 +17,7 @@ Henüz sergi, yayın ya da ödül yok. Site bunu saklamıyor; "öğrenciyim, ilk
 serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar —
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 
-**İsim:** **Z. Ebru Çakmak** (karar verildi; mahlas elendi, ayrıntı en altta Açık konular'da).
+**İsim:** **Z. Ebru Çakmak** (karar verildi; mahlas elendi, ayrıntı en altta Açık konular'da). 26 Kasım'da "Ebru Çakmak"a çevrildi, sonra Ebru alışkın olduğu için geri alındı: sitede ve PDF'lerde Z. Ebru Çakmak kalıyor, tekrar açma.
 Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 
 *Son güncelleme: 25 Kasım 2026.*
