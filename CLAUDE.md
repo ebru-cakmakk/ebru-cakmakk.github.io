@@ -104,21 +104,17 @@ Tek `index.html` dosyası, hash yönlendirmesiyle ayrı sayfalar gibi çalışı
 
 **Seriler:** Etheral Space · Yan Yana · Doğa (eski Peyzaj kareleri Doğa'da)
 
-**Model formu** e-posta taslağı üretir (mailto + kopyala). Altı bölüm (`fieldset.fs`): Seni tanıyalım ·
-Kamera önünde · Sınırlar ve rahatlık · Fotoğrafların kullanımı · **Okul projeleri (gönüllü)** · Pratik
-detaylar (~45 soru; yalnızca ad ve iletişim zorunlu). Okul projeleri bölümü: Ebru öğrenci, ders projeleri
-için kamera önü/arkası gönüllü arıyor; tamamen isteğe bağlı, "hayır" başvuruyu etkilemez; ücret yok,
-karşılık = jenerik/teşekkür ve çalışmanın kopyası; gösterim kapsamı (yalnız okul içi mi, festival/çevrimiçi
-de mi) ayrıca sorulur. Soruları internetteki fotoğrafçı/model başvuru formları, güvenlik rehberleri ve KVKK
-notlarından derleyip uyarladık. `buildMsg` **genel**: her `.field`'in etiketini ve değerini okuyup bölüm
-başlıklarıyla mesaja döker; yeni soru eklenince koda dokunmak gerekmez. Metinler text.json → form
-grubunda (soru anahtarı + `1,2,3…` seçenekleri); yeni seçenek HTML'e de eklenmeli. **Bilerek sorulmayanlar:**
-çıplaklık, beden ölçüsü, sağlık bilgisi, kimlik/adres/IBAN — "dikkat etmemi istediğin bir şey" alanı
-isteğe bağlı ve sağlık bilgisi vermek zorunda olmadığını söyler.
-"Beni nereden buldun?" seçenekleri: Instagram · arkadaş · web sitesi · **kartvizit/kart** (Ebru QR kodlu
-kartvizit dağıtacak) · başka.
+**Model formu** e-posta taslağı üretir (mailto + kopyala). **Bilerek sade:** Ad · İletişim · Telefon
+(isteğe bağlı) · Şehir · Deneyim · Fikir. Önce ~45 soruluk, altı bölümlü uzun bir form yapıldı
+(kamera rahatlığı, sınırlar, yayın izinleri, okul projeleri gönüllüsü, pratik detaylar, "beni nereden
+buldun" + kartvizit seçeneği); Ebru "çok fazla soru var" deyip sade hâle döndürdü (26 Kasım). Uzun
+sürüm commit `15d60ac`'te duruyor; geri istenirse oradan alınır (index.html form bloğu + text.json
+form grubu), ya da sorular tek tek eklenir. `buildMsg` **genel**: `fieldset.fs` içindeki her `.field`'in
+etiketini (parantez içi atılır) ve değerini okuyup mesaja döker; yeni alan eklenince koda dokunmak
+gerekmez. Metinler text.json → form grubunda (anahtar + `1,2,3…` seçenekleri). **Bilerek sorulmayanlar:**
+çıplaklık, beden ölçüsü, sağlık bilgisi, kimlik/adres/IBAN.
 
-**Modelliğe Hazırlık PDF'i** (`files/Modellige-Hazirlik.pdf`, `files/Preparing-to-Model.pdf`, 8 sayfa;
+**Modelliğe Hazırlık PDF'i** (`files/Modellige-Hazirlik.pdf`, `files/Preparing-to-Model.pdf`, 8 sayfa; formdaki okul projesi sorusu kalktı ama PDF'te bölüm duruyor;
 7. sayfa "Okul projeleri: gönüllü katılım" — model çekimiyle farkı, netleştirilecekler, güvenlik aynen geçerli):
 Modeller sayfasında form üstünde indirme kartı. Bağlantı `site.json` → `guideTr` / `guideEn`
 (panelden PDF değiştirilebilir; alan boşsa kart gizlenir). İçerik Ebru'nun sitedeki taahhütleriyle

@@ -228,9 +228,9 @@ her açışta aynı durur.
 
 ## Model başvuru formu ve Modelliğe Hazırlık rehberi
 
-Modeller sayfasındaki form altı bölümden oluşuyor (okul projeleri için gönüllü olmak isteyenlere ayrı bir bölüm de var) ve hepsi isteğe bağlı (ad ve iletişim hariç).
-Sorular ve seçenekler panelde **Metinler → Başvuru formu** altında; yazıları oradan değiştirebilirsin.
-Yeni bir soru eklemek ya da bir soruyu kaldırmak istersen bana söyle, form yapısı kodda duruyor.
+Modeller sayfasındaki form sade: ad, iletişim, telefon (isteğe bağlı), şehir, deneyim ve fikir.
+Soruların yazılarını panelde **Metinler → Başvuru formu** altından değiştirebilirsin. Yeni bir soru eklemek
+istersen bana söyle.
 
 Sayfadaki **Modelliğe Hazırlık** kartı bir PDF'e bağlanıyor. PDF'i değiştirmek için panelde
 **Site ayarları** → "Modelliğe Hazırlık PDF'i" alanından yeni dosyayı yükle (Türkçe ve İngilizce ayrı).
