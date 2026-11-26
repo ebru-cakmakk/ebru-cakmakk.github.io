@@ -1165,20 +1165,34 @@ function paintTheme(tone){
   }
   h = Math.round(h);
   const sat = on ? Math.max(0.25, Math.min(1, tone.s)) : 0.5;
-  if(curHue === h) return;
-  curHue = h;
+  const L = (on && tone.dark) || 1;               // sayfaya özel koyulaştırma (1 = yok)
+  if(curHue === h + '/' + L) return;
+  curHue = h + '/' + L;
   const S = Math.round(26 + sat * 20);
   const r = document.documentElement.style;
-  r.setProperty('--deep',     'hsl(' + h + ' ' + Math.round(S*0.50) + '% 6.5%)');
-  r.setProperty('--ink',      'hsl(' + h + ' ' + Math.round(S*0.52) + '% 9.5%)');
-  r.setProperty('--ink-2',    'hsl(' + h + ' ' + Math.round(S*0.62) + '% 16.5%)');
-  r.setProperty('--moss',     'hsl(' + h + ' ' + S + '% 26%)');
-  r.setProperty('--emerald',  'hsl(' + h + ' ' + Math.min(S + 14, 60) + '% 40%)');
+  r.setProperty('--deep',     'hsl(' + h + ' ' + Math.round(S*0.50) + '% ' + (+(6.5*L).toFixed(2)) + '%)');
+  r.setProperty('--ink',      'hsl(' + h + ' ' + Math.round(S*0.52) + '% ' + (+(9.5*L).toFixed(2)) + '%)');
+  r.setProperty('--ink-2',    'hsl(' + h + ' ' + Math.round(S*0.62) + '% ' + (+(16.5*L).toFixed(2)) + '%)');
+  r.setProperty('--moss',     'hsl(' + h + ' ' + S + '% ' + (+(26*L).toFixed(2)) + '%)');
+  r.setProperty('--emerald',  'hsl(' + h + ' ' + Math.min(S + 14, 60) + '% ' + (+(40*L).toFixed(2)) + '%)');
 }
 
 function themeFor(list){
   if(!theme().auto){ pageTone = null; paintTheme(null); return; }
   blendHue(list).then(tone=>{ pageTone = tone; paintTheme(tone); });
+}
+
+/* Modeller: kaydırdıkça ton 168 çevresinde ±5 hafifçe dalgalanır */
+let modelScroll = null;
+function watchModel(){
+  if(modelScroll) return;
+  modelScroll = () => {
+    if(location.hash.slice(1) !== 'modeller'){ removeEventListener('scroll', modelScroll); modelScroll = null; return; }
+    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    const h = 168 + Math.round(5 * Math.sin(scrollY / max * Math.PI * 2));
+    paintTheme(pageTone = {h, s:0.34, exact:true, dark:0.9});
+  };
+  addEventListener('scroll', modelScroll, {passive:true});
 }
 
 let catIO;
@@ -1206,7 +1220,8 @@ function themeForPage(h){
   else if(h === 'fotograflar'){ themeFor(CATS.length ? PHOTOS.filter(p => p.cat === CATS[0].id) : PHOTOS); watchCats(); }
   else if(h === 'hakkimda' && SITE.aboutPhoto) themeFor([{src: SITE.aboutPhoto}]);
   /* Modeller: otların sarı-yeşili fazla açık kaçıyordu → sabit, hafif petrol yeşili */
-  else if(h === 'modeller'){ pageTone = {h:168, s:0.34, exact:true}; paintTheme(pageTone); }
+  /* biraz daha koyu (dark), ve aşağı indikçe bölümden bölüme ton hafifçe kayar (163–173) */
+  else if(h === 'modeller'){ pageTone = {h:168, s:0.34, exact:true, dark:0.9}; paintTheme(pageTone); watchModel(); }
   else                        themeFor(PHOTOS);
 }
 
