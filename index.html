@@ -165,8 +165,8 @@
   .reel-panel h3{font-family:var(--display);font-weight:300;font-size:clamp(24px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em}
   .reel-panel p{color:var(--sand);max-width:50ch;margin:16px auto 0;font-size:15.5px}
   .reel-panel .dash{width:46px;height:1px;background:var(--emerald);margin:0 auto 26px}
-  .vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-  @media (max-width:560px){.vids{grid-template-columns:1fr 1fr;gap:8px}}
+  .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),640px));justify-content:center;gap:24px}
+  @media (max-width:560px){.vids{grid-template-columns:1fr;gap:16px}}
   .vid{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink-2);display:block}
   .vid img{opacity:.75;transition:.6s}
   .vid:hover img{opacity:.95;transform:scale(1.03)}
@@ -176,11 +176,11 @@
   .vid-prev{width:100%;padding:0;border:0;cursor:pointer}
   .vid-prev video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .6s}
   .vid-prev:hover video{opacity:1}
-  .vid-prev .play{width:44px;height:44px;opacity:0;transition:opacity .35s}
+  .vid-prev .play{width:60px;height:60px;opacity:0;transition:opacity .35s}
   .vid-prev:hover .play,.vid-prev:focus-visible .play{opacity:1}
   @media (hover:none){.vid-prev .play{opacity:.8}}
   .vid-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .vid-item figcaption{margin-top:8px;font-family:var(--display);font-size:15px;color:var(--cream)}
+  .vid-item figcaption{margin-top:8px;font-family:var(--display);font-size:17px;color:var(--cream)}
   .vid .cap{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(to top,rgba(18,35,15,.9),transparent);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
   .vid .cap h4{font-family:var(--display);font-weight:400;font-size:18px}
   .vid .cap span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
