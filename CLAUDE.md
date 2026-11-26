@@ -17,7 +17,7 @@ Henüz sergi, yayın ya da ödül yok. Site bunu saklamıyor; "öğrenciyim, ilk
 serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar —
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 
-**İsim:** **Z. Ebru Çakmak** (karar verildi; mahlas elendi, ayrıntı en altta Açık konular'da). 26 Kasım'da "Ebru Çakmak"a çevrildi, sonra Ebru alışkın olduğu için geri alındı: sitede ve PDF'lerde Z. Ebru Çakmak kalıyor, tekrar açma.
+**İsim:** **Ebru Çakmak** (26 Kasım 2026'da kesinleşti; iki kez "Z. Ebru Çakmak" ile gidip gelindi, Ebru sonunda tek adı seçti. Resmi yerler hariç iki adı yan yana kullanmayı sevmiyor. **Z.** sekme logosunda monogram olarak kalıyor. Bu konuyu tekrar açma).
 Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 
 *Son güncelleme: 25 Kasım 2026.*
@@ -242,7 +242,7 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 
 ## Açık konular
 
-- [x] ~~İsim kararı~~ — **Z. Ebru Çakmak**. Mahlas elendi; gerçek ad korunuyor
+- [x] ~~İsim kararı~~ — **Ebru Çakmak** (Z. monogram). Mahlas elendi; gerçek ad korunuyor
       ama baştaki harf mesafe koyuyor. Sosyal medya kullanıcı adı ayrıca
       seçildi: **ebbylumi**.
 - [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
