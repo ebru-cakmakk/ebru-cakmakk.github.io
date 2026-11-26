@@ -31,7 +31,7 @@ Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 | Depo | `github.com/ebru-cakmakk/ebru-cakmakk.github.io` |
 | Yayındaki site | `https://ebru-cakmakk.github.io` |
 | Barındırma | GitHub Pages — ücretsiz, kendiliğinden yayınlanıyor |
-| E-posta | `giauzar.arrakis@gmail.com` |
+| E-posta | `ebbylumi@proton.me` |
 | Fotoğraf küçültücü | `https://ebru-cakmakk.github.io/kucult.html` |
 
 | Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
