@@ -91,6 +91,8 @@ content:
       - { name: url, label: "YouTube veya Vimeo adresi (tarayıcıdaki adresi yapıştır)", type: string, required: true }
       - { name: tr, label: "Başlık — Türkçe (isteğe bağlı)", type: string }
       - { name: en, label: "Başlık — İngilizce (isteğe bağlı)", type: string }
+      - { name: preview, label: "Önizleme döngüsü — kısa sessiz mp4 (ör. video/reels/x.mp4; boşsa doğrudan oynatıcı)", type: string }
+      - { name: poster, label: "Önizleme kapak karesi — jpg (isteğe bağlı)", type: string }
 
   - name: site
     label: "Site ayarları"

@@ -172,6 +172,12 @@
   .vid .play{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:1px solid rgba(241,238,227,.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:.35s}
   .vid:hover .play{background:var(--emerald);border-color:var(--emerald)}
   .vid .play svg{width:18px;fill:var(--cream)}
+  .vid-prev{width:100%;padding:0;border:0;cursor:pointer}
+  .vid-prev video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .6s}
+  .vid-prev:hover video{opacity:1}
+  .vid-prev .play{opacity:0;transition:opacity .35s}
+  .vid-prev:hover .play,.vid-prev:focus-visible .play{opacity:1}
+  @media (hover:none){.vid-prev .play{opacity:.8}}
   .vid-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .vid-item figcaption{margin-top:12px;font-family:var(--display);font-size:18px;color:var(--cream)}
   .vid .cap{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(to top,rgba(18,35,15,.9),transparent);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
@@ -723,11 +729,15 @@ function render(){
     vidWrap.innerHTML = '<div class="vids reveal">' + vids.map(v=>{
       const e = embedUrl(v.url), title = (lang==='en' && v.en) ? v.en : (v.tr || v.title || '');
       return '<figure class="vid-item">'
-        + (e ? '<div class="vid vid-embed"><iframe src="'+esc(e)+'" title="'+esc(title)+'" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+        + (e && v.preview ? '<button type="button" class="vid vid-prev" data-e="'+esc(e)+'" data-t="'+esc(title)+'" aria-label="'+esc(title||'Video')+'">'
+             + '<video muted loop playsinline preload="metadata"'+(v.poster?' poster="'+esc(v.poster)+'"':'')+' src="'+esc(v.preview)+'"></video>'
+             + '<span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>'
+         : e ? '<div class="vid vid-embed"><iframe src="'+esc(e)+'" title="'+esc(title)+'" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
              : '<a class="vid" href="'+esc(v.url)+'" target="_blank" rel="noopener"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></a>')
         + (title ? '<figcaption>'+esc(title)+'</figcaption>' : '')
         + '</figure>';
     }).join('') + '</div>';
+    prevLoops();
   }else{
     vidWrap.innerHTML = '<div class="reel-panel reveal"><div class="dash"></div><h3>'+t('film.h')+'</h3></div>';
   }
@@ -740,6 +750,24 @@ function render(){
 
   copyBtn.textContent = t('ui.copy');
   observe();
+}
+
+/* Video kartı: kısa sessiz döngü GIF gibi döner; tıklanınca sesli oynatıcı açılır */
+function prevLoops(){
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator.connection && navigator.connection.saveData);
+  const io = new IntersectionObserver(es => es.forEach(x => {
+    const vd = x.target.querySelector('video');
+    if(x.isIntersecting && !calm) vd.play().catch(()=>{}); else vd.pause();
+  }), {threshold:.25});
+  vidWrap.querySelectorAll('.vid-prev').forEach(b => {
+    io.observe(b);
+    b.onclick = () => {
+      const e = b.dataset.e, src = e + (e.includes('?') ? '&' : '?') + 'autoplay=1';
+      const d = document.createElement('div'); d.className = 'vid vid-embed';
+      d.innerHTML = '<iframe src="'+esc(src)+'" title="'+esc(b.dataset.t)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+      io.unobserve(b); b.replaceWith(d);
+    };
+  });
 }
 
 /* YouTube / Vimeo adresini sayfaya gömülebilir adrese çevirir */
