@@ -172,9 +172,11 @@ düğme gizlenir). Metinler text.json → `models.form*`. Her dil 3 sayfa A4, 10
 fotoğraf kullanımı + anılma (adla/etiketle/adsız), bir fotoğraf, son olarak (+ "beni nereden duydun"), 18 yaş altı veli, onay.
 **Ebru'nun isteği (27 Kasım, ikinci tur):** ilk sürümün soruları "cevaplaması zor" ve ajans gibi bulundu. Ölçüler yalnız
 **boy ve kilo**; beden/ayakkabı/göğüs-bel-kalça/göz/saç/dövme ve "saç-görünüm değişikliğine açık mısın" kaldırıldı.
-Yerine editoryal çekimlere ipucu veren, **tek işaretle** cevaplanan "Görsel dil" bölümü geldi: avangart çekimlere bakış,
-yakın gelen atmosferler (sessiz ve yavaş, ham ve sert, rüya gibi, doğal ve sade, karanlık ve sinematik, oyunbaz),
-stil ve makyaj (sade/deneysel), yüzün görünmediği kareler, doğayla temas (su, çamur, rüzgâr, toprak), kamera önünde
+Yerine editoryal çekimlere ipucu veren, **tek işaretle** cevaplanan "Görsel dil" bölümü geldi: avangart çekimlere bakış
+(yanında açıklama: sıra dışı kıyafet, makyaj ya da kurgu; güzel görünmekten çok fikir anlatan kareler), "Nasıl bir çekim
+sana daha çok hitap ediyor?" (günlük hâlimle doğal portre / doğada sakin ve sade / moda dergisi gibi stilize / film
+sahnesi gibi hikâye anlatan / sıra dışı ve deneysel; birden çok seçilir — önceki "atmosfer" sorusu "hiç bilmeyen biri
+için muamma" bulunduğu için değişti: jargon yok, somut sahneler), stil ve makyaj (sade/deneysel), yüzün görünmediği kareler, doğayla temas (su, çamur, rüzgâr, toprak), kamera önünde
 kolay gelen (durgun poz, yavaş hareket, dans, doğaçlama), isteğe bağlı bir imge/film/fotoğrafçı. Yeni soru eklerken
 açık uçlu yerine işaretlemeli tercih et. **Sorulmayanlar:** kimlik no, adres, IBAN, sağlık, çıplaklık.
 Formda Ebru adına yazılan sözler: "kimseyle paylaşılmaz, silinmesini istersen silerim", "çekimden önce yazılı izin

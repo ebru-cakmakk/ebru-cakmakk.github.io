@@ -134,42 +134,46 @@
                 "tr": "Bana göre değil",
                 "en": "Not for me"
               }
-            ]
+            ],
+            "hint": {
+              "tr": "sıra dışı kıyafet, makyaj ya da kurgu; güzel görünmekten çok bir fikir anlatan kareler",
+              "en": "unusual clothes, make-up or staging; frames that express an idea more than just looking pretty"
+            }
           }
         ],
         [
           {
             "t": "choice",
-            "id": "atmosfer",
-            "tr": "Sana yakın gelen atmosferler",
-            "en": "Moods that feel close to you",
+            "id": "cekim",
+            "multi": true,
+            "tr": "Nasıl bir çekim sana daha çok hitap ediyor?",
+            "en": "What kind of shoot appeals to you most?",
+            "hint": {
+              "tr": "birden çok seçebilirsin",
+              "en": "pick as many as you like"
+            },
             "opts": [
               {
-                "tr": "Sessiz ve yavaş",
-                "en": "Quiet and slow"
+                "tr": "Günlük hâlimle, doğal bir portre",
+                "en": "A natural portrait, just as I am"
               },
               {
-                "tr": "Ham ve sert",
-                "en": "Raw and stark"
+                "tr": "Doğada, sakin ve sade",
+                "en": "Calm and simple, out in nature"
               },
               {
-                "tr": "Rüya gibi",
-                "en": "Dreamlike"
+                "tr": "Moda dergisindeki gibi, stilize",
+                "en": "Styled, like a fashion magazine"
               },
               {
-                "tr": "Doğal ve sade",
-                "en": "Natural and plain"
+                "tr": "Film sahnesi gibi, bir hikâye anlatan",
+                "en": "Like a film scene that tells a story"
               },
               {
-                "tr": "Karanlık ve sinematik",
-                "en": "Dark and cinematic"
-              },
-              {
-                "tr": "Oyunbaz",
-                "en": "Playful"
+                "tr": "Sıra dışı ve deneysel",
+                "en": "Unusual and experimental"
               }
-            ],
-            "multi": true
+            ]
           }
         ],
         [
