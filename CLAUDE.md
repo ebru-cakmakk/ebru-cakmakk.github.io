@@ -234,8 +234,8 @@ yazı tipiyle tarayıcıda çizildi — Fraunces bu ortamdan indirilemiyor
 isterse marka ve açılış başlığına geri eklenir.
 
 **Giriş başlığının üstündeki "Fotoğraf ve Video" satırı kaldırıldı** (27 Kasım, Ebru istedi). `hero.eyebrow`
-hem HTML'den hem `text.json`'dan silindi, `.pages.yml` yeniden üretildi. Sekme başlığındaki
-"— Fotoğraf ve Video" ise duruyor.
+hem HTML'den hem `text.json`'dan silindi, `.pages.yml` yeniden üretildi. Sekme başlığı da yalnız
+**ebbylumi** (`document.title = SITE.name`; "— Fotoğraf ve Video" eki kaldırıldı).
 
 **Fotoğraf isimleri yok.** Her kareye başlık yazmak istemedi. Galeri isimsiz;
 sadece kategori başlıkları var.

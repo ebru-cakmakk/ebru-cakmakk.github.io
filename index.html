@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ebbylumi — Fotoğraf ve Video</title>
+<title>ebbylumi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
@@ -619,7 +619,7 @@ function setLang(l){
   lang = l;
   try{ localStorage.setItem('lang', l); }catch(e){}
   document.documentElement.lang = l;
-  document.title = SITE.name + (l==='tr' ? ' — Fotoğraf ve Video' : ' — Photography & Video');
+  document.title = SITE.name;
   document.querySelectorAll('[data-k]').forEach(el=>{ el.innerHTML = t(el.dataset.k); });
   /* Modelliğe Hazırlık PDF'i: seçili dile göre; dosya yoksa kart gizli */
   { const g = (SITE && (lang === 'en' ? (SITE.guideEn || SITE.guideTr) : (SITE.guideTr || SITE.guideEn))) || '';
