@@ -20,7 +20,7 @@ sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 **İsim:** **Ebru Çakmak** (26 Kasım 2026'da kesinleşti; iki kez "Z. Ebru Çakmak" ile gidip gelindi, Ebru sonunda tek adı seçti. Resmi yerler hariç iki adı yan yana kullanmayı sevmiyor. **Z.** sekme logosunda monogram olarak kalıyor. Bu konuyu tekrar açma).
 Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 
-*Son güncelleme: 25 Kasım 2026.*
+*Son güncelleme: 27 Kasım 2026.*
 
 ---
 
@@ -29,14 +29,15 @@ Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
 | Ne | Nerede |
 |---|---|
 | Depo | `github.com/ebru-cakmakk/ebru-cakmakk.github.io` |
-| Yayındaki site | `https://ebru-cakmakk.github.io` |
+| Yayındaki site | `https://ebbylumi.com` (eski `ebru-cakmakk.github.io` buraya yönlendirir) |
 | Barındırma | GitHub Pages — ücretsiz, kendiliğinden yayınlanıyor |
 | E-posta | `ebbylumi@proton.me` |
-| Fotoğraf küçültücü | `https://ebru-cakmakk.github.io/kucult.html` |
+| Fotoğraf küçültücü | `https://ebbylumi.com/kucult.html` |
+| Alan adı | `ebbylumi.com` — İHS'ten alındı (27 Kasım'da HTTPS açıldı). DNS: İHS panelinde "DNS Zone Servisi"; 4 A kaydı (GitHub Pages IP'leri) + `www` CNAME → `ebru-cakmakk.github.io`. İHS'te hosting paketi alınmadı/gerekmez |
 
 | Düzenleme paneli | `app.pagescms.org` — GitHub ile giriş, ücretsiz |
 
-Alan adı satın alınmadı. Sosyal medya: **@ebbylumi** — `data/site.json` içinde
+Sosyal medya: **@ebbylumi** — `data/site.json` içinde
 `instagram` ve `tiktok` tam adres olarak dolu (eski kişisel hesap kapatıldı). `vimeo` boş;
 doldurulduğunda düğmesi kendiliğinden görünür.
 
@@ -269,7 +270,7 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       "deniz"). Asyalı sanatçı adı kalıbı, kompakt, noktasız. Elenenler: sumi/akari gibi bilinen
       kelimeler (dolu, saçma varyantlara açılıyor), "by"+e… (bitişikte "bye" okunuyor),
       zestywoods (TikTok argosu), illuminebby/lumi.ebby (uzun). Bağlantılar `site.json`'da.
-- [ ] **Alan adı** — opsiyonel. Alınırsa Settings → Pages → Custom domain.
+- [x] ~~Alan adı~~ — `ebbylumi.com`, HTTPS açık. Kalan: kartvizit QR'ı `https://ebbylumi.com`'a çevrilmeli, Linktree adresi güncellenmeli.
 
 ---
 

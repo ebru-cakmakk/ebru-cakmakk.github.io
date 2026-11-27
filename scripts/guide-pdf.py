@@ -57,7 +57,7 @@ TR = dict(
  lang='tr', title='Modelliğe Hazırlık',
  cover_k='Ebru Çakmak · Fotoğraf ve Video', cover_h='Modelliğe<br>Hazırlık',
  cover_sub='Kamera karşısına geçmeden önce bilmek isteyebileceğin her şey: nasıl çalışıyoruz, nasıl hazırlanırsın, sınırların ve izinlerin nerede durur.',
- cover_foot='<b>ebru-cakmakk.github.io</b><br>ebbylumi@proton.me',
+ cover_foot='<b>ebbylumi.com</b><br>ebbylumi@proton.me',
  body='''
 <section>
 <p class="kick">Hoş geldin</p>
@@ -235,7 +235,7 @@ TR = dict(
 
 <div class="end">
 <h2>Hazırsan yazalım</h2>
-<p>Siteden formu doldurabilirsin: <b>ebru-cakmakk.github.io/#modeller</b></p>
+<p>Siteden formu doldurabilirsin: <b>ebbylumi.com/#modeller</b></p>
 <p>Ya da doğrudan e-posta: <b>ebbylumi@proton.me</b></p>
 <p style="margin-top:3mm;font-size:8pt;color:#9fb8a8">Bu rehber bilgilendirme amaçlıdır; hukuki metin değildir. Çekim öncesi imzalanan yazılı izin formu esastır.</p>
 </div>
@@ -245,7 +245,7 @@ EN = dict(
  lang='en', title='Preparing to Model',
  cover_k='Ebru Çakmak · Photography & Video', cover_h='Preparing<br>to Model',
  cover_sub='Everything you might want to know before stepping in front of the camera: how we work, how to prepare, and where your boundaries and permissions stand.',
- cover_foot='<b>ebru-cakmakk.github.io</b><br>ebbylumi@proton.me',
+ cover_foot='<b>ebbylumi.com</b><br>ebbylumi@proton.me',
  body='''
 <section>
 <p class="kick">Welcome</p>
@@ -423,7 +423,7 @@ EN = dict(
 
 <div class="end">
 <h2>Ready? Let’s write</h2>
-<p>You can fill in the form on the site: <b>ebru-cakmakk.github.io/#modeller</b></p>
+<p>You can fill in the form on the site: <b>ebbylumi.com/#modeller</b></p>
 <p>Or email directly: <b>ebbylumi@proton.me</b></p>
 <p style="margin-top:3mm;font-size:8pt;color:#9fb8a8">This guide is for information only and is not a legal document. The written release signed before the shoot is what counts.</p>
 </div>

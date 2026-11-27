@@ -3,7 +3,7 @@
 Tamamen statik bir site. Sunucuya, veritabanına ya da ücretli bir hizmete ihtiyacı yok.
 GitHub Pages üzerinde **ücretsiz** yayınlanıyor.
 
-**Yayındaki adres:** https://ebru-cakmakk.github.io
+**Yayındaki adres:** https://ebbylumi.com
 
 ---
 
@@ -35,7 +35,7 @@ CLAUDE.md         Proje bağlamı (Claude için)
 
 1. **[app.pagescms.org](https://app.pagescms.org)** adresine git
 2. **Sign in with GitHub** → GitHub hesabınla giriş yap
-3. İzin ekranında `ebru-cakmakk.github.io` deposuna erişimi onayla
+3. İzin ekranında `ebbylumi.com` deposuna erişimi onayla
 4. Listeden depoyu seç
 
 Panel açılır. Ücretsiz, kurulum gerektirmiyor.
@@ -150,7 +150,7 @@ Tek `index.html` dosyası ama **ayrı sayfalar gibi** çalışır:
 #iletisim      İletişim
 ```
 
-Bu adresler paylaşılabilir — birine doğrudan `ebru-cakmakk.github.io/#fotograflar`
+Bu adresler paylaşılabilir — birine doğrudan `ebbylumi.com/#fotograflar`
 gönderebilirsin.
 
 ---
@@ -200,7 +200,7 @@ Panelde **Videolar** bölümüne YouTube ya da Vimeo'daki videonun adresini yap�
 
 Siteye koymadan önce fotoğrafları küçültmen gerekiyor. Bunun için kendi sitende bir araç var:
 
-**https://ebru-cakmakk.github.io/kucult.html**
+**https://ebbylumi.com/kucult.html**
 
 Fotoğrafları sayfaya sürükle, küçültülmüş hâllerini indir, sonra panele yükle. Ayarlar hazır geliyor (uzun kenar 2200, kalite 80), değiştirmene gerek yok. İstersen "seri" gibi bir ad yazıp dosyaları seri-01.jpg, seri-02.jpg diye numaralandırabilirsin.
 
