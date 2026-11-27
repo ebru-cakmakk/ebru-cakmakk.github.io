@@ -125,6 +125,30 @@ content:
         options:
           path: files
           extensions: [pdf]
+      - name: formPdfTr
+        label: "Detaylı Başvuru Formu — Türkçe PDF (PDF ve Word boşsa kart görünmez)"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
+      - name: formDocTr
+        label: "Detaylı Başvuru Formu — Türkçe Word"
+        type: file
+        options:
+          path: files
+          extensions: [docx]
+      - name: formPdfEn
+        label: "Detaylı Başvuru Formu — İngilizce PDF"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
+      - name: formDocEn
+        label: "Detaylı Başvuru Formu — İngilizce Word"
+        type: file
+        options:
+          path: files
+          extensions: [docx]
       - { name: heroVideo, label: "Giriş videosu (boşsa sadece fotoğraf)", type: string }
       - { name: heroVideoSmall, label: "Giriş videosu — telefon için küçük hâli", type: string }
       - name: theme
@@ -409,6 +433,36 @@ content:
               - { name: en, label: "İngilizce", type: text }
           - name: guideBtn
             label: "Rehber kartı — düğme"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: formLabel
+            label: "Detaylı form kartı — üst etiket"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: formH
+            label: "Detaylı form kartı — başlık"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: formP
+            label: "Detaylı form kartı — metin"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: text }
+              - { name: en, label: "İngilizce", type: text }
+          - name: formPdf
+            label: "Detaylı form kartı — PDF düğmesi"
+            type: object
+            fields:
+              - { name: tr, label: "Türkçe", type: string }
+              - { name: en, label: "İngilizce", type: string }
+          - name: formDoc
+            label: "Detaylı form kartı — Word düğmesi"
             type: object
             fields:
               - { name: tr, label: "Türkçe", type: string }

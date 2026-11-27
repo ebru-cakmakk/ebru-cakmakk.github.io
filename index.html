@@ -207,12 +207,15 @@
   .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--emerald);background:rgba(31,125,83,.1)}
   .field textarea{min-height:120px;resize:vertical}
   .field select option{background:var(--ink-2);color:var(--cream)}
-  .guide{margin-top:clamp(40px,5vw,60px);display:flex;gap:clamp(20px,4vw,48px);align-items:center;justify-content:space-between;flex-wrap:wrap;padding:clamp(24px,3.4vw,40px);border:1px solid var(--line);background:rgba(241,238,227,.035)}
-  .guide-txt{flex:1 1 340px;min-width:0}
+  .guides{margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(14px,2vw,22px)}
+  .guide{display:flex;flex-direction:column;gap:clamp(18px,2.6vw,28px);align-items:flex-start;justify-content:space-between;padding:clamp(24px,3.4vw,40px);border:1px solid var(--line);background:rgba(241,238,227,.035)}
+  .guide-txt{min-width:0}
+  .guide-btns{display:flex;flex-wrap:wrap;gap:10px}
   .guide h3{font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;margin:6px 0 10px}
   .guide p:not(.eyebrow){color:var(--sand);font-size:15px;max-width:60ch}
   .guide .btn{flex:0 0 auto}
   .guide[hidden]{display:none}
+  .guide-btns .btn[hidden]{display:none}
   .fs{border:0;padding:0;margin:0 0 clamp(34px,4.5vw,54px);min-width:0}
   .fs legend{font-family:var(--display);font-weight:300;font-size:clamp(21px,2.6vw,28px);letter-spacing:-.01em;padding:0;margin-bottom:8px;width:100%;padding-bottom:12px;border-bottom:1px solid var(--line)}
   .fs.plain{margin-bottom:clamp(20px,3vw,32px)}
@@ -456,13 +459,28 @@
         <p data-k="models.noteP"></p>
       </div>
 
-      <div class="guide reveal" id="guideCard">
-        <div class="guide-txt">
-          <p class="eyebrow" data-k="models.guideLabel"></p>
-          <h3 data-k="models.guideH"></h3>
-          <p data-k="models.guideP"></p>
+      <div class="guides reveal">
+        <div class="guide" id="guideCard">
+          <div class="guide-txt">
+            <p class="eyebrow" data-k="models.guideLabel"></p>
+            <h3 data-k="models.guideH"></h3>
+            <p data-k="models.guideP"></p>
+          </div>
+          <div class="guide-btns">
+            <a class="btn" id="guideBtn" href="#" target="_blank" rel="noopener" download><span data-k="models.guideBtn"></span></a>
+          </div>
         </div>
-        <a class="btn" id="guideBtn" href="#" target="_blank" rel="noopener" download><span data-k="models.guideBtn"></span></a>
+        <div class="guide" id="formCard">
+          <div class="guide-txt">
+            <p class="eyebrow" data-k="models.formLabel"></p>
+            <h3 data-k="models.formH"></h3>
+            <p data-k="models.formP"></p>
+          </div>
+          <div class="guide-btns">
+            <a class="btn" id="formPdfBtn" href="#" target="_blank" rel="noopener" download><span data-k="models.formPdf"></span></a>
+            <a class="btn ghost" id="formDocBtn" href="#" download><span data-k="models.formDoc"></span></a>
+          </div>
+        </div>
       </div>
 
       <form class="form reveal" id="appForm" onsubmit="buildMsg(event)">
@@ -625,6 +643,13 @@ function setLang(l){
   { const g = (SITE && (lang === 'en' ? (SITE.guideEn || SITE.guideTr) : (SITE.guideTr || SITE.guideEn))) || '';
     const gc = document.getElementById('guideCard');
     if(gc){ gc.hidden = !g; if(g) document.getElementById('guideBtn').href = g; } }
+  /* Detaylı Başvuru Formu (PDF + Word): seçili dile göre; ikisi de yoksa kart gizli */
+  { const pick = (tr, en) => (SITE && (lang === 'en' ? (SITE[en] || SITE[tr]) : (SITE[tr] || SITE[en]))) || '';
+    const pdf = pick('formPdfTr', 'formPdfEn'), doc = pick('formDocTr', 'formDocEn');
+    const fc = document.getElementById('formCard');
+    if(fc){ fc.hidden = !pdf && !doc;
+      [['formPdfBtn', pdf], ['formDocBtn', doc]].forEach(([id, href]) => {
+        const a = document.getElementById(id); a.hidden = !href; if(href) a.href = href; }); } }
   btnTr.classList.toggle('on', l==='tr');
   btnEn.classList.toggle('on', l==='en');
   buildNav();

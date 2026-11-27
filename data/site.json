@@ -12,5 +12,9 @@
   },
   "aboutPhoto": "images/ebru.jpg",
   "guideTr": "files/Modellige-Hazirlik.pdf",
-  "guideEn": "files/Preparing-to-Model.pdf"
+  "guideEn": "files/Preparing-to-Model.pdf",
+  "formPdfTr": "files/Detayli-Basvuru-Formu.pdf",
+  "formDocTr": "files/Detayli-Basvuru-Formu.docx",
+  "formPdfEn": "files/Detailed-Application-Form.pdf",
+  "formDocEn": "files/Detailed-Application-Form.docx"
 }

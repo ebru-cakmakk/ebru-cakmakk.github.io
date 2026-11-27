@@ -109,9 +109,12 @@ images/           Fotoğraflar (uzun kenar ~2200px, JPEG, ~400-700 KB)
 kucult.html       Ebru'nun kendi fotoğraf küçültücüsü (tarayıcıda çalışır, canvas ile;
                   2200px/q80 varsayılan). Artifact olarak değil siteye konuldu çünkü
                   artifact kumbarasında dosya indirme engelli.
-files/            Modeller sayfasındaki PDF'ler: Modellige-Hazirlik.pdf (TR), Preparing-to-Model.pdf (EN)
+files/            Modeller sayfasındaki dosyalar: Modellige-Hazirlik.pdf (TR), Preparing-to-Model.pdf (EN);
+                  Detayli-Basvuru-Formu.pdf/.docx (TR), Detailed-Application-Form.pdf/.docx (EN)
 scripts/          genpages.js (.pages.yml üretir), prep.py (fotoğraf küçültme),
-                  guide-pdf.py (iki PDF'i yeniden üretir — weasyprint, Lora/Inter yazı tipleri)
+                  guide-pdf.py (iki PDF'i yeniden üretir — weasyprint, Lora/Inter yazı tipleri),
+                  detayli-form.json (detaylı formun TÜM metni, iki dil) → form-pdf.py (doldurulabilir PDF'ler)
+                  + form-docx.js (Word'ler). Metni JSON'da değiştir, ikisini de çalıştır.
 favicon-*.png, apple-touch-icon.png   Sekme logosu
 README.md         Ebru için kullanım kılavuzu (Türkçe, adım adım)
 CLAUDE.md         Bu dosya
@@ -160,6 +163,25 @@ Modeller sayfasında form üstünde indirme kartı. Bağlantı `site.json` → `
 tutarlı yazıldı; bunlar değişirse PDF de güncellenmeli. Okul projesi bölümünde "görüntüleri görüp onaylama
 hakkı burada da geçerli" ve "hayır demek model çekimlerini etkilemez" sözleri Ebru'nun taahhüdü olarak yazıldı
 (onaya Ebru'nun teslim tarihleri izin vermezse güncellenmeli). weasyprint + Lora/Inter ile üretildi.
+
+**Detaylı Başvuru Formu** (27 Kasım 2026, Ebru istedi): isteğe bağlı, ajans tipi model bilgi formu. Modeller
+sayfasında rehberin **yanında ikinci kart** (`.guides` ızgarası; `#formCard`, PDF + Word düğmesi). Bağlantılar
+`site.json` → `formPdfTr/formDocTr/formPdfEn/formDocEn` (panelden değiştirilebilir; PDF ve Word boşsa kart, biri boşsa o
+düğme gizlenir). Metinler text.json → `models.form*`. Her dil 3 sayfa A4, 11 bölüm: kimlik, iletişim, görünüm ve
+ölçüler, deneyim (ajans varsa izni), çekim tercihleri ve sınırlar, fotoğraf kullanımı + anılma (adla/etiketle/adsız),
+uygunluk, bir fotoğraf, son olarak (+ "beni nereden duydun"), 18 yaş altı veli, onay. **Ebru'nun seçimi:** ölçüler
+VAR (boy, beden, ayakkabı, göğüs/bel/kalça, göz/saç, dövme); **kimlik no, adres, IBAN, sağlık, kilo, çıplaklık YOK**.
+Formda Ebru adına yazılan sözler: "kimseyle paylaşılmaz, silinmesini istersen silerim", "çekimden önce yazılı izin
+formu, hiçbir kare onayın olmadan yayımlanmaz", "18 yaş altı veli yazılı onayı" — bunlar değişirse form da değişmeli.
+Kısa site formu bilerek sade kalıyor (aşağıdaki "Bilerek sorulmayanlar" ona ait).
+Teknik: PDF weasyprint `pdf_forms=True` ile; `finish()` sonradan (pikepdf) yazı alanlarını **Helvetica**'ya çevirir
+(gömülü alt küme Inter, yazılan Türkçe harfleri göstermeyebiliyordu), weasyprint'in bozuk radyo yapısını düzeltir
+(parça widget'ları /T'siz yapıp Fields'tan çıkarır) ve `foto` alanını `buttonImportIcon()` çalıştıran **resim
+düğmesine** çevirir (yalnız Acrobat/Reader'da çalışır; başka görüntüleyicide kutu boş kalır, metin e-postaya eklemeyi
+söyler). Word: işaret kutuları tıklanır içerik denetimi; docx paketi `<w:sym>` yazıyor, LibreOffice hepsini işaretli
+gösterdiği için betik Word'ün kendi biçimine (MS Gothic ☐ + benzersiz w:id) çeviriyor. Yazı tipleri Word'de Georgia/Arial
+(her bilgisayarda var). Çalıştırma: `python3 scripts/form-pdf.py` (weasyprint + pikepdf gerekir, `pip install
+--break-system-packages weasyprint`), `node scripts/form-docx.js` (docx paketi).
 
 **Dikkat:** `.vid` sınıfı Video sayfası kartlarına ait; giriş videosu `.playing` kullanır.
 

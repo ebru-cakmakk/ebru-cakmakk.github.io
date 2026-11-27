@@ -36,6 +36,7 @@ const L = {
   'models.l7':'Güven listesi 7','models.l8':'Güven listesi 8',
   'models.noteH':'Dürüstlük notu — başlık','models.noteP':'Dürüstlük notu — metin',
   'models.guideLabel':'Rehber kartı — üst etiket','models.guideH':'Rehber kartı — başlık','models.guideP':'Rehber kartı — metin','models.guideBtn':'Rehber kartı — düğme',
+  'models.formLabel':'Detaylı form kartı — üst etiket','models.formH':'Detaylı form kartı — başlık','models.formP':'Detaylı form kartı — metin','models.formPdf':'Detaylı form kartı — PDF düğmesi','models.formDoc':'Detaylı form kartı — Word düğmesi',
 
   'form.label':'Bölüm etiketi','form.name':'“Adın” etiketi','form.contact':'İletişim etiketi',
   'form.city':'Şehir etiketi','form.exp':'Deneyim etiketi',
@@ -207,6 +208,30 @@ content:
         options:
           path: files
           extensions: [pdf]
+      - name: formPdfTr
+        label: "Detaylı Başvuru Formu — Türkçe PDF (PDF ve Word boşsa kart görünmez)"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
+      - name: formDocTr
+        label: "Detaylı Başvuru Formu — Türkçe Word"
+        type: file
+        options:
+          path: files
+          extensions: [docx]
+      - name: formPdfEn
+        label: "Detaylı Başvuru Formu — İngilizce PDF"
+        type: file
+        options:
+          path: files
+          extensions: [pdf]
+      - name: formDocEn
+        label: "Detaylı Başvuru Formu — İngilizce Word"
+        type: file
+        options:
+          path: files
+          extensions: [docx]
       - { name: heroVideo, label: "Giriş videosu (boşsa sadece fotoğraf)", type: string }
       - { name: heroVideoSmall, label: "Giriş videosu — telefon için küçük hâli", type: string }
       - name: theme
