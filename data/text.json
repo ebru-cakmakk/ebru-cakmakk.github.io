@@ -1,9 +1,5 @@
 {
   "hero": {
-    "eyebrow": {
-      "tr": "Fotoğraf ve Video",
-      "en": "Photography &amp; Video"
-    },
     "tagline": {
       "tr": "Ten de taş da aynı ışıktan yapılmış.",
       "en": "Skin and stone are made of the same light."
@@ -35,8 +31,8 @@
       "en": "In short"
     },
     "aboutP": {
-      "tr": "Fotoğraf ve video üzerine çalışan bir öğrenciyim. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekiyorum.\nDoğayla çalışmak beni besliyor, ama kendimi bir türe kapatmıyorum. Moda, müzik, belgesel ya da bir arkadaşın fikri: iyi bir hikâye varsa oradayım.",
-      "en": "I’m a student working in photography and video. I shoot with natural light, in quiet places, with as little gear as possible.\nWorking with nature feeds me, but I don't confine myself to one genre. Fashion, music, documentary, or a friend's idea: if there's a good story, I'm in."
+      "tr": "Fotoğraf ve video üzerine çalışan bir öğrenciyim. Doğayla çalışmak beni besliyor, ama kendimi bir türe kapatmıyorum. Moda, müzik, belgesel ya da bir arkadaşın fikri: iyi bir hikâye varsa oradayım.",
+      "en": "I’m a student working in photography and video. Working with nature feeds me, but I don't confine myself to one genre. Fashion, music, documentary, or a friend's idea: if there's a good story, I'm in."
     },
     "aboutLink": {
       "tr": "Hakkımda",
@@ -275,12 +271,12 @@
       "en": "In short"
     },
     "p1": {
-      "tr": "ebbylumi, işlerime verdiğim ad; ben Ebru Çakmak. Fotoğraf ve video üzerine çalışan bir öğrenciyim. İşlerimi üretiyor, sonra serbest bırakıyorum. Doğal ışıkla, kalabalıktan uzak mekânlarda ve mümkün olduğunca az ekipmanla çekmeyi seviyorum.",
-      "en": "ebbylumi is the name I give my work; I’m Ebru Çakmak. I’m a student working in photography and video. I make the work, then let it go. I like shooting with natural light, in quiet places, with as little gear as possible."
+      "tr": "ebbylumi, işlerime verdiğim ad; ben Ebru Çakmak. Fotoğraf ve video üzerine çalışan bir öğrenciyim. İşlerimi üretiyor, sonra serbest bırakıyorum.",
+      "en": "ebbylumi is the name I give my work; I’m Ebru Çakmak. I’m a student working in photography and video. I make the work, then let it go."
     },
     "p2": {
-      "tr": "Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri. Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum.",
-      "en": "I’m currently building my first serious series, and this site is its logbook. If you’d like to model, collaborate on a project, or simply talk, write to me — I answer every message."
+      "tr": "Model olarak çalışmak, bir projede birlikte olmak ya da sadece konuşmak isterseniz yazın — her mesaja dönüş yapıyorum.",
+      "en": "If you’d like to model, collaborate on a project, or simply talk, write to me — I answer every message."
     },
     "k1": {
       "tr": "Alan",

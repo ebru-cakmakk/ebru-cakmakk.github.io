@@ -145,12 +145,6 @@ content:
         label: "Açılış ekranı"
         type: object
         fields:
-          - name: eyebrow
-            label: "Üst satır"
-            type: object
-            fields:
-              - { name: tr, label: "Türkçe", type: string }
-              - { name: en, label: "İngilizce", type: string }
           - name: tagline
             label: "Tanıtım cümlesi"
             type: object

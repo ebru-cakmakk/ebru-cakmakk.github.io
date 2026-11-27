@@ -16,6 +16,9 @@ Site iki işe hizmet ediyor:
 Henüz sergi, yayın ya da ödül yok. Site bunu saklamıyor; "öğrenciyim, ilk ciddi
 serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar —
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
+*27 Kasım: Ebru'nun isteğiyle "Şu sıralar ilk ciddi serimi kuruyorum ve bu site onun kayıt defteri" cümlesi
+Hakkımda'dan, "Doğal ışıkla, kalabalıktan uzak mekânlarda… az ekipmanla" cümlesi hem Hakkımda'dan hem ana sayfa
+"Kısaca"dan çıkarıldı. Geri ekleme.*
 
 **İsim:** **ebbylumi** — eser adı (27 Kasım 2026'da Ebru'yla uzun konuşularak kesinleşti; 26 Kasım'daki
 "Ebru Çakmak" kararının yerini aldı). Site başlığı, marka, giriş başlığı, altbilgi ve sekme başlığı ebbylumi;
@@ -229,6 +232,10 @@ yazı tipiyle tarayıcıda çizildi — Fraunces bu ortamdan indirilemiyor
 
 **Addan sonraki süs noktası kaldırıldı** (eskiden `.dot` span'i vardı). Geri
 isterse marka ve açılış başlığına geri eklenir.
+
+**Giriş başlığının üstündeki "Fotoğraf ve Video" satırı kaldırıldı** (27 Kasım, Ebru istedi). `hero.eyebrow`
+hem HTML'den hem `text.json`'dan silindi, `.pages.yml` yeniden üretildi. Sekme başlığındaki
+"— Fotoğraf ve Video" ise duruyor.
 
 **Fotoğraf isimleri yok.** Her kareye başlık yazmak istemedi. Galeri isimsiz;
 sadece kategori başlıkları var.
