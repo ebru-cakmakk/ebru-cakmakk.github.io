@@ -17,8 +17,42 @@ Henüz sergi, yayın ya da ödül yok. Site bunu saklamıyor; "öğrenciyim, ilk
 serimi kuruyorum" diyen dürüst bir ton tercih edildi. Bu bilinçli bir karar —
 sahte bir geçmiş kurmaktansa, gelişimi göstermek.
 
-**İsim:** **Ebru Çakmak** (26 Kasım 2026'da kesinleşti; iki kez "Z. Ebru Çakmak" ile gidip gelindi, Ebru sonunda tek adı seçti. Resmi yerler hariç iki adı yan yana kullanmayı sevmiyor. **Z.** sekme logosunda monogram olarak kalıyor. Bu konuyu tekrar açma).
-Sosyal medya kullanıcı adı: **ebbylumi** (Instagram + TikTok).
+**İsim:** **ebbylumi** — eser adı (27 Kasım 2026'da Ebru'yla uzun konuşularak kesinleşti; 26 Kasım'daki
+"Ebru Çakmak" kararının yerini aldı). Site başlığı, marka, giriş başlığı, altbilgi ve sekme başlığı ebbylumi;
+**hep küçük harf, tek kelime** (bell hooks örneği: dikkat kişiye değil işe gitsin). Altbilgide büyük harfe
+dönmesin diye `.footName{text-transform:none}` var.
+Gerçek ad **Ebru Çakmak** yalnız Hakkımda'nın ilk cümlesinde ("ebbylumi, işlerime verdiğim ad; ben Ebru Çakmak.")
+ve **sorumluluk taşıyan** yerlerde: model formu selamı ("Merhaba Ebru"), Modelliğe Hazırlık PDF kapağı, izin formu,
+sözleşme, başvurular. İlke: **eser serbest bırakılır, sorumluluk bırakılmaz.** "Z. Ebru" (iki ad yan yana) yalnız
+resmi belgelerde. Sekme logosundaki **Z** şimdilik kalıyor (Ebru'nun seçtiği görsel; değişecekse seçenekle gel).
+Sosyal medya: **ebbylumi** (Instagram + TikTok). Neden mahlas: aşağıda "Sanatçı kimliği".
+
+---
+
+## Sanatçı kimliği
+
+*26–27 Kasım 2026'da Ebru'nun kendi anlatımından.*
+
+**Profil:** 23 yaşında, Ankara'da bir GSF'de Fotoğraf ve Video bölümü 3. sınıf. Fotoğraf ve video
+birlikte; multidisipliner çalışmaya hevesli.
+
+**Duruş:**
+- **İşlerine aidiyet hissetmiyor.** Belli bir mesafede duruyor, ürettiğine âşık olmuyor; üretip serbest bırakıyor.
+  Bir işin altına ad soyad yazmak ona egoist geliyor. Mahlası bunun yerine bir katman olarak kullanıyor ve
+  bunun da bir ego katmanı, bir sığınak olduğunun farkında. → Mahlas kararının asıl gerekçesi bu.
+  (Bağlam olarak konuşulanlar: zen'de bağlanmama, mingei/isimsiz zanaatkâr, anonim türkü, Japon gō geleneği.)
+- Grafik tasarımcı gibi hizmet/portfolyo sunmak yerine **özgün işlerini yayınlayarak** dikkat çekmek istiyor.
+- **Yüzünü ön plana çıkarmak istemiyor.** Yine de röportaj/basın için kullanılabilecek birkaç portresi olsun.
+- Kendini "yeteneksiz değil ama tepede de değil" görüyor. Hedef: işleriyle ilgilenecek, onlardan keyif alacak
+  bir kitle bulmak. → Ton iddiasız kalmalı; abartılı sıfat, "ödüllü/usta" dili yok.
+- **İşlerin üstüne imza/filigran koymayı sevmiyor.** Fotoğraflara imza ekleme.
+
+**Temalar / estetik:** zen, minimal yaşam, zen minimalism, brutal minimalism, frugal chic; duru,
+yavaş (slow cinema) estetik; sıradan hayat; sinematik fotoğraf; doğa; konsept fotoğraf; moda;
+dijital video sanatı; Asya ve zen estetiği.
+
+**Açık:** `images/ebru.jpg` hem Hakkımda'da hem ana sayfa "Kısaca"da → yüz ön planda. Ana sayfadan kaldırma
+ya da yüzü göstermeyen bir kareyle değiştirme önerildi; Ebru 27 Kasım'da "resimlere dokunma" dedi, şimdilik kalıyor.
 
 *Son güncelleme: 27 Kasım 2026.*
 
@@ -243,9 +277,8 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
 
 ## Açık konular
 
-- [x] ~~İsim kararı~~ — **Ebru Çakmak** (Z. monogram). Mahlas elendi; gerçek ad korunuyor
-      ama baştaki harf mesafe koyuyor. Sosyal medya kullanıcı adı ayrıca
-      seçildi: **ebbylumi**.
+- [x] ~~İsim kararı~~ — **ebbylumi** eser adı, Ebru Çakmak sorumluluk adı (27 Kasım 2026; ayrıntı en üstte).
+      Önce "Ebru Çakmak" seçilmişti; Ebru mahlası sevdiğini ve neden sevdiğini anlatınca değişti.
 - [x] ~~Pages CMS kurulumu~~ — tamamlandı. Ebru'nun ilk girişi yapması kaldı.
 - [x] ~~Günlük yazıları~~ — Ebru kendi deneme yazılarını panelden girdi. Dört yazı:
       Ölüler ve Değersiz Eşyaları, Sevgi, Kendi Yankımız, Hareket Et ve Azal.
@@ -270,7 +303,7 @@ ver. Kendi başına yapabileceği şeyleri söyle — amacı siteyi kendi yönet
       "deniz"). Asyalı sanatçı adı kalıbı, kompakt, noktasız. Elenenler: sumi/akari gibi bilinen
       kelimeler (dolu, saçma varyantlara açılıyor), "by"+e… (bitişikte "bye" okunuyor),
       zestywoods (TikTok argosu), illuminebby/lumi.ebby (uzun). Bağlantılar `site.json`'da.
-- [x] ~~Alan adı~~ — `ebbylumi.com`, HTTPS açık. Kalan: kartvizit QR'ı `https://ebbylumi.com`'a çevrilmeli, Linktree adresi güncellenmeli.
+- [x] ~~Alan adı~~ — `ebbylumi.com`, HTTPS açık. Kalan: kartvizit QR'ı `https://ebbylumi.com`'a çevrilmeli (kartvizitteki ad da ebbylumi olsun mu, Ebru'ya sor), Linktree adresi güncellenmeli.
 
 ---
 
