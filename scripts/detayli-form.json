@@ -4,7 +4,7 @@
     "tr": {
       "kicker": "ebbylumi · Modeller İçin",
       "title": "Detaylı Başvuru Formu",
-      "intro": "Bu form isteğe bağlı; sitedeki kısa form da yeterli. Seni daha iyi tanımak ve çekimi baştan doğru planlamak için hazırladım. Yalnız ad ve iletişim bilgisi zorunlu (*); istemediğin soruyu boş bırakabilirsin.",
+      "intro": "Bu form isteğe bağlı; sitedeki kısa form da yeterli. Soruların çoğu tek bir işaretle cevaplanıyor. Yalnız ad ve iletişim bilgisi zorunlu (*); istemediğin soruyu boş bırak.",
       "send": "Doldurduktan sonra kaydet ve ebbylumi@proton.me adresine gönder.",
       "privacy": "Bilgilerin yalnız çekimi planlamak için kullanılır ve kimseyle paylaşılmaz. Silinmesini istersen silerim.",
       "foot": "ebbylumi.com · ebbylumi@proton.me",
@@ -17,7 +17,7 @@
     "en": {
       "kicker": "ebbylumi · For Models",
       "title": "Detailed Application Form",
-      "intro": "This form is optional; the short form on the site is enough. I made it to get to know you better and to plan the shoot properly from the start. Only your name and contact details are required (*); skip any question you'd rather not answer.",
+      "intro": "This form is optional; the short form on the site is enough. Most questions take a single tick. Only your name and contact details are required (*); skip anything you'd rather not answer.",
       "send": "When you're done, save it and send it to ebbylumi@proton.me.",
       "privacy": "Your details are used only to plan the shoot and are never shared. Ask and I'll delete them.",
       "foot": "ebbylumi.com · ebbylumi@proton.me",
@@ -30,125 +30,547 @@
   },
   "sections": [
     {
-      "tr": "Seni tanıyalım", "en": "About you",
+      "tr": "Seni tanıyalım",
+      "en": "About you",
       "rows": [
-        [{"t": "text", "id": "ad", "req": true, "tr": "Ad soyad", "en": "Full name"},
-         {"t": "text", "id": "hitap", "tr": "Kullanmamı istediğin ad", "en": "Name you'd like me to use"}],
-        [{"t": "text", "id": "dogum", "tr": "Doğum tarihi", "en": "Date of birth"},
-         {"t": "text", "id": "sehir", "tr": "Şehir / ilçe", "en": "City / district"}],
-        [{"t": "text", "id": "diller", "tr": "Konuştuğun diller", "en": "Languages you speak"},
-         {"t": "text", "id": "meslek", "tr": "Okul ya da meslek", "en": "School or occupation"}]
+        [
+          {
+            "t": "text",
+            "id": "ad",
+            "tr": "Ad soyad",
+            "en": "Full name",
+            "req": true
+          },
+          {
+            "t": "text",
+            "id": "hitap",
+            "tr": "Sana nasıl hitap edeyim?",
+            "en": "What should I call you?"
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "yas",
+            "tr": "Yaş",
+            "en": "Age"
+          },
+          {
+            "t": "text",
+            "id": "sehir",
+            "tr": "Şehir",
+            "en": "City"
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "boy",
+            "tr": "Boy (cm)",
+            "en": "Height (cm)"
+          },
+          {
+            "t": "text",
+            "id": "kilo",
+            "tr": "Kilo (kg)",
+            "en": "Weight (kg)"
+          }
+        ]
       ]
     },
     {
-      "tr": "İletişim", "en": "Contact",
+      "tr": "İletişim",
+      "en": "Contact",
       "rows": [
-        [{"t": "text", "id": "eposta", "req": true, "tr": "E-posta", "en": "Email"},
-         {"t": "text", "id": "telefon", "tr": "Telefon", "en": "Phone"}],
-        [{"t": "text", "id": "link", "tr": "Instagram ya da portfolyo bağlantısı", "en": "Instagram or portfolio link"}],
-        [{"t": "choice", "id": "ulasim", "multi": true, "tr": "Sana nasıl ulaşayım?", "en": "How should I reach you?",
-          "opts": [{"tr": "E-posta", "en": "Email"}, {"tr": "Telefon / mesaj", "en": "Phone / text"}, {"tr": "Instagram", "en": "Instagram"}]}]
+        [
+          {
+            "t": "text",
+            "id": "eposta",
+            "tr": "E-posta",
+            "en": "Email",
+            "req": true
+          },
+          {
+            "t": "text",
+            "id": "telefon",
+            "tr": "Telefon",
+            "en": "Phone"
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "link",
+            "tr": "Instagram ya da önceki işlerin",
+            "en": "Instagram or previous work"
+          }
+        ]
       ]
     },
     {
-      "tr": "Görünüm ve ölçüler", "en": "Appearance and measurements",
-      "note": {"tr": "Kıyafet ve kadraj planlamak için. Bildiğin kadarını yaz; ölçü almak zorunda değilsin.",
-               "en": "For planning wardrobe and framing. Write what you know; there's no need to measure yourself."},
+      "tr": "Görsel dil",
+      "en": "Visual language",
+      "note": {
+        "tr": "Doğru ya da yanlış cevap yok; hangi çekimlerde birlikte rahat edeceğimizi görmek için.",
+        "en": "There are no right answers; it just shows me which shoots we'd enjoy together."
+      },
       "rows": [
-        [{"t": "text", "id": "boy", "tr": "Boy (cm)", "en": "Height (cm)"},
-         {"t": "text", "id": "beden", "tr": "Giyim bedeni", "en": "Clothing size"},
-         {"t": "text", "id": "ayakkabi", "tr": "Ayakkabı numarası", "en": "Shoe size"}],
-        [{"t": "text", "id": "gogus", "tr": "Göğüs (cm)", "en": "Bust / chest (cm)"},
-         {"t": "text", "id": "bel", "tr": "Bel (cm)", "en": "Waist (cm)"},
-         {"t": "text", "id": "kalca", "tr": "Kalça (cm)", "en": "Hips (cm)"}],
-        [{"t": "text", "id": "goz", "tr": "Göz rengi", "en": "Eye colour"},
-         {"t": "text", "id": "sac", "tr": "Saç rengi", "en": "Hair colour"},
-         {"t": "text", "id": "sactip", "tr": "Saç uzunluğu ve tipi", "en": "Hair length and type"}],
-        [{"t": "text", "id": "iz", "tr": "Dövme, piercing ya da belirgin iz (nerede?)", "en": "Tattoos, piercings or distinctive marks (where?)"}],
-        [{"t": "choice", "id": "degisim", "tr": "Saçında ya da görünümünde değişikliğe açık mısın?", "en": "Open to changes to your hair or look?",
-          "opts": [{"tr": "Evet", "en": "Yes"}, {"tr": "Hayır", "en": "No"}, {"tr": "Konuşalım", "en": "Let's talk"}]}]
+        [
+          {
+            "t": "choice",
+            "id": "avangart",
+            "tr": "Avangart çekimlere bakışın?",
+            "en": "How do you feel about avant-garde shoots?",
+            "opts": [
+              {
+                "tr": "Heyecanlanırım",
+                "en": "Excited"
+              },
+              {
+                "tr": "Merak ederim",
+                "en": "Curious"
+              },
+              {
+                "tr": "Bana göre değil",
+                "en": "Not for me"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "atmosfer",
+            "tr": "Sana yakın gelen atmosferler",
+            "en": "Moods that feel close to you",
+            "opts": [
+              {
+                "tr": "Sessiz ve yavaş",
+                "en": "Quiet and slow"
+              },
+              {
+                "tr": "Ham ve sert",
+                "en": "Raw and stark"
+              },
+              {
+                "tr": "Rüya gibi",
+                "en": "Dreamlike"
+              },
+              {
+                "tr": "Doğal ve sade",
+                "en": "Natural and plain"
+              },
+              {
+                "tr": "Karanlık ve sinematik",
+                "en": "Dark and cinematic"
+              },
+              {
+                "tr": "Oyunbaz",
+                "en": "Playful"
+              }
+            ],
+            "multi": true
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "stil",
+            "tr": "Stil ve makyaj",
+            "en": "Styling and make-up",
+            "opts": [
+              {
+                "tr": "Sade kalsın",
+                "en": "Keep it simple"
+              },
+              {
+                "tr": "Deneysel olabilir",
+                "en": "Can be experimental"
+              },
+              {
+                "tr": "Fark etmez",
+                "en": "No preference"
+              }
+            ],
+            "hint": {
+              "tr": "deneysel: yüz boyası, heykelsi saç, alışılmadık kıyafet",
+              "en": "experimental: face paint, sculptural hair, unusual clothes"
+            }
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "yuzsuz",
+            "tr": "Yüzünün görünmediği kareler (siluet, el, sırt, gölge)",
+            "en": "Frames where your face isn't shown (silhouette, hands, back, shadow)",
+            "opts": [
+              {
+                "tr": "Severim",
+                "en": "I'd like that"
+              },
+              {
+                "tr": "Olabilir",
+                "en": "Maybe"
+              },
+              {
+                "tr": "İstemem",
+                "en": "I'd rather not"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "doga",
+            "tr": "Doğayla temas (su, çamur, rüzgâr, toprak)",
+            "en": "Contact with nature (water, mud, wind, earth)",
+            "opts": [
+              {
+                "tr": "Varım",
+                "en": "I'm in"
+              },
+              {
+                "tr": "Duruma göre",
+                "en": "It depends"
+              },
+              {
+                "tr": "İstemem",
+                "en": "I'd rather not"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "hareket",
+            "tr": "Kamera önünde sana daha kolay gelen",
+            "en": "What comes easier in front of the camera",
+            "opts": [
+              {
+                "tr": "Durgun poz",
+                "en": "Still poses"
+              },
+              {
+                "tr": "Yavaş hareket",
+                "en": "Slow movement"
+              },
+              {
+                "tr": "Dans",
+                "en": "Dance"
+              },
+              {
+                "tr": "Doğaçlama",
+                "en": "Improvising"
+              }
+            ],
+            "multi": true
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "imge",
+            "tr": "Aklında bir imge, film ya da fotoğrafçı var mı?",
+            "en": "An image, film or photographer on your mind?",
+            "hint": {
+              "tr": "isteğe bağlı",
+              "en": "optional"
+            }
+          }
+        ]
       ]
     },
     {
-      "tr": "Deneyim", "en": "Experience",
+      "tr": "Deneyim",
+      "en": "Experience",
       "rows": [
-        [{"t": "choice", "id": "deneyim", "tr": "Kamera önünde deneyimin", "en": "Experience in front of the camera",
-          "opts": [{"tr": "Hiç", "en": "None"}, {"tr": "Birkaç kez", "en": "A few times"}, {"tr": "Düzenli", "en": "Regularly"}]}],
-        [{"t": "text", "id": "ajans", "tr": "Bir ajansla çalışıyorsan hangisi?", "en": "If you're with an agency, which one?",
-          "hint": {"tr": "Varsa çekim için onların iznini de konuşuruz.", "en": "If so, we'll check with them before the shoot."}}],
-        [{"t": "text", "id": "isler", "tr": "Önceki işlerinden bağlantılar", "en": "Links to previous work"}],
-        [{"t": "text", "id": "yetenek", "tr": "Yetenekler (dans, spor, müzik, oyunculuk, yoga…)", "en": "Skills (dance, sport, music, acting, yoga…)"}]
+        [
+          {
+            "t": "choice",
+            "id": "deneyim",
+            "tr": "Kamera önünde deneyimin",
+            "en": "Experience in front of the camera",
+            "opts": [
+              {
+                "tr": "Hiç",
+                "en": "None"
+              },
+              {
+                "tr": "Birkaç kez",
+                "en": "A few times"
+              },
+              {
+                "tr": "Düzenli",
+                "en": "Regularly"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "ajans",
+            "tr": "Bir ajansla çalışıyorsan hangisi?",
+            "en": "If you're with an agency, which one?",
+            "hint": {
+              "tr": "Varsa çekim için onların iznini de konuşuruz.",
+              "en": "If so, we'll check with them before the shoot."
+            }
+          }
+        ]
       ]
     },
     {
-      "tr": "Çekim tercihleri", "en": "Shoot preferences",
+      "tr": "Çekim günü",
+      "en": "On the day",
       "rows": [
-        [{"t": "choice", "id": "tur", "multi": true, "tr": "İlgilendiğin çekimler", "en": "Shoots you're interested in",
-          "opts": [{"tr": "Portre", "en": "Portrait"}, {"tr": "Moda", "en": "Fashion"}, {"tr": "Doğa / dış mekân", "en": "Nature / outdoors"},
-                   {"tr": "Konsept", "en": "Concept"}, {"tr": "Video / kısa film", "en": "Video / short film"}, {"tr": "Okul projesi", "en": "School project"}]}],
-        [{"t": "choice", "id": "makyaj", "tr": "Makyaj", "en": "Make-up",
-          "opts": [{"tr": "Kendim yaparım", "en": "I'll do my own"}, {"tr": "Sade kalsın", "en": "Keep it minimal"}, {"tr": "Fark etmez", "en": "No preference"}]}],
-        [{"t": "choice", "id": "kiyafet", "tr": "Kendi kıyafetlerini getirebilir misin?", "en": "Can you bring your own clothes?",
-          "opts": [{"tr": "Evet", "en": "Yes"}, {"tr": "Hayır", "en": "No"}]}],
-        [{"t": "choice", "id": "refakat", "tr": "Çekime yanında biri gelecek mi?", "en": "Will someone come with you?",
-          "opts": [{"tr": "Evet", "en": "Yes"}, {"tr": "Hayır", "en": "No"}, {"tr": "Belki", "en": "Maybe"}]}],
-        [{"t": "area", "id": "sinir", "lines": 3, "tr": "Rahat olmadığın ya da kesinlikle istemediğin şeyler", "en": "Anything you're not comfortable with or definitely don't want"}]
+        [
+          {
+            "t": "choice",
+            "id": "gun",
+            "tr": "Günler",
+            "en": "Days",
+            "opts": [
+              {
+                "tr": "Hafta içi",
+                "en": "Weekdays"
+              },
+              {
+                "tr": "Hafta sonu",
+                "en": "Weekends"
+              }
+            ],
+            "multi": true
+          },
+          {
+            "t": "choice",
+            "id": "saat",
+            "tr": "Saatler",
+            "en": "Times",
+            "opts": [
+              {
+                "tr": "Sabah",
+                "en": "Morning"
+              },
+              {
+                "tr": "Öğleden sonra",
+                "en": "Afternoon"
+              },
+              {
+                "tr": "Akşam",
+                "en": "Evening"
+              }
+            ],
+            "multi": true
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "refakat",
+            "tr": "Yanına biri gelecek mi?",
+            "en": "Will someone come with you?",
+            "opts": [
+              {
+                "tr": "Evet",
+                "en": "Yes"
+              },
+              {
+                "tr": "Hayır",
+                "en": "No"
+              },
+              {
+                "tr": "Belki",
+                "en": "Maybe"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "area",
+            "id": "sinir",
+            "tr": "Rahat etmeyeceğin bir şey varsa yaz",
+            "en": "Anything you wouldn't be comfortable with",
+            "lines": 2
+          }
+        ]
       ]
     },
     {
-      "tr": "Fotoğrafların kullanımı", "en": "How the photos are used",
-      "note": {"tr": "Bu yalnız bir ön tercih. Çekimden önce yazılı izin formunu birlikte doldururuz ve hiçbir kare onayın olmadan yayımlanmaz.",
-               "en": "This is only a first preference. Before the shoot we fill in a written consent form together, and no frame is published without your approval."},
+      "tr": "Fotoğrafların kullanımı",
+      "en": "How the photos are used",
+      "note": {
+        "tr": "Bu yalnız bir ön tercih. Çekimden önce yazılı izin formunu birlikte doldururuz ve hiçbir kare onayın olmadan yayımlanmaz.",
+        "en": "This is only a first preference. Before the shoot we fill in a written consent form together, and no frame is published without your approval."
+      },
       "rows": [
-        [{"t": "choice", "id": "kullanim", "multi": true, "tr": "Nerelerde kullanılabilir?", "en": "Where may they be used?",
-          "opts": [{"tr": "Web sitesi", "en": "Website"}, {"tr": "Instagram / TikTok", "en": "Instagram / TikTok"}, {"tr": "Sergi ve basılı işler", "en": "Exhibitions and print"},
-                   {"tr": "Okul projesi / festival", "en": "School project / festival"}, {"tr": "Yalnız kişisel arşiv", "en": "Personal archive only"}]}],
-        [{"t": "choice", "id": "anilma", "tr": "Paylaşımlarda adın geçsin mi?", "en": "Should you be credited in posts?",
-          "opts": [{"tr": "Adımla", "en": "With my name"}, {"tr": "Instagram etiketimle", "en": "With my Instagram tag"}, {"tr": "Adsız kalayım", "en": "Keep me anonymous"}]}]
+        [
+          {
+            "t": "choice",
+            "id": "kullanim",
+            "multi": true,
+            "tr": "Nerelerde kullanılabilir?",
+            "en": "Where may they be used?",
+            "opts": [
+              {
+                "tr": "Web sitesi",
+                "en": "Website"
+              },
+              {
+                "tr": "Instagram / TikTok",
+                "en": "Instagram / TikTok"
+              },
+              {
+                "tr": "Sergi ve basılı işler",
+                "en": "Exhibitions and print"
+              },
+              {
+                "tr": "Okul projesi / festival",
+                "en": "School project / festival"
+              },
+              {
+                "tr": "Yalnız kişisel arşiv",
+                "en": "Personal archive only"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "anilma",
+            "tr": "Paylaşımlarda adın geçsin mi?",
+            "en": "Should you be credited in posts?",
+            "opts": [
+              {
+                "tr": "Adımla",
+                "en": "With my name"
+              },
+              {
+                "tr": "Instagram etiketimle",
+                "en": "With my Instagram tag"
+              },
+              {
+                "tr": "Adsız kalayım",
+                "en": "Keep me anonymous"
+              }
+            ]
+          }
+        ]
       ]
     },
     {
-      "tr": "Uygunluk", "en": "Availability",
-      "rows": [
-        [{"t": "choice", "id": "gun", "multi": true, "tr": "Günler", "en": "Days",
-          "opts": [{"tr": "Hafta içi", "en": "Weekdays"}, {"tr": "Hafta sonu", "en": "Weekends"}]},
-         {"t": "choice", "id": "saat", "multi": true, "tr": "Saatler", "en": "Times",
-          "opts": [{"tr": "Sabah", "en": "Morning"}, {"tr": "Öğleden sonra", "en": "Afternoon"}, {"tr": "Akşam", "en": "Evening"}]}],
-        [{"t": "choice", "id": "yolculuk", "tr": "Ankara dışında çekime gelebilir misin?", "en": "Could you travel outside Ankara for a shoot?",
-          "opts": [{"tr": "Evet", "en": "Yes"}, {"tr": "Hayır", "en": "No"}, {"tr": "Duruma göre", "en": "It depends"}]}],
-        [{"t": "text", "id": "tarih", "tr": "En erken ne zaman çekim yapabiliriz?", "en": "Earliest date we could shoot"}]
-      ]
-    },
-    {
-      "tr": "Bir fotoğraf", "en": "A photo",
-      "photo": {"tr": "Bir yakın plan ekle: sade, filtresiz, makyajsız ya da hafif makyajlı, gün ışığında. PDF'te kutuya tıklayıp fotoğraf seçebilirsin (Adobe Acrobat Reader'da çalışır). Olmazsa e-postaya ekle; önden, profilden ve boydan birer kare de çok yardımcı olur.",
-                "en": "Add a close-up: simple, unfiltered, little or no make-up, in daylight. In the PDF you can click the box to choose a photo (works in Adobe Acrobat Reader). If it doesn't work, attach it to your email; one front, one profile and one full-length shot help a lot."},
-      "photoDocx": {"tr": "Bir yakın plan ekle: sade, filtresiz, makyajsız ya da hafif makyajlı, gün ışığında. Kutuya tıkla, sonra Ekle → Resimler. İstersen e-postaya da ekle; önden, profilden ve boydan birer kare de çok yardımcı olur.",
-                    "en": "Add a close-up: simple, unfiltered, little or no make-up, in daylight. Click the box, then Insert → Pictures. You can also attach it to your email; one front, one profile and one full-length shot help a lot."},
+      "tr": "Bir fotoğraf",
+      "en": "A photo",
+      "photo": {
+        "tr": "Bir yakın plan ekle: sade, filtresiz, makyajsız ya da hafif makyajlı, gün ışığında. PDF'te kutuya tıklayıp fotoğraf seçebilirsin (Adobe Acrobat Reader'da çalışır). Olmazsa e-postaya ekle; önden, profilden ve boydan birer kare de çok yardımcı olur.",
+        "en": "Add a close-up: simple, unfiltered, little or no make-up, in daylight. In the PDF you can click the box to choose a photo (works in Adobe Acrobat Reader). If it doesn't work, attach it to your email; one front, one profile and one full-length shot help a lot."
+      },
+      "photoDocx": {
+        "tr": "Bir yakın plan ekle: sade, filtresiz, makyajsız ya da hafif makyajlı, gün ışığında. Kutuya tıkla, sonra Ekle → Resimler. İstersen e-postaya da ekle; önden, profilden ve boydan birer kare de çok yardımcı olur.",
+        "en": "Add a close-up: simple, unfiltered, little or no make-up, in daylight. Click the box, then Insert → Pictures. You can also attach it to your email; one front, one profile and one full-length shot help a lot."
+      },
       "rows": []
     },
     {
-      "tr": "Son olarak", "en": "Finally",
+      "tr": "Son olarak",
+      "en": "Finally",
       "rows": [
-        [{"t": "area", "id": "fikir", "lines": 3, "tr": "Bir çekim fikrin ya da eklemek istediğin bir şey", "en": "A shoot idea or anything you'd like to add"}],
-        [{"t": "choice", "id": "kaynak", "tr": "Beni nereden duydun?", "en": "How did you hear about me?",
-          "opts": [{"tr": "Instagram", "en": "Instagram"}, {"tr": "Arkadaş", "en": "A friend"}, {"tr": "Web sitesi", "en": "Website"}, {"tr": "Kartvizit", "en": "Business card"}, {"tr": "Başka", "en": "Other"}]}]
+        [
+          {
+            "t": "area",
+            "id": "fikir",
+            "lines": 2,
+            "tr": "Eklemek istediğin bir şey",
+            "en": "Anything you'd like to add"
+          }
+        ],
+        [
+          {
+            "t": "choice",
+            "id": "kaynak",
+            "tr": "Beni nereden duydun?",
+            "en": "How did you hear about me?",
+            "opts": [
+              {
+                "tr": "Instagram",
+                "en": "Instagram"
+              },
+              {
+                "tr": "Arkadaş",
+                "en": "A friend"
+              },
+              {
+                "tr": "Web sitesi",
+                "en": "Website"
+              },
+              {
+                "tr": "Kartvizit",
+                "en": "Business card"
+              },
+              {
+                "tr": "Başka",
+                "en": "Other"
+              }
+            ]
+          }
+        ]
       ]
     },
     {
-      "tr": "18 yaşından küçüksen", "en": "If you're under 18",
-      "note": {"tr": "Çekim için velinin yazılı onayı gerekir.", "en": "A parent or guardian's written consent is required for the shoot."},
+      "tr": "18 yaşından küçüksen",
+      "en": "If you're under 18",
+      "note": {
+        "tr": "Çekim için velinin yazılı onayı gerekir.",
+        "en": "A parent or guardian's written consent is required for the shoot."
+      },
       "rows": [
-        [{"t": "text", "id": "veli", "tr": "Veli adı soyadı", "en": "Parent or guardian's name"},
-         {"t": "text", "id": "veliiletisim", "tr": "Velinin telefonu ya da e-postası", "en": "Their phone or email"}]
+        [
+          {
+            "t": "text",
+            "id": "veli",
+            "tr": "Veli adı soyadı",
+            "en": "Parent or guardian's name"
+          },
+          {
+            "t": "text",
+            "id": "veliiletisim",
+            "tr": "Velinin telefonu ya da e-postası",
+            "en": "Their phone or email"
+          }
+        ]
       ]
     },
     {
-      "tr": "Onay", "en": "Confirmation",
+      "tr": "Onay",
+      "en": "Confirmation",
       "rows": [
-        [{"t": "check", "id": "onay", "tr": "Bilgilerin doğru olduğunu ve yalnız çekim planlamak için kullanılmasını kabul ediyorum.", "en": "My details are correct and I agree they're used only to plan the shoot."}],
-        [{"t": "text", "id": "onaytarih", "tr": "Tarih", "en": "Date"},
-         {"t": "text", "id": "onayad", "tr": "Ad soyad", "en": "Full name"}]
+        [
+          {
+            "t": "check",
+            "id": "onay",
+            "tr": "Bilgilerin doğru olduğunu ve yalnız çekim planlamak için kullanılmasını kabul ediyorum.",
+            "en": "My details are correct and I agree they're used only to plan the shoot."
+          }
+        ],
+        [
+          {
+            "t": "text",
+            "id": "onaytarih",
+            "tr": "Tarih",
+            "en": "Date"
+          },
+          {
+            "t": "text",
+            "id": "onayad",
+            "tr": "Ad soyad",
+            "en": "Full name"
+          }
+        ]
       ]
     }
   ]
